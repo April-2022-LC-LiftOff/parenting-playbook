@@ -1,17 +1,28 @@
 # tomh-group-repo
 
+## 🔹 Things to Note for this branch 🔹
+
+In order to connect to the database, I opted to create 2 tables instead of the 8 we discussed.
+I did this in order to reduce complexity.
+
+I added the static files from the techjobs assignments we did in unit 2.
+I also added an index.html and fragments file. This was done in order
+to quickly develop a proof of concept. I needed to see if my 
+controllers and repositories worked properly. The techjobs files, index.html 
+and fragments files will be removed later.
+
 ## 🔹 Overview 🔹
 
- This project is a resource for parents to identify potential interventions and solutions to executive functioning concerns (e.g. issues with organization, staying on task, self-monitoring, self-management, etc.). 
- 
- Users have the opportunity to create accounts, find potential low-level interventions based on a person's specific situation and needs, and add interventions to a database that other users can access. 
- 
- Logged in users can leave comments or rate interventions based on efficacy and share interventions with others. 
- 
- Users can also search for interventions based on student need without making an account.
- 
- ## 🔹 Features 🔹
- 
+This project is a resource for parents to identify potential interventions and solutions to executive functioning concerns (e.g. issues with organization, staying on task, self-monitoring, self-management, etc.).
+
+Users have the opportunity to create accounts, find potential low-level interventions based on a person's specific situation and needs, and add interventions to a database that other users can access.
+
+Logged in users can leave comments or rate interventions based on efficacy and share interventions with others.
+
+Users can also search for interventions based on student need without making an account.
+
+## 🔹 Features 🔹
+
 1. User login- Users will create accounts to login to the application and will have a profile page.
 2. Choose a domain- Users can select one of eight executive functioning domains to learn more about it.
 3. Click for list of interventions- Users can click on a domain to be taken to a list of "things to try" to address executive dysfunction.
