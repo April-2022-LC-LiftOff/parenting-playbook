@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div class="container body-content">
+    <h2>Parenting Playbook</h2>
+    <ul>
+        <li th:each="intervention : ${interventions}">
+            <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a>
+        </li>
+    </ul>
+
+</div>
+
+</body>
+</html>
