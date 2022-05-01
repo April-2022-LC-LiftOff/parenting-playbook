@@ -1,13 +1,15 @@
 package org.launchcode.liftoffproject.models.dto;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class LoginFormDTO {
+    @Email
     @NotNull
     @NotBlank
-    @Size(min = 3, max = 20, message = "Invalid username. Must be between 3 and 20 characters.")
+    @Size(min = 3, max = 55, message = "Invalid username. Must be an email address between 3 and 55 characters.")
     private String username;
 
     @NotNull
