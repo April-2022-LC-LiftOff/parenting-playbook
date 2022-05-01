@@ -1,16 +1,9 @@
 # tomh-group-repo
 
 ## 🔹 Things to Note for this branch 🔹
-
-In order to connect to the database, I opted to create 2 tables instead of the 8 we discussed.
-I did this in order to reduce complexity.
-
-I added the static files from the techjobs assignments we did in unit 2.
-I also added an index.html and fragments file. This was done in order
-to quickly develop a proof of concept. I needed to see if my 
-controllers and repositories worked properly. The techjobs files, index.html 
-and fragments files will be removed later.
-
+I used Spring Security for the login and registration features. We can revisit the default look at a later date.
+I still need to create the logout feature, which will be a link that takes you back to the homepage after logging you out.
+We also should discuss what a user's account page looks like.
 ## 🔹 Overview 🔹
 
 This project is a resource for parents to identify potential interventions and solutions to executive functioning concerns (e.g. issues with organization, staying on task, self-monitoring, self-management, etc.).
