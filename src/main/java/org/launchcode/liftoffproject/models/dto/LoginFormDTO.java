@@ -17,6 +17,7 @@ public class LoginFormDTO {
     @Size(min = 5, max = 30, message = "Invalid password. Must be between 5 and 30 characters.")
     private String password;
 
+
     public LoginFormDTO(String username, String password) {
         this.username = username;
         this.password = password;
