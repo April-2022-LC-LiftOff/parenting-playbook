@@ -18,12 +18,10 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
-//@RequestMapping("")
 public class AuthenticationController {
 
-    @Autowired //(dependency injection)
+    @Autowired
     private UserRepository userRepository;
-    //findAll, save, findById
 
     private static final String userSessionKey = "user";
 
