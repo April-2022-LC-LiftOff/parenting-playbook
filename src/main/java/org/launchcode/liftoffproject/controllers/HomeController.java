@@ -24,7 +24,7 @@ public class HomeController {
     private InterventionRepository interventionRepository;
 
     public void createDomains() {
-        String[] domains = {"Impulse Control", "Emotional Control", "Flexible Thinking", "Working Memory", "Self-Monitoring", "Planning and Prioritizing", "Task Iniation", "Organization"};
+        String[] domains = {"Impulse Control", "Emotional Control", "Flexible Thinking", "Working Memory", "Self-Monitoring", "Planning and Prioritizing", "Task Initiation", "Organization"};
         String[] descriptions = {"Think before acting", "Keep feelings in check", "Adjust behavior to unexpected changes", "Keep key information in mind while using it", "Self-awareness to how one id doing in the moment", "To set and meet goals", "Take action to get started on tasks", "Keep track of things physically and mentally"};
 
         for (int i = 0; i < domains.length; i++) {
@@ -67,6 +67,7 @@ public class HomeController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Intervention");
+            model.addAttribute("domains", domainRepository.findAll());
             return "add";
         }
 
