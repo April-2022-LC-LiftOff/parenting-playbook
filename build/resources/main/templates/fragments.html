@@ -5,8 +5,9 @@
 
     <!-- Bootstrap stylesheets and script -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
-    <link th:href="@{/css/techjobs.css}" rel="stylesheet" />
-    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+<!--    <link th:href="@{/css/techjobs.css}" rel="stylesheet" />-->
+<!--    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>-->
+    <script type="text/javascript" th:src="@{/js/app.js}"></script>
 
     <title th:text="'Parenting Playbook' + ${title == null ? '' : ' :: ' + title}">Parenting Playbook</title>
 </head>
@@ -26,6 +27,11 @@
                 <li><a th:href="@{/about}">About</a></li>
                 <li><a th:href="@{/login}">Login</a></li>
             </ul>
+        </div>
+        <div class="burger" th:onclick="navSlide()">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
         </div>
     </div>
 </div>
