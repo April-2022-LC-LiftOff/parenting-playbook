@@ -56,7 +56,12 @@ public class HomeController {
     }
 
     @PostMapping("add")
-    public String processAddInterventionForm(@ModelAttribute @Valid Intervention newIntervention, Errors errors, Model model, @RequestParam List<Integer> domains) {
+    public String processAddInterventionForm(@ModelAttribute @Valid Intervention newIntervention, Errors errors, Model model, @RequestParam(required = false) List<Integer> domains) {
+        if (domains == null || domains.size() == 0 || domains.isEmpty()) {
+            model.addAttribute("title", "Add Intervention");
+            return "add";
+        }
+
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Intervention");
             return "add";

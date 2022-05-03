@@ -5,6 +5,7 @@
 <body>
 
 <div th:replace="fragments :: page-header"></div>
+<script type="text/javascript" th:src="@{/js/formValidation.js}"></script>
 
 <div class="container body-content">
 <form method="post" style="max-width:600px;">
@@ -12,43 +13,40 @@
     <div class="form-group">
         <label th:for="domains">Domains:</label>
         <th:block th:each="domain : ${domains}">
-            <input type="checkbox" name="domains" th:value="${domain.id}">
+            <input id="checkBox" type="checkbox" name="domains" th:value="${domain.id}">
             <label th:text="${domain.domain}" th:title="${domain.description}"></label>
         </th:block>
-        <span th:errors="${intervention.domains}" class="error"></span>
     </div>
 
     <div class="form-group">
         <label th:for="name">Name:</label>
-        <input class="form-control" th:field="${intervention.name}" />
-        <span th:errors="${intervention.name}" class="error"></span>
+        <input id="name" class="form-control" th:field="${intervention.name}" />
+        <span th:errors="${intervention.name}" class="error" style="color:red;"></span>
     </div>
 
     <div class="form-group">
         <label th:for="action">Action:</label>
-        <input class="form-control" th:field="${intervention.action}" />
-        <span th:errors="${intervention.action}" class="error"></span>
+        <input id="action" class="form-control" th:field="${intervention.action}" />
+        <span th:errors="${intervention.action}" class="error" style="color:red;"></span>
     </div>
 
     <div class="form-group">
         <label th:for="expectedResponse">Expected Response:</label>
-        <input class="form-control" th:field="${intervention.expectedResponse}" />
-        <span th:errors="${intervention.expectedResponse}" class="error"></span>
+        <input id="expectedResponse" class="form-control" th:field="${intervention.expectedResponse}" />
+        <span th:errors="${intervention.expectedResponse}" class="error" style="color:red;"></span>
     </div>
 
     <div class="form-group">
         <label th:for="reference">Reference:</label>
         <input class="form-control" th:field="${intervention.reference}" />
-        <span th:errors="${intervention.reference}" class="error"></span>
     </div>
 
     <div class="form-group">
         <label th:for="ifItFails">If It Fails, try:</label>
         <input class="form-control" th:field="${intervention.ifItFails}" />
-        <span th:errors="${intervention.ifItFails}" class="error"></span>
     </div>
 
-    <input type="submit" value="Add Intervention"/>
+    <input id="button" type="submit" value="Add Intervention" disabled="true"/>
 </form>
 </div>
 
