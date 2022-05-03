@@ -1,32 +1,3 @@
-//function checkBoxValidation() {
-//    if (document.getElementById('checkBox').checked) {
-//        return true;
-//    } else {
-//        return false;
-//    }
-//}
-//
-//function notNullEntries() {
-//    let name = document.forms["form"]["text1"].value;
-//    let action = document.forms["form"]["text2"].value;
-//    let expectedResponse = document.forms["form"]["text3"].value;
-//
-//    if (name != "" && action != "" && expectedResponse != "") {
-//        return true;
-//    } else {
-//        return false;
-//    }
-//}
-//
-//function buttonSwitch() {
-//    const button = document.getElementById('button');
-//    if (!checkBoxValidation() || !notNullEntries()) {
-//        return false;
-//    } else {
-//        return true;
-//    }
-//}
-
 function init() {
     let checkBox = document.getElementById('checkBox');
     let name = document.getElementById('name');
