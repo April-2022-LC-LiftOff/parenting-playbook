@@ -10,9 +10,6 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class User extends AbstractEntity{
-    @Id
-    @GeneratedValue
-    private int id;
 
     @NotNull
     @Size(min =3, max = 50)

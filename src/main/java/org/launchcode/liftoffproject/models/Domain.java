@@ -1,11 +1,13 @@
 package org.launchcode.liftoffproject.models;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+
 public class Domain extends AbstractEntity{
 
     private String domain;
