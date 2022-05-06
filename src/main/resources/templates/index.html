@@ -6,10 +6,12 @@
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="container-fluid text-center">
-    <h2>Parenting Playbook</h2>
+    <div class="bg-success p-2 text-white bg-opacity-75">
+        <h2>Parenting Playbook</h2>
+    </div>
     <div class="row content">
         <div class="col-sm-2 sidenav">
-            <div class="p-3 mb-2 bg-primary text-white">
+            <div class="bg-success p-2 text-dark bg-opacity-10">
                 <h3>What is executive function</h3>
                 <p>
                     Explain what executive functions are.
@@ -41,7 +43,7 @@
                     <tr>
                         <td>
                             <ul th:each="domain : ${domains}">
-                                <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
+                                <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}" class="link-primary"></a>
                             </ul>
                         </td>
                         <td>
