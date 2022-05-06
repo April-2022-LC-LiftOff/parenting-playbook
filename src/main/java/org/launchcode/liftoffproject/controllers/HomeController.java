@@ -40,8 +40,8 @@ public class HomeController {
     public String index(Model model) {
         createDomains();
 
-        model.addAttribute("title", "My Interventions");
-        model.addAttribute("interventions", interventionRepository.findAll());
+        model.addAttribute("title", "All Domains");
+        model.addAttribute("domains", domainRepository.findAll());
 
         return "index";
     }
