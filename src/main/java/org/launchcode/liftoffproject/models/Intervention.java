@@ -11,21 +11,21 @@ import java.util.List;
 public class Intervention extends AbstractEntity{
 
     @NotBlank(message = "Name cannot be blank.")
-    @Size(max = 255, message = "Name must not exceed 255 characters.")
+    @Size(min = 5, max = 255, message = "Name must be longer than 5 characters and not exceed 255 characters.")
     private String name;
 
     @NotBlank(message = "Action cannot be blank.")
-    @Size(max = 2000, message = "Action must not exceed 2000 characters.")
+    @Size(min = 20, max = 2000, message = "Action must be longer than 20 characters and not exceed 2000 characters.")
     private String action;
 
     @NotBlank(message = "Expected Response cannot be blank.")
-    @Size(max = 2000, message = "Expected Response must not exceed 2000 characters.")
+    @Size(min = 20, max = 2000, message = "Expected Response must be longer than 20 characters and not exceed 2000 characters.")
     private String expectedResponse;
 
-    @Size(max = 2000, message = "Reference must not exceed 2000 characters.")
+    @Size(min = 20, max = 2000, message = "Reference must be longer than 20 characters and not exceed 2000 characters.")
     private String reference;
 
-    @Size(max = 2000, message = "If It Fails must not exceed 500 characters.")
+    @Size(min = 20, max = 2000, message = "If It Fails must be longer than 20 characters and not exceed 500 characters.")
     private String ifItFails;
 
     @ManyToMany

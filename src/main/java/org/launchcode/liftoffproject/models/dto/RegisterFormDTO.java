@@ -12,16 +12,4 @@ public class RegisterFormDTO extends LoginFormDTO{
         this.verifyPassword = verifyPassword;
     }
 
-//    public RegisterFormDTO(String String) {
-//        this.verifyPassword = verifyPassword;
-//    }
-//
-//    public RegisterFormDTO() {
-//
-//    }
-//
-//
-//    public String getUsername() {
-//        return null;
-//    }
 }
