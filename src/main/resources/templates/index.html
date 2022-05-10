@@ -4,57 +4,19 @@
 </head>
 <body>
 
-<nav th:replace="fragments :: page-header"></nav>
+<div th:replace="fragments :: page-header"></div>
 
-<h2>Parenting Playbook</h2>
-<div class="row content">
-    <div class="col-sm-2 sidenav">
-        <div class="p-3 mb-2 bg-primary text-white">
-            <h3>What is executive function</h3>
-            <p>
-                Explain what executive functions are.
-            </p>
-            <ul>
-                <li>Who</li>
-                <li>this is</li>
-                <li>for</li>
-            </ul>
+<div class="alert alert-success alert-dismissible text-center" role="alert" th:text="${hello}" th:if="${hello}"></div>
 
-        </div>
-    </div>
-    <div class="col-sm-8 text-left">
-        <div class="p-3 mb-2 bg-secondary text-white">
-            <h1>Welcome</h1>
-            <p>
-                Insert how we want to tell people about how this works.
-            </p>
+<div class="container body-content">
+    <h2>Parenting Playbook</h2>
+    <ul>
+        <li th:each="intervention : ${interventions}">
+            <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a>
+        </li>
+    </ul>
 
-        </div>
-        <table class="table">
-            <div class="p-3 mb-2 bg-secondary text-white">
-                <tr>
-
-                    <th scope="col">Function</th>
-                    <th scope="col">Description</th>
-
-                </tr>
-                <tr>
-                    <td>
-                        <ul th:each="domain : ${domains}">
-                            <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
-                        </ul>
-                    </td>
-                    <td>
-                        <p th:each="domain : ${domains}">
-                            <a th:text="${domain.description}"></a>
-                        </p>
-                    </td>
-                </tr>
-
-            </div>
-        </table>
-    </div>
 </div>
-</div>
+
 </body>
 </html>
