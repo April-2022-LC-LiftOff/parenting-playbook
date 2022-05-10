@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body class="container  body-content">
+<h1 th:text="${'Intervention: ' + intervention.name}">Default Tile</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="job-listing">
+    <p>Domain(s):
+        <ul>
+            <li th:each="domain : ${intervention.domains}">
+                <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
+            </li>
+        </ul>
+    </p>
+    <p th:text="${'ID: ' + intervention.id}"></p>
+    <p th:text="${'Name: ' + intervention.name}"></p>
+    <p th:text="${'Action: ' + intervention.action}"></p>
+    <p th:text="${'Expected Response: ' + intervention.expectedResponse}"></p>
+    <p th:text="${'Reference: ' + intervention.reference}"></p>
+    <p th:text="${'If It Fails, try: ' + intervention.ifItFails}"></p>
+</div>
+
+</body>
+</html>
