@@ -11,6 +11,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -64,7 +65,7 @@ public class AuthenticationController {
         User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
 
         if (existingUser != null) {
-            errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
+            errors.rejectValue("username", "username.already exists", "A user with that username already exists");
             model.addAttribute("title", "Register");
             return "register";
         }
@@ -77,7 +78,8 @@ public class AuthenticationController {
             return "register";
         }
 
-        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
+        User newUser = new User(registerFormDTO.getFirstName(), registerFormDTO.getLastName(), registerFormDTO.getEmail(),
+                                registerFormDTO.getUsername(), registerFormDTO.getPassword(), registerFormDTO.getVerifyPassword());
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
@@ -92,7 +94,7 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO,
-                                   Errors errors, HttpServletRequest request,
+                                   Errors errors, HttpServletRequest request, RedirectAttributes redirAttrs,
                                    Model model) {
 
         if (errors.hasErrors()) {
@@ -117,11 +119,14 @@ public class AuthenticationController {
         }
 
         setUserInSession(request.getSession(), theUser);
+        User currentUser = getUserFromSession(request.getSession());
+        redirAttrs.addFlashAttribute("hello", "Hello, " + currentUser.getFirstName());
 
         return "redirect:";
     }
     @GetMapping("/logout")
-    public String logout(HttpServletRequest request){
+    public String logout(HttpServletRequest request,RedirectAttributes redirAttrs){
+        redirAttrs.addFlashAttribute("logout", "You have logged out.");
         request.getSession().invalidate();
         return "redirect:/login";
     }
