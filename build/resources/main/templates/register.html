@@ -7,14 +7,32 @@
 
 <form method="post">
     <div class="form-group">
+        <label th:for="firstName">First Name
+            <input class="form-control" th:field="${registerFormDTO.firstName}">
+        </label>
+        <p class="error" th:errors="${registerFormDTO.firstName}"></p>
+    </div>
+    <div class="form-group">
+        <label>Last Name
+            <input class="form-control" th:field="${registerFormDTO.lastName}">
+        </label>
+        <p class="error" th:errors="${registerFormDTO.lastName}"></p>
+    </div>
+    <div class="form-group">
+        <label th:for="username">Email
+            <input class="form-control" th:field="${registerFormDTO.email}">
+        </label>
+        <p class="error" th:errors="${registerFormDTO.email}"></p>
+    </div>
+    <div class="form-group">
         <label>Username
-            <input class="form-control" th:field="${registerFormDTO.username}" />
+            <input class="form-control" th:field="${registerFormDTO.username}">
         </label>
         <p class="error" th:errors="${registerFormDTO.username}"></p>
     </div>
     <div class="form-group">
         <label>Password
-            <input class="form-control" th:field="${registerFormDTO.password}" type="password" />
+            <input class="form-control" th:field="${registerFormDTO.password}" type="password">
         </label>
         <p class="error" th:errors="${registerFormDTO.password}"></p>
     </div>
@@ -22,10 +40,14 @@
         <label>Verify Password
             <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password" />
         </label>
+        <p class="error" th:errors="${registerFormDTO.verifyPassword}"></p>
     </div>
-
-    <input type="submit" class="btn btn-primary" value="Register" />
+    <input type="submit" class="registerbtn" value="Register" />
 </form>
+
 
 </body>
 </html>
+
+
+
