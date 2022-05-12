@@ -64,3 +64,8 @@ div.job-listing {
 .showUserName {
     background-color: #e4e4e4;
 }
+
+.myContributions:hover {
+color: black;
+cursor: pointer;
+}

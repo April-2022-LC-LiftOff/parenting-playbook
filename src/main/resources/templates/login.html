@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
-<body>
+<body class="container body-content">
 <nav th:replace="fragments :: page-header"></nav>
-<div class="container body-content">
-<form th:action="@{/profile} method="post">
+
+<form th:action="@{/profile}" method="post">
     <div class="form-group">
         <label th:for="username">Username
             <input class="form-control" th:field="${loginFormDTO.username}">
@@ -24,6 +24,6 @@
 
 <p>Don't have an account? <a href="/register">Register for one.</a></p>
 
-</div>
+
 </body>
 </html>

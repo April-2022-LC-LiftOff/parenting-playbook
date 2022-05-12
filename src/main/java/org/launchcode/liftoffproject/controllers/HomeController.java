@@ -70,6 +70,32 @@ public class HomeController {
         return "redirect:";
     }
 
+//    @PostMapping("add")
+//    public String processAddInterventionForm(@ModelAttribute @Valid Intervention newIntervention, Errors errors, Model model, @RequestParam(required = false) List<Integer> domains) {
+//        if (domains == null || domains.size() == 0 || domains.isEmpty()) {
+//            model.addAttribute("title", "Add Intervention");
+//            model.addAttribute("domains", domainRepository.findAll());
+//            String str = "A Domain must be selected.";
+//            model.addAttribute("checkBoxError", str);
+//            return "add";
+//        }
+//
+//        if (errors.hasErrors()) {
+//            model.addAttribute("title", "Add Intervention");
+//            model.addAttribute("domains", domainRepository.findAll());
+//            return "add";
+//        }
+//
+//        List<Domain> domainObjs = (List<Domain>) domainRepository.findAllById(domains);
+//        newIntervention.setDomains(domainObjs);
+//
+//        interventionRepository.save(newIntervention);
+//
+//        return "redirect:";
+//    }
+
+
+
     @GetMapping("view/{interventionId}")
     public String displayViewIntervention(Model model, @PathVariable int interventionId) {
         Optional optIntervention = interventionRepository.findById(interventionId);
