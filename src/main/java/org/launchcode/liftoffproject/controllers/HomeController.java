@@ -1,5 +1,6 @@
 package org.launchcode.liftoffproject.controllers;
 
+import org.launchcode.liftoffproject.data.CommentRepository;
 import org.launchcode.liftoffproject.data.DomainRepository;
 import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.models.Domain;
@@ -22,6 +23,10 @@ public class HomeController {
 
     @Autowired
     private InterventionRepository interventionRepository;
+
+    @Autowired
+    private CommentRepository commentRepository;
+
 
     public void createDomains() {
         String[] domains = {"Impulse Control", "Emotional Control", "Flexible Thinking", "Working Memory", "Self-Monitoring", "Planning and Prioritizing", "Task Iniation", "Organization"};
@@ -102,6 +107,8 @@ public class HomeController {
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             model.addAttribute("intervention", intervention);
+
+            model.addAttribute("addComment", "addComment");
             return "view";
         } else {
             return "redirect:../";
