@@ -3,6 +3,7 @@ package org.launchcode.liftoffproject.controllers;
 import org.launchcode.liftoffproject.data.CommentRepository;
 import org.launchcode.liftoffproject.data.DomainRepository;
 import org.launchcode.liftoffproject.data.InterventionRepository;
+import org.launchcode.liftoffproject.models.Comment;
 import org.launchcode.liftoffproject.models.Domain;
 import org.launchcode.liftoffproject.models.Intervention;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,11 +109,18 @@ public class HomeController {
             Intervention intervention = (Intervention) optIntervention.get();
             model.addAttribute("intervention", intervention);
 
-            model.addAttribute("addComment", "addComment");
+            model.addAttribute("commentText", commentRepository);
             return "view";
         } else {
             return "redirect:../";
         }
+    }
+
+    @PostMapping("view/{interventionId}")
+    public String processAddComment(Comment commentText, Model model) {
+        model.addAttribute("commentText", commentRepository.findAll());
+        commentRepository.save(commentText);
+        return "redirect:../";
     }
 
     @GetMapping("about")
