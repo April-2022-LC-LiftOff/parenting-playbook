@@ -11,7 +11,7 @@
     <form method="post" style="max-width:600px;">
         <h1>Add Intervention</h1>
         <div class="form-group">
-            <label id="checkBoxLabel" th:for="domains">Domains:</label>
+            <label id="checkBoxLabel" th:for="domains">*Domains:</label>
             <br>
             <th:block th:each="domain : ${domains}">
                 <input th:id="${domain.domain}" type="checkbox" name="domains" th:value="${domain.id}">
@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            <label th:for="name">Name:</label>
+            <label th:for="name">*Name:</label>
             <input id="name" class="form-control" th:field="${intervention.name}" />
             <span id="nameBlank" style="color:red;"></span>
             <br>
@@ -37,7 +37,7 @@
         </div>
 
         <div class="form-group">
-            <label th:for="action">Action:</label>
+            <label th:for="action">*Action:</label>
             <input id="action" class="form-control" th:field="${intervention.action}" />
             <span id="actionBlank" style="color:red;"></span>
             <br>
@@ -47,7 +47,7 @@
         </div>
 
         <div class="form-group">
-            <label th:for="expectedResponse">Expected Response:</label>
+            <label th:for="expectedResponse">*Expected Response:</label>
             <input id="expectedResponse" class="form-control" th:field="${intervention.expectedResponse}" />
             <span id="expectedResponseBlank" style="color:red;"></span>
             <br>
@@ -66,7 +66,9 @@
             <input class="form-control" th:field="${intervention.ifItFails}" />
         </div>
 
-        <p>* Designates a required input.</p>
+        <span>* Designates a required input.</span>
+
+        <br>
 
         <input type="submit" value="Add Intervention"/>
     </form>
