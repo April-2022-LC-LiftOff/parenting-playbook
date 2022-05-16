@@ -109,7 +109,7 @@ public class HomeController {
             Intervention intervention = (Intervention) optIntervention.get();
             model.addAttribute("intervention", intervention);
 
-            model.addAttribute("commentText", commentRepository);
+            model.addAttribute("comment", commentRepository);
             return "view";
         } else {
             return "redirect:../";
@@ -117,9 +117,9 @@ public class HomeController {
     }
 
     @PostMapping("view/{interventionId}")
-    public String processAddComment(Comment commentText, Model model) {
-        model.addAttribute("commentText", commentRepository.findAll());
-        commentRepository.save(commentText);
+    public String processAddComment(Comment comment, Model model) {
+        model.addAttribute("comment", commentRepository);
+        commentRepository.save(comment);
         return "redirect:../";
     }
 

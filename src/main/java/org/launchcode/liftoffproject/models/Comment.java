@@ -6,24 +6,24 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Comment extends AbstractEntity {
 
-    private String commentText;
+    private String comment;
 
     @ManyToOne
     private Intervention intervention;
 
     public Comment() {}
 
-    public Comment(String commentText, Intervention intervention) {
-        this.commentText = commentText;
+    public Comment(String comment, Intervention intervention) {
+        this.comment = comment;
         this.intervention = intervention;
     }
 
-    public String getCommentText() {
-        return commentText;
+    public String getComment() {
+        return comment;
     }
 
-    public void setCommentText(String commentText) {
-        this.commentText = commentText;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public Intervention getIntervention() {
@@ -36,6 +36,6 @@ public class Comment extends AbstractEntity {
 
     @Override
     public String toString() {
-        return commentText;
+        return comment;
     }
 }
