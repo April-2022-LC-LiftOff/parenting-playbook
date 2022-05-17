@@ -109,7 +109,7 @@ public class HomeController {
             Intervention intervention = (Intervention) optIntervention.get();
             model.addAttribute("intervention", intervention);
 
-            model.addAttribute("comment", commentRepository);
+            model.addAttribute("comment", new Comment());
             return "view";
         } else {
             return "redirect:../";
@@ -117,9 +117,16 @@ public class HomeController {
     }
 
     @PostMapping("view/{interventionId}")
-    public String processAddComment(Comment comment, Model model) {
-        System.out.println("hi");
-        commentRepository.save(comment);
+    public String processAddComment(@ModelAttribute @Valid Comment newComment, Errors errors, Model model, @PathVariable int interventionId) {
+        Optional optIntervention = interventionRepository.findById(interventionId);
+        Intervention intervention = (Intervention) optIntervention.get();
+        if (errors.hasErrors()) {
+            model.addAttribute("intervention", intervention);
+            return "view";
+        }
+
+        newComment.setIntervention(intervention);
+        commentRepository.save(newComment);
         return "redirect:..";
     }
 
