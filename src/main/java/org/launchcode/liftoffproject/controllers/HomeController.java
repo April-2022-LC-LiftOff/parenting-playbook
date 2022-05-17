@@ -118,9 +118,9 @@ public class HomeController {
 
     @PostMapping("view/{interventionId}")
     public String processAddComment(Comment comment, Model model) {
-        model.addAttribute("comment", commentRepository);
+        System.out.println("hi");
         commentRepository.save(comment);
-        return "redirect:../";
+        return "redirect:..";
     }
 
     @GetMapping("about")
