@@ -5,10 +5,19 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalProjectPath" value="$USER_HOME$/Library/CloudStorage/OneDrive-Personal/LaunchCode/tomh-group-repo" />
         <option name="modules">
           <set>
             <option value="$USER_HOME$/Library/CloudStorage/OneDrive-Personal/LaunchCode/tomh-group-repo" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
           </set>
         </option>
       </GradleProjectSettings>

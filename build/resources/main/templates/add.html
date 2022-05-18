@@ -15,7 +15,7 @@
             <br>
             <th:block th:each="domain : ${domains}">
                 <input th:id="${domain.domain}" type="checkbox" name="domains" th:value="${domain.id}">
-                <label th:text="${domain.domain}" th:title="${domain.description}" ></label>
+                <label th:text="${domain.domain}" th:title="${domain.description}"></label>
                 <br>
             </th:block>
             <br>
