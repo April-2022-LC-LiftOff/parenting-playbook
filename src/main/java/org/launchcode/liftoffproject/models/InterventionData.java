@@ -49,7 +49,13 @@ public class InterventionData {
                 results.add(intervention);
             } else if (intervention.getDomains().contains(lowerVal)) { // May need to switch how search is done as Domains are a list in interventions, might not be needed
                 results.add(intervention);
+            } else if (intervention.getAction().toLowerCase(Locale.ROOT).contains(lowerVal)) {
+                results.add(intervention);
+            } else if (intervention.getExpectedResponse().toLowerCase(Locale.ROOT).contains(lowerVal)) {
+                results.add(intervention);
             }
         }
+
+        return results;
     }
 }

@@ -3,6 +3,7 @@ package org.launchcode.liftoffproject.controllers;
 import org.launchcode.liftoffproject.data.DomainRepository;
 import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.models.Intervention;
+import org.launchcode.liftoffproject.models.InterventionData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,7 +43,11 @@ public class ListController {
             interventions = interventionRepository.findAll();
             model.addAttribute("title", "All Interventions");
         } else {
-
+            interventions = InterventionData.findByColumnAndValue(column, value, interventionRepository.findAll());
+            model.addAttribute("title", "Interventions with " + columnChoices.get(column) + ": " + value);
         }
+        model.addAttribute("interventions", interventions);
+
+        return "list-interventions";
     }
 }
