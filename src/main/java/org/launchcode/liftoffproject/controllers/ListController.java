@@ -31,8 +31,8 @@ public class ListController {
 
     public ListController() {
         columnChoices.put("all", "All");
-        columnChoices.put("domains", "Domains");
-        columnChoices.put("tags", "Tags");
+        columnChoices.put("domain", "Domain");
+        columnChoices.put("tag", "Tag");
     }
 
     @RequestMapping("")
@@ -50,7 +50,7 @@ public class ListController {
             model.addAttribute("title", "All Interventions");
         } else {
             interventions = InterventionData.findByColumnAndValue(column, value, interventionRepository.findAll());
-            model.addAttribute("title", "Interventions with " + columnChoices.get(column) + ": " + value);
+            model.addAttribute("title", "Interventions in " + columnChoices.get(column) + ": " + value);
         }
         model.addAttribute("interventions", interventions);
 

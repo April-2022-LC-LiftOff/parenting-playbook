@@ -45,4 +45,9 @@ public class Domain extends AbstractEntity{
     public void setInterventions(List<Intervention> interventions) {
         this.interventions = interventions;
     }
+
+    @Override
+    public String toString() {
+        return domain;
+    }
 }

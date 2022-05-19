@@ -32,8 +32,10 @@ public class InterventionData {
         String theValue;
         if (fieldName.equals("name")) {
             theValue = intervention.getName();
-        } else {
+        } else if (fieldName.equals("domain")) {
             theValue = intervention.getDomains().toString();
+        } else {
+            theValue = intervention.getTags().toString();
         }
 
         return theValue;
@@ -47,11 +49,13 @@ public class InterventionData {
         for (Intervention intervention : allInterventions) {
             if (intervention.getName().toLowerCase(Locale.ROOT).contains(lowerVal)) {
                 results.add(intervention);
-            } else if (intervention.getDomains().contains(lowerVal)) { // May need to switch how search is done as Domains are a list in interventions, might not be needed
+            } else if (intervention.getDomains().toString().toLowerCase(Locale.ROOT).contains(lowerVal)) {
                 results.add(intervention);
             } else if (intervention.getAction().toLowerCase(Locale.ROOT).contains(lowerVal)) {
                 results.add(intervention);
             } else if (intervention.getExpectedResponse().toLowerCase(Locale.ROOT).contains(lowerVal)) {
+                results.add(intervention);
+            } else if (intervention.getTags().toString().toLowerCase(Locale.ROOT).contains(lowerVal)) {
                 results.add(intervention);
             }
         }

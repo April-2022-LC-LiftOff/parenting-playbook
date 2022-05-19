@@ -62,7 +62,7 @@ public class HomeController {
     }
 
     @PostMapping("add")
-    public String processAddInterventionForm(@ModelAttribute @Valid Intervention newIntervention, Errors errors, Model model, @RequestParam(required = false) List<Integer> domains, @RequestParam(required = false) List<Integer> tags) {
+    public String processAddInterventionForm(@ModelAttribute @Valid Intervention newIntervention, Errors errors, Model model, @RequestParam(required = false) List<Integer> domains, @RequestParam(required = false) List<Integer> tag) {
         if (domains == null || domains.size() == 0 || domains.isEmpty()) {
             model.addAttribute("title", "Add Intervention");
             model.addAttribute("domains", domainRepository.findAll());
@@ -72,7 +72,7 @@ public class HomeController {
             return "add";
         }
 
-        if (tags == null || tags.size() == 0 || tags.isEmpty()) {
+        if (tag == null || tag.size() == 0 || tag.isEmpty()) {
             model.addAttribute("title", "Add Intervention");
             model.addAttribute("domains", domainRepository.findAll());
             model.addAttribute("tags", tagRepository.findAll());
@@ -88,7 +88,7 @@ public class HomeController {
         }
 
         List<Domain> domainObjs = (List<Domain>) domainRepository.findAllById(domains);
-        List<Tag> tagObjs = (List<Tag>) tagRepository.findAllById(tags);
+        List<Tag> tagObjs = (List<Tag>) tagRepository.findAllById(tag);
 
         newIntervention.setDomains(domainObjs);
         newIntervention.setTags(tagObjs);
