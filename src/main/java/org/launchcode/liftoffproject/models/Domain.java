@@ -1,13 +1,11 @@
 package org.launchcode.liftoffproject.models;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-
 public class Domain extends AbstractEntity{
 
     private String domain;
@@ -46,5 +44,10 @@ public class Domain extends AbstractEntity{
 
     public void setInterventions(List<Intervention> interventions) {
         this.interventions = interventions;
+    }
+
+    @Override
+    public String toString() {
+        return domain;
     }
 }

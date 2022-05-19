@@ -2,8 +2,10 @@ package org.launchcode.liftoffproject.controllers;
 
 import org.launchcode.liftoffproject.data.DomainRepository;
 import org.launchcode.liftoffproject.data.InterventionRepository;
+import org.launchcode.liftoffproject.data.TagRepository;
 import org.launchcode.liftoffproject.models.Domain;
 import org.launchcode.liftoffproject.models.Intervention;
+import org.launchcode.liftoffproject.models.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,9 @@ public class HomeController {
 
     @Autowired
     private InterventionRepository interventionRepository;
+
+    @Autowired
+    private TagRepository tagRepository;
 
     public void createDomains() {
         String[] domains = {"Impulse Control", "Emotional Control", "Flexible Thinking", "Working Memory", "Self-Monitoring", "Planning and Prioritizing", "Task Initiation", "Organization"};
@@ -51,17 +56,28 @@ public class HomeController {
         model.addAttribute("title", "Add Intervention");
         model.addAttribute(new Intervention());
         model.addAttribute("domains", domainRepository.findAll());
+        model.addAttribute("tags", tagRepository.findAll());
 
         return "add";
     }
 
     @PostMapping("add")
-    public String processAddInterventionForm(@ModelAttribute @Valid Intervention newIntervention, Errors errors, Model model, @RequestParam(required = false) List<Integer> domains) {
+    public String processAddInterventionForm(@ModelAttribute @Valid Intervention newIntervention, Errors errors, Model model, @RequestParam(required = false) List<Integer> domains, @RequestParam(required = false) List<Integer> tag) {
         if (domains == null || domains.size() == 0 || domains.isEmpty()) {
             model.addAttribute("title", "Add Intervention");
             model.addAttribute("domains", domainRepository.findAll());
+            model.addAttribute("tags", tagRepository.findAll());
             String str = "A Domain must be selected.";
             model.addAttribute("checkBoxError", str);
+            return "add";
+        }
+
+        if (tag == null || tag.size() == 0 || tag.isEmpty()) {
+            model.addAttribute("title", "Add Intervention");
+            model.addAttribute("domains", domainRepository.findAll());
+            model.addAttribute("tags", tagRepository.findAll());
+            String str = "A Tag must be selected.";
+            model.addAttribute("checkBoxErrorTag", str);
             return "add";
         }
 
@@ -72,7 +88,10 @@ public class HomeController {
         }
 
         List<Domain> domainObjs = (List<Domain>) domainRepository.findAllById(domains);
+        List<Tag> tagObjs = (List<Tag>) tagRepository.findAllById(tag);
+
         newIntervention.setDomains(domainObjs);
+        newIntervention.setTags(tagObjs);
 
         interventionRepository.save(newIntervention);
 

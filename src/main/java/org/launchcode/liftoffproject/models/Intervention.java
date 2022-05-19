@@ -2,6 +2,7 @@ package org.launchcode.liftoffproject.models;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -30,6 +31,9 @@ public class Intervention extends AbstractEntity{
 
     @ManyToMany
     private List<Domain> domains = new ArrayList<>();
+
+    @ManyToMany
+    private List<Tag> tags = new ArrayList<>();
 
     public Intervention(String name, String action, String expectedResponse, String reference, String ifItFails) {
         this.name = name;
@@ -87,6 +91,14 @@ public class Intervention extends AbstractEntity{
 
     public void setDomains(List<Domain> domains) {
         this.domains = domains;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 
     @Override
