@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -40,7 +41,19 @@ public class AuthenticationController {
 
         return user.get();
     }
+    public static User getCurrentUser(UserRepository userRepository, HttpServletRequest request) {
+        Principal userPrincipal = request.getUserPrincipal();
+        String userEmail = userPrincipal.getName();
+        return userRepository.findByUsername(userEmail);
+    }
 
+    public static int currentLoginInfo(HttpServletRequest request) {
+        if (request.getUserPrincipal() == null) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
     private static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
     }
