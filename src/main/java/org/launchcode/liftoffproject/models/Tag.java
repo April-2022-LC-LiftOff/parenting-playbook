@@ -1,9 +1,10 @@
 package org.launchcode.liftoffproject.models;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 public class Tag extends AbstractEntity{
@@ -12,8 +13,8 @@ public class Tag extends AbstractEntity{
     @Size(max = 20, message = "Tag cannot exceed 20 characters.")
     private String tagName;
 
-    @ManyToOne
-    private Intervention intervention;
+    @ManyToMany(mappedBy = "tags")
+    private List<Intervention> interventions;
 
     public Tag(String tagName) {
         this.tagName = tagName;
@@ -29,12 +30,12 @@ public class Tag extends AbstractEntity{
         this.tagName = tagName;
     }
 
-    public Intervention getIntervention() {
-        return intervention;
+    public List<Intervention> getInterventions() {
+        return interventions;
     }
 
-    public void setIntervention(Intervention intervention) {
-        this.intervention = intervention;
+    public void setInterventions(List<Intervention> interventions) {
+        this.interventions = interventions;
     }
 
     @Override

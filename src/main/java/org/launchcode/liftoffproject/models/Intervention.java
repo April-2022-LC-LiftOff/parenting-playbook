@@ -32,7 +32,7 @@ public class Intervention extends AbstractEntity{
     @ManyToMany
     private List<Domain> domains = new ArrayList<>();
 
-    @OneToMany
+    @ManyToMany
     private List<Tag> tags = new ArrayList<>();
 
     public Intervention(String name, String action, String expectedResponse, String reference, String ifItFails) {
