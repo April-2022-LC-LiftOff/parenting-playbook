@@ -2,6 +2,7 @@ package org.launchcode.liftoffproject.controllers;
 
 import org.launchcode.liftoffproject.data.DomainRepository;
 import org.launchcode.liftoffproject.data.InterventionRepository;
+import org.launchcode.liftoffproject.data.TagRepository;
 import org.launchcode.liftoffproject.models.Intervention;
 import org.launchcode.liftoffproject.models.InterventionData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +24,21 @@ public class ListController {
     @Autowired
     private InterventionRepository interventionRepository;
 
+    @Autowired
+    private TagRepository tagRepository;
+
     static HashMap<String, String> columnChoices = new HashMap<>();
 
     public ListController() {
         columnChoices.put("all", "All");
         columnChoices.put("domains", "Domains");
-        columnChoices.put("interventions", "Interventions");
+        columnChoices.put("tags", "Tags");
     }
 
     @RequestMapping("")
     public String list(Model model) {
         model.addAttribute("domains", domainRepository.findAll());
-        model.addAttribute("interventions", interventionRepository.findAll());
+        model.addAttribute("tags", tagRepository.findAll());
         return "list";
     }
 
