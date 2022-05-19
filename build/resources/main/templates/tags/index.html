@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body class="container body-content">
+<nav th:replace="fragments :: page-header"></nav>
+
+<p th:unless="${tags} and ${tags.size()}">No Tags!</p>
+
+<div class="container body-content">
+    <h2>Tags</h2>
+    <ul>
+        <li th:each="tag : ${tags}">
+            <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
+        </li>
+    </ul>
+    <a th:href="@{'/tags/add'}">Add Tags</a>
+
+</div>
+
+</body>
+</html>

@@ -93,6 +93,14 @@ public class Intervention extends AbstractEntity{
         this.domains = domains;
     }
 
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
     @Override
     public String toString() {
         return name;

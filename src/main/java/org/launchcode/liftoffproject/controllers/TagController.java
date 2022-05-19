@@ -30,6 +30,13 @@ public class TagController {
         return "tags/index";
     }
 
+    @GetMapping("add")
+    public String displayAddTagForm(Model model) {
+        model.addAttribute(new Tag());
+
+        return "tags/add";
+    }
+
     @PostMapping("add")
     public String processAddTagForm(@ModelAttribute @Valid Tag newTag, Errors errors, Model model) {
         if (errors.hasErrors()) {
