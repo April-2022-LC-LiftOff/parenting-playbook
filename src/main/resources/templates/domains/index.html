@@ -9,7 +9,7 @@
 <div class="container body-content">
     <h2>Parenting Playbook</h2>
     <ul>
-        <li th:each="domain : ${domains}">
+        <li th:each="domain : ${domains}" style="list-style-type: none;">
             <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
         </li>
     </ul>

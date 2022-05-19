@@ -28,11 +28,13 @@ public class ListController {
     public ListController() {
         columnChoices.put("all", "All");
         columnChoices.put("domains", "Domains");
+        columnChoices.put("interventions", "Interventions");
     }
 
     @RequestMapping("")
     public String list(Model model) {
         model.addAttribute("domains", domainRepository.findAll());
+        model.addAttribute("interventions", interventionRepository.findAll());
         return "list";
     }
 
