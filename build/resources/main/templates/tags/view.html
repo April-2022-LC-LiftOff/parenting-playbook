@@ -11,7 +11,7 @@
     <p th:text="${'Name: ' + tag.tagName}"></p>
     <p> Interventions:
     <ul>
-        <li th:each="intervention : ${tag.interventions}">
+        <li style="list-style-type: none;" th:each="intervention : ${tag.interventions}">
             <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a>
         </li>
     </ul>

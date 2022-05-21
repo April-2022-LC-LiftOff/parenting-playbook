@@ -30,12 +30,14 @@
             <label th:for="tags">*Tags:</label>
             <br>
             <th:block th:each="tag : ${tags}">
-                <input type="checkbox" name="tag" th:value="${tag.id}">
+                <input id="tagCheckBox" type="checkbox" name="tag" th:value="${tag.id}">
                 <label th:text="${tag.tagName}"></label>
                 <br>
             </th:block>
             <br>
             <a th:href="@{'/tags/add'}">Add Tags</a>
+            <br>
+            <span id="tagSelect" style="color:red;"></span>
             <br>
             <span th:text="${checkBoxErrorTag}" class="error" style="color:red;"></span>
         </div>

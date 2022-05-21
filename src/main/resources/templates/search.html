@@ -37,15 +37,24 @@
         <tr th:each="intervention : ${interventions}">
             <td>
                 <p>
-                    Intervention Id:
-                    <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.id}"></a>
+                    Name:
+                    <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a>
                 </p>
-                <p th:text="${'Name: ' + intervention.name}"></p>
+                <p th:text="${'Action: ' + intervention.action}"></p>
+                <p th:text="${'Expected Response: ' + intervention.expectedResponse}"></p>
                 <p>
                     Domain:
                     <ul th:each="domain : ${intervention.domains}">
                         <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
                     </ul>
+                </p>
+                <p>
+                    Tags:
+                <ul th:each="tag : ${intervention.tags}">
+                    <li style="list-style-type: none;">
+                        <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
+                    </li>
+                </ul>
                 </p>
             </td>
         </tr>

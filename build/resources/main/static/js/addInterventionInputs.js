@@ -18,11 +18,16 @@ function importantFields() {
     let Organization = document.getElementById('Organization');
     let checkBoxLabel = document.getElementById('checkBoxLabel');
     let domainSelect = document.getElementById('domainSelect');
+    let tagCheckBox = document.getElementById('tagCheckBox');
+    let tagSelect = document.getElementById('tagSelect');
 
-    if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
-        checkBoxLabel.style.color = "yellow";
-        domainSelect.textContent = "Please select a Domain.";
-    }
+//    if (!tagCheckBox.checked) {
+//        tagSelect.textContent = "Please select a Tag.";
+//    }
+//
+//    if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
+//        domainSelect.textContent = "Please select a Domain.";
+//    }
 
     if (name.value == "") {
         name.style.backgroundColor = "yellow";
@@ -40,101 +45,95 @@ function importantFields() {
         expectedResponseLength.textContent = "Expected Response must be between 20 and 2000 characters long.";
     }
 
-    ImpulseControl.addEventListener('change', function(event) {
-        if (ImpulseControl.checked) {
-            checkBoxLabel.style.color = "";
-            domainSelect.textContent = "";
-        }
+//    tagCheckBox.addEventListener('change', function(event) {
+//        if (tagCheckBox.checked) {
+//            domainSelect.textContent = "";
+//        }
+//
+//        if (!tagCheckBox.checked) {
+//            tagSelect.textContent = "Please select a Tag.";
+//        }
+//    })
 
-        if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
-            checkBoxLabel.style.color = "yellow";
-            domainSelect.textContent = "Please select a Domain.";
-        }
-    })
-
-    EmotionalControl.addEventListener('change', function(event) {
-        if (EmotionalControl.checked) {
-            checkBoxLabel.style.color = "";
-            domainSelect.textContent = "";
-        }
-
-        if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
-            checkBoxLabel.style.color = "yellow";
-            domainSelect.textContent = "Please select a Domain.";
-        }
-    })
-
-    FlexibleThinking.addEventListener('change', function(event) {
-        if (FlexibleThinking.checked) {
-            checkBoxLabel.style.color = "";
-            domainSelect.textContent = "";
-        }
-
-        if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
-            checkBoxLabel.style.color = "yellow";
-            domainSelect.textContent = "Please select a Domain.";
-        }
-    })
-
-    WorkingMemory.addEventListener('change', function(event) {
-        if (WorkingMemory.checked) {
-            checkBoxLabel.style.color = "";
-            domainSelect.textContent = "";
-        }
-
-        if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
-            checkBoxLabel.style.color = "yellow";
-            domainSelect.textContent = "Please select a Domain.";
-        }
-    })
-
-    SelfMonitoring.addEventListener('change', function(event) {
-        if (SelfMonitoring.checked) {
-            checkBoxLabel.style.color = "";
-            domainSelect.textContent = "";
-        }
-
-        if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
-            checkBoxLabel.style.color = "yellow";
-            domainSelect.textContent = "Please select a Domain.";
-        }
-    })
-
-    PlanningAndPrioritizing.addEventListener('change', function(event) {
-        if (PlanningAndPrioritizing.checked) {
-            checkBoxLabel.style.color = "";
-            domainSelect.textContent = "";
-        }
-
-        if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
-            checkBoxLabel.style.color = "yellow";
-            domainSelect.textContent = "Please select a Domain.";
-        }
-    })
-
-    TaskInitiation.addEventListener('change', function(event) {
-        if (TaskInitiation.checked) {
-            checkBoxLabel.style.color = "";
-            domainSelect.textContent = "";
-        }
-
-        if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
-            checkBoxLabel.style.color = "yellow";
-            domainSelect.textContent = "Please select a Domain.";
-        }
-    })
-
-    Organization.addEventListener('change', function(event) {
-        if (Organization.checked) {
-            checkBoxLabel.style.color = "";
-            domainSelect.textContent = "";
-        }
-
-        if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
-            checkBoxLabel.style.color = "yellow";
-            domainSelect.textContent = "Please select a Domain.";
-        }
-    })
+//    ImpulseControl.addEventListener('change', function(event) {
+//        if (ImpulseControl.checked) {
+//            domainSelect.textContent = "";
+//        }
+//
+//        if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
+//            domainSelect.textContent = "Please select a Domain.";
+//        }
+//    })
+//
+//    EmotionalControl.addEventListener('change', function(event) {
+//        if (EmotionalControl.checked) {
+//            domainSelect.textContent = "";
+//        }
+//
+//        if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
+//            domainSelect.textContent = "Please select a Domain.";
+//        }
+//    })
+//
+//    FlexibleThinking.addEventListener('change', function(event) {
+//        if (FlexibleThinking.checked) {
+//            domainSelect.textContent = "";
+//        }
+//
+//        if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
+//            domainSelect.textContent = "Please select a Domain.";
+//        }
+//    })
+//
+//    WorkingMemory.addEventListener('change', function(event) {
+//        if (WorkingMemory.checked) {
+//            domainSelect.textContent = "";
+//        }
+//
+//        if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
+//            domainSelect.textContent = "Please select a Domain.";
+//        }
+//    })
+//
+//    SelfMonitoring.addEventListener('change', function(event) {
+//        if (SelfMonitoring.checked) {
+//            domainSelect.textContent = "";
+//        }
+//
+//        if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
+//            domainSelect.textContent = "Please select a Domain.";
+//        }
+//    })
+//
+//    PlanningAndPrioritizing.addEventListener('change', function(event) {
+//        if (PlanningAndPrioritizing.checked) {
+//            domainSelect.textContent = "";
+//        }
+//
+//        if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
+//            domainSelect.textContent = "Please select a Domain.";
+//        }
+//    })
+//
+//    TaskInitiation.addEventListener('change', function(event) {
+//        if (TaskInitiation.checked) {
+//            domainSelect.textContent = "";
+//        }
+//
+//        if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
+//            domainSelect.textContent = "Please select a Domain.";
+//        }
+//    })
+//
+//    Organization.addEventListener('change', function(event) {
+//        if (Organization.checked) {
+//            domainSelect.textContent = "";
+//        }
+//
+//        if (!ImpulseControl.checked && !EmotionalControl.checked && !FlexibleThinking.checked && !WorkingMemory.checked && !SelfMonitoring.checked && !PlanningAndPrioritizing.checked && !TaskInitiation.checked && !Organization.checked) {
+//            domainSelect.textContent = "Please select a Domain.";
+//        }
+//    })
 
     name.addEventListener('keyup', function(event) {
         if (name.value != "") {
