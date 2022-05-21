@@ -36,7 +36,10 @@
     <table class="job-listing">
         <tr th:each="intervention : ${interventions}">
             <td>
-                <p th:text="${'Name: ' + intervention.name}"></p>
+                <p>
+                    Name:
+                    <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a>
+                </p>
                 <p th:text="${'Action: ' + intervention.action}"></p>
                 <p th:text="${'Expected Response: ' + intervention.expectedResponse}"></p>
                 <p>
