@@ -13,6 +13,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,9 +43,54 @@ public class HomeController {
         }
     }
 
+    public void createTags() {
+        String[] tags = {"Aggression", "Anger", "Mindfulness", "Resentment", "Kids", "Adults", "Openness", "Working"};
+
+        for (int i = 0; i < tags.length; i++) {
+            Optional<Tag> result = tagRepository.findById(i + 9);
+            if (result.isEmpty()) {
+                Tag tag = new Tag(tags[i]);
+                tagRepository.save(tag);
+            }
+        }
+    }
+
+    public void saveInterventions() throws FileNotFoundException {
+        String delimiter = ",";
+        if (!interventionRepository.findById(17).isPresent()) {
+            try {
+                File file = new File("src/main/resources/assets/CSVMAY5.csv");
+                FileReader fr = new FileReader(file);
+                BufferedReader br = new BufferedReader(fr);
+                String line = " ";
+                String[] tempArr;
+                while ((line = br.readLine()) != null) {
+                    tempArr = line.split(delimiter);
+                    Intervention newIntervention = new Intervention(tempArr[0], tempArr[1], tempArr[2], tempArr[3], tempArr[4]);
+                    List<Integer> domains = new ArrayList<Integer>();
+                    List<Integer> tags = new ArrayList<Integer>();
+                    for (int i = 0; i < tempArr[5].length(); i++) {
+                        domains.add(Integer.parseInt(String.valueOf(tempArr[5].charAt(i))));
+                        tags.add(Integer.parseInt(String.valueOf(tempArr[5].charAt(i))) + 8);
+                    }
+                    List<Domain> domainObjs = (List<Domain>) domainRepository.findAllById(domains);
+                    List<Tag> tagObjs = (List<Tag>) tagRepository.findAllById(tags);
+                    newIntervention.setDomains(domainObjs);
+                    newIntervention.setTags(tagObjs);
+                    interventionRepository.save(newIntervention);
+                }
+                br.close();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        }
+    }
+
     @RequestMapping("")
-    public String index(Model model) {
+    public String index(Model model) throws FileNotFoundException {
         createDomains();
+        createTags();
+        saveInterventions();
 
         model.addAttribute("title", "All Domains");
         model.addAttribute("domains", domainRepository.findAll());
