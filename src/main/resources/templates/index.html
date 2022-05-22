@@ -5,36 +5,52 @@
 <body class="container body-content">
 <nav th:replace="fragments :: page-header"></nav>
 
-    <h2>Parenting Playbook</h2>
-    <div class="row content">
-        <div class="col-sm-2 sidenav">
-            <div class="p-3 mb-2 bg-primary text-white">
-                <h3>What is executive function</h3>
-                <p>
-                    Explain what executive functions are.
-                </p>
-                <ul>
-                    <li>Who</li>
-                    <li>this is</li>
-                    <li>for</li>
-                </ul>
+<h3>Parenting Playbook</h3>
+        <div class="row content">
+            <div class="col-sm-3 sidenav">
+                <div class="p-3 mb-2 bg-primary text-white">
+                    <h3>What is executive functioning?</h3>
+                    <p>
+                        Executive functioning refers to the cognitive skills that people use to complete tasks.
+                        Neurodivergent individuals (people with ADHD, Autism, etc.) often struggle with executive
+                        functioning. Thankfully, there are lots of things you can try at home to help your child
+                        overcome some of these challenges!
 
-            </div>
-        </div>
-        <div class="col-sm-8 text-left">
-            <div class="p-3 mb-2 bg-secondary text-white">
-                <h1>Welcome</h1>
-                <p>
-                    Insert how we want to tell people about how this works.
-                </p>
+                    </p>
+                    <h4>This site is an excellent resource for:</h4>
+                    <ul>
+                        <li>Parents</li>
+                        <li>Caregivers</li>
+                        <li>Teachers</li>
+                    </ul>
 
+                </div>
             </div>
-            <table class="table">
+            <div class="col-sm-8 text-left">
+                <div class="p-3 mb-2 bg-secondary text-white">
+                    <h3>Welcome to the Parenting Playbook</h3>
+                    <p>
+                        We are a community of parents dedicated to sharing effective practices that will
+                        increase children's executive functioning skills. These strategies can help
+                        child improve their behavior, increase their confidence, and give them the
+                        tools they need to succeed!
+                    </p>
+
+                </div>
+                <div class="p-3 mb-2 bg-secondary text-white">
+                    <p>Not sure where to begin? You can take our quiz to determine what areas of executive functioning
+                        your child may need more help with. If you want to learn more about what each domain means, check out
+                        the domains page. You can also browse all interventions of use our search function to find a strategy
+                        that is just right for your child's specific needs.</p>
+                </div>
+
+
+                <table class="table">
                 <div class="p-3 mb-2 bg-secondary text-white">
                     <tr>
 
                         <th scope="col">Function</th>
-                        <th scope="col">Description</th>
+<!--                        <th scope="col">Description</th>-->
 
                     </tr>
                     <tr>
@@ -43,11 +59,11 @@
                                 <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
                             </ul>
                         </td>
-                        <td>
-                            <p th:each="domain : ${domains}">
-                                <a th:text="${domain.description}"></a>
-                            </p>
-                        </td>
+<!--                        <td>-->
+<!--                            <p th:each="domain : ${domains}">-->
+<!--                                <a th:text="${domain.description}"></a>-->
+<!--                            </p>-->
+<!--                        </td>-->
                     </tr>
 
                 </div>
