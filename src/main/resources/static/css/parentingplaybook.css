@@ -1,0 +1,91 @@
+body {
+   margin-top: 75px;
+   text-align: center;
+   font-family: Georgia;
+   font-color: white;
+   padding: 50 px;
+   background: rgb(2,0,36);
+   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(160,69,185,1) 35%, rgba(0,212,255,1) 100%);
+
+}
+
+h1 {
+   text-align: center;
+   font-family: Georgia;
+   color: #FFFFFF;
+}
+
+h2 {
+   text-align: center;
+   font-family: Georgia;
+   color: #FFFFFF;
+}
+
+h3 {
+   text-align: center;
+   font-family: Georgia;
+   color: #FFFFFF;
+}
+
+p {
+   text-align: center;
+   font-family: Georgia;
+   color: #FFFFFF;
+   font-size: 14 px;
+}
+
+.table {
+align: center;
+width: 100%;
+max-width: 100%;
+margin-bottom: 20px;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button {
+  background-color: #fffff0;
+  border-radius: 4px;
+  border: 2px solid #000000;
+  color: #4b0082;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  font-family: Georgia;
+  font-weight: light;
+}
+
+.sidenav {
+  background-color: #fffff0;
+  opacity: 0.8;
+  border: 2px solid #000000;
+  margin-left: auto;
+  margin-right: auto;
+  color: #4b0082;
+  text-align: center;
+  font-family: Georgia;
+}
+
+a:link {
+  color: lightblue;
+}
+
+/* visited link */
+a:visited {
+  color: green;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+}
+
+/* selected link */
+a:active {
+  color: blue;
+}

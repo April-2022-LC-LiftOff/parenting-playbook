@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
+    <link th:href="@{/css/parentingplaybook.css}" rel="stylesheet" />
 </head>
 <body class="container  body-content">
-<h1 th:text="${'Intervention: ' + intervention.name}">Default Tile</h1>
+<h1 th:text="${'Intervention: ' + intervention.name}">Parenting Playbook</h1>
 
 <nav th:replace="fragments :: page-header"></nav>
 
