@@ -1,8 +1,10 @@
 package org.launchcode.liftoffproject.controllers;
 
+import org.launchcode.liftoffproject.data.CommentRepository;
 import org.launchcode.liftoffproject.data.DomainRepository;
 import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.data.TagRepository;
+import org.launchcode.liftoffproject.models.Comment;
 import org.launchcode.liftoffproject.models.Domain;
 import org.launchcode.liftoffproject.models.Intervention;
 import org.launchcode.liftoffproject.models.Tag;
@@ -29,6 +31,10 @@ public class HomeController {
 
     @Autowired
     private TagRepository tagRepository;
+
+    @Autowired
+    private CommentRepository commentRepository;
+
 
     public void createDomains() {
         String[] domains = {"Impulse Control", "Emotional Control", "Flexible Thinking", "Working Memory", "Self-Monitoring", "Planning and Prioritizing", "Task Initiation", "Organization"};
@@ -151,11 +157,31 @@ public class HomeController {
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             model.addAttribute("intervention", intervention);
+
+            model.addAttribute("comments", commentRepository.findCommentByInterventionId(interventionId));
+
+            model.addAttribute("comment", new Comment());
             return "view";
         } else {
             return "redirect:../";
         }
     }
+
+    @PostMapping("view/{interventionId}")
+    public String processAddComment(@ModelAttribute @Valid Comment newComment, Errors errors, Model model, @PathVariable int interventionId) {
+        Optional optIntervention = interventionRepository.findById(interventionId);
+        Intervention intervention = (Intervention) optIntervention.get();
+        if(errors.hasErrors()) {
+            model.addAttribute("intervention", intervention);
+            return "view";
+        }
+
+        newComment.setIntervention(intervention);
+        commentRepository.save(newComment);
+        return "redirect:{interventionId}";
+    }
+
+
 
     @GetMapping("about")
     public String displayAbout() {
