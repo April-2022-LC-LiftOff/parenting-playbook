@@ -11,6 +11,5 @@ import java.util.List;
 @Repository
 public interface CommentRepository extends CrudRepository<Comment, Integer> {
     List<Comment> findCommentByInterventionId(int interventionId);
-
 }
 
