@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div class="container body-content">
+    <form method="post" style="max-width:600px;">
+        <div class="form-group">
+            <label th:for="action">Action:</label>
+            <input type="text" name="action" class="form-control" th:value="${intervention.action}" />
+        </div>
+
+        <input type="submit" value="Update Action"/>
+    </form>
+</div>
+
+</body>
+</html>

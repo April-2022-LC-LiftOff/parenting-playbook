@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div class="container body-content">
+    <form method="post" style="max-width:600px;">
+        <div class="form-group">
+            <label id="checkBoxLabel" th:for="domains">Domains:</label>
+            <br>
+            <th:block th:each="domain : ${domains}">
+                <th:block th:each="dom : ${intervention.domains}" >
+                    <th:block th:if="${domain.id != dom.id}">
+                        <input type="checkbox" name="domains" th:value="${domain.id}">
+                        <label th:text="${domain.domain}" th:title="${domain.description}"></label>
+                        <br>
+                    </th:block>
+                    <th:block th:if="${domain.id == dom.id}">
+                        <input type="checkbox" name="domains" checked="checked" th:value="${domain.id}">
+                        <label th:text="${domain.domain}" th:title="${domain.description}"></label>
+                        <br>
+                    </th:block>
+                </th:block>
+            </th:block>
+        </div>
+        <input type="submit" value="Update Domains"/>
+    </form>
+</div>
+
+</body>
+</html>

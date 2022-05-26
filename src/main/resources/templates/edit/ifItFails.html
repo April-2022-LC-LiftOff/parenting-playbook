@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div class="container body-content">
+    <form method="post" style="max-width:600px;">
+        <div class="form-group">
+            <label th:for="ifItFails">If It Fails:</label>
+            <input type="text" name="ifItFails" class="form-control" th:value="${intervention.ifItFails}" />
+        </div>
+
+        <input type="submit" value="Update If It Fails"/>
+    </form>
+</div>
+
+</body>
+</html>

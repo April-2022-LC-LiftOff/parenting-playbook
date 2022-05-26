@@ -15,18 +15,24 @@
             </li>
         </ul>
     </p>
+    <a th:href="@{'/edit/domains/' + ${intervention.id}}">Edit Domains</a>
     <p>Tag(s):
-    <ul>
-        <li th:each="tag : ${intervention.tags}" style="list-style-type: none;">
-            <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
-        </li>
-    </ul>
+        <ul>
+            <li th:each="tag : ${intervention.tags}" style="list-style-type: none;">
+                <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
+            </li>
+        </ul>
     </p>
-    <p th:text="${'Name: ' + intervention.name}"></p>
-    <p th:text="${'Action: ' + intervention.action}"></p>
-    <p th:text="${'Expected Response: ' + intervention.expectedResponse}"></p>
-    <p th:text="${'Reference: ' + intervention.reference}"></p>
-    <p th:text="${'If It Fails, try: ' + intervention.ifItFails}"></p>
+    <a th:href="@{'/edit/tags/' + ${intervention.id}}">Edit Tags</a>
+    <p th:text="${'Name: ' + intervention.name}"></p> <a th:href="@{'/edit/name/' + ${intervention.id}}">Edit Name</a>
+    <p th:text="${'Action: ' + intervention.action}"></p> <a th:href="@{'/edit/action/' + ${intervention.id}}">Edit Action</a>
+    <p th:text="${'Expected Response: ' + intervention.expectedResponse}"></p> <a th:href="@{'/edit/expectedResponse/' + ${intervention.id}}">Edit Expected Response</a>
+    <p th:text="${'Reference: ' + intervention.reference}"></p> <a th:href="@{'/edit/reference/' + ${intervention.id}}">Edit Reference</a>
+    <p th:text="${'If It Fails, try: ' + intervention.ifItFails}"></p> <a th:href="@{'/edit/ifItFails/' + ${intervention.id}}">Edit If It Fails</a>
+</div>
+
+<div>
+    <a th:href="@{'/edit/delete/' + ${intervention.id}}" class="btn">Delete Intervention</a>
 </div>
 
 </body>

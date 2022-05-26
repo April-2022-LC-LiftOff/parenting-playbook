@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div class="container body-content">
+    <form method="post" style="max-width:600px;">
+        <div class="form-group">
+            <label th:for="expectedResponse">Expected Response:</label>
+            <input type="text" name="expectedResponse" class="form-control" th:value="${intervention.expectedResponse}" />
+        </div>
+
+        <input type="submit" value="Update Expected Response"/>
+    </form>
+</div>
+
+</body>
+</html>
