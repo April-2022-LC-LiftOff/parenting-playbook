@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
+    <link th:href="@{/css/parentingplaybook.css}" rel="stylesheet" />
+    <link th:href="@{/css/domains-interventions.css}" rel="stylesheet" />
 </head>
 <body class="container body-content">
 <nav th:replace="fragments :: page-header"></nav>
@@ -9,7 +11,7 @@
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
-    <table class="job-listing">
+    <table class="parenting-playbook">
         <tr th:each="intervention : ${interventions}">
             <td>
                 <p>

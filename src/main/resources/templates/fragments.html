@@ -5,8 +5,10 @@
 
     <!-- Bootstrap stylesheets and script -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
-    <link th:href="@{/css/domains-interventions.css}" rel="stylesheet" />
     <link th:href="@{/css/parentingplaybook.css}" rel="stylesheet" />
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+</style>
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 
     <title th:text="'Parenting Playbook' + ${title == null ? '' : ' :: ' + title}">Parenting Playbook</title>
@@ -18,9 +20,6 @@
     <div class="container">
         <div class="navbar-header">
             <a th:href="@{/}" class="navbar-brand">Parenting Playbook</a>
-<!--            <ul class="nav" style="float:right;">-->
-<!--                <li class="nav-item"><a class="nav-link" href="/logout">Log out</a></li>-->
-<!--            </ul>-->
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
