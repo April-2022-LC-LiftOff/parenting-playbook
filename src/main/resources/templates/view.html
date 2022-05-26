@@ -37,7 +37,7 @@
         <tr>
             <th>Intervention ID</th>
             <th>Intervention Name</th>
-            <th>User Nick Name</th>
+            <th>User</th>
             <th>Comment</th>
             <th>Posted Date</th>
         </tr>
@@ -46,7 +46,8 @@
         <tr th:each="comment : ${comments}">
             <td th:text="${intervention.id}"></td>
             <td th:text="${intervention.name}"></td>
-            <td>User Nick Name</td>
+            <td>Username</td>
+<!--            <td th:text="{user.username}"></td>-->
             <td th:text="${comment.userInput}"></td>
             <td th:text="${comment.postedDate}"></td>
         </tr>

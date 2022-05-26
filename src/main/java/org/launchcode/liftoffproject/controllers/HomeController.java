@@ -1,19 +1,14 @@
 package org.launchcode.liftoffproject.controllers;
 
-import org.launchcode.liftoffproject.data.CommentRepository;
-import org.launchcode.liftoffproject.data.DomainRepository;
-import org.launchcode.liftoffproject.data.InterventionRepository;
-import org.launchcode.liftoffproject.data.TagRepository;
-import org.launchcode.liftoffproject.models.Comment;
-import org.launchcode.liftoffproject.models.Domain;
-import org.launchcode.liftoffproject.models.Intervention;
-import org.launchcode.liftoffproject.models.Tag;
+import org.launchcode.liftoffproject.data.*;
+import org.launchcode.liftoffproject.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.*;
 import java.util.ArrayList;
@@ -34,6 +29,12 @@ public class HomeController {
 
     @Autowired
     private CommentRepository commentRepository;
+
+    @Autowired
+    private AuthenticationController authenticationController;
+
+    @Autowired
+    private UserRepository userRepository;
 
 
     public void createDomains() {
@@ -152,15 +153,16 @@ public class HomeController {
     }
 
     @GetMapping("view/{interventionId}")
-    public String displayViewIntervention(Model model, @PathVariable int interventionId) {
+    public String displayViewIntervention(@ModelAttribute @Valid Comment newComment, Model model, @PathVariable int interventionId) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             model.addAttribute("intervention", intervention);
 
+            model.addAttribute("comment", new Comment());
+
             model.addAttribute("comments", commentRepository.findCommentByInterventionId(interventionId));
 
-            model.addAttribute("comment", new Comment());
             return "view";
         } else {
             return "redirect:../";
@@ -168,7 +170,8 @@ public class HomeController {
     }
 
     @PostMapping("view/{interventionId}")
-    public String processAddComment(@ModelAttribute @Valid Comment newComment, Errors errors, Model model, @PathVariable int interventionId) {
+    public String processAddComment(@ModelAttribute @Valid Comment newComment, Errors errors, Model model,
+                                    @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
         if(errors.hasErrors()) {
@@ -176,6 +179,9 @@ public class HomeController {
             return "view";
         }
 
+        User user = authenticationController.getUserFromSession(request.getSession());
+
+        newComment.setUser(user);
         newComment.setIntervention(intervention);
         commentRepository.save(newComment);
         return "redirect:{interventionId}";

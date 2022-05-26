@@ -12,7 +12,7 @@ import java.util.Date;
 @Table(name="comment")
 public class Comment extends AbstractEntity {
 
-    @NotBlank(message = "Comment cannot be blank.")
+//    @NotBlank(message = "Comment cannot be blank.")
     @Size(max = 1000, message = "Comment cannot exceed 1000 characters.")
     @Column(name="user_input")
     private String userInput;
@@ -25,13 +25,18 @@ public class Comment extends AbstractEntity {
     @ManyToOne
     private Intervention intervention;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Comment() {}
 
-    public Comment(String userInput, Date postedDate, Intervention intervention) {
+    public Comment(String userInput, Date postedDate, Intervention intervention, User user) {
 
         this.userInput = userInput;
         this.postedDate = postedDate;
         this.intervention = intervention;
+        this.user = user;
     }
 
 
@@ -57,6 +62,14 @@ public class Comment extends AbstractEntity {
 
     public void setIntervention(Intervention intervention) {
         this.intervention = intervention;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
