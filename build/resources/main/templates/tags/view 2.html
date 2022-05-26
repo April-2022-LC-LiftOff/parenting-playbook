@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body class="container body-content">
+<nav th:replace="fragments :: page-header"></nav>
+
+<h1 th:text="${'Tag: ' + tag.tagName}">Default Title</h1>
+
+<div class="job-listing">
+    <p th:text="${'Name: ' + tag.tagName}"></p>
+    <p> Interventions:
+    <ul>
+        <li style="list-style-type: none;" th:each="intervention : ${tag.interventions}">
+            <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a>
+        </li>
+    </ul>
+    </p>
+</div>
+
+</body>
+</html>

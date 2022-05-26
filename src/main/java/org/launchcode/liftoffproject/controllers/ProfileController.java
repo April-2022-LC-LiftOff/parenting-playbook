@@ -30,8 +30,8 @@ public class ProfileController {
 //    @Autowired
 //    private TagRepository tagRepository;
 ////
-//      @Autowired
-//      private CommentRepository commentRepository;
+//    @Autowired
+//    private CommentRepository commentRepository;
 //
 //
     @GetMapping
@@ -43,11 +43,15 @@ public class ProfileController {
             return "redirect:login";
         }
 
-        model.addAttribute("title", user.getUsername());
+        model.addAttribute("username", user.getUsername());
         model.addAttribute("firstName", user.getFirstName());
         model.addAttribute("lastname", user.getLastName());
         model.addAttribute("email", user.getEmail());
-       // model.addAttribute("reviews", user.getReviews());
+        //model.addAttribute("comments", user.getComments());
+        //model.addAttribute("addedInterventions", user.getAddedInterventions());
+        //model.addAttribute("savedInterventions", user.getSavedInterventions());
+        //model.addAttribute("notes", user.getNotes());
+        //model.addAttribute("sharedLinks", user.getSharedLinks());
         model.addAttribute(user);
 
         return "profile";

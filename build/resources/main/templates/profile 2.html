@@ -27,7 +27,6 @@
         <body>
 
         <div th:replace="fragments :: page-header"></div>
-
         <div class="alert alert-warning text-center" role="alert" th:text="${mustlogin}" th:if="${mustlogin}"></div>
 
         <div class="container body-content col-5 mt-5">
@@ -37,27 +36,26 @@
                         <img class="profile-icon" th:src="@{images/veryseriousimage.png}"/>
                     </div>
                     <div class="col">
-                        <h4 th:text="${user.username}"></h4>
                         <h4 th:text="${user.firstName + ' ' + user.lastName}"></h4>
                         <h4 th:text="${user.email}"></h4>
                     </div>
                 </div>
 
                 <table class="table">
-<!--                    <div class="p-3 mb-2 bg-secondary text-white">-->
+                    <div class="p-3 mb-2 bg-secondary text-white">
                         <tr>
-                            <th scope="col"><button type="button">My Contributions</button></th>
+                            <th scope="col">My Contributions</th>
                         </tr>
                         <tr>
-                            <th scope="col"><button type="button">My Saved Interventions</button></th>
+                            <th scope="col">My Saved Interventions</th>
                         </tr>
                         <tr>
-                            <th scope="col"><button type="button">My Notes</button></th>
+                            <th scope="col">My Notes</th>
                         </tr>
                         <tr>
-                            <th scope="col"><button type="button">Shared Links</button></th>
+                            <th scope="col">Shared Links</th>
                         </tr>
-<!--                    </div>-->
+                    </div>
                 </table>
             </div>
         </body>

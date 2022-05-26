@@ -1,0 +1,76 @@
+
+
+/*techjobs.css from previous project. Now labeled parentingplaybook.css. --
+Amanda added .profile-icon on May 22, 2022.
+
+ADD OR CHANGE OR DELETE PREVIOUS TECHJOBS CSS CODE AS NEEDED*/
+
+.body-content {
+    margin-top: 72px;
+}
+
+td, th {
+    padding: 10px;
+}
+
+th {
+    text-align: left;
+}
+
+td {
+    vertical-align: left;
+}
+
+tr:nth-child(odd) {
+    background-color: #e4e4e4;
+}
+
+/*.centeredTable {
+    margin-left: auto;
+    margin-right: auto;
+}*/
+
+table.job-listing {
+    margin: 30px auto;
+    border: 1px solid #e4e4e4;
+    width: 80%;
+}
+
+table.job-listing td:first-child {
+    font-weight: bold;
+}
+
+table.job-listing td:last-child {
+    width: 80%;
+}
+
+label {
+    margin-right: 15px;
+}
+
+.centered {
+    text-align: center;
+}
+
+p {
+    vertical-align: top;
+    margin-left: 30px;
+}
+
+.centeredTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.job-listing {
+    border: 1px solid #e4e4e4;
+    width: 80%;
+    background-color: #e4e4e4;
+}
+/********** ADDED BY AMANDA*********/
+.profile-icon {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+/***************/

@@ -27,6 +27,7 @@
         <body>
 
         <div th:replace="fragments :: page-header"></div>
+
         <div class="alert alert-warning text-center" role="alert" th:text="${mustlogin}" th:if="${mustlogin}"></div>
 
         <div class="container body-content col-5 mt-5">
@@ -36,6 +37,7 @@
                         <img class="profile-icon" th:src="@{images/veryseriousimage.png}"/>
                     </div>
                     <div class="col">
+                        <h4 th:text="${user.username}"></h4>
                         <h4 th:text="${user.firstName + ' ' + user.lastName}"></h4>
                         <h4 th:text="${user.email}"></h4>
                     </div>
