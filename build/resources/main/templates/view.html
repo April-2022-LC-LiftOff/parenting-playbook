@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
-    <link th:href="@{/css/parentingplaybook.css}" rel="stylesheet" />
 </head>
 <body class="container  body-content">
+
 <h1 th:text="${'Intervention: ' + intervention.name}">Parenting Playbook</h1>
 
 <nav th:replace="fragments :: page-header"></nav>
 
-<div class="parenting-playbook">
+<!--<div class="parenting-playbook"></div>-->
+<div class="job-listing">
     <p>Domain(s):
         <ul>
             <li th:each="domain : ${intervention.domains}" style="list-style-type: none;">
