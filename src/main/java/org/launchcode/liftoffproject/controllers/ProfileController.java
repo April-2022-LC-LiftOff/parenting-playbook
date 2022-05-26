@@ -16,14 +16,24 @@ import javax.servlet.http.HttpSession;
 public class ProfileController {
 
     @Autowired
-    AuthenticationController authenticationController;
-
-//    @Autowired
-//    ReviewRepository reviewRepository;
+    private AuthenticationController authenticationController;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
+//    @Autowired
+//    private DomainRepository domainRepository;
+//
+//    @Autowired
+//    private InterventionRepository interventionRepository;
+//
+//    @Autowired
+//    private TagRepository tagRepository;
+////
+//      @Autowired
+//      private CommentRepository commentRepository;
+//
+//
     @GetMapping
     public String profile(Model model, HttpSession session, RedirectAttributes redirAttrs) {
         User user = authenticationController.getUserFromSession(session);

@@ -5,6 +5,8 @@
 <body class="container body-content">
 <nav th:replace="fragments :: page-header"></nav>
 
+<div class="alert alert-success alert-dismissible text-center" role="alert" th:text="${hello}" th:if="${hello}"></div>
+
 <h3>Parenting Playbook</h3>
         <div class="row content">
             <div class="col-sm-3 sidenav">
