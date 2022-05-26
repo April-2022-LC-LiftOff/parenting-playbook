@@ -1,165 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
-
+    <link th:href="@{/css/parentingplaybook.css}" rel="stylesheet" />
 </head>
 <body class="container body-content">
 <nav th:replace="fragments :: page-header"></nav>
 
-<!--<h3>Parenting Playbook</h3>-->
-<!--        <div class="row content">-->
-<!--            <div class="col-sm-3 sidenav">-->
-<!--                <div class="p-3 mb-2 bg-primary text-white">-->
-<!--                    <h3>What is executive functioning?</h3>-->
-<!--                    <p>-->
-<!--                        Executive functioning refers to the cognitive skills that people use to complete tasks.-->
-<!--                        Neurodivergent individuals (people with ADHD, Autism, etc.) often struggle with executive-->
-<!--                        functioning. Thankfully, there are lots of things you can try at home to help your child-->
-<!--                        overcome some of these challenges!-->
-
-<!--                    </p>-->
-<!--                    <h4>This site is an excellent resource for:</h4>-->
-<!--                    <ul>-->
-<!--                        <li>Parents</li>-->
-<!--                        <li>Caregivers</li>-->
-<!--                        <li>Teachers</li>-->
-<!--                    </ul>-->
-
-<!--                </div>-->
-<!--            </div>-->
-
 
 <div style="text-align:center; padding: 10px 10px; ">
     <a data-flickr-embed="true"><img src="https://live.staticflickr.com/65535/52092707954_3d6536dc5f_o.png" width="700" height="150" alt="700x200parenting"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
-<!--    <a data-flickr-embed="true" title="Parenting Playbook (900 × 100 px)"><img src="https://live.staticflickr.com/65535/52092950795_9f0b36c554_o.png" width="900" height="100" alt="Positive Vibes (900 × 100 px)"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>-->
-<!--    <a data-flickr-embed="true" title="Screen Shot 2022-05-22 at 8.34.26 PM"><img src="https://live.staticflickr.com/65535/52092620694_eb7dc0f6cf_z.jpg" width="600" height="200" alt="Screen Shot 2022-05-22 at 8.34.26 PM"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>-->
-<!--    <a data-flickr-embed="true" title="Parenting Playbook"><img src="https://live.staticflickr.com/65535/52090091667_86f77bcd7d_z.jpg" width="110" height="110" alt="Parenting Playbook"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>-->
 
     </div>
-<!--<div class="row content">-->
-<!--    <div class="col-sm-3 sidenav">-->
-
-<!--&lt;!&ndash;        <div class="p-3 mb-2 bg-primary text-white">&ndash;&gt;&ndash;&gt;-->
-<!--        <h3 style="color:#4b0082;text-align:center;  padding: 20px 50px;">What is Executive Functioning?</h3>-->
-<!--        <p style="color:#4b0082;text-align:center;">-->
-<!--            Executive functioning refers to the cognitive skills that people use to complete tasks.-->
-<!--            Neurodivergent individuals (people with ADHD, Autism, etc.) often struggle with executive-->
-<!--            functioning. Thankfully, there are lots of things you can try at home to help your child-->
-<!--            overcome some of these challenges!-->
-
-<!--        </p>-->
-<!--        <h3 style="color:#4b0082;text-align:center;">How do I use the Parenting Playbook?</h3>-->
-<!--        <li style="color:#4b0082;text-align:center;"> Not sure where to start? Users can take a quiz to find out which areas of executive functioning their child-->
-<!--            may need extra supports with! You can also search by executive functioning domain, intervention, or by keywords.-->
-<!--        </li>-->
-<!--        <li style="color:#4b0082;text-align:center;">Join our community by creating an account! Users have the opportunity to find potential-->
-<!--            strategies to try at home save them to an account. Community members can also add interventions to the database-->
-<!--            that other users can access and comment on strategies they have tried in the past.-->
-<!--        </li>-->
-<!--            </div>-->
-<!--                        <div class="col-sm-8 text-center">-->
-<!--&lt;!&ndash;                            <div class="p-3 mb-2 bg-secondary text-white">&ndash;&gt;-->
-<!--                                <h1 style="text-align:center;margin-left:125px;size:40px;">Choose a domain to explore strategies you can try at home!</h1>-->
-
-<!--                </div>-->
-<!--            <div>-->
-<!--                    <p style=" padding: 20px 50px;">-->
-<!--                        We are a community of parents dedicated to sharing effective practices that will-->
-<!--                        increase children's executive functioning skills. These strategies can help-->
-<!--                        children improve their behavior, increase their confidence, and give them the-->
-<!--                        tools they need to succeed!-->
-<!--                    </p>-->
-
-<!--                </div>-->
-<!--                <div class="p-3 mb-2 bg-secondary text-white">-->
-<!--                <div>-->
-<!--                    <p>Not sure where to begin? You can take our quiz to determine what areas of executive functioning-->
-<!--                        your child may need more help with. If you want to learn more about what each domain means, check out-->
-<!--                        the domains page. You can also browse all interventions of use our search function to find a strategy-->
-<!--                        that is just right for your child's specific needs.</p>-->
-<!--                </div>-->
-
-
-<!--                <table class="table" style="text-align:center;color=white;">-->
-<!--&lt;!&ndash;                <div class="p-3 mb-2 bg-secondary text-white">&ndash;&gt;-->
-<!--                    <tr>-->
-<!--                        <th scope="col" style="color=white;">What is Executive Functioning?</th>-->
-<!--                        <th scope="col" style="color=white;">How to use the Parenting Playbook</th>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--&lt;!&ndash;                        <td>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <p th:each="domain : ${domains}">&ndash;&gt;-->
-<!--&lt;!&ndash;                                <a th:text="${domain.description}"></a>&ndash;&gt;-->
-<!--&lt;!&ndash;                            </p>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </td>&ndash;&gt;-->
-<!--                        <td>-->
-<!--                            <p>-->
-<!--                                Executive functioning refers to the cognitive skills that people use to complete tasks. Neurodivergent individuals (people with ADHD, Autism, etc.) often struggle with executive-->
-<!--                                functioning. Thankfully, there are lots of things you can try at home to help your child overcome some of these challenges!-->
-<!--                            </p>-->
-<!--                        </td>-->
-<!--&lt;!&ndash;                        <td>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <ul th:each="domain : ${domains}">&ndash;&gt;-->
-<!--&lt;!&ndash;                                <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}"  style="color:#FFFFFF;text-align:center;"></a>&ndash;&gt;-->
-<!--&lt;!&ndash;                            </ul>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </td>&ndash;&gt;-->
-<!--                        <td>-->
-<!--                            <div>-->
-<!--                            <p style="text-align: center;">-->
-<!--                                This website is a resource for parents to identify potential strategies and solutions to-->
-<!--                                executive functioning concerns (e.g. issues with organization, staying on task, self-monitoring,-->
-<!--                                self-management, etc.).-->
-<!--                            </p>-->
-<!--                            </div>-->
-<!--                            <div>-->
-<!--                            <p style="text-align: center;">-->
-<!--                                Join our community by creating an account! Users have the opportunity to find potential low-level-->
-<!--                                interventions based on a child's specific situation and needs and save them to an account. Community members-->
-<!--                                can also add interventions to the database that other users can access and leave comments on interventions.-->
-
-<!--                            </p>-->
-<!--                            <p style="text-align: center;">-->
-<!--                                Users can also search for interventions based on student need without making an account.-->
-<!--                            </p>-->
-<!--                            <p style="text-align: center;">-->
-<!--                                Not sure where to start? Users can take a quiz to find out which areas of executive functioning their child-->
-<!--                                may need extra supports with!-->
-<!--                            </p>-->
-<!--                            </div>-->
-<!--                        </td>-->
-<!--                    </tr>-->
-
-<!--                </div>-->
-<!--            </table>-->
-<!--        </div>-->
 <div>
-<!--    <table class="table" style="text-align:center;">-->
-<!--        &lt;!&ndash;                <div class="p-3 mb-2 bg-secondary text-white">&ndash;&gt;-->
-<!--        <tr>-->
-<!--            <th style="size:50px">Domains</th>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--        <td>-->
-<!--            <button th:each="domain : ${domains}" style="text-align:center;size=30px">-->
-<!--                <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>-->
-<!--            </button>-->
-<!--        </td>-->
-<!--        </tr>-->
-<!--    </table>-->
+
     <h1>Welcome to the Parenting Playbook!</h1>
     <h3 style="color:white;">Select an executive functioning domain to find strategies to help your child succeed.</h3>
+
     <button class="button-80" role="button" th:each="domain : ${domains}">
-        <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
+        <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}" ></a>
     </button>
 </div>
 <div>
 
-
     <div class="row content">
-<!--        <div class="col-sm-3 sidenav">-->
         <div class="mainTable" style="padding: 20px 20px">
 
-    <!--        <div class="p-3 mb-2 bg-primary text-white">&ndash;&gt;-->
             <h3 style="color:#4b0082;text-align:center; padding: 20px 30px;">What is Executive Functioning?</h3>
             <p style="color:#4b0082;text-align:left;">
                 Executive functioning refers to the cognitive skills that people use to complete tasks.
@@ -182,11 +47,6 @@
                 that other users can access and comment on strategies they have tried in the past.
             </li>
                 </div>
-<!--                            <div class="col-sm-8 text-center">-->
-<!--    &lt;!&ndash;                            <div class="p-3 mb-2 bg-secondary text-white">&ndash;&gt;-->
-<!--                                    <h1 style="text-align:center;margin-left:125px;size:40px;">Choose a domain to explore strategies you can try at home!</h1>-->
-
-<!--                    </div>-->
                 <div>
 
 

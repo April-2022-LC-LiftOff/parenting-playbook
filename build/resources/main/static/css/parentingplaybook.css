@@ -128,10 +128,11 @@ margin-bottom: 20px;
   color: #4b0082;
   text-align: left;
   font-family: 'Montserrat', sans-serif;
+  padding: 20px 20px;
 }
 
 a:link {
-  color: indigo;
+  color: black;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -144,4 +145,14 @@ nav navbar-nav{
     font-weight: bold;
 }
 
+table.parenting-playbook {
+    background-color: #fffff0
+    opacity: 1;
+      border: 3px solid #000000;
+      margin-left: auto;
+      margin-right: auto;
+      color: #4b0082;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
 
+}
