@@ -17,7 +17,7 @@
     <h3 style="color:white;">Select an executive functioning domain to find strategies to help your child succeed.</h3>
 
     <button class="button-80" role="button" th:each="domain : ${domains}">
-        <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}" ></a>
+        <alink-button th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}" ></alink-button>
     </button>
 </div>
 <div>
