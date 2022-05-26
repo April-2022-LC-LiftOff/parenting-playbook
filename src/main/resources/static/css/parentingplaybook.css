@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 body {
    margin-top: 60px;
    font-family: 'Montserrat', sans-serif;
@@ -204,12 +204,12 @@ ADD OR CHANGE OR DELETE PREVIOUS TECHJOBS CSS CODE AS NEEDED*/
 
 .body-content {
     margin-top: 72px;
->>>>>>> c53f3008e8ba0b33bea697c6a7f762b6a4c54869
+
 }
 
 td, th {
     padding: 10px;
-<<<<<<< HEAD
+
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -260,7 +260,6 @@ table.parenting-playbook td:last-child {
     width: 80%;
     font-family: 'Montserrat', sans-serif;
     border-bottom: solid 2px white;
-=======
 }
 
 th {
@@ -292,38 +291,29 @@ table.job-listing td:first-child {
 
 table.job-listing td:last-child {
     width: 80%;
->>>>>>> c53f3008e8ba0b33bea697c6a7f762b6a4c54869
 }
 
 label {
     margin-right: 15px;
-<<<<<<< HEAD
     font-family: 'Montserrat', sans-serif;
-=======
->>>>>>> c53f3008e8ba0b33bea697c6a7f762b6a4c54869
 }
 
 .centered {
     text-align: center;
-<<<<<<< HEAD
     font-family: 'Montserrat', sans-serif;
-=======
->>>>>>> c53f3008e8ba0b33bea697c6a7f762b6a4c54869
 }
 
 p {
     vertical-align: top;
     margin-left: 30px;
-<<<<<<< HEAD
+
     font-family: 'Montserrat', sans-serif;
-=======
->>>>>>> c53f3008e8ba0b33bea697c6a7f762b6a4c54869
+
 }
 
 .centeredTable {
     margin-left: auto;
     margin-right: auto;
-<<<<<<< HEAD
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -333,8 +323,6 @@ div.parenting-playbook {
     font-family: 'Montserrat', sans-serif;
 }
 
-=======
-}
 
 div.job-listing {
     border: 1px solid #e4e4e4;
@@ -348,4 +336,3 @@ div.job-listing {
   object-fit: contain;
 }
 /***************/
->>>>>>> c53f3008e8ba0b33bea697c6a7f762b6a4c54869
