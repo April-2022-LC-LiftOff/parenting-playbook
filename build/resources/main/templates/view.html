@@ -46,8 +46,7 @@
         <tr th:each="comment : ${comments}">
             <td th:text="${intervention.id}"></td>
             <td th:text="${intervention.name}"></td>
-            <td>Username</td>
-<!--            <td th:text="{user.username}"></td>-->
+            <td th:text="${user.username}"></td>
             <td th:text="${comment.userInput}"></td>
             <td th:text="${comment.postedDate}"></td>
         </tr>
@@ -66,45 +65,6 @@
         <button class="btn btn-success btn-md" type="submit">Add Comment</button>
     </div>
 </form>
-
-<!--<br><br>-->
-<!--<div>-->
-<!--    <h3>Latest Comment(s): </h3>-->
-<!--    <table class="table table-striped">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th>Intervention ID</th>-->
-<!--            <th>Intervention Name</th>-->
-<!--            <th>User Nick Name</th>-->
-<!--            <th>Comment</th>-->
-<!--            <th>Posted Date</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody th:if="${comments} !=null">-->
-<!--        <tr th:each="comment : ${comments}">-->
-<!--            <td th:text="${intervention.id}"></td>-->
-<!--            <td th:text="${intervention.name}"></td>-->
-<!--            <td>User Nick Name</td>-->
-<!--            <td th:text="${comment.userInput}"></td>-->
-<!--            <td th:text="${comment.postedDate}"></td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-<!--</div>-->
-<!--<br><br><br>-->
-<!--<div>-->
-<!--    <h3>Leave a Comment: </h3>-->
-<!--</div>-->
-<!--<form method="post">-->
-<!--    <div class="form-group">-->
-<!--        <textarea class="form-control" th:field="${comment.userInput}" placeholder="Have any thought?"></textarea>-->
-<!--        <span th:errors="${comment.userInput}" class="error"></span>-->
-<!--        <br>-->
-<!--        <button class="btn btn-success btn-md" type="submit">Add Comment</button>-->
-<!--    </div>-->
-<!--</form>-->
-
-
 
 </body>
 </html>

@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.*;
 import java.util.ArrayList;
@@ -152,14 +154,19 @@ public class HomeController {
         return "redirect:";
     }
 
+
     @GetMapping("view/{interventionId}")
-    public String displayViewIntervention(@ModelAttribute @Valid Comment newComment, Model model, @PathVariable int interventionId) {
+    public String displayViewIntervention(Model model, @PathVariable int interventionId) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             model.addAttribute("intervention", intervention);
 
+            User user = new User();
             model.addAttribute("comment", new Comment());
+
+            model.addAttribute("username",user.getUsername());
+            model.addAttribute(user);
 
             model.addAttribute("comments", commentRepository.findCommentByInterventionId(interventionId));
 
@@ -186,8 +193,6 @@ public class HomeController {
         commentRepository.save(newComment);
         return "redirect:{interventionId}";
     }
-
-
 
     @GetMapping("about")
     public String displayAbout() {
