@@ -54,7 +54,7 @@ margin-bottom: 20px;
 
 /* CSS */
 .button-80 {
-  background: #fff;
+  background: #fffff0;
   backface-visibility: hidden;
   opacity: 0.9;
   border-color: #000000;
@@ -131,11 +131,32 @@ margin-bottom: 20px;
   padding: 20px 20px;
 }
 
-a:link-button {
-  color: black;
+a:link {
+  color: hotpink;
   font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
 
+/* visited link */
+a:visited {
+  color: hotpink;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+/* mouse over link */
+a:hover {
+  color: limegreen;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+/* selected link */
+a:active {
+  color: hotpink;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
 .navbar {
    background-color: #0C0255;
 }
@@ -160,7 +181,7 @@ table.parenting-playbook {
 table.domains-table  {
  background-color: #fffff0
     opacity: 1;
-      border: 3px solid #000000;
+      border: 3px solid white;
       margin-left: auto;
       margin-right: auto;
       color: white;
@@ -256,6 +277,3 @@ div.parenting-playbook {
     font-family: 'Montserrat', sans-serif;
 }
 
-a {
-    color: hotpink;
-}
