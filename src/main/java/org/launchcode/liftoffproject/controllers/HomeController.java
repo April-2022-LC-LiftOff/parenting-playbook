@@ -1,17 +1,16 @@
 package org.launchcode.liftoffproject.controllers;
 
-import org.launchcode.liftoffproject.data.DomainRepository;
-import org.launchcode.liftoffproject.data.InterventionRepository;
-import org.launchcode.liftoffproject.data.TagRepository;
-import org.launchcode.liftoffproject.models.Domain;
-import org.launchcode.liftoffproject.models.Intervention;
-import org.launchcode.liftoffproject.models.Tag;
+import org.launchcode.liftoffproject.data.*;
+import org.launchcode.liftoffproject.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.*;
 import java.util.ArrayList;
@@ -29,6 +28,16 @@ public class HomeController {
 
     @Autowired
     private TagRepository tagRepository;
+
+    @Autowired
+    private CommentRepository commentRepository;
+
+    @Autowired
+    private AuthenticationController authenticationController;
+
+    @Autowired
+    private UserRepository userRepository;
+
 
     public void createDomains() {
         String[] domains = {"Impulse Control", "Emotional Control", "Flexible Thinking", "Working Memory", "Self-Monitoring", "Planning and Prioritizing", "Task Initiation", "Organization"};
@@ -147,16 +156,46 @@ public class HomeController {
         return "redirect:";
     }
 
+// HttpServletRequest request
     @GetMapping("view/{interventionId}")
     public String displayViewIntervention(Model model, @PathVariable int interventionId) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             model.addAttribute("intervention", intervention);
+
+            User user = new User();
+//            User user = authenticationController.getUserFromSession(request.getSession());
+
+            model.addAttribute("comment", new Comment());
+
+            model.addAttribute("username",user.getUsername());
+            model.addAttribute(user);
+
+            model.addAttribute("comments", commentRepository.findCommentByInterventionId(interventionId));
+
             return "view";
         } else {
             return "redirect:../";
         }
+    }
+
+    @PostMapping("view/{interventionId}")
+    public String processAddComment(@ModelAttribute @Valid Comment newComment, Errors errors, Model model,
+                                    @PathVariable int interventionId, HttpServletRequest request) {
+        Optional optIntervention = interventionRepository.findById(interventionId);
+        Intervention intervention = (Intervention) optIntervention.get();
+        if(errors.hasErrors()) {
+            model.addAttribute("intervention", intervention);
+            return "view";
+        }
+
+        User user = authenticationController.getUserFromSession(request.getSession());
+
+        newComment.setUser(user);
+        newComment.setIntervention(intervention);
+        commentRepository.save(newComment);
+        return "redirect:{interventionId}";
     }
 
     @GetMapping("about")

@@ -3,10 +3,12 @@
 <head th:replace="fragments :: head">
 </head>
 <body class="container  body-content">
-<h1 th:text="${'Intervention: ' + intervention.name}">Default Tile</h1>
+
+<h1 th:text="${'Intervention: ' + intervention.name}">Parenting Playbook</h1>
 
 <nav th:replace="fragments :: page-header"></nav>
 
+<!--<div class="parenting-playbook"></div>-->
 <div class="job-listing">
     <p>Domain(s):
         <ul>
@@ -34,6 +36,43 @@
 <div>
     <a th:href="@{'/edit/delete/' + ${intervention.id}}" class="btn">Delete Intervention</a>
 </div>
+
+<br><br>
+<div>
+    <h3>Latest Comment(s): </h3>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Intervention ID</th>
+            <th>Intervention Name</th>
+            <th>User</th>
+            <th>Comment</th>
+            <th>Posted Date</th>
+        </tr>
+        </thead>
+        <tbody th:if="${comments} !=null">
+        <tr th:each="comment : ${comments}">
+            <td th:text="${intervention.id}"></td>
+            <td th:text="${intervention.name}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${comment.userInput}"></td>
+            <td th:text="${comment.postedDate}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br><br><br>
+<div>
+    <h3>Leave a Comment: </h3>
+</div>
+<form method="post">
+    <div class="form-group">
+        <textarea class="form-control" th:field="${comment.userInput}" placeholder="Have any thought?"></textarea>
+        <span th:errors="${comment.userInput}" class="error"></span>
+        <br>
+        <button class="btn btn-success btn-md" type="submit">Add Comment</button>
+    </div>
+</form>
 
 </body>
 </html>
