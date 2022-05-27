@@ -20,7 +20,8 @@
             </th:block>
         </div>
 
-        <input type="submit" value="Confirm Delete"/>
+        <input type="submit" class="btn-danger" value="Confirm Delete"/>
+        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn-info" value="Cancel Delete"/></a>
     </form>
 </div>
 

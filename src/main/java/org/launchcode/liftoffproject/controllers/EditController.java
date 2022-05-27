@@ -45,6 +45,8 @@ public class EditController {
         Intervention intervention = (Intervention) optIntervention.get();
         if (name.length() < 5 || name.length() > 255) {
             model.addAttribute("intervention", intervention);
+            String str = "Name must be longer than 5 characters and not exceed 255 characters.";
+            model.addAttribute("nameError", str);
             return "edit/name";
         }
 
@@ -72,6 +74,8 @@ public class EditController {
         Intervention intervention = (Intervention) optIntervention.get();
         if (action.length() < 20 || action.length() > 2000) {
             model.addAttribute("intervention", intervention);
+            String str = "Action must be longer than 20 characters and not exceed 2000 characters.";
+            model.addAttribute("actionError", str);
             return "edit/action";
         }
 
@@ -94,11 +98,13 @@ public class EditController {
     }
 
     @PostMapping("/expectedResponse/{interventionId}")
-    public String processExpectedResponseEdit(Model model, @PathVariable int interventionId, @RequestParam String expectedResponse) {
+    public String processExpectedResponseEdit(Model model, @PathVariable int interventionId, @RequestParam(required = false) String expectedResponse) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
         if (expectedResponse.length() < 20 || expectedResponse.length() > 2000) {
             model.addAttribute("intervention", intervention);
+            String str = "Expected Response must be longer than 20 characters and not exceed 2000 characters.";
+            model.addAttribute("expectedResponseError", str);
             return "edit/expectedResponse";
         }
 
@@ -124,10 +130,10 @@ public class EditController {
     public String processReferenceEdit(Model model, @PathVariable int interventionId, @RequestParam String reference) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
-        if (reference == null) {
-            model.addAttribute("intervention", intervention);
-            return "edit/reference";
-        }
+//        if (reference == "") {
+//            model.addAttribute("intervention", intervention);
+//            return "edit/reference";
+//        }
 
         intervention.setAction(reference);
         interventionRepository.save(intervention);
@@ -151,10 +157,10 @@ public class EditController {
     public String processIfItFailsEdit(Model model, @PathVariable int interventionId, @RequestParam String ifItFails) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
-        if (ifItFails == null) {
-            model.addAttribute("intervention", intervention);
-            return "edit/ifItFails";
-        }
+//        if (ifItFails == "") {
+//            model.addAttribute("intervention", intervention);
+//            return "edit/ifItFails";
+//        }
 
         intervention.setAction(ifItFails);
         interventionRepository.save(intervention);
@@ -182,6 +188,8 @@ public class EditController {
         if (domains == null) {
             model.addAttribute("intervention", intervention);
             model.addAttribute("domains", domainRepository.findAll());
+            String str = "A Domain must be selected.";
+            model.addAttribute("checkBoxError", str);
             return "edit/domains";
         }
 
@@ -212,6 +220,8 @@ public class EditController {
         if (tag == null) {
             model.addAttribute("intervention", intervention);
             model.addAttribute("tags", tagRepository.findAll());
+            String str = "A Tag must be selected.";
+            model.addAttribute("checkBoxErrorTag", str);
             return "edit/tags";
         }
 

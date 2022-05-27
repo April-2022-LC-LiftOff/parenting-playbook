@@ -25,8 +25,13 @@
                     </th:block>
                 </th:block>
             </th:block>
+            <br>
+            <span>(Hover over Domain names for more info.)</span>
+            <br>
+            <span th:text="${checkBoxError}" class="error" style="color:red;"></span>
         </div>
-        <input type="submit" value="Update Domains"/>
+        <input type="submit" class="btn-primary" value="Update Domains"/>
+        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn-info" value="Cancel Update"/></a>
     </form>
 </div>
 

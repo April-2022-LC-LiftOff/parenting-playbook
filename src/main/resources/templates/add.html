@@ -54,7 +54,7 @@
 
         <div class="form-group">
             <label th:for="action">*Action:</label>
-            <input id="action" class="form-control" th:field="${intervention.action}" />
+            <textarea rows="4" cols="50" id="action" class="form-control" th:field="${intervention.action}" />
             <span id="actionBlank" style="color:red;"></span>
             <br>
             <span id="actionLength" style="color:red;"></span>
@@ -64,7 +64,7 @@
 
         <div class="form-group">
             <label th:for="expectedResponse">*Expected Response:</label>
-            <input id="expectedResponse" class="form-control" th:field="${intervention.expectedResponse}" />
+            <textarea rows="4" cols="50" id="expectedResponse" class="form-control" th:field="${intervention.expectedResponse}" />
             <span id="expectedResponseBlank" style="color:red;"></span>
             <br>
             <span id="expectedResponseLength" style="color:red;"></span>
@@ -79,7 +79,7 @@
 
         <div class="form-group">
             <label th:for="ifItFails">If It Fails, try:</label>
-            <input class="form-control" th:field="${intervention.ifItFails}" />
+            <textarea rows="4" cols="50" class="form-control" th:field="${intervention.ifItFails}" />
         </div>
 
         <span>* Designates a required input.</span>
@@ -87,7 +87,7 @@
         <br>
         <br>
 
-        <input type="submit" value="Add Intervention"/>
+        <input type="submit" class="btn-primary" value="Add Intervention"/>
     </form>
 </div>
 
