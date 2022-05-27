@@ -66,7 +66,8 @@ public class HomeController {
 
     public void saveInterventions() throws FileNotFoundException {
         String delimiter = ",";
-        if (!interventionRepository.findById(17).isPresent()) {
+        List repo = (List) interventionRepository.findAll();
+        if (repo.isEmpty()) {
             try {
                 File file = new File("src/main/resources/assets/ParentingPlaybookData - Book4.csv");
                 FileReader fr = new FileReader(file);
@@ -140,6 +141,7 @@ public class HomeController {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Intervention");
             model.addAttribute("domains", domainRepository.findAll());
+            model.addAttribute("tags", tagRepository.findAll());
             return "add";
         }
 
