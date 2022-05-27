@@ -1,4 +1,201 @@
 
+body {
+   margin-top: 60px;
+   font-family: 'Montserrat', sans-serif;
+   text-align: center;
+   font-color: white;
+   padding: 50 px;
+   background: rgb(2,0,36);
+   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(160,69,185,1) 35%, rgba(0,212,255,1) 100%);
+   opacity: 0.9;
+
+}
+
+h1 {
+   text-align: center;
+   font-size: 50px;
+   color: #FFFFFF;
+   font-family: 'Montserrat', sans-serif;
+   font-weight: bold;
+}
+
+h2 {
+   text-align: center;
+   color: #FFFFFF;
+   font-family: 'Montserrat', sans-serif;
+   font-weight: bold;
+}
+
+h3 {
+   text-align: center;
+   color: #FFFFFF;
+   font-family: 'Montserrat', sans-serif;
+   font-weight: bold;
+}
+
+p {
+   text-align: center;
+   color: #FFFFFF;
+   font-family: 'Montserrat', sans-serif;
+}
+
+.table {
+align: center;
+font-family: 'Montserrat', sans-serif;
+width: 100%;
+max-width: 100%;
+margin-bottom: 20px;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* CSS */
+.button-80 {
+  background: #fffff0;
+  backface-visibility: hidden;
+  opacity: 0.9;
+  border-color: #000000;
+  border-radius: 8px;
+  border-style: solid;
+  border-width: 2px;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+ font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: -.01em;
+  line-height: 1.3;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 15px 15px ;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transform: translateZ(0) scale(1);
+  transition: transform .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-80:not(:disabled):hover {
+  transform: scale(1.05);
+}
+
+.button-80:not(:disabled):hover:active {
+  transform: scale(1.05) translateY(.125rem);
+}
+
+.button-80:focus {
+  outline: 0 solid transparent;
+}
+
+.button-80:focus:before {
+  content: "";
+  left: calc(-1*.375rem);
+  pointer-events: none;
+  position: absolute;
+  top: calc(-1*.375rem);
+  transition: border-radius;
+  user-select: none;
+}
+
+.button-80:focus:not(:focus-visible) {
+  outline: 0 solid transparent;
+}
+
+.button-80:focus:not(:focus-visible):before {
+  border-width: 0;
+}
+
+.button-80:not(:disabled):active {
+  transform: translateY(.125rem);
+}
+
+.mainTable {
+  background-color: #fffff0;
+  opacity: 1;
+  border: 3px solid #000000;
+  margin-left: auto;
+  margin-right: auto;
+  color: #4b0082;
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  padding: 20px 20px;
+}
+
+a:link {
+  color: hotpink;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+/* visited link */
+a:visited {
+  color: hotpink;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+/* mouse over link */
+a:hover {
+  color: limegreen;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+/* selected link */
+a:active {
+  color: hotpink;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+.navbar {
+   background-color: #0C0255;
+}
+
+nav navbar-nav{
+    color: white;
+    font-weight: bold;
+}
+
+table.parenting-playbook {
+    background-color: #fffff0
+    opacity: 1;
+      border: 3px solid #000000;
+      margin-left: auto;
+      margin-right: auto;
+      color: #4b0082;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+
+}
+
+table.domains-table  {
+ background-color: #fffff0
+    opacity: 1;
+      border: 3px solid white;
+      margin-left: auto;
+      margin-right: auto;
+      color: white;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+}
+
+.body-content {
+    margin-top: 80px;
+font-family: 'Montserrat', sans-serif;
+
+=======
+
 
 /*techjobs.css from previous project. Now labeled parentingplaybook.css. --
 Amanda added .profile-icon on May 22, 2022.
@@ -7,10 +204,62 @@ ADD OR CHANGE OR DELETE PREVIOUS TECHJOBS CSS CODE AS NEEDED*/
 
 .body-content {
     margin-top: 72px;
+
 }
 
 td, th {
     padding: 10px;
+
+    font-family: 'Montserrat', sans-serif;
+}
+
+th {
+    text-align: center;
+font-family: 'Montserrat', sans-serif;
+}
+
+td {
+    vertical-align: top;
+    font-family: 'Montserrat', sans-serif;
+}
+
+tr:nth-child(odd) {
+    font-family: 'Montserrat', sans-serif;
+    border-bottom: solid 2px white;
+}
+
+.centeredTable {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Montserrat', sans-serif;
+}
+
+sidenav.parenting-playbook {
+    margin: 30px auto;
+    border:3px solid #000000;
+    width: 80%
+    font-family: 'Montserrat', sans-serif;
+    font-weight: light;
+    font-color: #000000;
+}
+
+table.parenting-playbook {
+    margin: 30px auto;
+    border: 1px solid #e4e4e4;
+    width: 80%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+table.parenting-playbook td:first-child {
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    padding: 2px;
+}
+
+table.parenting-playbook td:last-child {
+    width: 80%;
+    font-family: 'Montserrat', sans-serif;
+    border-bottom: solid 2px white;
 }
 
 th {
@@ -46,21 +295,34 @@ table.job-listing td:last-child {
 
 label {
     margin-right: 15px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .centered {
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 p {
     vertical-align: top;
     margin-left: 30px;
+
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 .centeredTable {
     margin-left: auto;
     margin-right: auto;
+    font-family: 'Montserrat', sans-serif;
 }
+
+div.parenting-playbook {
+    border: 1px solid #e4e4e4;
+    width: 80%;
+    font-family: 'Montserrat', sans-serif;
+}
+
 
 div.job-listing {
     border: 1px solid #e4e4e4;
