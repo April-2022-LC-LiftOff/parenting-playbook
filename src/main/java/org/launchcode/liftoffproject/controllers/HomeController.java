@@ -210,4 +210,11 @@ public class HomeController {
     public String displayAbout() {
         return "about";
     }
+
+
+    @GetMapping("quiz")
+    public String displayQuiz() {return "quiz";}
+
 }
+
+
