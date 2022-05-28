@@ -5,9 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Controller
 @RequestMapping("quiz")
@@ -16,17 +20,28 @@ public class QuizController {
     @Autowired
     private DomainRepository domainRepository;
 
-    static HashMap<String, String> questionnaire = new HashMap<>();
+    List<String> quizResults = new ArrayList<>();
 
-
-    @RequestMapping("")
-    public String list(Model model) {
-        model.addAttribute("domains", domainRepository.findAll());
-        model.addAttribute("domains", domainRepository.findAll());
+    @GetMapping("quiz")
+    public String displayAllQuestions(Model model) {
+        List<String> questionnaire = new ArrayList<>();
+        model.addAttribute("questionnaire", questionnaire);
         return "quiz";
     }
 
+    @GetMapping("results")
+    public String displayResults(Model model) {
+        List<String> questionnaire = new ArrayList<>();
+        model.addAttribute("questionnaire", questionnaire);
+        return "results";
+    }
 
+    @PostMapping("results")
+    public String processFormMethodQuiz(Model model, @RequestParam String domain) {
+        quizResults.add(domain);
+        model.addAttribute("quizResults", quizResults);
+        return "results";
+    }
 
 }
 

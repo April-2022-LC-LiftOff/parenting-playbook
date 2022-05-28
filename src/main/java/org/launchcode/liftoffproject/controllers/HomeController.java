@@ -215,6 +215,9 @@ public class HomeController {
     @GetMapping("quiz")
     public String displayQuiz() {return "quiz";}
 
+    @PostMapping("results")
+    public String displayResults() {return "results";}
+
 }
 
 

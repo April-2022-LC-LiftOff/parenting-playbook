@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
@@ -7,17 +6,13 @@
 <div th:replace="fragments :: page-header"></div>
 
 <div>
-<h1> Quiz </h1>
-    <h4 style="color:white;">Select each statement that describes your child. </h4>
+    <h1> Quiz </h1>
+    <h3>Here are your results!</h3>
     <p style="color:red;font-weight:bold;background-color:white;">This is not a diagnostic tool and is not intended to be used
-    to provide any type of medical diagnosis.</p>
+        to provide any type of medical diagnosis.</p>
 </div>
 <div>
-    <form method="post" action="/results">
-        <input type="checkbox" name="question1">
-        <input type="submit" value="Enter">
-    </form>
-
+    <a href="www.google.com">Go to google</a>
 </div>
 </body>
 </html>
