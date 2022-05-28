@@ -6,11 +6,12 @@ body {
    font-color: white;
    padding: 50 px;
    background: rgb(2,0,36);
-   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(160,69,185,1) 35%, rgba(0,212,255,1) 100%);
+   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,72,90,1) 35%, rgba(0,212,255,1) 100%);
    opacity: 0.9;
 
 }
 
+#00485A
 h1 {
    text-align: center;
    font-size: 50px;

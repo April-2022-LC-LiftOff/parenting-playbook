@@ -33,6 +33,7 @@ public class QuizController {
     public String displayResults(Model model) {
         List<String> questionnaire = new ArrayList<>();
         model.addAttribute("questionnaire", questionnaire);
+        model.addAttribute("quizResults", quizResults);
         return "results";
     }
 
