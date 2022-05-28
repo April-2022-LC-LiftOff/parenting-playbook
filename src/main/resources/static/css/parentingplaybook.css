@@ -11,7 +11,7 @@ body {
 
 }
 
-#00485A
+
 h1 {
    text-align: center;
    font-size: 50px;
@@ -35,9 +35,10 @@ h3 {
 }
 
 p {
-   text-align: center;
+   text-align: left;
    color: #FFFFFF;
    font-family: 'Montserrat', sans-serif;
+   font-size: 16 px;
 }
 
 .table {
@@ -56,9 +57,9 @@ margin-bottom: 20px;
 
 /* CSS */
 .button-80 {
-  background: #fffff0;
+  background: #ffffff;
   backface-visibility: hidden;
-  opacity: 0.9;
+  opacity: 1;
   border-color: #000000;
   border-radius: 8px;
   border-style: solid;
@@ -69,13 +70,13 @@ margin-bottom: 20px;
   display: inline-block;
  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 250;
   letter-spacing: -.01em;
   line-height: 1.3;
   margin-left: 10px;
   margin-right: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 15px 15px ;
   position: relative;
   text-align: left;
@@ -122,14 +123,15 @@ margin-bottom: 20px;
 }
 
 .mainTable {
-  background-color: #fffff0;
+  background-color: #ffffff;
   opacity: 1;
-  border: 3px solid #000000;
+  border: 2px solid #FFFFFF;
   margin-left: auto;
   margin-right: auto;
   color: #4b0082;
   text-align: left;
   font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
   padding: 20px 20px;
 }
 
@@ -161,39 +163,49 @@ a:active {
 }
 .navbar {
    background-color: #0C0255;
+   font-size: 14px;
 }
 
 nav navbar-nav{
     color: white;
     font-weight: bold;
+    font-size: 14px;
 }
 
 table.parenting-playbook {
-    background-color: #fffff0
+    background-color: #ffffff
     opacity: 1;
-      border: 3px solid #000000;
+      border: 1px solid #ffffff;
+      border-collapse:separate;
+      border-spacing:0 15px;
       margin-left: auto;
       margin-right: auto;
       color: #4b0082;
       text-align: left;
       font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      table-layout: fixed;
+        width: 800px;
 
 }
 
 table.domains-table  {
- background-color: #fffff0
-    opacity: 1;
-      border: 3px solid white;
+      background-color: #ffffff
+      opacity: 1;
+      border: 2px solid white;
       margin-left: auto;
       margin-right: auto;
       color: white;
       text-align: left;
       font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
 }
 
 .body-content {
     margin-top: 80px;
 font-family: 'Montserrat', sans-serif;
+font-size: 15px;
+
 
 =======
 
@@ -216,23 +228,25 @@ td, th {
 
 th {
     text-align: center;
-font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 td {
     vertical-align: top;
     font-family: 'Montserrat', sans-serif;
+    padding: 10px 0;
 }
 
 tr:nth-child(odd) {
     font-family: 'Montserrat', sans-serif;
-    border-bottom: solid 2px white;
+    border-bottom: solid 1px white;
 }
 
 .centeredTable {
     margin-left: auto;
     margin-right: auto;
     font-family: 'Montserrat', sans-serif;
+     border-bottom: solid 1px white;
 }
 
 sidenav.parenting-playbook {
@@ -246,29 +260,33 @@ sidenav.parenting-playbook {
 
 table.parenting-playbook {
     margin: 30px auto;
-    border: 1px solid #e4e4e4;
+    border: 1px solid FFFFFF;
     width: 80%;
     font-family: 'Montserrat', sans-serif;
+     border-bottom: solid 1px white;
 }
 
 table.parenting-playbook td:first-child {
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
     padding: 2px;
+     border-bottom: solid 1px white;
 }
 
 table.parenting-playbook td:last-child {
     width: 80%;
     font-family: 'Montserrat', sans-serif;
-    border-bottom: solid 2px white;
+    border-bottom: solid 1px white;
 }
 
 th {
     text-align: left;
+     border-bottom: solid 1px white;
 }
 
 td {
     vertical-align: left;
+
 }
 
 tr:nth-child(odd) {
@@ -320,16 +338,20 @@ p {
 }
 
 div.parenting-playbook {
-    border: 1px solid #e4e4e4;
+    border: 1px solid #FFFFFF
     width: 80%;
     font-family: 'Montserrat', sans-serif;
+     border-bottom: solid 1px white;
 }
 
 
 div.job-listing {
-    border: 1px solid #e4e4e4;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 20px;
+    border: 1px solid #FFFFFF;
+
     width: 80%;
-    background-color: #e4e4e4;
 }
 /********** ADDED BY AMANDA*********/
 .profile-icon {

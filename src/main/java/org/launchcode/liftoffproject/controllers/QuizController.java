@@ -40,6 +40,7 @@ public class QuizController {
     @PostMapping("results")
     public String processFormMethodQuiz(Model model, RequestParam domain)  {
         quizResults.add(String.valueOf(domain));
+
         model.addAttribute("quizResults", quizResults);
         model.addAttribute("domains", domainRepository.findAll());
         return "results";

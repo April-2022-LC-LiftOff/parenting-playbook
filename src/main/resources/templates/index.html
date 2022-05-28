@@ -14,23 +14,24 @@
 <div>
 
     <h1 style="color:white;">Welcome to the Parenting Playbook!</h1>
-    <h3 style="color:white;">Select an executive functioning domain to find strategies to help your child succeed.</h3>
+    <h3 style="color:white;padding:20px 20px;">Select an executive functioning domain to find strategies to help your child succeed.</h3>
 
     <button class="button-80" role="button" th:each="domain : ${domains}">
-        <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}" ></a>
+        <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
     </button>
 </div>
-
+<!--input type="submit" class="btn-primary" value="Add Intervention"/-->
 <div>
     <h3 style="color:white;">Not sure where to start? Take our quiz!</h3>
     <button class="button-80" role="button">
-        <a th:href="@{'quiz'}" style="color:black;">Quiz</a>
+        <a th:href="@{'quiz'}">Domains Quiz</a>
     </button>
 </div>
 <div>
 
     <div class="row content">
-        <div class="mainTable" style="padding: 20px 20px">
+        <div class="mainTable">
+            <h1 style="color:#4b0082;text-align:center;">Frequently Asked Questions</h1>
 
             <h3 style="color:#4b0082;text-align:center; padding: 20px 30px;">What is Executive Functioning?</h3>
             <p style="color:#4b0082;text-align:left;">
@@ -46,8 +47,11 @@
             </li>
             <li style="color:#4b0082;text-align:left;margin-left:20px">You can also search by executive functioning domain, intervention, or by keywords.
             </li>
-
             <li style="color:#4b0082;text-align:left;margin-left:20px">Join our community by creating an account!</li>
+
+            <h3 style="color:#4b0082;text-align:center;padding: 20px 30px;">Do I have to make an account to use the Parenting Playbook?</h3>
+            <p style="color:#4b0082;text-align:left;">You don't have to make an account to use the Parenting Playbook, but
+            there are many benefits to registering for an account with us!</p>
             <li style="color:#4b0082;text-align:left;margin-left:20px">Users have the opportunity to find potential
                 strategies to try at home save them to an account. </li>
             <li style="color:#4b0082;text-align:left;margin-left:20px">Community members can also add interventions to the database

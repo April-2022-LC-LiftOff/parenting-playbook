@@ -11,7 +11,7 @@
     <form th:action="@{/search/results}" method="post">
         <h2>Search by:</h2>
 
-        <p>
+        <p style="text-align:center;">
             <span th:each="column : ${columns}">
                 <input
                         type="radio"
@@ -23,9 +23,9 @@
             </span>
         </p>
 
-        <p>
+        <p style="text-align:center;">
             <label for="searchTerm">Keyword:</label>
-            <input type="text" name="searchTerm" id="searchTerm" />
+            <input type="text" name="searchTerm" id="searchTerm" style="color:black;"/>
         </p>
 
         <input type="submit" value="Search" />
@@ -33,8 +33,8 @@
 
     <hr />
 
-    <table class="parenting-playbook">
-        <tr th:each="intervention : ${interventions}">
+    <table class="parenting-playbook" th:each="intervention : ${interventions}">
+        <tr>
             <td>
                 <p>
                     Name:
