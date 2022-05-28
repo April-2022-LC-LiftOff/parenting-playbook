@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -37,11 +37,14 @@ public class QuizController {
     }
 
     @PostMapping("results")
-    public String processFormMethodQuiz(Model model, @RequestParam String domain) {
-        quizResults.add(domain);
+    public String processFormMethodQuiz(Model model, RequestParam domain)  {
+        quizResults.add(String.valueOf(domain));
         model.addAttribute("quizResults", quizResults);
+        model.addAttribute("domains", domainRepository.findAll());
         return "results";
     }
+
+
 
 }
 

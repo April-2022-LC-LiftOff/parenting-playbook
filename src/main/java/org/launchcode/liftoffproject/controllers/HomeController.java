@@ -216,7 +216,12 @@ public class HomeController {
     public String displayQuiz() {return "quiz";}
 
     @PostMapping("results")
-    public String displayResults() {return "results";}
+    public String displayResults(Model model) {
+        model.addAttribute("title", "Quiz");
+        model.addAttribute("domains", domainRepository.findAll());
+
+        return "results";
+    }
 
 }
 

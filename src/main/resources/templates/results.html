@@ -14,5 +14,11 @@
 <div>
     <a href="www.google.com">Go to google</a>
 </div>
+
+<div>
+    <button class="button-80" role="button" th:each="domain : ${domains}">
+        <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}" ></a>
+    </button>
+</div>
 </body>
 </html>
