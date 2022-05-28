@@ -213,7 +213,10 @@ public class HomeController {
 
 
     @GetMapping("quiz")
-    public String displayQuiz() {return "quiz";}
+    public String processQuiz(Model model) {
+
+        return "quiz";
+    }
 
     @PostMapping("results")
     public String displayResults(Model model) {
