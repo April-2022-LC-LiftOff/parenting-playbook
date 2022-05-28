@@ -136,14 +136,14 @@ margin-bottom: 20px;
 }
 
 a:link {
-  color: hotpink;
+  color: darkorange;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
 }
 
 /* visited link */
 a:visited {
-  color: hotpink;
+  color: darkorange;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
 }
@@ -157,7 +157,7 @@ a:hover {
 
 /* selected link */
 a:active {
-  color: hotpink;
+  color: darkorange;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
 }

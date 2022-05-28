@@ -36,12 +36,15 @@ public class HomeController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private QuizController quizController;
+
 
     public void createDomains() throws FileNotFoundException {
         String delimiter = ",";
         List repo = (List) domainRepository.findAll();
 
-        if (repo.isEmpty()){
+        if (repo.isEmpty()) {
             try {
                 File file = new File("src/main/resources/assets/domains.csv");
                 FileReader fr = new FileReader(file);
@@ -164,7 +167,7 @@ public class HomeController {
         return "redirect:";
     }
 
-// HttpServletRequest request
+    // HttpServletRequest request
     @GetMapping("view/{interventionId}")
     public String displayViewIntervention(Model model, @PathVariable int interventionId) {
         Optional optIntervention = interventionRepository.findById(interventionId);
@@ -177,7 +180,7 @@ public class HomeController {
 
             model.addAttribute("comment", new Comment());
 
-            model.addAttribute("username",user.getUsername());
+            model.addAttribute("username", user.getUsername());
             model.addAttribute(user);
 
             model.addAttribute("comments", commentRepository.findCommentByInterventionId(interventionId));
@@ -193,7 +196,7 @@ public class HomeController {
                                     @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
-        if(errors.hasErrors()) {
+        if (errors.hasErrors()) {
             model.addAttribute("intervention", intervention);
             return "view";
         }
@@ -214,18 +217,17 @@ public class HomeController {
 
     @GetMapping("quiz")
     public String processQuiz(Model model) {
-
+        model.addAttribute("title", "Quiz");
         return "quiz";
     }
 
     @PostMapping("results")
-    public String displayResults(Model model) {
+    public String displayResults (Model model) {
         model.addAttribute("title", "Quiz");
-        model.addAttribute("domains", domainRepository.findAll());
-
         return "results";
-    }
-
 }
+}
+
+
 
 
