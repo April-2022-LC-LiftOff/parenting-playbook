@@ -274,10 +274,11 @@ tr:nth-child(odd) {
     background-color: #e4e4e4;
 }
 
-/*.centeredTable {
+.centeredTable {
     margin-left: auto;
     margin-right: auto;
-}*/
+}
+}
 
 table.job-listing {
     margin: 30px auto;
