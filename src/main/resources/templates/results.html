@@ -8,7 +8,7 @@
 
 <div>
     <h1> Quiz </h1>
-    <h4>Here are your results!</h4>
+    <h4 style="color:white;">Here are your results!</h4>
     <h4 style="color:red;font-weight:bold;text-align:center;background-color:black;">This is not a diagnostic tool and
         is not intended to be used
         to provide any type of medical diagnosis.</h4>
@@ -17,6 +17,10 @@
     <a href="www.google.com">Go to google</a>
 </div>
 
+<div>
+    <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
+    <a th:hrep="@{'domains/view/' + ${quizResults.id}}" th:text="${quizResults.quizResults}"></a>
+</div>
 <div>
     <button class="button-80" role="button" th:each="domain : ${domains}">
         <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>

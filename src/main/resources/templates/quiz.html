@@ -16,148 +16,161 @@
 
 <div style="color:white; text-align:left;margin-left:auto;margin-right:auto;padding:20px 400px;font-size:16px;">
     <form method="post" action="/results">
-        <label id="checkBoxLabel" th:for="impulseControl">
+        <label id="impulseControl" th:for="impulseControl">
         <div style="margin-top:10px;">
-            <input type="checkbox" id="impulseControl1"> My child shouts out without thinking.
+            <input type="checkbox" name="impulseControl"> My child shouts out without thinking.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="impulseControl2"> When my child sees something they want, they immediately grab
+            <input type="checkbox" name="impulseControl"> When my child sees something they want, they immediately grab
             for it.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="impulseControl3"> My child can't wait patiently.
+            <input type="checkbox" name="impulseControl"> My child can't wait patiently.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="impulseControl4"> My child is verbally aggressive toward others and immediately
+            <input type="checkbox" name="impulseControl"> My child is verbally aggressive toward others and immediately
             expresses remorse.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="impulseControl5"> My child is physically aggressive toward others and
+            <input type="checkbox" name="impulseControl"> My child is physically aggressive toward others and
             immediately expresses remorse.
         </div>
         </label>
+        <label id="emotionalControl" th:for="emotionalControl">
         <div style="margin-top:10px;">
-            <input type="checkbox" id="emotionalControl1"> My child seems to cry at things that aren't a big deal.
+            <input type="checkbox" name="emotionalControl"> My child seems to cry at things that aren't a big deal.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="emotionalControl2"> My child has tantrums multiple times a week.
+            <input type="checkbox" name="emotionalControl"> My child has tantrums multiple times a week.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="emotionalControl3"> My child's teacher says that they have outbursts in class.
+            <input type="checkbox" name="emotionalControl"> My child's teacher says that they have outbursts in class.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="emotionalControl4"> My child engages in unsafe behaviors when triggered by a big
+            <input type="checkbox" name="emotionalControl"> My child engages in unsafe behaviors when triggered by a big
             emotion.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="emotionalControl5"> My child seems to go from '0-100' in an instant.
+            <input type="checkbox" name="emotionalControl"> My child seems to go from '0-100' in an instant.
+        </div>
+        </label>
+        <label id="flexibleThinking" th:for="flexibleThinking">
+        <div style="margin-top:10px;">
+            <input type="checkbox" name="flexibleThinking"> My child doesn't like to deviate from their normal routine.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="flexibleThinking1"> My child doesn't like to deviate from their normal routine.
+            <input type="checkbox" name="flexibleThinking"> My child struggles with unexpected changes.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="flexibleThinking2"> My child struggles with unexpected changes.
-        </div>
-        <div style="margin-top:10px;">
-            <input type="checkbox" id="flexibleThinking3"> When my child's mind is made up, it's hard to get them to
+            <input type="checkbox" name="flexibleThinking"> When my child's mind is made up, it's hard to get them to
             change it.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="flexibleThinking4"> My child struggles to compromise.
+            <input type="checkbox" name="flexibleThinking"> My child struggles to compromise.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="flexibleThinking5"> My child always believes they are right even when presented
+            <input type="checkbox" name="flexibleThinking"> My child always believes they are right even when presented
             with evidence to the contrary.
         </div>
+        </label>
+        <label id="workingMemory" th:for="workingMemory">
         <div style="margin-top:10px;">
-            <input type="checkbox" id="workingMemory1"> My child can't follow multiple step directions.
+            <input type="checkbox" name="workingMemory"> My child can't follow multiple step directions.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="workingMemory2"> My child forgets things they were told recently.
+            <input type="checkbox" name="workingMemory"> My child forgets things they were told recently.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="workingMemory3"> My child struggles with learning new concepts.
+            <input type="checkbox" name="workingMemory"> My child struggles with learning new concepts.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="workingMemory4"> My child is always misplacing things and forgetting where they
+            <input type="checkbox" name="workingMemory"> My child is always misplacing things and forgetting where they
             left them.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="workingMemory5"> My child needs things repeated multiple times for
+            <input type="checkbox" name="workingMemory"> My child needs things repeated multiple times for
             understanding.
         </div>
+        </label>
+        <label id="selfMonitoring" th:for="selfMonitoring">
         <div style="margin-top:10px;">
-            <input type="checkbox" id="selfMonitoring1">My child easily gets off task.
+            <input type="checkbox" name="selfMonitoring">My child easily gets off task.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="selfMonitoring2">My child doesn't seem to realize that they are off task.
+            <input type="checkbox" name="selfMonitoring">My child doesn't seem to realize that they are off task.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="selfMonitoring3">My child's teacher says they struggle with appropriate behavior
+            <input type="checkbox" name="selfMonitoring">My child's teacher says they struggle with appropriate behavior
             when overwhelmed or excited.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="selfMonitoring4">My child doesn't seem to pay attention to how their body feels
+            <input type="checkbox" name="selfMonitoring">My child doesn't seem to pay attention to how their body feels
             to let them know they are getting upset.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="selfMonitoring5">My child needs someone to keep them on task and prompt
+            <input type="checkbox" name="selfMonitoring">My child needs someone to keep them on task and prompt
             frequently to get things done.
         </div>
+        </label>
+        <label id="planningAndPrioritizing" th:for="planningAndPrioritizing">
         <div style="margin-top:10px;">
-            <input type="checkbox" id="planningAndPrioritizing1">My child seems to complete tasks in a random order
+            <input type="checkbox" name="planningAndPrioritizing">My child seems to complete tasks in a random order
             that is illogical.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="planningAndPrioritizing2">My child is either almost always late or almost always
+            <input type="checkbox" name="planningAndPrioritizing">My child is either almost always late or almost always
             early.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="planningAndPrioritizing3">My child doesn't seem to understand how to organize
+            <input type="checkbox" name="planningAndPrioritizing">My child doesn't seem to understand how to organize
             their time to complete tasks.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="planningAndPrioritizing4">My child doesn't understand how to break a task into
+            <input type="checkbox" name="planningAndPrioritizing">My child doesn't understand how to break a task into
             sequential steps for completion.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="planningAndPrioritizing5">My child struggles greatly with time management in
+            <input type="checkbox" name="planningAndPrioritizing">My child struggles greatly with time management in
             various aspects of their life.
         </div>
+        </label>
+        <label id="taskInitiation" th:for="taskInitiation">
         <div style="margin-top:10px;">
-            <input type="checkbox" id="taskInitiation1">I don't understand why my child can't just start something when
+            <input type="checkbox" name="taskInitiation">I don't understand why my child can't just start something when
             I ask.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="taskInitiation2">It takes forever for my child to get down to work when given a
+            <input type="checkbox" name="taskInitiation">It takes forever for my child to get down to work when given a
             direction.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="taskInitiation3">My child is a major procrastinator.
+            <input type="checkbox" name="taskInitiation">My child is a major procrastinator.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="taskInitiation4">My child will say things like, "I don't know what to do/how to
+            <input type="checkbox" name="taskInitiation">My child will say things like, "I don't know what to do/how to
             start."
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="taskInitiation5">My child gets sidetracked so easily that it takes a long time
+            <input type="checkbox" name="taskInitiation">My child gets sidetracked so easily that it takes a long time
             to follow directions.
         </div>
+        </label>
+        <label id="organization" th:for="organization">
         <div style="margin-top:10px;">
-            <input type="checkbox" id="organization1">My child's room/desk is almost always a mess.
+            <input type="checkbox" name="organization">My child's room/desk is almost always a mess.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="organization2">My child keeps everything in cluttered piles instead of putting
+            <input type="checkbox" name="organization">My child keeps everything in cluttered piles instead of putting
             things away where they belong.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="organization3">My child's folders are overflowing and their papers are crumpled.
+            <input type="checkbox" name="organization">My child's folders are overflowing and their papers are crumpled.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="organization4">My child can't seem to organize their thoughts/ideas.
+            <input type="checkbox" name="organization">My child can't seem to organize their thoughts/ideas.
         </div>
         <div style="margin-top:10px;">
-            <input type="checkbox" id="organization5">My child doesn't seem to understand how to clean their space.
+            <input type="checkbox" name="organization">My child doesn't seem to understand how to clean their space.
         </div>
         <div style="margin-top:10px;">
             <input type="submit" value="Enter" style="color:black;">

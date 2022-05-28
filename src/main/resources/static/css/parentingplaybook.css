@@ -201,7 +201,7 @@ table.domains-table  {
       font-size: 15px;
 }
 
-.body-content {
+.\body-content {
     margin-top: 80px;
 font-family: 'Montserrat', sans-serif;
 font-size: 15px;
@@ -215,7 +215,7 @@ Amanda added .profile-icon on May 22, 2022.
 
 ADD OR CHANGE OR DELETE PREVIOUS TECHJOBS CSS CODE AS NEEDED*/
 
-.body-content {
+body-content {
     margin-top: 72px;
 
 }
