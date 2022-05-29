@@ -17,9 +17,30 @@
     <a href="www.google.com">Go to google</a>
 </div>
 
-<button class="button-80" role="button"  th:each="quiz : ${quiz}">
-    <a th:href="@{'domains/view/'}" th:text="${quiz.quiz}" style="color:black;"></a>
-</button>
+<div th:each="impulseControl : ${impulseControl}">
+    <div style="color=white;" th:text="${impulseControl} ?: '(not specified)'"></div>
+</div>
+<div th:each="emotionalControl : ${emotionalControl}">
+    <div th:text="${emotionalControl} ?: '(not specified)'"></div>
+</div>
+<div th:each="flexibleThinking : ${flexibleThinking}">
+    <div th:text="${flexibleThinking} ?: '(not specified)'"></div>
+</div>
+<div th:each="workingMemory : ${workingMemory}">
+    <div th:text="${workingMemory} ?: '(not specified)'"></div>
+</div>
+<div th:each="selfMonitoring : ${selfMonitoring}">
+    <div th:text="${selfMonitoring} ?: '(not specified)'"></div>
+</div>
+<div th:each="planningAndPrioritizing : ${planningAndPrioritizing}">
+    <div th:text="${planningAndPrioritizing} ?: '(not specified)'"></div>
+</div>
+<div th:each="taskInitiation : ${taskInitiation}">
+    <div th:text="${taskInitiation} ?: '(not specified)'"></div>
+</div>
+<div th:each="organization : ${organization}">
+    <div th:text="${organization} ?: '(not specified)'"></div>
+</div>
 
 </body>
 </html>

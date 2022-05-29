@@ -227,10 +227,8 @@ public class HomeController {
     }
 
     @GetMapping("results")
-    public String getResults(Model model) {
-        List<String> questionnaire = new ArrayList<>();
-        model.addAttribute("questionnaire", questionnaire);
-        model.addAttribute("quizResults", quizResults);
+    public String getResults(Model model, Quiz quiz) {
+        model.addAttribute("Quiz", quiz);
         return "results";
     }
 
@@ -244,14 +242,13 @@ public class HomeController {
                                                 List<String> taskInitiation, @RequestParam(required = false)
                                                 List<String> organization) {
 
-        model.addAttribute("quiz", quiz);
 
         if (impulseControl == null) {
             model.addAttribute("title", quiz);
             System.out.println("impulse null");
         } else if (impulseControl.size() >= 2) {
 //            model.addAttribute("title", "Display Domain");
-            model.addAttribute("quiz", domainRepository.findById(1));
+            model.addAttribute("impulseControl", domainRepository.findById(1));
             System.out.println("impulse found!!");
 //            model.addAttribute("quiz", quizResults);
         }
@@ -262,7 +259,7 @@ public class HomeController {
         } else if (emotionalControl.size() >= 2) {
 //            model.addAttribute("title", quizResults);
             System.out.println("emo control found!!");
-            model.addAttribute("quiz", domainRepository.findById(2));
+            model.addAttribute("impulseControl", domainRepository.findById(2));
         }
 
         if (flexibleThinking == null) {
@@ -271,7 +268,7 @@ public class HomeController {
         } else if (flexibleThinking.size() >= 2) {
 //            model.addAttribute("title", "Display Domain");
             System.out.println("flexible found!!");
-            model.addAttribute("quiz", domainRepository.findById(3));
+            model.addAttribute("flexibleThinking", domainRepository.findById(3));
 //            model.addAttribute("quiz", quizResults);
         }
 
@@ -281,7 +278,7 @@ public class HomeController {
         } else if (workingMemory.size() >= 2) {
 //            model.addAttribute("title", "Display Domain");
             System.out.println("working mem found!!");
-            model.addAttribute("quiz", domainRepository.findById(4));
+            model.addAttribute("workingMemory", domainRepository.findById(4));
 //            model.addAttribute("quiz", quizResults);
         }
 
@@ -291,7 +288,7 @@ public class HomeController {
         } else if (selfMonitoring.size() >= 2) {
 //            model.addAttribute("title", "Display Domain");
             System.out.println("self monitoring found!!");
-            model.addAttribute("quiz", domainRepository.findById(5));
+            model.addAttribute("selfMonitoring", domainRepository.findById(5));
 //            model.addAttribute("quiz", quizResults);
         }
 
@@ -301,7 +298,7 @@ public class HomeController {
         } else if (planningAndPrioritizing.size() >= 2) {
 //            model.addAttribute("title", "Display Domain");
             System.out.println("planning found!!");
-            model.addAttribute("quiz", domainRepository.findById(6));
+            model.addAttribute("planningAndPrioritizing", domainRepository.findById(6));
 //            model.addAttribute("quiz", quizResults);
         }
 
@@ -311,7 +308,7 @@ public class HomeController {
         } else if (taskInitiation.size() >= 2) {
 //            model.addAttribute("title", "Display Domain");
             System.out.println("task init found!!");
-            model.addAttribute("quiz", domainRepository.findById(7));
+            model.addAttribute("taskInitiation", domainRepository.findById(7));
 //            model.addAttribute("quiz", quizResults);
         }
 
@@ -321,9 +318,11 @@ public class HomeController {
         } else if (organization.size() >= 2) {
 //            model.addAttribute("title", "Display Domain");
             System.out.println("org found!!");
-            model.addAttribute("quiz", domainRepository.findById(8));
+            model.addAttribute("organization", domainRepository.findById(8));
 //            model.addAttribute("quiz", quizResults);
         }
+
+        model.addAttribute("Quiz", quiz);
 
         return "results";
 
