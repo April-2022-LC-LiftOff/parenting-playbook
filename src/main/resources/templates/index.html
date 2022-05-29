@@ -16,15 +16,15 @@
     <h1 style="color:white;">Welcome to the Parenting Playbook!</h1>
     <h3 style="color:white;padding:20px 20px;">Select an executive functioning domain to find strategies to help your child succeed.</h3>
 
-    <button class="button-80" role="button" th:each="domain : ${domains}">
-        <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
+    <button class="button-80" role="button"  th:each="domain : ${domains}">
+        <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}" style="color:black;"></a>
     </button>
 </div>
 <!--input type="submit" class="btn-primary" value="Add Intervention"/-->
 <div>
     <h3 style="color:white;">Not sure where to start? Take our quiz!</h3>
     <button class="button-80" role="button">
-        <a th:href="@{'quiz'}">Domains Quiz</a>
+        <a th:href="@{'quiz'}" style="color:black;">Domains Quiz</a>
     </button>
 </div>
 <div>

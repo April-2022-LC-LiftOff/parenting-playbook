@@ -248,66 +248,81 @@ public class HomeController {
 
         if (impulseControl == null) {
             model.addAttribute("title", quizResults);
+            System.out.println("impulse null");
         } else if (impulseControl.size() >= 2) {
-            model.addAttribute("title", "Display Domain");
+//            model.addAttribute("title", "Display Domain");
             model.addAttribute("domain", domainRepository.findById(1));
-            model.addAttribute("quiz", quizResults);
-
+            System.out.println("impulse found!!");
+//            model.addAttribute("quiz", quizResults);
         }
 
         if (emotionalControl == null) {
             model.addAttribute("title", quizResults);
+            System.out.println("emocontrol null");
         } else if (emotionalControl.size() >= 2) {
-            model.addAttribute("title", quizResults);
+//            model.addAttribute("title", quizResults);
+            System.out.println("emo control found!!");
             model.addAttribute("domains", domainRepository.findById(2));
         }
 
         if (flexibleThinking == null) {
             model.addAttribute("title", quizResults);
+            System.out.println("flexible null");
         } else if (flexibleThinking.size() >= 2) {
-            model.addAttribute("title", "Display Domain");
+//            model.addAttribute("title", "Display Domain");
+            System.out.println("flexible found!!");
             model.addAttribute("domains", domainRepository.findById(3));
-            model.addAttribute("quiz", quizResults);
+//            model.addAttribute("quiz", quizResults);
         }
 
         if (workingMemory == null) {
             model.addAttribute("title", quizResults);
+            System.out.println("working mem null");
         } else if (workingMemory.size() >= 2) {
-            model.addAttribute("title", "Display Domain");
+//            model.addAttribute("title", "Display Domain");
+            System.out.println("working mem found!!");
             model.addAttribute("domains", domainRepository.findById(4));
-            model.addAttribute("quiz", quizResults);
+//            model.addAttribute("quiz", quizResults);
         }
 
         if (selfMonitoring == null) {
             model.addAttribute("title", quizResults);
+            System.out.println("self monitoring null");
         } else if (selfMonitoring.size() >= 2) {
-            model.addAttribute("title", "Display Domain");
+//            model.addAttribute("title", "Display Domain");
+            System.out.println("self monitoring found!!");
             model.addAttribute("domains", domainRepository.findById(5));
-            model.addAttribute("quiz", quizResults);
+//            model.addAttribute("quiz", quizResults);
         }
 
         if (planningAndPrioritizing == null) {
             model.addAttribute("title", quizResults);
+            System.out.println("planning null");
         } else if (planningAndPrioritizing.size() >= 2) {
-            model.addAttribute("title", "Display Domain");
+//            model.addAttribute("title", "Display Domain");
+            System.out.println("planning found!!");
             model.addAttribute("domains", domainRepository.findById(6));
-            model.addAttribute("quiz", quizResults);
+//            model.addAttribute("quiz", quizResults);
         }
 
         if (taskInitiation == null) {
             model.addAttribute("title", quizResults);
+            System.out.println("task init null");
         } else if (taskInitiation.size() >= 2) {
-            model.addAttribute("title", "Display Domain");
+//            model.addAttribute("title", "Display Domain");
+            System.out.println("task init found!!");
             model.addAttribute("domains", domainRepository.findById(7));
-            model.addAttribute("quiz", quizResults);
+//            model.addAttribute("quiz", quizResults);
         }
 
         if (organization == null) {
             model.addAttribute("title", quizResults);
+            System.out.println("org null");
         } else if (organization.size() >= 2) {
-            model.addAttribute("title", "Display Domain");
+//            model.addAttribute("title", "Display Domain");
+            System.out.println("org found!!");
             model.addAttribute("domains", domainRepository.findById(8));
-            model.addAttribute("quiz", quizResults);
+//            model.addAttribute("quiz", quizResults);
         }
 
         return "results";

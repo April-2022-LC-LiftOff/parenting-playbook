@@ -3,6 +3,8 @@ package org.launchcode.liftoffproject.models;
 
 import javax.persistence.Entity;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 @Entity
@@ -35,6 +37,8 @@ public class Quiz extends AbstractEntity {
         this.taskInitiation = taskInitiation;
         this.organization = organization;
     }
+
+    private ArrayList<Quiz> quizResults = new ArrayList<>();
 
     public Quiz() {}
 
@@ -100,5 +104,20 @@ public class Quiz extends AbstractEntity {
 
     public void setOrganization(String[] organization) {
         this.organization = organization;
+    }
+
+    @Override
+    public String toString() {
+        return "Quiz{" +
+                "impulseControl=" + Arrays.toString(impulseControl) +
+                ", emotionalControl=" + Arrays.toString(emotionalControl) +
+                ", flexibleThinking=" + Arrays.toString(flexibleThinking) +
+                ", workingMemory=" + Arrays.toString(workingMemory) +
+                ", selfMonitoring=" + Arrays.toString(selfMonitoring) +
+                ", planningAndPrioritizing=" + Arrays.toString(planningAndPrioritizing) +
+                ", taskInitiation=" + Arrays.toString(taskInitiation) +
+                ", organization=" + Arrays.toString(organization) +
+                ", quizResults=" + quizResults +
+                '}';
     }
 }
