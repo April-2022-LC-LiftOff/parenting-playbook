@@ -16,9 +16,10 @@
 <div>
     <a href="www.google.com">Go to google</a>
 </div>
-<div align="center">
-    <h2>Results</h2>
- 
-</div>
+
+<button class="button-80" role="button"  th:each="quiz : ${quiz}">
+    <a th:href="@{'domains/view/'}" th:text="${quiz.quiz}" style="color:black;"></a>
+</button>
+
 </body>
 </html>
