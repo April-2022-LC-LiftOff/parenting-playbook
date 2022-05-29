@@ -156,21 +156,22 @@ public class HomeController {
 
 // HttpServletRequest request
     @GetMapping("view/{interventionId}")
-    public String displayViewIntervention(Model model, @PathVariable int interventionId) {
+    public String displayViewIntervention(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             model.addAttribute("intervention", intervention);
 
-            User user = new User();
-//            User user = authenticationController.getUserFromSession(request.getSession());
+//            User user = new User();
+            User user = authenticationController.getUserFromSession(request.getSession());
 
+            model.addAttribute("comments", commentRepository.findCommentByInterventionIdAndUserId(interventionId, user.getId()));
+
+            model.addAttribute("username",userRepository.findByUsername(user.getUsername()));
+//            model.addAttribute("username", user.getUsername());
+            model.addAttribute(user);
             model.addAttribute("comment", new Comment());
 
-            model.addAttribute("username",user.getUsername());
-            model.addAttribute(user);
-
-            model.addAttribute("comments", commentRepository.findCommentByInterventionId(interventionId));
 
             return "view";
         } else {
