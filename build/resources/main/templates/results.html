@@ -18,13 +18,13 @@
 </div>
 
 <div>
+   <table>
+       <tr th:each="quizResult : ${quizResults}">
+<p style="color:white;">These are your results!</p>
     <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
-    <a th:hrep="@{'domains/view/' + ${quizResults.id}}" th:text="${quizResults.quizResults}"></a>
+        </tr>
+   </table>
 </div>
-<div>
-    <button class="button-80" role="button" th:each="domain : ${domains}">
-        <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
-    </button>
-</div>
+
 </body>
 </html>

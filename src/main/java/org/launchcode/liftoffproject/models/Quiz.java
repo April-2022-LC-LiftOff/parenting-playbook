@@ -2,6 +2,7 @@ package org.launchcode.liftoffproject.models;
 
 
 import javax.persistence.Entity;
+import java.util.ArrayList;
 
 
 @Entity
@@ -15,6 +16,25 @@ public class Quiz extends AbstractEntity {
     String [] planningAndPrioritizing;
     String [] taskInitiation;
     String [] organization;
+
+    public  Quiz (String [] impulseControl,
+    String [] emotionalControl,
+    String [] flexibleThinking,
+    String [] workingMemory,
+    String [] selfMonitoring,
+    String [] planningAndPrioritizing,
+    String [] taskInitiation,
+    String [] organization) {
+
+        this.impulseControl = impulseControl;
+        this.emotionalControl = emotionalControl;
+        this.flexibleThinking = flexibleThinking;
+        this.workingMemory = workingMemory;
+        this.selfMonitoring = selfMonitoring;
+        this.planningAndPrioritizing = planningAndPrioritizing;
+        this.taskInitiation = taskInitiation;
+        this.organization = organization;
+    }
 
     public Quiz() {}
 
