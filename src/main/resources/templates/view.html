@@ -60,8 +60,11 @@
 </span>
 <br><br><br>
 <div>
-    <h3>Leave a Comment: </h3>
+    <h3>Login or join us for leave your comment!</h3>
 </div>
+<div th:if="${user} != null">
+<h3>Leave a Comment: </h3>
+
 <form method="post">
     <div class="form-group">
         <textarea class="form-control" th:field="${comment.userInput}" placeholder="Have any thought?"></textarea>
@@ -70,6 +73,6 @@
         <button class="btn btn-success btn-md" type="submit">Add Comment</button>
     </div>
 </form>
-
+</div>
 </body>
 </html>
