@@ -2,18 +2,18 @@ package org.launchcode.liftoffproject.controllers;
 
 import org.launchcode.liftoffproject.data.CommentRepository;
 import org.launchcode.liftoffproject.data.UserRepository;
+import org.launchcode.liftoffproject.models.Comment;
 import org.launchcode.liftoffproject.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("profile")
 public class ProfileController {
 
     @Autowired
@@ -26,6 +26,7 @@ public class ProfileController {
     UserRepository userRepository;
 
     @GetMapping
+    @RequestMapping("profile")
     public String profile(Model model, HttpSession session, RedirectAttributes redirAttrs) {
         User user = authenticationController.getUserFromSession(session);
         if (user == null) {
@@ -42,5 +43,26 @@ public class ProfileController {
         model.addAttribute(user);
 
         return "profile";
+    }
+
+    @RequestMapping("/editComment/{id}")
+    public ModelAndView editCommentForm(@PathVariable(name = "id") int id) {
+        ModelAndView mav = new ModelAndView("editComment");
+        Comment comment = commentRepository.findById(id).get();
+        mav.addObject("comment", comment);
+
+        return mav;
+    }
+
+    @PostMapping("/save")
+    public String saveComment(@ModelAttribute("comment") Comment comment) {
+        commentRepository.save(comment);
+        return "redirect:profile";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String deleteComment(@PathVariable(name = "id") int id) {
+        commentRepository.deleteById(id);
+        return "redirect:/profile";
     }
 }

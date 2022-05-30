@@ -64,8 +64,8 @@
                         <h4 th:text="${comment.intervention}"></h4>
                         <h4 th:text="${comment.postedDate}"></h4>
                         <h4 th:text="${comment}"></h4>
-                        <button>Edit</button>
-                        <button>Delete</button><br><br>
+                        <a class="btn btn-info" th:href="@{'/editComment/' + ${comment.id}}">Edit</a>
+                        <a class="btn btn-danger" th:href="@{'/delete/' + ${comment.id}}">Delete</a><br><br>
                     </div>
                 </div>
                 <div data-src="content" class="hide" id="mySavedInterventions">
