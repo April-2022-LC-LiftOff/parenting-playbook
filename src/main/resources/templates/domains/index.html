@@ -6,12 +6,12 @@
 
 <div th:replace="fragments :: page-header"></div>
 
-<h1>Executive Functioning Domains</h1>
+<h1 style="padding-bottom:20px;padding-top:30px;">Executive Functioning Domains</h1>
 
-<table class="domains-table" padding="40px 40px">
+<table class="parenting-playbook" padding="40px 40px">
     <tr>
-        <th scope="col">Domains</th>
-        <th scope="col">Descriptions</th>
+        <th scope="col" style="text-align:left;padding-left:40px;font-weight:bold;text-decoration:underline;">Domains</th>
+        <th scope="col" style="text-align:left;padding-left:40px;font-weight:bold;text-decoration:underline;">Descriptions</th>
     </tr>
     <tr th:each="domain : ${domains}">
         <td scope="col">

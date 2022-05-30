@@ -8,9 +8,11 @@
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="job-listing">
-    <p th:text="${'Domain: ' + domain.domain}"></p>
-    <p th:text="${'Description: ' + domain.description}"></p>
-    <p> Interventions:
+    <p style="font-weight:bold;text-decoration:underline;">Domain:</p>
+    <p th:text="${domain.domain}"></p>
+    <p style="font-weight:bold;text-decoration:underline;">Description:</p>
+    <p th:text="${domain.description}"></p>
+    <p style="font-weight:bold;text-decoration:underline;"> Interventions:</p>
     <ul>
         <li style="list-style-type: none;" th:each="intervention : ${domain.interventions}">
             <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a>
