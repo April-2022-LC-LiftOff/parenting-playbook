@@ -29,7 +29,7 @@
         <div th:replace="fragments :: page-header"></div>
         <!--<div class="alert alert-warning text-center" role="alert" th:text="${mustlogin}" th:if="${mustlogin}"></div>-->
 
-        <div class="container body-content col-5 mt-5">
+        <div class="container body-content col-5 mt-5" style="color: white; cursor: pointer">
             <div class="row align-items-left">
 <!--                <div class="text-justify text-left">-->
                     <div class="col">
@@ -57,9 +57,10 @@
                         </tr>
                     </div>
                 </table>
-
-                <div data-src="content" class="hide" id="myContributions">
-                    <h3>Posted comment(s): </h3>
+        </div>
+        <div class="container" style="color: white; background-color: rgba(255,255,255,0.2)">
+            <div data-src="content" class="hide" id="myContributions">
+                    <h3>Posted comment(s): </h3><br>
                     <div th:each="comment : ${user.comments}">
                         <h4 th:text="${comment.intervention}"></h4>
                         <h4 th:text="${comment.postedDate}"></h4>

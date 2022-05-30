@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 @Controller
 public class ProfileController {
@@ -45,19 +46,26 @@ public class ProfileController {
         return "profile";
     }
 
-    @RequestMapping("/editComment/{id}")
-    public ModelAndView editCommentForm(@PathVariable(name = "id") int id) {
-        ModelAndView mav = new ModelAndView("editComment");
-        Comment comment = commentRepository.findById(id).get();
-        mav.addObject("comment", comment);
-
-        return mav;
+    @GetMapping("/editComment/{commentId}")
+    public String editCommentForm(Model model, @PathVariable int commentId) {
+        Optional optComment = commentRepository.findById(commentId);
+        if (optComment.isPresent()) {
+            Comment comment = (Comment) optComment.get();
+            model.addAttribute("comment", comment);
+            return "editComment";
+        } else {
+            return "redirect:profile";
+        }
     }
 
-    @PostMapping("/save")
-    public String saveComment(@ModelAttribute("comment") Comment comment) {
+    @PostMapping("/editComment/{commentId}")
+    public String saveComment(Model model, @PathVariable int commentId, @RequestParam String userInput) {
+        Optional optComment = commentRepository.findById(commentId);
+        Comment comment = (Comment) optComment.get();
+
+        comment.setUserInput(userInput);
         commentRepository.save(comment);
-        return "redirect:profile";
+        return "redirect:/profile";
     }
 
     @RequestMapping("/delete/{id}")
@@ -65,4 +73,5 @@ public class ProfileController {
         commentRepository.deleteById(id);
         return "redirect:/profile";
     }
+
 }

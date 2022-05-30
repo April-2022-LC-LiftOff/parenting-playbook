@@ -9,15 +9,17 @@
 <nav th:replace="fragments :: page-header"></nav>
 
 <div align="center">
-  <h1>Edit Comment</h1><br>
-  <form action="#" th:action="@{/save}" th:object="${comment}" method="post">
+  <h2 th:text="${comment.intervention}"></h2>
+
+  <h3>Edit Comment</h3>
+  <form method="post">
+    <label th:for="editComment">Edit Comment: </label><br>
 
     <div class="form-group">
-      <input type="hidden" th:field="*{id}" />
-      <textarea class="form-control" th:field="${comment.userInput}" placeholder="Have any thought?"></textarea>
+      <textarea rows="7"  class="form-control" th:field="${comment.userInput}"></textarea>
       <span th:errors="${comment.userInput}" class="error"></span>
       <br>
-      <button class="btn btn-info btn-md" type="submit">Save</button>
+      <button class="btn btn-info btn-md" type="submit" value="Save">Save</button>
     </div>
   </form>
 </div>
