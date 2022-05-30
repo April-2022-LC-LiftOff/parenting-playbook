@@ -62,12 +62,12 @@
 <div th:unless="${user}">
     <h3>Login or join us for leave your comment!</h3>
 </div>
-<div th:if="${user} != null">
-<h3>Leave a Comment: </h3>
 
+<div th:if="${user} != null">
 <form method="post">
     <div class="form-group">
-        <textarea class="form-control" th:field="${comment.userInput}" placeholder="Have any thought?"></textarea>
+        <label for="userComment">Leave a comment: </label>
+        <textarea class="form-control" th:field="${comment.userInput}" id="userComment" placeholder="Have any thought?"></textarea>
         <span th:errors="${comment.userInput}" class="error"></span>
         <br>
         <button class="btn btn-success btn-md" type="submit">Add Comment</button>

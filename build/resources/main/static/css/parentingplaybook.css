@@ -336,9 +336,3 @@ div.job-listing {
   object-fit: contain;
 }
 /***************/
-
-#contributions: hover {
-color: hotpink;
-cursor: pointer;
-}
-}
