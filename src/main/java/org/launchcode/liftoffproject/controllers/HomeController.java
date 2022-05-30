@@ -243,93 +243,64 @@ public class HomeController {
                                                 List<String> selfMonitoring, @RequestParam(required = false)
                                                 List<String> planningAndPrioritizing, @RequestParam(required = false)
                                                 List<String> taskInitiation, @RequestParam(required = false)
-                                                List<String> organization) {
+                                                List<String> organization, @RequestParam(required = false) List<String> none) {
 
 
         if (impulseControl == null) {
             model.addAttribute("title", quiz);
-            System.out.println("impulse null");
         } else if (impulseControl.size() >= 2) {
-//            model.addAttribute("title", "Display Domain");
             model.addAttribute("impulseControl", domainRepository.findById(1));
-            System.out.println("impulse found!!");
-//            model.addAttribute("quiz", quizResults);
         }
 
         if (emotionalControl == null) {
             model.addAttribute("title", quiz);
-            System.out.println("emocontrol null");
         } else if (emotionalControl.size() >= 2) {
-//            model.addAttribute("title", quizResults);
-            System.out.println("emo control found!!");
-            model.addAttribute("impulseControl", domainRepository.findById(2));
+            model.addAttribute("emotionalControl", domainRepository.findById(2));
         }
 
         if (flexibleThinking == null) {
             model.addAttribute("title", quiz);
-            System.out.println("flexible null");
         } else if (flexibleThinking.size() >= 2) {
-//            model.addAttribute("title", "Display Domain");
-            System.out.println("flexible found!!");
             model.addAttribute("flexibleThinking", domainRepository.findById(3));
-//            model.addAttribute("quiz", quizResults);
         }
 
         if (workingMemory == null) {
             model.addAttribute("title", quiz);
-            System.out.println("working mem null");
         } else if (workingMemory.size() >= 2) {
-//            model.addAttribute("title", "Display Domain");
-            System.out.println("working mem found!!");
             model.addAttribute("workingMemory", domainRepository.findById(4));
-//            model.addAttribute("quiz", quizResults);
         }
 
         if (selfMonitoring == null) {
             model.addAttribute("title", quiz);
-            System.out.println("self monitoring null");
         } else if (selfMonitoring.size() >= 2) {
-//            model.addAttribute("title", "Display Domain");
-            System.out.println("self monitoring found!!");
             model.addAttribute("selfMonitoring", domainRepository.findById(5));
-//            model.addAttribute("quiz", quizResults);
         }
 
         if (planningAndPrioritizing == null) {
             model.addAttribute("title", quiz);
-            System.out.println("planning null");
         } else if (planningAndPrioritizing.size() >= 2) {
-//            model.addAttribute("title", "Display Domain");
-            System.out.println("planning found!!");
             model.addAttribute("planningAndPrioritizing", domainRepository.findById(6));
-//            model.addAttribute("quiz", quizResults);
         }
 
         if (taskInitiation == null) {
             model.addAttribute("title", quiz);
-            System.out.println("task init null");
         } else if (taskInitiation.size() >= 2) {
-//            model.addAttribute("title", "Display Domain");
-            System.out.println("task init found!!");
             model.addAttribute("taskInitiation", domainRepository.findById(7));
-//            model.addAttribute("quiz", quizResults);
         }
 
         if (organization == null) {
             model.addAttribute("title", quiz);
-            System.out.println("org null");
         } else if (organization.size() >= 2) {
-//            model.addAttribute("title", "Display Domain");
-            System.out.println("org found!!");
             model.addAttribute("organization", domainRepository.findById(8));
-//            model.addAttribute("quiz", quizResults);
         }
 
-        model.addAttribute("Quiz", quiz);
+        if (impulseControl == null && emotionalControl == null && flexibleThinking == null && workingMemory == null &&
+        selfMonitoring == null && planningAndPrioritizing == null && taskInitiation == null && organization == null) {
 
+            model.addAttribute("none", none);
+        }
         return "results";
 
     }
 
 }
-

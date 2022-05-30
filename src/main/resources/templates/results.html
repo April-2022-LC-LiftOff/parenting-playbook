@@ -7,40 +7,203 @@
 <div th:replace="fragments :: page-header"></div>
 
 <div>
-    <h1> Quiz </h1>
-    <h4 style="color:white;">Here are your results!</h4>
+    <h1> Here are your results! </h1>
+
     <h4 style="color:red;font-weight:bold;text-align:center;background-color:black;">This is not a diagnostic tool and
         is not intended to be used
         to provide any type of medical diagnosis.</h4>
 </div>
-<div>
-    <a href="www.google.com">Go to google</a>
+
+
+<div th:each="impulseControl : ${impulseControl}" style="padding-top:20px;padding-bottom:20px;">
+    <table class="parenting-playbook" style="padding-top:10px;padding-bottom:20px;">
+
+        <th style="text-align:center;">
+
+            <a th:href="@{'/domains/view/1'}" style="font-size:26px;">Impulse Control</a></th>
+   <tr>
+       <td>
+           <p>Impulse control is the ability to “stop and think” before making a choice or
+               completing an action. </p>
+
+      <p style="font-weight:bold;font-decoration:underline;">  Difficulties with impulse control may look like…</p>
+        <li style="padding-left:30px">interrupting</li>
+        <li style="padding-left:30px">shouting out/blurting out</li>
+        <li style="padding-left:30px">saying or doing things impulsively</li>
+           <li style="padding-left:30px">struggling to determine how their actions will impact others while in the moment</li>
+       </td>
+   </tr>
+    </table>
 </div>
 
-<div th:each="impulseControl : ${impulseControl}">
-    <div th:text="${impulseControl} ?: '(not specified)'"></div>
-</div>
-<div th:each="emotionalControl : ${emotionalControl}">
-    <div th:text="${emotionalControl} ?: '(not specified)'"></div>
-</div>
-<div th:each="flexibleThinking : ${flexibleThinking}">
-    <div th:text="${flexibleThinking} ?: '(not specified)'"></div>
-</div>
-<div th:each="workingMemory : ${workingMemory}">
-    <div th:text="${workingMemory} ?: '(not specified)'"></div>
-</div>
-<div th:each="selfMonitoring : ${selfMonitoring}">
-    <div th:text="${selfMonitoring} ?: '(not specified)'"></div>
-</div>
-<div th:each="planningAndPrioritizing : ${planningAndPrioritizing}">
-    <div th:text="${planningAndPrioritizing} ?: '(not specified)'"></div>
-</div>
-<div th:each="taskInitiation : ${taskInitiation}">
-    <div th:text="${taskInitiation} ?: '(not specified)'"></div>
-</div>
-<div th:each="organization : ${organization}">
-    <div th:text="${organization} ?: '(not specified)'"></div>
+
+<div th:each="emotionalControl : ${emotionalControl}" style="padding-top:20px;padding-bottom:20px;">
+    <table class="parenting-playbook" style="padding-top:10px;padding-bottom:20px;">
+
+        <th style="text-align:center;">
+
+            <a th:href="@{'/domains/view/2'}" style="font-size:26px;">Emotional Control</a></th>
+        <tr>
+            <td>
+                <p>Emotional control is the ability to self-regulate one’s emotions. </p>
+
+                <p style="font-weight:bold;font-decoration:underline;">  Difficulties with emotional control may look like…</p>
+                <li style="padding-left:30px">screaming/yelling</li>
+                <li style="padding-left:30px">tantrumming</li>
+                <li style="padding-left:30px">lashing out when upset</li>
+                <li style="padding-left:30px">crying frequently</li>
+                <li style="padding-left:30px">changing emotions -seemingly going from "0 to 100" quickly</li>
+                <li style="padding-left:30px">inability to determine the size of a problem in the moment</li>
+            </td>
+        </tr>
+    </table>
 </div>
 
+<div th:each="flexibleThinking : ${flexibleThinking}" style="padding-top:20px;padding-bottom:20px;">
+    <table class="parenting-playbook" style="padding-top:10px;padding-bottom:20px;">
+
+        <th style="text-align:center;">
+
+            <a th:href="@{'/domains/view/3'}" style="font-size:26px;">Flexible Thinking</a></th>
+        <tr>
+            <td>
+                <p>Flexible thinking is the ability to “go with the flow” and adapt to situations by changing the plan or strategy.
+                    </p>
+
+                <p style="font-weight:bold;font-decoration:underline;">  Difficulties with flexible thinking may look like…</p>
+                <li style="padding-left:30px">rigidity</li>
+                <li style="padding-left:30px">unable to cope with changes in routine</li>
+                <li style="padding-left:30px">anxiety when plans change unexpectedly</li>
+                <li style="padding-left:30px">refusal or hesitance to try other strategies when their strategy isn't working</li>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<div th:each="workingMemory : ${workingMemory}" style="padding-top:20px;padding-bottom:20px;">
+    <table class="parenting-playbook" style="padding-top:10px;padding-bottom:20px;">
+
+        <th style="text-align:center;">
+
+            <a th:href="@{'/domains/view/4'}" style="font-size:26px;">Working Memory</a></th>
+        <tr>
+            <td>
+                <p>Working memory is a person’s ability to retain information in order to complete a task.
+                    Difficulties with working memory may look like an inability to follow multiple step directions,
+                    forgetting directions immediately after hearing them, struggles with following the steps to
+                    completing an assignment, and forgetting what others have said.</p>
+
+                <p style="font-weight:bold;font-decoration:underline;">  Difficulties with working memory may look like…</p>
+                <li style="padding-left:30px">inability to follow multiple-step directions</li>
+                <li style="padding-left:30px">forgetting directions immediately after hearing them</li>
+                <li style="padding-left:30px">struggles with following the steps to complete an assignment</li>
+                <li style="padding-left:30px">quickly forgetting what others have said to them</li>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div th:each="selfMonitoring : ${selfMonitoring}" style="padding-top:20px;padding-bottom:20px;">
+    <table class="parenting-playbook" style="padding-top:10px;padding-bottom:20px;">
+
+        <th style="text-align:center;">
+
+            <a th:href="@{'/domains/view/5'}" style="font-size:26px;">Self-Monitoring</a></th>
+        <tr>
+            <td>
+                <p>  Self-monitoring is a person’s ability to check in on themselves and evaluate how they are doing
+                   when they are working on a task. Difficulties with self-monitoring may include becoming easily distracted,
+                    struggles with or an inability to complete a task, getting off topic while working on an
+                    assignment, and not demonstrating age appropriate learning behaviors (e.g. working quietly,
+                    staying on the assignment/web page, etc.).</p>
+
+                <p style="font-weight:bold;font-decoration:underline;">  Difficulties with self-monitoring may look like…</p>
+                <li style="padding-left:30px">becoming easily distracted</li>
+                <li style="padding-left:30px">struggles with or an inability to complete a task without prompting</li>
+                <li style="padding-left:30px">getting off-topic when working on an assignment</li>
+                <li style="padding-left:30px">not demonstrating age-appropriate learning behaviors (e.g. working quietly, staying on the
+                assignment/web page, etc.)</li>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div th:each="planningAndPrioritizing : ${planningAndPrioritizing}" style="padding-top:20px;padding-bottom:20px;">
+    <table class="parenting-playbook" style="padding-top:10px;padding-bottom:20px;">
+
+        <th style="text-align:center;">
+
+            <a th:href="@{'/domains/view/6'}" style="font-size:26px;">Planning and Prioritizing/Time Management</a></th>
+        <tr>
+            <td>
+                <p> Planning and prioritizing/Time Management are the mental processes that allow people to make a
+                    plan of action and stick to it. </p>
+
+                <p style="font-weight:bold;font-decoration:underline;">  Difficulties with planning and prioritizing/time management may look like…</p>
+                <li style="padding-left:30px">often being too late or too early to events or appearing to be "time blind" (unaware of timing)</li>
+                <li style="padding-left:30px">inability to intuitively plan out how long something will take to complete</li>
+                <li style="padding-left:30px">inability to keep or follow a to-do list in order of priority</li>
+                <li style="padding-left:30px">struggles with identifying the steps to complete a task in a logical order</li>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<div th:each="taskInitiation : ${taskInitiation}" style="padding-top:20px;padding-bottom:20px;">
+    <table class="parenting-playbook" style="padding-top:10px;padding-bottom:20px;">
+
+        <th style="text-align:center;">
+
+            <a th:href="@{'/domains/view/7'}" style="font-size:26px;">Task Initiation</a></th>
+        <tr>
+            <td>
+                <p> Task initiation is the ability to start a task, stick with it, and avoid procrastination.</p>
+
+                <p style="font-weight:bold;font-decoration:underline;">  Difficulties with task initiation may look like…</p>
+                <li style="padding-left:30px">procrastinating</li>
+                <li style="padding-left:30px">saying "I don't know where/how to start."</li>
+                <li style="padding-left:30px">getting side-tracked or easily distracted</li>
+                <li style="padding-left:30px">struggles with sitting down and getting to work</li>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div th:each="organization : ${organization}" style="padding-top:20px;padding-bottom:20px;">
+    <table class="parenting-playbook" style="padding-top:10px;padding-bottom:20px;">
+
+        <th style="text-align:center;">
+
+            <a th:href="@{'/domains/view/8'}" style="font-size:26px;">Organization</a></th>
+        <tr>
+            <td>
+                <p> Organization is the ability for a person to create or utilize systems to manage their
+                    belongings and thoughts. Difficulties with organization may look like having piles of items that
+                    aren't put away, cluttered areas or a messy desk/bedroom, thoughts and writing are shared out
+                    of order, unable to independently create and maintain organizational systems, and struggles with
+                    understanding how to keep a space organized and neat.</p>
+
+                <p style="font-weight:bold;font-decoration:underline;">  Difficulties with organization may look like…</p>
+                <li style="padding-left:30px">having piles of items that aren't put away</li>
+                <li style="padding-left:30px">cluttered areas or a messy desk/bedroom</li>
+                <li style="padding-left:30px">thoughts and writing are shared out of order or in a seemingly random order</li>
+                <li style="padding-left:30px">unable to independently create and maintain organizational systems</li>
+                <li style="padding-left:30px">struggles with understanding how to keep a space organized and neat</li>
+            </td>
+        </tr>
+    </table>
+</div>
+<div th:if="none" style="padding-top:20px;padding-bottom:20px;">
+    <table class="parenting-playbook" style="padding-top:10px;padding-bottom:20px;">
+
+        <th style="text-align:center;">
+
+        <p style="text-align:left;padding:15px;font-size:20px;">Check out all of our interventions
+        using the search feature!</p></th>
+
+     </table>
+</div>
 </body>
 </html>
