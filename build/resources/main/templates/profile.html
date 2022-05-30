@@ -44,19 +44,41 @@
                 <table class="table">
                     <div class="p-3 mb-2 bg-secondary text-white">
                         <tr>
-                            <th scope="col">My Contributions</th>
+                            <th data-tab="myContributions" id="contributions" scope="col">My Contributions</th>
                         </tr>
                         <tr>
-                            <th scope="col">My Saved Interventions</th>
+                            <th data-tab="mySavedInterventions" id="interventions" scope="col">My Saved Interventions</th>
                         </tr>
                         <tr>
-                            <th scope="col">My Notes</th>
+                            <th data-tab="myNotes" id="notes" scope="col">My Notes</th>
                         </tr>
                         <tr>
-                            <th scope="col">Shared Links</th>
+                            <th data-tab="sharedLinks" id="sharedLink" scope="col">Shared Links</th>
                         </tr>
                     </div>
                 </table>
-            </div>
+
+                <div data-src="content" class="hide" id="myContributions">
+                    <h3>Posted comment(s): </h3>
+                    <div th:each="comment : ${user.comments}">
+                        <h4 th:text="${comment.intervention}"></h4>
+                        <h4 th:text="${comment.postedDate}"></h4>
+                        <h4 th:text="${comment}"></h4>
+                        <button>Edit</button>
+                        <button>Delete</button><br>
+                    </div>
+                </div>
+                <div data-src="content" class="hide" id="mySavedInterventions">
+                    <h3>Saved Intervention(s): </h3>
+                </div>
+                <div data-src="content" class="hide" id="myNotes">
+                    <h3>My Notes: </h3>
+                </div>
+                <div data-src="content" class="hide" id="sharedLinks">
+                    <h3>Shared Links: </h3>
+                </div>
+        </div>
+
+        <script src="js/profile.js"></script>
         </body>
         </html>

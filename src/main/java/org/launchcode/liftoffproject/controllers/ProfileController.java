@@ -1,5 +1,6 @@
 package org.launchcode.liftoffproject.controllers;
 
+import org.launchcode.liftoffproject.data.CommentRepository;
 import org.launchcode.liftoffproject.data.UserRepository;
 import org.launchcode.liftoffproject.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,8 @@ public class ProfileController {
     @Autowired
     AuthenticationController authenticationController;
 
-//    @Autowired
-//    ReviewRepository reviewRepository;
+    @Autowired
+    CommentRepository commentRepository;
 
     @Autowired
     UserRepository userRepository;
@@ -37,10 +38,9 @@ public class ProfileController {
         model.addAttribute("firstName", user.getFirstName());
         model.addAttribute("lastname", user.getLastName());
         model.addAttribute("email", user.getEmail());
-       // model.addAttribute("reviews", user.getReviews());
+        model.addAttribute("comments", user.getComments());
         model.addAttribute(user);
 
         return "profile";
     }
-
 }

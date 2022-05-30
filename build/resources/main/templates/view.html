@@ -58,8 +58,8 @@
 <span th:if="${intervention.comments.size} == 0">
     Be the first one to leave a comment!
 </span>
-<br><br><br>
-<div>
+<br><br>
+<div th:unless="${user}">
     <h3>Login or join us for leave your comment!</h3>
 </div>
 <div th:if="${user} != null">
