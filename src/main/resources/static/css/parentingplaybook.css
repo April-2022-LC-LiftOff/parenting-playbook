@@ -34,7 +34,21 @@ h3 {
    font-weight: bold;
 }
 
+h3 {
+   text-align: center;
+   color: #FFFFFF;
+   font-family: 'Montserrat', sans-serif;
+   font-weight: bold;
+}
+
 p {
+   text-align: left;
+   color: #FFFFFF;
+   font-family: 'Montserrat', sans-serif;
+   font-size: 16 px;
+}
+
+li {
    text-align: left;
    color: #FFFFFF;
    font-family: 'Montserrat', sans-serif;
@@ -77,7 +91,7 @@ margin-bottom: 20px;
   margin-right: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
-  padding: 15px 15px ;
+  padding: 15px;
   position: relative;
   text-align: left;
   text-decoration: none;
@@ -123,16 +137,18 @@ margin-bottom: 20px;
 }
 
 .mainTable {
-  background-color: #ffffff;
-  opacity: 1;
+
   border: 2px solid #FFFFFF;
   margin-left: auto;
   margin-right: auto;
-  color: #4b0082;
+  color: #FFFFFF;
   text-align: left;
   font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   padding: 20px 20px;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
 }
 
 a:link {
@@ -163,24 +179,23 @@ a:active {
 }
 .navbar {
    background-color: #0C0255;
-   font-size: 14px;
+   font-size: 12px;
+   color: white;
 }
 
 nav navbar-nav{
     color: white;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 table.parenting-playbook {
-    background-color: #ffffff
-    opacity: 1;
       border: 1px solid #ffffff;
       border-collapse:separate;
       border-spacing:0 15px;
       margin-left: auto;
       margin-right: auto;
-      color: #4b0082;
+      color: #FFFFFF;
       text-align: left;
       font-family: 'Montserrat', sans-serif;
       font-size: 15px;
@@ -290,7 +305,7 @@ td {
 }
 
 tr:nth-child(odd) {
-    background-color: #e4e4e4;
+    background-color: #ffffff;
 }
 
 .centeredTable {
@@ -301,7 +316,7 @@ tr:nth-child(odd) {
 
 table.job-listing {
     margin: 30px auto;
-    border: 1px solid #e4e4e4;
+    border: 1px solid #ffffff;
     width: 80%;
 }
 

@@ -215,7 +215,10 @@ public class HomeController {
         return "about";
     }
 
-
+    @GetMapping("faq")
+    public String displayFaq() {
+        return "faq";
+    }
 
     List<String> quizResults = new ArrayList<>();
 

@@ -11,25 +11,27 @@
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
-    <table class="parenting-playbook">
-        <tr th:each="intervention : ${interventions}">
+    <table class="parenting-playbook" th:each="intervention : ${interventions}">
+        <tr>
             <td>
+                <p style="font-weight:bold;text-decoration:underline;">Name: </p>
                 <p>
-                    Name:
-                    <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a>
-                </p>
-                <p th:text="${'Action: ' + intervention.action}"></p>
-                <p th:text="${'Expected Response: ' + intervention.expectedResponse}"></p>
-                <p>
-                    Domains:
+                    <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a></p>
+                <p style="padding-top:10px;font-weight:bold;text-decoration:underline;"> Action: </p>
+                <p th:text="${intervention.action}"></p>
+                <p style="padding-top:10px;font-weight:bold;text-decoration:underline;">Expected Response:</p>
+                <p th:text="${intervention.expectedResponse}"></p>
+
+                <p style="padding-top:10px;font-weight:bold;text-decoration:underline;">
+                    Domains:</p>
                     <ul th:each="domain : ${intervention.domains}">
                         <li style="list-style-type: none;">
                             <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
                         </li>
                     </ul>
                 </p>
-                <p>
-                    Tags:
+                <p style="padding-top:10px;font-weight:bold;text-decoration:underline;">
+                    Tags:</p>
                 <ul th:each="tag : ${intervention.tags}">
                     <li style="list-style-type: none;">
                         <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>

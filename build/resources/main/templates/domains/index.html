@@ -15,7 +15,7 @@
     </tr>
     <tr th:each="domain : ${domains}">
         <td scope="col">
-            <ul th:text="${domain.domain}">
+            <ul > <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
             </ul>
         </td>
         <td scope="col">

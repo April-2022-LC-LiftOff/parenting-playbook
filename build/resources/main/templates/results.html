@@ -18,7 +18,7 @@
 </div>
 
 <div th:each="impulseControl : ${impulseControl}">
-    <div style="color=white;" th:text="${impulseControl} ?: '(not specified)'"></div>
+    <div th:text="${impulseControl} ?: '(not specified)'"></div>
 </div>
 <div th:each="emotionalControl : ${emotionalControl}">
     <div th:text="${emotionalControl} ?: '(not specified)'"></div>
