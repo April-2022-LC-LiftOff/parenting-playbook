@@ -2,17 +2,14 @@ package org.launchcode.liftoffproject.models;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Domain extends AbstractEntity{
 
-    @Size(max = 50, message = "Domain must not exceed 2000 characters.")
     private String domain;
 
-    @Size(max = 2000, message = "Description must not exceed 2000 characters.")
     private String description;
 
     @ManyToMany(mappedBy = "domains")
