@@ -1,8 +1,6 @@
 package org.launchcode.liftoffproject.models;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -37,6 +35,12 @@ public class Intervention extends AbstractEntity{
 
     @OneToMany(mappedBy = "intervention")
     private List<Comment> comments = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
 
     public Intervention(String name, String action, String expectedResponse, String reference, String ifItFails) {
         this.name = name;
@@ -117,4 +121,9 @@ public class Intervention extends AbstractEntity{
         return name;
     }
 
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+    }
 }

@@ -33,6 +33,9 @@ public class User extends AbstractEntity{
     @OneToMany(mappedBy = "user")
     private final List<Comment> comments = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user")
+    private List<Intervention> interventions = new ArrayList<>();
+
     public User(){}
 
     public User(String firstName, String lastName, String email, String username, String password, String verifyPassword) {
@@ -82,5 +85,13 @@ public class User extends AbstractEntity{
         return encoder.matches(password, pwHash);
     }
 
+
+    public List<Intervention> getInterventions() {
+        return interventions;
+    }
+
+    public void setInterventions(List<Intervention> interventions) {
+        this.interventions = interventions;
+    }
 
 }
