@@ -78,7 +78,7 @@
                     <h4 th:text="${intervention.tags}"></h4>
                     <h4 th:text="${intervention}"></h4>
                     <a class="btn btn-info" th:href="@{'/editIntervention/' + ${intervention.id}}">Edit</a>
-                    <a type="button" id="delete" class="btn btn-danger" th:href="@{'/delete/' + ${intervention.id}}">Delete</a><br><br>
+                    <a type="button" id="delete" class="btn btn-danger" th:href="@{'/edit/delete/' + ${intervention.id}}">Delete</a><br><br>
             </div>
             <div data-src="content" class="hide" id="myNotes">
                 <h3>My Notes: </h3>
