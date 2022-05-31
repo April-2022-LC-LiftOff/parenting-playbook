@@ -7,9 +7,11 @@
 <div th:replace="fragments :: page-header"></div>
 <script type="text/javascript" th:src="@{/js/addInterventionInputs.js}"></script>
 
-<div class="parenting-playbook" style="margin-left:auto;margin-right:auto;color:white;">
-    <form method="post" style="max-width:600px;margin-left:auto;margin-right:auto;">
-        <h1 style="text-align:center;">Add Intervention</h1>
+<div class="container body-content">
+    <form method="post" style="max-width:600px;">
+        <h1>Add Intervention</h1>
+        <h3>* Designates a required input.</h3>
+        <br>
         <div class="form-group">
             <label id="checkBoxLabel" th:for="domains">*Domains:</label>
             <br>
@@ -44,7 +46,8 @@
 
         <div class="form-group">
             <label th:for="name">*Name:</label>
-            <input id="name" class="form-control" th:field="${intervention.name}" />
+            <input id="name" class="form-control" th:field="${intervention.name}" maxlength="255"/>
+            <div id="nameCounter" style="margin-top: 0.25rem; text-align: right">0</div>
             <span id="nameBlank" style="color:red;"></span>
             <br>
             <span id="nameLength" style="color:red;"></span>
@@ -54,7 +57,8 @@
 
         <div class="form-group">
             <label th:for="action">*Action:</label>
-            <input id="action" class="form-control" th:field="${intervention.action}" />
+            <textarea rows="4" cols="50" id="action" class="form-control" th:field="${intervention.action}" maxlength="2000"/>
+            <div id="actionCounter" style="margin-top: 0.25rem; text-align: right">0</div>
             <span id="actionBlank" style="color:red;"></span>
             <br>
             <span id="actionLength" style="color:red;"></span>
@@ -64,7 +68,8 @@
 
         <div class="form-group">
             <label th:for="expectedResponse">*Expected Response:</label>
-            <input id="expectedResponse" class="form-control" th:field="${intervention.expectedResponse}" />
+            <textarea rows="4" cols="50" id="expectedResponse" class="form-control" th:field="${intervention.expectedResponse}" maxlength="2000"/>
+            <div id="expectedResponseCounter" style="margin-top: 0.25rem; text-align: right">0</div>
             <span id="expectedResponseBlank" style="color:red;"></span>
             <br>
             <span id="expectedResponseLength" style="color:red;"></span>
@@ -74,20 +79,20 @@
 
         <div class="form-group">
             <label th:for="reference">Reference:</label>
-            <input class="form-control" th:field="${intervention.reference}" />
+            <input id="reference" class="form-control" th:field="${intervention.reference}" maxlength="2000"/>
+            <div id="referenceCounter" style="margin-top: 0.25rem; text-align: right">0</div>
         </div>
 
         <div class="form-group">
             <label th:for="ifItFails">If It Fails, try:</label>
-            <input class="form-control" th:field="${intervention.ifItFails}" />
+            <textarea rows="4" cols="50" id="ifItFails" class="form-control" th:field="${intervention.ifItFails}" maxlength="2000"/>
+            <div id="ifItFailsCounter" style="margin-top: 0.25rem; text-align: right">0</div>
         </div>
 
-        <span>* Designates a required input.</span>
-
         <br>
         <br>
 
-        <input type="submit" value="Add Intervention" style="color:black;"/>
+        <input type="submit" class="btn-primary" value="Add Intervention"/>
     </form>
 </div>
 

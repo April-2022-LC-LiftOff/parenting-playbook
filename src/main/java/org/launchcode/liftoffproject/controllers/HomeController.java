@@ -7,10 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.*;
 import java.util.ArrayList;
@@ -39,25 +37,34 @@ public class HomeController {
     private UserRepository userRepository;
 
 
-    public void createDomains() {
-        String[] domains = {"Impulse Control", "Emotional Control", "Flexible Thinking", "Working Memory", "Self-Monitoring", "Planning and Prioritizing", "Task Initiation", "Organization"};
-        String[] descriptions = {"Think before acting", "Keep feelings in check", "Adjust behavior to unexpected changes", "Keep key information in mind while using it", "Self-awareness to how one is doing in the moment", "To set and meet goals", "Take action to get started on tasks", "Keep track of things physically and mentally"};
+    public void createDomains() throws FileNotFoundException {
+        String delimiter = ",";
+        List repo = (List) domainRepository.findAll();
 
-        for (int i = 0; i < domains.length; i++) {
-            Optional<Domain> result = domainRepository.findById(i + 1);
-            if (result.isEmpty()) {
-                Domain domain = new Domain(domains[i], descriptions[i]);
-                domainRepository.save(domain);
+        if (repo.isEmpty()){
+            try {
+                File file = new File("src/main/resources/assets/domains.csv");
+                FileReader fr = new FileReader(file);
+                BufferedReader br = new BufferedReader(fr);
+                String line = " ";
+                String[] tempArr;
+                while ((line = br.readLine()) != null) {
+                    tempArr = line.split(delimiter, 2);
+                    Domain domain = new Domain(tempArr[0], tempArr[1]);
+                    domainRepository.save(domain);
+                }
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
             }
         }
     }
 
     public void createTags() {
         String[] tags = {"Aggression", "Anger", "Mindfulness", "Resentment", "Kids", "Adults", "Openness", "Working"};
+        List repo = (List) tagRepository.findAll();
 
-        for (int i = 0; i < tags.length; i++) {
-            Optional<Tag> result = tagRepository.findById(i + 9);
-            if (result.isEmpty()) {
+        if (repo.isEmpty()) {
+            for (int i = 0; i < tags.length; i++) {
                 Tag tag = new Tag(tags[i]);
                 tagRepository.save(tag);
             }
@@ -66,7 +73,9 @@ public class HomeController {
 
     public void saveInterventions() throws FileNotFoundException {
         String delimiter = ",";
-        if (!interventionRepository.findById(17).isPresent()) {
+        List repo = (List) interventionRepository.findAll();
+
+        if (repo.isEmpty()) {
             try {
                 File file = new File("src/main/resources/assets/ParentingPlaybookData - Book4.csv");
                 FileReader fr = new FileReader(file);
@@ -140,6 +149,7 @@ public class HomeController {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Intervention");
             model.addAttribute("domains", domainRepository.findAll());
+            model.addAttribute("tags", tagRepository.findAll());
             return "add";
         }
 
@@ -165,13 +175,12 @@ public class HomeController {
             User user = new User();
 //            User user = authenticationController.getUserFromSession(request.getSession());
 
-            model.addAttribute("comments", commentRepository.findCommentByInterventionId(interventionId));
-
-//            model.addAttribute("username",userRepository.findByUsername(user.getUsername()));
-            model.addAttribute("username", user.getUsername());
-            model.addAttribute(user);
             model.addAttribute("comment", new Comment());
 
+            model.addAttribute("username",user.getUsername());
+            model.addAttribute(user);
+
+            model.addAttribute("comments", commentRepository.findCommentByInterventionId(interventionId));
 
             return "view";
         } else {
