@@ -17,66 +17,62 @@
             </li>
         </ul>
     </p>
+    <a th:href="@{'/edit/domains/' + ${intervention.id}}">Edit Domains</a>
     <p>Tag(s):
-    <ul>
-        <li th:each="tag : ${intervention.tags}" style="list-style-type: none;">
-            <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
-        </li>
-    </ul>
+        <ul>
+            <li th:each="tag : ${intervention.tags}" style="list-style-type: none;">
+                <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
+            </li>
+        </ul>
     </p>
-    <p th:text="${'Name: ' + intervention.name}"></p>
-    <p th:text="${'Action: ' + intervention.action}"></p>
-    <p th:text="${'Expected Response: ' + intervention.expectedResponse}"></p>
-    <p th:text="${'Reference: ' + intervention.reference}"></p>
-    <p th:text="${'If It Fails, try: ' + intervention.ifItFails}"></p>
+    <a th:href="@{'/edit/tags/' + ${intervention.id}}">Edit Tags</a>
+    <p th:text="${'Name: ' + intervention.name}"></p> <a th:href="@{'/edit/name/' + ${intervention.id}}">Edit Name</a>
+    <p th:text="${'Action: ' + intervention.action}"></p> <a th:href="@{'/edit/action/' + ${intervention.id}}">Edit Action</a>
+    <p th:text="${'Expected Response: ' + intervention.expectedResponse}"></p> <a th:href="@{'/edit/expectedResponse/' + ${intervention.id}}">Edit Expected Response</a>
+    <p th:text="${'Reference: ' + intervention.reference}"></p> <a th:href="@{'/edit/reference/' + ${intervention.id}}">Edit Reference</a>
+    <p th:text="${'If It Fails, try: ' + intervention.ifItFails}"></p> <a th:href="@{'/edit/ifItFails/' + ${intervention.id}}">Edit If It Fails</a>
+</div>
+
+<div>
+    <a th:href="@{'/edit/delete/' + ${intervention.id}}" class="btn">Delete Intervention</a>
 </div>
 
 <br><br>
 <div>
     <h3>Latest Comment(s): </h3>
-    <div class="container" style="background-color: rgba(255,255,255,0.2)">
-        <table class="table table-striped">
-            <thead>
-            <tr style="color:white">
-                <th>Intervention ID</th>
-                <th>Intervention Name</th>
-                <th>User</th>
-                <th>Comment</th>
-                <th>Posted Date</th>
-            </tr>
-            </thead>
-            <tbody th:if="${comments} !=null">
-            <tr th:each="comment : ${comments}">
-                <td th:text="${intervention.id}"></td>
-                <td th:text="${intervention.name}"></td>
-                <td th:text="${user.username}"></td>
-                <td th:text="${comment.userInput}"></td>
-                <td th:text="${comment.postedDate}"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Intervention ID</th>
+            <th>Intervention Name</th>
+            <th>User</th>
+            <th>Comment</th>
+            <th>Posted Date</th>
+        </tr>
+        </thead>
+        <tbody th:if="${comments} !=null">
+        <tr th:each="comment : ${comments}">
+            <td th:text="${intervention.id}"></td>
+            <td th:text="${intervention.name}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${comment.userInput}"></td>
+            <td th:text="${comment.postedDate}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
-
-<span th:if="${intervention.comments.size} == 0" style="color: white">
-    Be the first one to leave a comment!
-</span>
-<br><br>
-<div th:unless="${user}" style="color: white">
-    <h3>Login or join us for leave your comment!</h3>
+<br><br><br>
+<div>
+    <h3>Leave a Comment: </h3>
 </div>
-
-<div th:if="${user} != null">
-    <h3 style="color: white">Leave a comment</h3>
 <form method="post">
     <div class="form-group">
-        <label for="userComment" style="color: white">Leave a comment: </label>
-        <textarea  row="5" class="form-control" th:field="${comment.userInput}" id="userComment" placeholder="Have any thought?"></textarea>
+        <textarea class="form-control" th:field="${comment.userInput}" placeholder="Have any thought?"></textarea>
         <span th:errors="${comment.userInput}" class="error"></span>
         <br>
         <button class="btn btn-success btn-md" type="submit">Add Comment</button>
     </div>
 </form>
-</div>
+
 </body>
 </html>

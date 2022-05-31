@@ -73,7 +73,7 @@ public class User extends AbstractEntity{
         return username;
     }
 
-    public List<Comment> getComments() {
+    public List<Comment> getReviews() {
         return comments;
     }
 
