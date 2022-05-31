@@ -35,9 +35,6 @@ public class Intervention extends AbstractEntity{
     @ManyToMany
     private List<Tag> tags = new ArrayList<>();
 
-    @OneToMany(mappedBy = "intervention")
-    private List<Comment> comments = new ArrayList<>();
-
     public Intervention(String name, String action, String expectedResponse, String reference, String ifItFails) {
         this.name = name;
         this.action = action;
@@ -102,14 +99,6 @@ public class Intervention extends AbstractEntity{
 
     public void setTags(List<Tag> tags) {
         this.tags = tags;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
     }
 
     @Override

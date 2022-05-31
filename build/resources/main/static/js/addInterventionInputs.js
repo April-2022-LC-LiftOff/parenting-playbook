@@ -1,25 +1,36 @@
 function importantFields() {
-    let name = document.getElementById('name');
-    let action = document.getElementById('action');
-    let expectedResponse = document.getElementById('expectedResponse');
-    let nameBlank = document.getElementById('nameBlank');
-    let actionBlank = document.getElementById('actionBlank');
-    let expectedResponseBlank = document.getElementById('expectedResponseBlank');
-    let nameLength = document.getElementById('nameLength');
-    let actionLength = document.getElementById('actionLength');
-    let expectedResponseLength = document.getElementById('expectedResponseLength');
-    let ImpulseControl = document.getElementById('Impulse Control');
-    let EmotionalControl = document.getElementById('Emotional Control');
-    let FlexibleThinking = document.getElementById('Flexible Thinking');
-    let WorkingMemory = document.getElementById('Working Memory');
-    let SelfMonitoring = document.getElementById('Self-Monitoring');
-    let PlanningAndPrioritizing = document.getElementById('Planning and Prioritizing');
-    let TaskInitiation = document.getElementById('Task Initiation');
-    let Organization = document.getElementById('Organization');
-    let checkBoxLabel = document.getElementById('checkBoxLabel');
-    let domainSelect = document.getElementById('domainSelect');
-    let tagCheckBox = document.getElementById('tagCheckBox');
-    let tagSelect = document.getElementById('tagSelect');
+//default ids
+    const name = document.getElementById('name');
+    const action = document.getElementById('action');
+    const expectedResponse = document.getElementById('expectedResponse');
+    const reference = document.getElementById('reference');
+    const ifItFails = document.getElementById('ifItFails');
+    //blank ids
+    const nameBlank = document.getElementById('nameBlank');
+    const actionBlank = document.getElementById('actionBlank');
+    const expectedResponseBlank = document.getElementById('expectedResponseBlank');
+    //length ids
+    const nameLength = document.getElementById('nameLength');
+    const actionLength = document.getElementById('actionLength');
+    const expectedResponseLength = document.getElementById('expectedResponseLength');
+    //counter ids
+    const nameCounter = document.getElementById('nameCounter');
+    const actionCounter = document.getElementById('actionCounter');
+    const expectedResponseCounter = document.getElementById('expectedResponseCounter');
+    const referenceCounter = document.getElementById('referenceCounter');
+    const ifItFailsCounter = document.getElementById('ifItFailsCounter');
+//    let ImpulseControl = document.getElementById('Impulse Control');
+//    let EmotionalControl = document.getElementById('Emotional Control');
+//    let FlexibleThinking = document.getElementById('Flexible Thinking');
+//    let WorkingMemory = document.getElementById('Working Memory');
+//    let SelfMonitoring = document.getElementById('Self-Monitoring');
+//    let PlanningAndPrioritizing = document.getElementById('Planning and Prioritizing');
+//    let TaskInitiation = document.getElementById('Task Initiation');
+//    let Organization = document.getElementById('Organization');
+//    let checkBoxLabel = document.getElementById('checkBoxLabel');
+//    let domainSelect = document.getElementById('domainSelect');
+//    let tagCheckBox = document.getElementById('tagCheckBox');
+//    let tagSelect = document.getElementById('tagSelect');
 
 //    if (!tagCheckBox.checked) {
 //        tagSelect.textContent = "Please select a Tag.";
@@ -135,9 +146,13 @@ function importantFields() {
 //        }
 //    })
 
-    name.addEventListener('keyup', function(event) {
+    name.addEventListener('input', function(event) {
+        const target = event.target;
+        const maxLength = target.getAttribute("maxlength");
+        const currentLength = target.value.length;
         if (name.value != "") {
             nameBlank.textContent = "";
+            nameCounter.textContent = currentLength + "/" + maxLength;
         }
 
         if (name.value != "" && name.value.length > 5) {
@@ -154,12 +169,17 @@ function importantFields() {
             nameBlank.textContent = "Name cannot be blank.";
             name.style.backgroundColor = "yellow";
             nameLength.textContent = "Name must be between 5 and 255 characters long.";
+            nameCounter.textContent = "0";
         }
     })
 
-    action.addEventListener('keyup', function(event) {
+    action.addEventListener('input', function(event) {
+        const target = event.target;
+        const maxLength = target.getAttribute("maxlength");
+        const currentLength = target.value.length;
         if (action.value != "") {
             actionBlank.textContent = "";
+            actionCounter.textContent = currentLength + "/" + maxLength;
         }
 
         if (action.value != "" && action.value.length > 20) {
@@ -176,12 +196,17 @@ function importantFields() {
             actionBlank.textContent = "Action cannot be blank.";
             action.style.backgroundColor = "yellow";
             actionLength.textContent = "Action must be between 20 and 2000 characters long.";
+            actionCounter.textContent = "0";
         }
     })
 
-    expectedResponse.addEventListener('keyup', function(event) {
+    expectedResponse.addEventListener('input', function(event) {
+        const target = event.target;
+        const maxLength = target.getAttribute("maxlength");
+        const currentLength = target.value.length;
         if (expectedResponse.value != "") {
             expectedResponseBlank.textContent = "";
+            expectedResponseCounter.textContent = currentLength + "/" + maxLength;
         }
 
         if (expectedResponse.value != "" && expectedResponse.value.length > 20) {
@@ -198,6 +223,33 @@ function importantFields() {
             expectedResponseBlank.textContent = "Expected Response cannot be blank.";
             expectedResponse.style.backgroundColor = "yellow";
             expectedResponseLength.textContent = "Expected Response must be between 20 and 2000 characters long.";
+            expectedResponseCounter.textContent = "0";
+        }
+    })
+
+    reference.addEventListener('input', function(event) {
+        const target = event.target;
+        const maxLength = target.getAttribute("maxlength");
+        const currentLength = target.value.length;
+        if (reference.value != "") {
+            referenceCounter.textContent = currentLength + "/" + maxLength;
+        }
+
+        if (reference.value == "") {
+            referenceCounter.textContent = "0";
+        }
+    })
+
+    ifItFails.addEventListener('input', function(event) {
+        const target = event.target;
+        const maxLength = target.getAttribute("maxlength");
+        const currentLength = target.value.length;
+        if (ifItFails.value != "") {
+            ifItFailsCounter.textContent = currentLength + "/" + maxLength;
+        }
+
+        if (ifItFails.value == "") {
+            ifItFailsCounter.textContent = "0";
         }
     })
 }
