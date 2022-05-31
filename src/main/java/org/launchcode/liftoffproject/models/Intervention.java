@@ -1,8 +1,6 @@
 package org.launchcode.liftoffproject.models;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -29,11 +27,22 @@ public class Intervention extends AbstractEntity{
     @Size(max = 2000, message = "If It Fails must be longer than 20 characters and not exceed 2000 characters.")
     private String ifItFails;
 
+
+    @ManyToOne
+    @JoinColumn(name = "comment_id")
+    private Comment comment;
+
     @ManyToMany
     private List<Domain> domains = new ArrayList<>();
 
     @ManyToMany
     private List<Tag> tags = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
 
     public Intervention(String name, String action, String expectedResponse, String reference, String ifItFails) {
         this.name = name;
@@ -41,9 +50,14 @@ public class Intervention extends AbstractEntity{
         this.expectedResponse = expectedResponse;
         this.reference = reference;
         this.ifItFails = ifItFails;
+
     }
 
-    public Intervention() {}
+    public Intervention() {
+
+    }
+
+
 
     public String getName() {
         return name;
@@ -104,6 +118,21 @@ public class Intervention extends AbstractEntity{
     @Override
     public String toString() {
         return name;
+    };
+
+    public Comment getComment() {
+        return comment;
     }
 
+    public void setComment(Comment comment) {
+        this.comment = comment;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

@@ -23,11 +23,13 @@ public class Comment extends AbstractEntity {
     private Date postedDate;
 
     @ManyToOne
+    @JoinColumn(name = "intervention_id")
     private Intervention intervention;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
 
     public Comment() {}
 

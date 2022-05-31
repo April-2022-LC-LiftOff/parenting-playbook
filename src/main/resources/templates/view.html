@@ -11,11 +11,11 @@
 <!--<div class="parenting-playbook"></div>-->
 <div class="job-listing">
     <p>Domain(s):
-        <ul>
-            <li th:each="domain : ${intervention.domains}" style="list-style-type: none;">
-                <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
-            </li>
-        </ul>
+    <ul>
+        <li th:each="domain : ${intervention.domains}" style="list-style-type: none;">
+            <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
+        </li>
+    </ul>
     </p>
     <p>Tag(s):
     <ul>

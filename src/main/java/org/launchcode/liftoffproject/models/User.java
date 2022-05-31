@@ -2,17 +2,14 @@ package org.launchcode.liftoffproject.models;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class User extends AbstractEntity{
+public class User extends AbstractEntity {
     @NotNull
     private String firstName;
 
@@ -28,12 +25,19 @@ public class User extends AbstractEntity{
     @NotNull
     private String pwHash;
 
+
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @OneToMany(mappedBy = "user")
     private final List<Comment> comments = new ArrayList<>();
 
-    public User(){}
+    @OneToMany(mappedBy = "user")
+    private List<Intervention> interventions = new ArrayList<>();
+
+
+
+    public User() {
+    }
 
     public User(String firstName, String lastName, String email, String username, String password, String verifyPassword) {
         this.firstName = firstName;
@@ -80,6 +84,18 @@ public class User extends AbstractEntity{
     public boolean isMatchingPassword(String password) {
 
         return encoder.matches(password, pwHash);
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public List<Intervention> getInterventions() {
+        return interventions;
+    }
+
+    public void setInterventions(List<Intervention> interventions) {
+        this.interventions = interventions;
     }
 
 

@@ -44,10 +44,20 @@
                 <table class="table">
                     <div class="p-3 mb-2 bg-secondary text-white">
                         <tr>
-                            <th scope="col">My Contributions</th>
+                            <th scope="col">My Comments</th>
+                        <tr th:each="comment : ${comments}">
+                        <td th:text="${comment.intervention.name}"></td>
+                        <td th:text="${comment.userInput}"></td>
+                        <td th:text="${comment.postedDate}"></td>
+                        </tr>
+
                         </tr>
                         <tr>
                             <th scope="col">My Saved Interventions</th>
+                        <tr th:each="intervention : ${interventions}">
+                            <td th:text="${intervention.name}"></td>
+                            <td th:text="${intervention.tags}"></td>
+
                         </tr>
                         <tr>
                             <th scope="col">My Notes</th>

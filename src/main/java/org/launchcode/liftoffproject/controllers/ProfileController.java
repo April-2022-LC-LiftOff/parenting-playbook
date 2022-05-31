@@ -37,6 +37,8 @@ public class ProfileController {
         model.addAttribute("firstName", user.getFirstName());
         model.addAttribute("lastname", user.getLastName());
         model.addAttribute("email", user.getEmail());
+        model.addAttribute("comments", user.getComments());
+        model.addAttribute("interventions", user.getInterventions());
        // model.addAttribute("reviews", user.getReviews());
         model.addAttribute(user);
 

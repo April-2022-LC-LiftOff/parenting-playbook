@@ -122,7 +122,7 @@ public class AuthenticationController {
         User currentUser = getUserFromSession(request.getSession());
         redirAttrs.addFlashAttribute("hello", "Hello, " + currentUser.getFirstName());
 
-        return "redirect:";
+        return "redirect:/profile";
     }
     @GetMapping("/logout")
     public String logout(HttpServletRequest request,RedirectAttributes redirAttrs){
