@@ -375,3 +375,9 @@ div.job-listing {
   object-fit: contain;
 }
 /***************/
+
+input.checkbox {
+        width: 40px;
+        height: 40px;
+      }
+}

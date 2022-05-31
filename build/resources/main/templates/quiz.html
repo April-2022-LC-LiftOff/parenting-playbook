@@ -14,16 +14,19 @@
         to provide any type of medical diagnosis.</h4>
 </div>
 
-<div style="color:white; text-align:left;margin-left:auto;margin-right:auto;padding:20px 400px;font-size:16px;">
+<div style="color:white; text-align:left;margin-left:auto;margin-right:auto;font-size:16px;padding-left:400px;">
     <form method="post" action="/results" th:object="${quiz}">
+        <table class="parenting-playbook">
+            <th></th>
+            <tr>
         <label id="impulseControl" th:for="impulseControl">
-        <div style="margin-top:10px;">
-            <input type="checkbox" name="impulseControl"> My child shouts out without thinking.
-        </div>
-        <div style="margin-top:10px;">
+        <div style="margin-top:10px;"><td>
+            <input type="checkbox" class="checkbox" name="impulseControl">My child shouts out without thinking.
+        </div></td>
+        <div style="margin-top:10px;"><td>
             <input type="checkbox" name="impulseControl"> When my child sees something they want, they immediately grab
             for it.
-        </div>
+        </div></td>
         <div style="margin-top:10px;">
             <input type="checkbox" name="impulseControl"> My child can't wait patiently.
         </div>
@@ -172,10 +175,12 @@
         <div style="margin-top:10px;">
             <input type="checkbox" name="organization">My child doesn't seem to understand how to clean their space.
         </div>
+
         <div style="margin-top:10px;">
             <input type="submit" value="Enter" style="color:black;">
         </div>
         </label>
+        </table>
     </form>
 </div>
 </body>

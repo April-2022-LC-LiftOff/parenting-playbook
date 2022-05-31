@@ -37,8 +37,6 @@ public class HomeController {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private QuizController quizController;
 
 
     public void createDomains() throws FileNotFoundException {
