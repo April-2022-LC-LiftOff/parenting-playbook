@@ -7,9 +7,9 @@
 <div th:replace="fragments :: page-header"></div>
 
 <div class="container body-content">
-    <form method="post" style="max-width:600px;">
+    <form method="post" class="editing">
         <div class="form-group">
-            <label id="checkBoxLabel" th:for="domains">Domains:</label>
+            <label id="checkBoxLabel" th:for="domains" style="font-size:26px;">Domains:</label>
             <br>
             <th:block th:each="domain : ${domains}">
                 <th:block th:each="dom : ${intervention.domains}" >
@@ -28,12 +28,14 @@
             <br>
             <span>(Hover over Domain names for more info.)</span>
             <br>
-            <span th:text="${checkBoxError}" class="error" style="color:red;"></span>
+            <span th:text="${checkBoxError}" class="error" style="color:red;background-color:black;"></span>
         </div>
         <input type="submit" class="btn-primary" value="Update Domains"/>
         <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn-info" value="Cancel Update"/></a>
     </form>
 </div>
-
+<div class="footer">
+    <p></p>
+</div>
 </body>
 </html>

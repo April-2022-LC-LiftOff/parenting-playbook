@@ -7,18 +7,20 @@
 <div th:replace="fragments :: page-header"></div>
 
 <div class="container body-content">
-    <form method="post" style="max-width:600px;">
+    <form method="post" class="editing">
         <div class="form-group">
-            <label th:for="expectedResponse">Expected Response:</label>
+            <label th:for="expectedResponse" style="font-size:26px;">Expected Response:</label>
             <textarea rows="4" cols="50" name="expectedResponse" class="form-control" th:text="${intervention.expectedResponse}" required></textarea>
             <br>
-            <span th:text="${expectedResponseError}" class="error" style="color:red;"></span>
+            <span th:text="${expectedResponseError}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
         <input type="submit" class="btn-primary" value="Update Expected Response"/>
         <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn-info" value="Cancel Update"/></a>
     </form>
 </div>
-
+<div class="footer">
+    <p></p>
+</div>
 </body>
 </html>

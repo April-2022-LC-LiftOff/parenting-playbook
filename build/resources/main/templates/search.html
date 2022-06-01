@@ -28,7 +28,7 @@
             <input type="text" name="searchTerm" id="searchTerm" style="color:black;"/>
         </p>
 
-        <input type="submit" value="Search" />
+        <input type="submit" class="btn-primary" value="Search" />
     </form>
 
     <hr />
@@ -36,15 +36,15 @@
     <table class="parenting-playbook" th:each="intervention : ${interventions}">
         <tr>
             <td>
-                <p style="font-weight:bold;text-decoration:underline;">Name: </p>
+                <p class="standout">Name: </p>
                 <p>
                     <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a></p>
-                <p style="padding-top:10px;font-weight:bold;text-decoration:underline;"> Action: </p>
+                <p class="standout"> Action: </p>
                 <p th:text="${intervention.action}"></p>
-                <p style="padding-top:10px;font-weight:bold;text-decoration:underline;">Expected Response:</p>
+                <p class="standout">Expected Response:</p>
                 <p th:text="${intervention.expectedResponse}"></p>
 
-                <p style="padding-top:10px;font-weight:bold;text-decoration:underline;">
+                <p class="standout">
                     Domains:</p>
                 <ul th:each="domain : ${intervention.domains}">
                     <li style="list-style-type: none;">
@@ -52,7 +52,7 @@
                     </li>
                 </ul>
                 </p>
-                <p style="padding-top:10px;font-weight:bold;text-decoration:underline;">
+                <p class="standout">
                     Tags:</p>
                 <ul th:each="tag : ${intervention.tags}">
                     <li style="list-style-type: none;">
@@ -64,6 +64,7 @@
         </tr>
     </table>
 </div>
-
+<div class="footer">
+</div>
 </body>
 </html>

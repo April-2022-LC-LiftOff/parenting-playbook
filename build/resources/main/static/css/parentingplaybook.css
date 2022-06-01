@@ -1,6 +1,7 @@
 
 body {
    margin-top: 60px;
+   margin-bottom: 60px;
    font-family: 'Montserrat', sans-serif;
    text-align: center;
    font-color: white;
@@ -8,6 +9,7 @@ body {
    background: rgb(2,0,36);
    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,72,90,1) 35%, rgba(0,212,255,1) 100%);
    opacity: 0.9;
+   height: 100%;
 
 }
 
@@ -18,6 +20,8 @@ h1 {
    color: #FFFFFF;
    font-family: 'Montserrat', sans-serif;
    font-weight: bold;
+   padding-bottom:15px;
+   padding-top:15px;
 }
 
 h2 {
@@ -34,7 +38,7 @@ h3 {
    font-weight: bold;
 }
 
-h3 {
+h4 {
    text-align: center;
    color: #FFFFFF;
    font-family: 'Montserrat', sans-serif;
@@ -47,6 +51,7 @@ p {
    font-family: 'Montserrat', sans-serif;
    font-size: 16 px;
 }
+
 
 li {
    text-align: left;
@@ -178,7 +183,8 @@ a:active {
     font-weight: bold;
 }
 .navbar {
-   background-color: #0C0255;
+   background: rgb(2,0,36);
+      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,72,90,1) 35%, rgba(0,212,255,1) 100%);
    font-size: 12px;
    color: white;
 }
@@ -200,7 +206,7 @@ table.parenting-playbook {
       font-family: 'Montserrat', sans-serif;
       font-size: 15px;
       table-layout: fixed;
-        width: 800px;
+      width: 800px;
 
 }
 
@@ -242,8 +248,11 @@ td, th {
 }
 
 th {
-    text-align: center;
+    text-align: left;
     font-family: 'Montserrat', sans-serif;
+    padding-left: 40px;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 td {
@@ -280,6 +289,13 @@ table.parenting-playbook {
     font-family: 'Montserrat', sans-serif;
      border-bottom: solid 1px white;
 }
+
+table.parenting-playbook.li {
+  text-align:left;
+     padding-left:15px;
+     padding-right:15px;
+     padding-bottom:5px;
+  }
 
 table.parenting-playbook td:first-child {
     font-weight: bold;
@@ -333,6 +349,7 @@ label {
     font-family: 'Montserrat', sans-serif;
 }
 
+
 .centered {
     text-align: center;
     font-family: 'Montserrat', sans-serif;
@@ -341,10 +358,10 @@ label {
 p {
     vertical-align: top;
     margin-left: 30px;
-
     font-family: 'Montserrat', sans-serif;
-
 }
+
+
 
 .centeredTable {
     margin-left: auto;
@@ -365,7 +382,6 @@ div.job-listing {
     margin-right: auto;
     padding: 20px 20px;
     border: 1px solid #FFFFFF;
-
     width: 80%;
 }
 /********** ADDED BY AMANDA*********/
@@ -377,7 +393,134 @@ div.job-listing {
 /***************/
 
 input.checkbox {
-        width: 40px;
-        height: 40px;
+        width: 20px;
+        height: 20px;
       }
+}
+
+.footer {
+  position:fixed;
+    bottom:0px;
+    left:0px;
+    width:100%;
+    height: 50px;
+}
+
+.addIntervention {
+ color:white;
+ text-align:left;
+ margin-left:auto;
+ margin-right:auto;
+ padding:20px 400px;
+ font-size:16px;
+
+}
+
+.urgent {
+color:red;
+background-color:black;
+}
+
+.faq {
+    padding-left:30px;
+    padding-right:30px;
+}
+
+.standout {
+    font-weight:bold;
+    text-decoration:underline;
+    text-align:left;
+}
+
+.faqTextStyle {
+    text-align:left;
+    padding-bottom:5px;
+}
+
+.faqH3style {
+    text-align:center;
+    padding-bottom:10px;
+}
+
+table.faq {
+      border: 1px solid #ffffff;
+      border-collapse:separate;
+      border-spacing:0 15px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #FFFFFF;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      table-layout: fixed;
+      width: 600px;
+
+}
+
+.quiz {
+    color:white;
+    text-align:left;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:16px;
+    padding-left:400px;
+}
+
+.quiz-spacing {
+    margin-top:25px;
+    margin-bottom:25px;
+}
+
+table.results {
+      border: 1px solid #ffffff;
+      border-collapse:separate;
+      border-spacing:0 15px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #FFFFFF;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      table-layout: fixed;
+      width: 800px;
+      padding-top:10px;
+      padding-bottom:10px;
+}
+
+.li-padding {
+     padding-left:30px;
+  }
+
+div.results {
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+
+.editing {
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:80px;
+    margin-bottom:auto;
+    color:white;
+   }
+
+ a.small-links {
+    color: limegreen;
+    font-size: 12px;
+    margin-left: 30px;
+    margin-right: auto;
+    text-align:left;
+ }
+
+div.edit-class {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 15px;
+    border: 1px solid #FFFFFF;
+    width: 60%;
+    text-align:left;
+    margin-bottom: 30px;
+    font-size: 16px;
 }

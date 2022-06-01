@@ -7,12 +7,12 @@
 <div th:replace="fragments :: page-header"></div>
 <script type="text/javascript" th:src="@{/js/addInterventionInputs.js}"></script>
 
-<div class="container body-content" style="color:white;text-align:left;margin-left:auto;margin-right:auto;padding:20px 400px;font-size:16px;">
+<div class="addIntervention">
     <form method="post" style="max-width:600px;">
         <h1>Add Intervention</h1>
         <h3>* Designates a required input.</h3>
         <br>
-        <div class="form-group" style="text-align:left;">
+        <div class="form-group">
             <label id="checkBoxLabel" th:for="domains">*Domains:</label>
             <br>
             <th:block th:each="domain : ${domains}">
@@ -23,7 +23,7 @@
             <br>
             <span>(Hover over Domain names for more info.)</span>
             <br>
-            <span id="domainSelect" style="color:red;background-color:black;"></span>
+            <span id="domainSelect" class="urgent"></span>
             <br>
             <span th:text="${checkBoxError}" class="error" style="color:red;background-color:black;"></span>
         </div>
@@ -39,7 +39,7 @@
             <br>
             <a th:href="@{'/tags/add'}">Add Tags</a>
             <br>
-            <span id="tagSelect" style="color:red;background-color:black;"></span>
+            <span id="tagSelect" class="urgent"></span>
             <br>
             <span th:text="${checkBoxErrorTag}" class="error" style="color:red;background-color:black;"></span>
         </div>
@@ -48,9 +48,9 @@
             <label th:for="name">*Name:</label>
             <input id="name" class="form-control" th:field="${intervention.name}" maxlength="255"/>
             <div id="nameCounter" style="margin-top: 0.25rem; text-align: right">0</div>
-            <span id="nameBlank" style="color:red;background-color:black;"></span>
+            <span id="nameBlank" class="urgent"></span>
             <br>
-            <span id="nameLength" style="color:red;background-color:black;"></span>
+            <span id="nameLength" class="urgent"></span>
             <br>
             <span th:errors="${intervention.name}" class="error" style="color:red;background-color:black;"></span>
         </div>
@@ -59,9 +59,9 @@
             <label th:for="action">*Action:</label>
             <textarea rows="4" cols="50" id="action" class="form-control" th:field="${intervention.action}" maxlength="2000"/>
             <div id="actionCounter" style="margin-top: 0.25rem; text-align: right">0</div>
-            <span id="actionBlank" style="color:red;background-color:black;"></span>
+            <span id="actionBlank" class="urgent"></span>
             <br>
-            <span id="actionLength" style="color:red;background-color:black;"></span>
+            <span id="actionLength" class="urgent"></span>
             <br>
             <span th:errors="${intervention.action}" class="error" style="color:red;background-color:black;"></span>
         </div>
@@ -70,9 +70,9 @@
             <label th:for="expectedResponse">*Expected Response:</label>
             <textarea rows="4" cols="50" id="expectedResponse" class="form-control" th:field="${intervention.expectedResponse}" maxlength="2000"/>
             <div id="expectedResponseCounter" style="margin-top: 0.25rem; text-align: right">0</div>
-            <span id="expectedResponseBlank" style="color:red;background-color:black;"></span>
+            <span id="expectedResponseBlank" class="urgent"></span>
             <br>
-            <span id="expectedResponseLength" style="color:red;background-color:black;"></span>
+            <span id="expectedResponseLength" class="urgent"></span>
             <br>
             <span th:errors="${intervention.expectedResponse}" class="error" style="color:red;background-color:black;"></span>
         </div>
@@ -96,5 +96,8 @@
     </form>
 </div>
 
+<div class="footer">
+    <p></p>
+</div>
 </body>
 </html>
