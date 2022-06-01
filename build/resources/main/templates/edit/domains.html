@@ -9,7 +9,7 @@
 <div class="container body-content">
     <form method="post" class="editing">
         <div class="form-group">
-            <label id="checkBoxLabel" th:for="domains" style="font-size:26px;">Domains:</label>
+            <label id="checkBoxLabel" th:for="domains" class="editing-labels">Domains:</label>
             <br>
             <th:block th:each="domain : ${domains}">
                 <th:block th:each="dom : ${intervention.domains}" >
