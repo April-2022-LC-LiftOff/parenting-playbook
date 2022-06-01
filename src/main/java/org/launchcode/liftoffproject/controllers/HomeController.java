@@ -122,12 +122,15 @@ public class HomeController {
         model.addAttribute(new Intervention());
         model.addAttribute("domains", domainRepository.findAll());
         model.addAttribute("tags", tagRepository.findAll());
+        User user = new User();
+        model.addAttribute("username",user.getUsername());
+        model.addAttribute(user);
 
         return "add";
     }
 
     @PostMapping("add")
-    public String processAddInterventionForm(@ModelAttribute @Valid Intervention newIntervention, Errors errors, Model model, @RequestParam(required = false) List<Integer> domains, @RequestParam(required = false) List<Integer> tag) {
+    public String processAddInterventionForm(@ModelAttribute @Valid Intervention newIntervention, Errors errors, Model model, @RequestParam(required = false) List<Integer> domains, @RequestParam(required = false) List<Integer> tag, HttpServletRequest request) {
         if (domains == null || domains.size() == 0 || domains.isEmpty()) {
             model.addAttribute("title", "Add Intervention");
             model.addAttribute("domains", domainRepository.findAll());
@@ -150,12 +153,15 @@ public class HomeController {
             model.addAttribute("title", "Add Intervention");
             model.addAttribute("domains", domainRepository.findAll());
             model.addAttribute("tags", tagRepository.findAll());
+            model.addAttribute("user", userRepository.findAll());
             return "add";
         }
 
+        User user = authenticationController.getUserFromSession(request.getSession());
         List<Domain> domainObjs = (List<Domain>) domainRepository.findAllById(domains);
         List<Tag> tagObjs = (List<Tag>) tagRepository.findAllById(tag);
 
+        newIntervention.setUser(user);
         newIntervention.setDomains(domainObjs);
         newIntervention.setTags(tagObjs);
 
