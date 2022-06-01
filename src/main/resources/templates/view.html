@@ -51,11 +51,11 @@
                 <th>Posted Date</th>
             </tr>
             </thead>
-            <tbody th:if="${comments} !=null">
-            <tr th:each="comment : ${comments}">
+            <tbody th:if="${intervention.comments} !=null">
+            <tr th:each="comment : ${intervention.comments}">
                 <td th:text="${intervention.id}"></td>
                 <td th:text="${intervention.name}"></td>
-                <td th:text="${user.username}"></td>
+                <td th:text="${comment.user.username}"></td>
                 <td th:text="${comment.userInput}"></td>
                 <td th:text="${comment.postedDate}"></td>
             </tr>
