@@ -11,7 +11,7 @@
     <form th:action="@{/search/results}" method="post">
         <h2>Search by:</h2>
 
-        <p>
+        <p style="text-align:center;">
             <span th:each="column : ${columns}">
                 <input
                         type="radio"
@@ -23,33 +23,37 @@
             </span>
         </p>
 
-        <p>
+        <p style="text-align:center;">
             <label for="searchTerm">Keyword:</label>
-            <input type="text" name="searchTerm" id="searchTerm" />
+            <input type="text" name="searchTerm" id="searchTerm" style="color:black;"/>
         </p>
 
-        <input type="submit" value="Search" />
+        <input type="submit" class="btn-primary" value="Search" />
     </form>
 
     <hr />
 
-    <table class="parenting-playbook">
-        <tr th:each="intervention : ${interventions}">
+    <table class="parenting-playbook" th:each="intervention : ${interventions}">
+        <tr>
             <td>
+                <p class="standout">Name: </p>
                 <p>
-                    Name:
-                    <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a>
-                </p>
-                <p th:text="${'Action: ' + intervention.action}"></p>
-                <p th:text="${'Expected Response: ' + intervention.expectedResponse}"></p>
-                <p>
-                    Domain:
-                    <ul th:each="domain : ${intervention.domains}">
+                    <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a></p>
+                <p class="standout"> Action: </p>
+                <p th:text="${intervention.action}"></p>
+                <p class="standout">Expected Response:</p>
+                <p th:text="${intervention.expectedResponse}"></p>
+
+                <p class="standout">
+                    Domains:</p>
+                <ul th:each="domain : ${intervention.domains}">
+                    <li style="list-style-type: none;">
                         <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
-                    </ul>
+                    </li>
+                </ul>
                 </p>
-                <p>
-                    Tags:
+                <p class="standout">
+                    Tags:</p>
                 <ul th:each="tag : ${intervention.tags}">
                     <li style="list-style-type: none;">
                         <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
@@ -60,6 +64,7 @@
         </tr>
     </table>
 </div>
-
+<div class="footer">
+</div>
 </body>
 </html>

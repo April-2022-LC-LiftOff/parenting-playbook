@@ -29,6 +29,7 @@
         <div th:replace="fragments :: page-header"></div>
         <!--<div class="alert alert-warning text-center" role="alert" th:text="${mustlogin}" th:if="${mustlogin}"></div>-->
 
+
         <div class="container body-content col-5 mt-5" style="color: white; cursor: pointer">
                 <div class="row align-items-left">
 <!--                <div class="text-justify text-left">-->
@@ -41,19 +42,13 @@
                     </div>
                 </div>
 
-                <table class="table">
+                <table class="table" style="color:white;">
                     <div class="p-3 mb-2 bg-secondary text-white">
                         <tr>
                             <th data-tab="myContributions" id="contributions" scope="col">My Contributions</th>
                         </tr>
                         <tr>
                             <th data-tab="mySavedInterventions" id="interventions" scope="col">My Saved Interventions</th>
-                        </tr>
-                        <tr>
-                            <th data-tab="myNotes" id="notes" scope="col">My Notes</th>
-                        </tr>
-                        <tr>
-                            <th data-tab="sharedLinks" id="sharedLink" scope="col">Shared Links</th>
                         </tr>
                     </div>
                 </table>
@@ -71,9 +66,15 @@
                     <a type="button" id="delete" class="btn btn-danger" th:href="@{'/delete/' + ${comment.id}}">Delete</a><br><br>
                 </div>
             </div>
-            <div data-src="content" class="hide" id="mySavedInterventions">
-                <h3>Saved Intervention(s): </h3>
-            </div>
+<!--            <div data-src="content" class="hide" id="mySavedInterventions">-->
+<!--                <h3>Saved Intervention(s): </h3><br>-->
+<!--                <div th:each="intervention : ${user.interventions}">-->
+<!--                    <h4 th:text="${intervention.name}"></h4>-->
+<!--                    <h4 th:text="${intervention.tags}"></h4>-->
+<!--                    <h4 th:text="${intervention}"></h4>-->
+<!--                    <a class="btn btn-info" th:href="@{'/editIntervention/' + ${intervention.id}}">Edit</a>-->
+<!--                    <a type="button" id="delete" class="btn btn-danger" th:href="@{'/edit/delete/' + ${intervention.id}}">Delete</a><br><br>-->
+<!--            </div>-->
             <div data-src="content" class="hide" id="myNotes">
                 <h3>My Notes: </h3>
             </div>
@@ -83,5 +84,9 @@
         </div>
 
         <script src="js/profile.js"></script>
+        </div>
+
+        <div class="footer">
+        </div>
         </body>
         </html>

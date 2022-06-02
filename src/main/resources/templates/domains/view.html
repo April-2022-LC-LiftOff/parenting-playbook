@@ -8,9 +8,11 @@
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="job-listing">
-    <p th:text="${'Domain: ' + domain.domain}"></p>
-    <p th:text="${'Description: ' + domain.description}"></p>
-    <p> Interventions:
+    <p class="standout">Domain:</p>
+    <p th:text="${domain.domain}"></p>
+    <p class="standout">Description:</p>
+    <p th:text="${domain.description}"></p>
+    <p class="standout"> Interventions:</p>
     <ul>
         <li style="list-style-type: none;" th:each="intervention : ${domain.interventions}">
             <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a>
@@ -18,3 +20,9 @@
     </ul>
     </p>
 </div>
+
+<div class="footer">
+</div>
+
+</body>
+</html>

@@ -3,6 +3,7 @@ package org.launchcode.liftoffproject.controllers;
 import org.launchcode.liftoffproject.data.DomainRepository;
 import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.data.TagRepository;
+import org.launchcode.liftoffproject.data.UserRepository;
 import org.launchcode.liftoffproject.models.Domain;
 import org.launchcode.liftoffproject.models.Intervention;
 import org.launchcode.liftoffproject.models.Tag;
@@ -108,7 +109,7 @@ public class EditController {
             return "edit/expectedResponse";
         }
 
-        intervention.setAction(expectedResponse);
+        intervention.setExpectedResponse(expectedResponse);
         interventionRepository.save(intervention);
 
         return "redirect:/view/{interventionId}";
@@ -135,7 +136,7 @@ public class EditController {
 //            return "edit/reference";
 //        }
 
-        intervention.setAction(reference);
+        intervention.setReference(reference);
         interventionRepository.save(intervention);
 
         return "redirect:/view/{interventionId}";
@@ -162,7 +163,7 @@ public class EditController {
 //            return "edit/ifItFails";
 //        }
 
-        intervention.setAction(ifItFails);
+        intervention.setIfItFails(ifItFails);
         interventionRepository.save(intervention);
 
         return "redirect:/view/{interventionId}";
@@ -250,7 +251,7 @@ public class EditController {
         Intervention intervention = (Intervention) optIntervention.get();
         if (delete == 0) {
             model.addAttribute("intervention", intervention);
-            return "redirect:";
+            return "redirect:/view/{interventionId}";
         }
 
         if (delete == 1) {

@@ -7,15 +7,17 @@
 
 <h1>Add Tag</h1>
 
-<form method="post" style="max-width:600px;">
+<form method="post" class="editing">
     <div class="form-group">
-        <label th:for="name">Tag Name</label>
+        <label th:for="name"class="editing-labels" >Tag Name</label>
         <input class="form-control" th:field="${tag.tagName}" />
-        <span th:errors="${tag.tagName}" class="error" style="color: red;"></span>
+        <span th:errors="${tag.tagName}" class="error" style="color:red;background-color:black;"></span>
     </div>
 
-    <input type="submit" value="Add Tag" />
+    <input type="submit" value="Add Tag" style="color:black;"/>
 </form>
-
+<div class="footer">
+    <p></p>
+</div>
 </body>
 </html>
