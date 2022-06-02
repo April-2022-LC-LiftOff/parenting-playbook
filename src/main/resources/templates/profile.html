@@ -63,7 +63,7 @@
                         <h4 th:text="${comment.postedDate}"></h4>
                         <h4 th:text="${comment}"></h4>
                         <a class="btn btn-info" th:href="@{'/editComment/' + ${comment.id}}">Edit</a>
-                        <a type="button" id="delete" class="btn btn-danger" th:href="@{'/delete/' + ${comment.id}}">Delete</a><br><br><br>
+                        <a onclick="deleteComment()" type="button" class="btn btn-danger" th:href="@{'/delete/' + ${comment.id}}">Delete</a><br><br><br>
                     </div>
                 </div>
             </div>
@@ -88,5 +88,14 @@
 
         <div class="footer">
         </div>
-        </body>
-        </html>
+
+    <script>
+        function deleteComment() {
+           var result = confirm('Are you sure to delete a comment?');
+           if (result == false) {
+             event.preventDefault();
+           }
+         }
+    </script>
+    </body>
+    </html>

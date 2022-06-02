@@ -13,14 +13,23 @@
     <label for="editComment" style="color:white; font-size:25px">Edit Comment: </label><br>
 
     <div class="form-group">
-      <textarea rows="7" class="form-control" th:field="${comment.userInput}" id="editComment"></textarea>
+      <textarea rows="7" class="form-control" th:field="${comment.userInput}" id="editComment" required="required"></textarea>
       <span th:errors="${comment.userInput}" class="error"></span>
       <br>
-      <button class="btn btn-info btn-md" type="submit" value="Save">Save</button>
+      <button  onclick="saveComment()" class="btn btn-info btn-md" type="submit" value="Save">Save</button>
     </div>
   </form>
 </div>
 <div class="footer">
 </div>
+
+  <script>
+    function saveComment() {
+       var result = confirm('Are you sure to save a comment?');
+       if (result == false) {
+         event.preventDefault();
+       }
+     }
+  </script>
 </body>
 </html>

@@ -94,7 +94,7 @@
             <div class="form-group">
                 <input type="hidden" th:field="*{user}" class="form-control">
                 <input type="hidden" th:field="*{intervention}" class="form-control">
-                <textarea  rows="5" class="form-control" th:field="${comment.userInput}" placeholder="Have any thoughts?"></textarea>
+                <textarea  rows="5" class="form-control" th:field="${comment.userInput}" placeholder="Have any thoughts?" required="required"></textarea>
                 <span th:errors="${comment.userInput}" class="error"></span>
                 <br>
                 <button class="btn btn-success btn-md" type="submit">Add Comment</button>
