@@ -51,7 +51,7 @@ public class HomeController {
                 String line = " ";
                 String[] tempArr;
                 while ((line = br.readLine()) != null) {
-                    tempArr = line.split(delimiter, 2);
+                    tempArr = line.split(delimiter, 19);
                     Domain domain = new Domain(tempArr[0], tempArr[1]);
                     domainRepository.save(domain);
                 }

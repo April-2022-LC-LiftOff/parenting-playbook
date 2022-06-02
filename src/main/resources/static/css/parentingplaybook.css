@@ -545,3 +545,23 @@ div.tags {
     border: 1px solid #FFFFFF;
     width: 80%;
 }
+
+table.domainList {
+      border: 1px solid #ffffff;
+      border-collapse:separate;
+      border-spacing:0 15px;
+      border-top:auto;
+      margin-left: auto;
+      margin-right: auto;
+      color: #FFFFFF;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      table-layout: fixed;
+      width: 800px;
+}
+
+.trClass {
+  text-align: left;
+  border-bottom: 1px solid white;
+}
