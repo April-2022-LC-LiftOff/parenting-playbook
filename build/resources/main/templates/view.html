@@ -55,7 +55,7 @@
 <br><br>
 <div>
     <h3>Latest Comment(s): </h3>
-    <div class="container" style="background-color: rgba(255,255,255,0.2)">
+    <div class="container" style="background-color: rgba(255,255,255,0.1);">
         <table class="table" style="color:white;">
             <thead>
             <tr style="color: white">
@@ -66,7 +66,7 @@
                 <th>Posted Date</th>
             </tr>
             </thead>
-            <tbody th:if="${comments} !=null">
+            <tbody th:if="${comments} !=null" align="left">
             <tr th:each="comment : ${comments}">
 <!--                <td th:text="${intervention.id}"></td>-->
                 <td th:text="${intervention.name}"></td>
