@@ -173,7 +173,6 @@ public class HomeController {
         return "redirect:";
     }
 
-    // HttpServletRequest request
     @GetMapping("view/{interventionId}")
     public String displayViewIntervention(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
@@ -181,11 +180,8 @@ public class HomeController {
             Intervention intervention = (Intervention) optIntervention.get();
             model.addAttribute("intervention", intervention);
 
-//            User user = new User();
             User user = authenticationController.getUserFromSession(request.getSession());
             Comment comment = new Comment();
-            comment.setUser(user);
-            comment.setIntervention(intervention);
 
             if (user != null) {
                 model.addAttribute("comments", commentRepository.findCommentByInterventionIdAndUserId(interventionId, user.getId()));
