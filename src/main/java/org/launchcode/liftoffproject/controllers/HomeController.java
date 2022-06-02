@@ -84,9 +84,10 @@ public class HomeController {
                 BufferedReader br = new BufferedReader(fr);
                 String line = " ";
                 String[] tempArr;
+                User user = null;
                 while ((line = br.readLine()) != null) {
                     tempArr = line.split(delimiter);
-                    Intervention newIntervention = new Intervention(tempArr[0], tempArr[1], tempArr[2], tempArr[3], tempArr[4]);
+                    Intervention newIntervention = new Intervention(tempArr[0], tempArr[1], tempArr[2], tempArr[3], tempArr[4], user);
                     List<Integer> domains = new ArrayList<Integer>();
                     List<Integer> tags = new ArrayList<Integer>();
                     for (int i = 0; i < tempArr[5].length(); i++) {

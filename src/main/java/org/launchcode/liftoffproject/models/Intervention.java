@@ -42,12 +42,13 @@ public class Intervention extends AbstractEntity{
 
 
 
-    public Intervention(String name, String action, String expectedResponse, String reference, String ifItFails) {
+    public Intervention(String name, String action, String expectedResponse, String reference, String ifItFails, User user) {
         this.name = name;
         this.action = action;
         this.expectedResponse = expectedResponse;
         this.reference = reference;
         this.ifItFails = ifItFails;
+        this.user = user;
     }
 
     public Intervention() {}
@@ -124,6 +125,6 @@ public class Intervention extends AbstractEntity{
     public User getUser() {
         return user;
     }
-    public void setUser(User user) {
+    public void setUser(User user) { this.user = user;
     }
 }

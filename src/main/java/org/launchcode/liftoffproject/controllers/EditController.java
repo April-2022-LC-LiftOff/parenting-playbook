@@ -3,6 +3,7 @@ package org.launchcode.liftoffproject.controllers;
 import org.launchcode.liftoffproject.data.DomainRepository;
 import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.data.TagRepository;
+import org.launchcode.liftoffproject.data.UserRepository;
 import org.launchcode.liftoffproject.models.Domain;
 import org.launchcode.liftoffproject.models.Intervention;
 import org.launchcode.liftoffproject.models.Tag;
