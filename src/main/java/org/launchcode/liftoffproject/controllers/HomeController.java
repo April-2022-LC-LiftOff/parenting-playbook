@@ -183,11 +183,16 @@ public class HomeController {
 
 //            User user = new User();
             User user = authenticationController.getUserFromSession(request.getSession());
-            model.addAttribute("comments", commentRepository.findCommentByInterventionIdAndUserId(interventionId, user.getId()));
+            Comment comment = new Comment();
+            comment.setUser(user);
+            comment.setIntervention(intervention);
 
-            model.addAttribute("username", user.getUsername());
-            model.addAttribute(user);
-            model.addAttribute("comment", new Comment());
+            if (user != null) {
+                model.addAttribute("comments", commentRepository.findCommentByInterventionIdAndUserId(interventionId, user.getId()));
+            }
+
+           model.addAttribute("comment", comment);
+           model.addAttribute("user",user);
 
             return "view";
         } else {
