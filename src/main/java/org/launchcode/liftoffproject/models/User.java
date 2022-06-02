@@ -76,6 +76,10 @@ public class User extends AbstractEntity{
         return username;
     }
 
+//    public void setUsername(String username) {
+//        this.username = username;
+//    }
+
     public List<Comment> getComments() {
         return comments;
     }

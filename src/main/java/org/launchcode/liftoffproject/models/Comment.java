@@ -31,7 +31,7 @@ public class Comment extends AbstractEntity {
 
     public Comment() {}
 
-    public Comment(String userInput, Date postedDate, Intervention intervention, User user) {
+    public Comment(String userInput, Date postedDate, Intervention intervention, User username) {
 
         this.userInput = userInput;
         this.postedDate = postedDate;
@@ -71,6 +71,7 @@ public class Comment extends AbstractEntity {
     public void setUser(User user) {
         this.user = user;
     }
+
 
     @Override
     public String toString() {

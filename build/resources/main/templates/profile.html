@@ -55,26 +55,26 @@
         </div>
 
 
-        <div class="container" style="color: white; background-color: rgba(255,255,255,0.2)">
+        <div class="container"  style="color: white; background-color: rgba(255,255,255,0.2);">
             <div data-src="content" class="hide" id="myContributions">
-                <h3>Posted comment(s): </h3><br>
+                <h2>Posted comment(s): </h2><br>
                 <div th:each="comment : ${user.comments}">
                     <h4 th:text="${comment.intervention}"></h4>
                     <h4 th:text="${comment.postedDate}"></h4>
                     <h4 th:text="${comment}"></h4>
-                    <a class="btn btn-info" th:href="@{'/editComment/' + ${comment.id}}">Edit</a>
-                    <a type="button" id="delete" class="btn btn-danger" th:href="@{'/delete/' + ${comment.id}}">Delete</a><br><br>
+                    <a class="btn btn-info btn-sm" th:href="@{'/editComment/' + ${comment.id}}" style="color:black;">Edit</a>
+                    <a type="button" id="delete" class="btn btn-danger btn-sm" th:href="@{'/delete/' + ${comment.id}}" style="color:black;">Delete</a><br><br>
+                </div>
+                <h2>Posted intervention(s): </h2><br>
+                <div th:each="intervention : ${user.interventions}">
+                    <h4 th:text="${intervention}"></h4>
+                    <a class="btn btn-info btn-sm" th:href="@{'/view/' + ${intervention.id}}" style="color:black;">View Intervention</a>
+                </div>
+                <div>
+                    <p>  </p>
                 </div>
             </div>
-<!--            <div data-src="content" class="hide" id="mySavedInterventions">-->
-<!--                <h3>Saved Intervention(s): </h3><br>-->
-<!--                <div th:each="intervention : ${user.interventions}">-->
-<!--                    <h4 th:text="${intervention.name}"></h4>-->
-<!--                    <h4 th:text="${intervention.tags}"></h4>-->
-<!--                    <h4 th:text="${intervention}"></h4>-->
-<!--                    <a class="btn btn-info" th:href="@{'/editIntervention/' + ${intervention.id}}">Edit</a>-->
-<!--                    <a type="button" id="delete" class="btn btn-danger" th:href="@{'/edit/delete/' + ${intervention.id}}">Delete</a><br><br>-->
-<!--            </div>-->
+
             <div data-src="content" class="hide" id="myNotes">
                 <h3>My Notes: </h3>
             </div>
@@ -85,8 +85,9 @@
 
         <script src="js/profile.js"></script>
         </div>
-
+        </div>
         <div class="footer">
         </div>
+
         </body>
         </html>

@@ -40,6 +40,7 @@ public class ProfileController {
         model.addAttribute("lastname", user.getLastName());
         model.addAttribute("email", user.getEmail());
         model.addAttribute("comments", user.getComments());
+        model.addAttribute("interventions", user.getInterventions());
         model.addAttribute(user);
 
         return "profile";
@@ -72,7 +73,6 @@ public class ProfileController {
         commentRepository.deleteById(id);
         return "redirect:/profile";
     }
-
 
 
 }

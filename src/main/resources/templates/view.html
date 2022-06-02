@@ -67,10 +67,10 @@
             </tr>
             </thead>
             <tbody th:if="${comments} !=null">
-            <tr th:each="comment : ${comments}">
+            <tr th:each="comment : ${comments}" style="align-left:auto;">
 <!--                <td th:text="${intervention.id}"></td>-->
                 <td th:text="${intervention.name}"></td>
-                <td th:text="${user.username}"></td>
+                <td th:text="${comment.user}"></td>
                 <td th:text="${comment.userInput}"></td>
                 <td th:text="${comment.postedDate}"></td>
             </tr>

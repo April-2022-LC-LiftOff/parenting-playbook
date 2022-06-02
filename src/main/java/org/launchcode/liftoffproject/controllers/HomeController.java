@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.*;
 import java.util.ArrayList;
@@ -121,6 +123,7 @@ public class HomeController {
 
     @GetMapping("add")
     public String displayAddInterventionForm(Model model) {
+
         model.addAttribute("title", "Add Intervention");
         model.addAttribute(new Intervention());
         model.addAttribute("domains", domainRepository.findAll());
@@ -163,6 +166,7 @@ public class HomeController {
         User user = authenticationController.getUserFromSession(request.getSession());
         List<Domain> domainObjs = (List<Domain>) domainRepository.findAllById(domains);
         List<Tag> tagObjs = (List<Tag>) tagRepository.findAllById(tag);
+
 
         newIntervention.setUser(user);
         newIntervention.setDomains(domainObjs);
