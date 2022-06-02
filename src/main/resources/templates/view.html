@@ -66,11 +66,11 @@
                 <th>Posted Date</th>
             </tr>
             </thead>
-            <tbody th:if="${comments} !=null" align="left">
-            <tr th:each="comment : ${comments}">
+            <tbody th:if="${intervention.comments} !=null" align="left">
+            <tr th:each="comment : ${intervention.comments}">
 <!--                <td th:text="${intervention.id}"></td>-->
                 <td th:text="${intervention.name}"></td>
-                <td th:text="${user.username}"></td>
+                <td th:text="${comment.user.username}"></td>
                 <td th:text="${comment.userInput}"></td>
                 <td th:text="${comment.postedDate}"></td>
             </tr>
@@ -84,14 +84,16 @@
         Be the first one to leave a comment!
     </span>
     <br>
-    <div th:unless="${user}" style="color: white">
+    <div class="container" th:unless="${user}" style="color: white">
         <h3>Login or join us for leave your comment!</h3>
     </div>
-    <div th:if="${user} != null">
+    <div class="container" th:if="${user} != null">
         <h3 style="color: white">Leave a Comment: </h3>
 
         <form method="post">
             <div class="form-group">
+                <input type="hidden" th:field="*{user}" class="form-control">
+                <input type="hidden" th:field="*{intervention}" class="form-control">
                 <textarea  rows="5" class="form-control" th:field="${comment.userInput}" placeholder="Have any thoughts?"></textarea>
                 <span th:errors="${comment.userInput}" class="error"></span>
                 <br>

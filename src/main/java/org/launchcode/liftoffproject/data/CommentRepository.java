@@ -10,6 +10,7 @@ import java.util.List;
 
 @Repository
 public interface CommentRepository extends CrudRepository<Comment, Integer> {
-    List<Comment> findCommentByInterventionId(@Param("interventionId") Integer interventionId);
+    @Query(value = "SELECT * FROM comment WHERE intervention_id =:interventionId AND user_id =:userId", nativeQuery = true)
+    List<Comment> findCommentByInterventionIdAndUserId(@Param("interventionId") Integer interventionId, @Param("userId") Integer userId);
 }
 
