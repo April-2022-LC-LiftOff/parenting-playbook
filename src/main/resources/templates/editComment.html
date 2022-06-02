@@ -9,9 +9,9 @@
 <div align="center">
   <h2 th:text="${comment.intervention}"></h2>
 
-  <h3>Edit Comment</h3>
+  <h3>Edit Comment:</h3>
   <form method="post">
-    <label th:for="editComment">Edit Comment: </label><br>
+    <label th:for="editComment" style="color:white;"> </label><br>
 
     <div class="form-group">
       <textarea rows="7" class="form-control" th:field="${comment.userInput}"></textarea>
@@ -20,6 +20,8 @@
       <button class="btn btn-info btn-md" type="submit" value="Save">Save</button>
     </div>
   </form>
+</div>
+<div class="footer">
 </div>
 </body>
 </html>

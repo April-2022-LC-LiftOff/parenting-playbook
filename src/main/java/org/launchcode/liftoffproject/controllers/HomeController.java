@@ -5,6 +5,7 @@ import org.launchcode.liftoffproject.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,11 +38,12 @@ public class HomeController {
     private UserRepository userRepository;
 
 
+
     public void createDomains() throws FileNotFoundException {
         String delimiter = ",";
         List repo = (List) domainRepository.findAll();
 
-        if (repo.isEmpty()){
+        if (repo.isEmpty()) {
             try {
                 File file = new File("src/main/resources/assets/domains.csv");
                 FileReader fr = new FileReader(file);
@@ -49,7 +51,7 @@ public class HomeController {
                 String line = " ";
                 String[] tempArr;
                 while ((line = br.readLine()) != null) {
-                    tempArr = line.split(delimiter, 2);
+                    tempArr = line.split(delimiter, 19);
                     Domain domain = new Domain(tempArr[0], tempArr[1]);
                     domainRepository.save(domain);
                 }
@@ -82,9 +84,10 @@ public class HomeController {
                 BufferedReader br = new BufferedReader(fr);
                 String line = " ";
                 String[] tempArr;
+                User user = null;
                 while ((line = br.readLine()) != null) {
                     tempArr = line.split(delimiter);
-                    Intervention newIntervention = new Intervention(tempArr[0], tempArr[1], tempArr[2], tempArr[3], tempArr[4]);
+                    Intervention newIntervention = new Intervention(tempArr[0], tempArr[1], tempArr[2], tempArr[3], tempArr[4], user);
                     List<Integer> domains = new ArrayList<Integer>();
                     List<Integer> tags = new ArrayList<Integer>();
                     for (int i = 0; i < tempArr[5].length(); i++) {
@@ -170,7 +173,7 @@ public class HomeController {
         return "redirect:";
     }
 
-// HttpServletRequest request
+    // HttpServletRequest request
     @GetMapping("view/{interventionId}")
     public String displayViewIntervention(Model model, @PathVariable int interventionId) {
         Optional optIntervention = interventionRepository.findById(interventionId);
@@ -183,7 +186,7 @@ public class HomeController {
 
             model.addAttribute("comment", new Comment());
 
-            model.addAttribute("username",user.getUsername());
+            model.addAttribute("username", user.getUsername());
             model.addAttribute(user);
 
             model.addAttribute("comments", commentRepository.findCommentByInterventionId(interventionId));
@@ -199,7 +202,7 @@ public class HomeController {
                                     @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
-        if(errors.hasErrors()) {
+        if (errors.hasErrors()) {
             model.addAttribute("intervention", intervention);
             return "view";
         }
@@ -216,4 +219,94 @@ public class HomeController {
     public String displayAbout() {
         return "about";
     }
+
+    @GetMapping("faq")
+    public String displayFaq() {
+        return "faq";
+    }
+
+    List<String> quizResults = new ArrayList<>();
+
+    @GetMapping("quiz")
+    public String displayAllQuestions(Model model) {
+        List<String> questionnaire = new ArrayList<>();
+        model.addAttribute("questionnaire", questionnaire);
+        return "quiz";
+    }
+
+    @GetMapping("results")
+    public String getResults(Model model, Quiz quiz) {
+        model.addAttribute("Quiz", quiz);
+        return "results";
+    }
+
+    @PostMapping("results")
+    public String processFormMethodQuiz(@ModelAttribute("quiz") @Valid Quiz quiz, Model model, @RequestParam(required = false)
+            List<String> impulseControl, @RequestParam(required = false) List<String> emotionalControl, @RequestParam(required = false)
+                                                List<String> flexibleThinking, @RequestParam(required = false)
+                                                List<String> workingMemory, @RequestParam(required = false)
+                                                List<String> selfMonitoring, @RequestParam(required = false)
+                                                List<String> planningAndPrioritizing, @RequestParam(required = false)
+                                                List<String> taskInitiation, @RequestParam(required = false)
+                                                List<String> organization, @RequestParam(required = false) List<String> none) {
+
+
+        if (impulseControl == null) {
+            model.addAttribute("title", quiz);
+        } else if (impulseControl.size() >= 2) {
+            model.addAttribute("impulseControl", domainRepository.findById(1));
+        }
+
+        if (emotionalControl == null) {
+            model.addAttribute("title", quiz);
+        } else if (emotionalControl.size() >= 2) {
+            model.addAttribute("emotionalControl", domainRepository.findById(2));
+        }
+
+        if (flexibleThinking == null) {
+            model.addAttribute("title", quiz);
+        } else if (flexibleThinking.size() >= 2) {
+            model.addAttribute("flexibleThinking", domainRepository.findById(3));
+        }
+
+        if (workingMemory == null) {
+            model.addAttribute("title", quiz);
+        } else if (workingMemory.size() >= 2) {
+            model.addAttribute("workingMemory", domainRepository.findById(4));
+        }
+
+        if (selfMonitoring == null) {
+            model.addAttribute("title", quiz);
+        } else if (selfMonitoring.size() >= 2) {
+            model.addAttribute("selfMonitoring", domainRepository.findById(5));
+        }
+
+        if (planningAndPrioritizing == null) {
+            model.addAttribute("title", quiz);
+        } else if (planningAndPrioritizing.size() >= 2) {
+            model.addAttribute("planningAndPrioritizing", domainRepository.findById(6));
+        }
+
+        if (taskInitiation == null) {
+            model.addAttribute("title", quiz);
+        } else if (taskInitiation.size() >= 2) {
+            model.addAttribute("taskInitiation", domainRepository.findById(7));
+        }
+
+        if (organization == null) {
+            model.addAttribute("title", quiz);
+        } else if (organization.size() >= 2) {
+            model.addAttribute("organization", domainRepository.findById(8));
+        }
+
+        if (impulseControl == null && emotionalControl == null && flexibleThinking == null && workingMemory == null &&
+        selfMonitoring == null && planningAndPrioritizing == null && taskInitiation == null && organization == null) {
+
+            model.addAttribute("none", none);
+        }
+        return "results";
+
+    }
+
 }
+

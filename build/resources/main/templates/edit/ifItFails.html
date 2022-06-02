@@ -7,9 +7,9 @@
 <div th:replace="fragments :: page-header"></div>
 
 <div class="container body-content">
-    <form method="post" style="max-width:600px;">
+    <form method="post" class="editing">
         <div class="form-group">
-            <label th:for="ifItFails">If It Fails:</label>
+            <label th:for="ifItFails" class="editing-labels">If It Fails:</label>
             <textarea rows="4" cols="50" name="ifItFails" class="form-control" th:text="${intervention.ifItFails}" ></textarea>
         </div>
 
@@ -17,6 +17,8 @@
         <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn-info" value="Cancel Update"/></a>
     </form>
 </div>
-
+<div class="footer">
+    <p></p>
+</div>
 </body>
 </html>

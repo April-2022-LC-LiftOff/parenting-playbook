@@ -8,29 +8,44 @@
 
 <nav th:replace="fragments :: page-header"></nav>
 
-<!--<div class="parenting-playbook"></div>-->
-<div class="job-listing">
-    <p>Domain(s):
+<!--<div class="job-listing"></div>-->
+<div class="edit-class">
+    <p class="standout">Domain(s):</p>
         <ul>
-            <li th:each="domain : ${intervention.domains}" style="list-style-type: none;">
+            <li th:each="domain : ${intervention.domains}" style="list-style-type: none;font-size:18px;">
                 <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
             </li>
         </ul>
-    </p>
-    <a th:href="@{'/edit/domains/' + ${intervention.id}}">Edit Domains</a>
-    <p>Tag(s):
+    <a th:href="@{'/edit/domains/' + ${intervention.id}}" class="small-links">Edit Domains</a>
+
+    <p class="standout" style="margin-top:20px;">Tag(s):</p>
         <ul>
-            <li th:each="tag : ${intervention.tags}" style="list-style-type: none;">
+            <li th:each="tag : ${intervention.tags}" style="list-style-type: none;font-size:18px;">
                 <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
             </li>
         </ul>
-    </p>
-    <a th:href="@{'/edit/tags/' + ${intervention.id}}">Edit Tags</a>
-    <p th:text="${'Name: ' + intervention.name}"></p> <a th:href="@{'/edit/name/' + ${intervention.id}}">Edit Name</a>
-    <p th:text="${'Action: ' + intervention.action}"></p> <a th:href="@{'/edit/action/' + ${intervention.id}}">Edit Action</a>
-    <p th:text="${'Expected Response: ' + intervention.expectedResponse}"></p> <a th:href="@{'/edit/expectedResponse/' + ${intervention.id}}">Edit Expected Response</a>
-    <p th:text="${'Reference: ' + intervention.reference}"></p> <a th:href="@{'/edit/reference/' + ${intervention.id}}">Edit Reference</a>
-    <p th:text="${'If It Fails, try: ' + intervention.ifItFails}"></p> <a th:href="@{'/edit/ifItFails/' + ${intervention.id}}">Edit If It Fails</a>
+
+    <a th:href="@{'/edit/tags/' + ${intervention.id}}" class="small-links">Edit Tags</a>
+
+    <p class="standout" style="margin-top:20px;">Name: </p>
+    <p th:text="${intervention.name}"></p>
+    <a th:href="@{'/edit/name/' + ${intervention.id}}" class="small-links">Edit Name</a>
+
+    <p class="standout" style="margin-top:20px;">Action: </p>
+    <p th:text="${intervention.action}"></p>
+    <a th:href="@{'/edit/action/' + ${intervention.id}}" class="small-links">Edit Action</a>
+
+    <p class="standout" style="margin-top:20px;">Expected Response: </p>
+    <p th:text="${intervention.expectedResponse}"></p>
+    <a th:href="@{'/edit/expectedResponse/' + ${intervention.id}}" class="small-links">Edit Expected Response</a>
+
+    <p class="standout" style="margin-top:20px;">Reference: </p>
+    <p th:text="${intervention.reference}"></p>
+    <a th:href="@{'/edit/reference/' + ${intervention.id}}" class="small-links">Edit Reference</a>
+
+    <p class="standout" style="margin-top:20px;">If it fails, try: </p>
+    <p th:text="${intervention.ifItFails}"></p>
+    <a th:href="@{'/edit/ifItFails/' + ${intervention.id}}" class="small-links">Edit If It Fails</a>
 </div>
 
 <div>
@@ -41,10 +56,10 @@
 <div>
     <h3>Latest Comment(s): </h3>
     <div class="container" style="background-color: rgba(255,255,255,0.2)">
-        <table class="table table-striped">
+        <table class="table" style="color:white;">
             <thead>
             <tr style="color: white">
-                <th>Intervention ID</th>
+<!--                <th>Intervention ID</th>-->
                 <th>Intervention Name</th>
                 <th>User</th>
                 <th>Comment</th>
@@ -53,7 +68,7 @@
             </thead>
             <tbody th:if="${comments} !=null">
             <tr th:each="comment : ${comments}">
-                <td th:text="${intervention.id}"></td>
+<!--                <td th:text="${intervention.id}"></td>-->
                 <td th:text="${intervention.name}"></td>
                 <td th:text="${user.username}"></td>
                 <td th:text="${comment.userInput}"></td>
@@ -77,13 +92,15 @@
 
         <form method="post">
             <div class="form-group">
-                <textarea  rows="5" class="form-control" th:field="${comment.userInput}" placeholder="Have any thought?"></textarea>
+                <textarea  rows="5" class="form-control" th:field="${comment.userInput}" placeholder="Have any thoughts?"></textarea>
                 <span th:errors="${comment.userInput}" class="error"></span>
                 <br>
                 <button class="btn btn-success btn-md" type="submit">Add Comment</button>
             </div>
         </form>
-    </div>
 
+    </div>
+<div class="footer">
+</div>
 </body>
 </html>
