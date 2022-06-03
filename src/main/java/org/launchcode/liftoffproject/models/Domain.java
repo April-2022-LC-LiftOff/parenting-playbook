@@ -15,12 +15,15 @@ public class Domain extends AbstractEntity{
     @Size(max = 2000, message = "Description must not exceed 2000 characters.")
     private String description;
 
+    private Boolean checked;
+
     @ManyToMany(mappedBy = "domains")
     private  List<Intervention> interventions = new ArrayList<>();
 
     public Domain(String domain, String description) {
         this.domain = domain;
         this.description = description;
+        this.checked = false;
     }
 
     public Domain() {}
@@ -39,6 +42,14 @@ public class Domain extends AbstractEntity{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
     }
 
     public List<Intervention> getInterventions() {
