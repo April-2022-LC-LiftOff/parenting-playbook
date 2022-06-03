@@ -117,7 +117,7 @@ public class AuthenticationController {
             model.addAttribute("title", "Log In");
             return "login";
         }
-
+        //need to rework. It went away with the last PR. 6/4/22 Amanda
         setUserInSession(request.getSession(), theUser);
         User currentUser = getUserFromSession(request.getSession());
         redirAttrs.addFlashAttribute("hello", "Hello, " + currentUser.getFirstName());

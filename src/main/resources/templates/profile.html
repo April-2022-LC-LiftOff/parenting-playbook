@@ -27,7 +27,7 @@
         <body>
 
         <div th:replace="fragments :: page-header"></div>
-        <!--<div class="alert alert-warning text-center" role="alert" th:text="${mustlogin}" th:if="${mustlogin}"></div>-->
+        <div class="alert alert-warning text-center" role="alert" th:text="${mustlogin}" th:if="${mustlogin}"></div>
 
 
         <div class="container body-content col-5 mt-5" style="color: white; cursor: pointer">
@@ -69,21 +69,21 @@
             </div>
             <div data-src="content" class="hide" id="mySavedInterventions">
                 <h3>Saved Intervention(s): </h3><br>
-<<<<<<< HEAD
-<!--                <div th:each="intervention : ${user.interventions}">-->
-<!--                    <h4 th:text="${intervention.name}"></h4>-->
-<!--                    <h4 th:text="${intervention.tags}"></h4>-->
-<!--                    <h4 th:text="${intervention}"></h4>-->
-<!--                    <a class="btn btn-info" th:href="@{'/editIntervention/' + ${intervention.id}}">Edit</a>-->
-<!--                    <a type="button" id="delete" class="btn btn-danger" th:href="@{'/edit/delete/' + ${intervention.id}}">Delete</a><br><br>-->
-=======
+
                 <div th:each="intervention : ${user.interventions}">
                     <h4 th:text="${intervention.name}"></h4>
                     <h4 th:text="${intervention.tags}"></h4>
                     <h4 th:text="${intervention}"></h4>
                     <a class="btn btn-info" th:href="@{'/editIntervention/' + ${intervention.id}}">Edit</a>
                     <a type="button" id="delete" class="btn btn-danger" th:href="@{'/edit/delete/' + ${intervention.id}}">Delete</a><br><br>
->>>>>>> b69023ae24a2fc176f2a361acd7c224cc6242ae7
+
+                <div th:each="intervention : ${user.interventions}">
+                    <h4 th:text="${intervention.name}"></h4>
+                    <h4 th:text="${intervention.tags}"></h4>
+                    <h4 th:text="${intervention}"></h4>
+                    <a class="btn btn-info" th:href="@{'/editIntervention/' + ${intervention.id}}">Edit</a>
+                    <a type="button" id="delete" class="btn btn-danger" th:href="@{'/edit/delete/' + ${intervention.id}}">Delete</a><br><br>
+
             </div>
             <div data-src="content" class="hide" id="myNotes">
                 <h3>My Notes: </h3>
