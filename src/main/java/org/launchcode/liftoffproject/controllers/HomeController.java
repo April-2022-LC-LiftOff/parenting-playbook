@@ -5,7 +5,6 @@ import org.launchcode.liftoffproject.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
@@ -161,6 +160,11 @@ public class HomeController {
         }
 
         User user = authenticationController.getUserFromSession(request.getSession());
+
+        if (user == null) {
+            return "redirect:login";
+        }
+
         List<Domain> domainObjs = (List<Domain>) domainRepository.findAllById(domains);
         List<Tag> tagObjs = (List<Tag>) tagRepository.findAllById(tag);
 
@@ -173,23 +177,22 @@ public class HomeController {
         return "redirect:";
     }
 
-    // HttpServletRequest request
     @GetMapping("view/{interventionId}")
-    public String displayViewIntervention(Model model, @PathVariable int interventionId) {
+    public String displayViewIntervention(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             model.addAttribute("intervention", intervention);
 
-            User user = new User();
-//            User user = authenticationController.getUserFromSession(request.getSession());
+            User user = authenticationController.getUserFromSession(request.getSession());
+            Comment comment = new Comment();
 
-            model.addAttribute("comment", new Comment());
+            if (user != null) {
+                model.addAttribute("comments", commentRepository.findCommentByInterventionIdAndUserId(interventionId, user.getId()));
+            }
 
-            model.addAttribute("username", user.getUsername());
-            model.addAttribute(user);
-
-            model.addAttribute("comments", commentRepository.findCommentByInterventionId(interventionId));
+           model.addAttribute("comment", comment);
+           model.addAttribute("user",user);
 
             return "view";
         } else {
