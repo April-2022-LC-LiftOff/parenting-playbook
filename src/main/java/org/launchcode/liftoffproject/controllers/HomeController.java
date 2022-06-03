@@ -226,6 +226,7 @@ public class HomeController {
             model.addAttribute("intervention", intervention);
 
             User user = authenticationController.getUserFromSession(request.getSession());
+            model.addAttribute("user",user);
 
             return "editView";
         } else {

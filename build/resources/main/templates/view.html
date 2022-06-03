@@ -15,7 +15,7 @@
                 <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
             </li>
         </ul>
-    <a th:if="userId == theUserId" th:href="@{'/edit/domains/' + ${intervention.id}}" class="small-links">Edit Domains</a>
+    <a th:if="intervention.user == currentUser" th:href="@{'/edit/domains/' + ${intervention.id}}" class="small-links">Edit Domains</a>
     <p class="standout" style="margin-top:20px;">Tag(s):</p>
         <ul>
             <li th:each="tag : ${intervention.tags}" style="list-style-type: none;font-size:18px;">

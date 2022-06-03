@@ -565,3 +565,14 @@ table.domainList {
   text-align: left;
   border-bottom: 1px solid white;
 }
+
+.standout-center {
+    font-weight:bold;
+    text-decoration:underline;
+    text-align:center;
+}
+
+ a.big-links-profile {
+    font-size: 20px;
+    text-align:center;
+ }

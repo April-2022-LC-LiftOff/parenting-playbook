@@ -1,6 +1,7 @@
 package org.launchcode.liftoffproject.controllers;
 
 import org.launchcode.liftoffproject.data.CommentRepository;
+import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.data.UserRepository;
 import org.launchcode.liftoffproject.models.Comment;
 import org.launchcode.liftoffproject.models.User;
@@ -24,6 +25,9 @@ public class ProfileController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    InterventionRepository interventionRepository;
 
     @GetMapping
     @RequestMapping("profile")

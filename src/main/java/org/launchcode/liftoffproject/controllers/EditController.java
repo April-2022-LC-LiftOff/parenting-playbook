@@ -333,13 +333,12 @@ public class EditController {
         }
 
         if (delete == 1 && commentRepository.existsById(interventionId)) {
-            commentRepository.deleteAllById(Collections.singleton(interventionId));
+            commentRepository.deleteById(interventionId);
             interventionRepository.deleteById(interventionId);
-            interventionRepository.delete(intervention);
+
 
         } else if (delete == 1) {
             interventionRepository.deleteById(interventionId);
-            interventionRepository.delete(intervention);
         }
 
         return "redirect:/profile";
