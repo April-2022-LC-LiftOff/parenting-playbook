@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface CommentRepository extends CrudRepository<Comment, Integer> {
-    List<Comment> findCommentByInterventionId(@Param("interventionId") Integer interventionId);
+    List<Comment> findCommentByInterventionIdAndUserId(@Param("interventionId") Integer interventionId, @Param("userId") Integer userId);
 }
 
