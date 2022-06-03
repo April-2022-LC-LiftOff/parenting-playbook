@@ -52,14 +52,12 @@
     <a th:href="@{'/edit/delete/' + ${intervention.id}}" class="btn">Delete Intervention</a>
 </div>
 
-<br><br>
 <div>
-    <h3>Latest Comment(s): </h3>
-    <div class="container" style="background-color: rgba(255,255,255,0.1);">
+    <h3 style="mergin-top: 30px">Latest Comment(s): </h3>
+    <div class="container" style="background-color: rgba(255,255,255,0.1); padding: 10px 35px 0 35px">
         <table class="table" style="color:white;">
             <thead>
             <tr style="color: white">
-<!--                <th>Intervention ID</th>-->
                 <th>Intervention Name</th>
                 <th>User</th>
                 <th>Comment</th>
@@ -68,7 +66,6 @@
             </thead>
             <tbody th:if="${intervention.comments} !=null" align="left">
             <tr th:each="comment : ${intervention.comments}">
-<!--                <td th:text="${intervention.id}"></td>-->
                 <td th:text="${intervention.name}"></td>
                 <td th:text="${comment.user.username}"></td>
                 <td th:text="${comment.userInput}"></td>
@@ -84,24 +81,24 @@
         Be the first one to leave a comment!
     </span>
     <br>
-    <div class="container" th:unless="${user}" style="color: white">
-        <h3>Login or join us for leave your comment!</h3>
-    </div>
-    <div class="container" th:if="${user} != null">
-        <h3 style="color: white">Leave a Comment: </h3>
+<div class="container" th:unless="${user}" style="color: white">
+    <h3>Login or join us for leave your comment!</h3>
+</div>
+<div class="container" th:if="${user} != null">
+    <h3 style="color: white">Leave a Comment: </h3>
 
-        <form method="post">
-            <div class="form-group">
-                <input type="hidden" th:field="*{user}" class="form-control">
-                <input type="hidden" th:field="*{intervention}" class="form-control">
-                <textarea  rows="5" class="form-control" th:field="${comment.userInput}" placeholder="Have any thoughts?" required="required"></textarea>
-                <span th:errors="${comment.userInput}" class="error"></span>
-                <br>
-                <button class="btn btn-success btn-md" type="submit">Add Comment</button>
-            </div>
-        </form>
+    <form method="post">
+        <div class="form-group">
+            <input type="hidden" th:field="*{user}" class="form-control">
+            <input type="hidden" th:field="*{intervention}" class="form-control">
+            <textarea  rows="5" class="form-control" th:field="${comment.userInput}" placeholder="Have any thoughts?" required="required"></textarea>
+            <span th:errors="${comment.userInput}" class="error"></span>
+            <br>
+            <button class="btn btn-success btn-md" type="submit">Add Comment</button>
+        </div>
+    </form>
+</div>
 
-    </div>
 <div class="footer">
 </div>
 </body>
