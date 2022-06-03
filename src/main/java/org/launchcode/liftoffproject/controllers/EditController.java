@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -323,7 +324,7 @@ public class EditController {
     }
 
     @PostMapping("/delete/{interventionId}")
-    public String processDeleteEdit(Model model, @PathVariable int interventionId, @PathVariable Comment userId, @RequestParam int delete) {
+    public String processDeleteEdit(Model model, @PathVariable int interventionId, @RequestParam int delete) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
         if (delete == 0) {
@@ -331,11 +332,14 @@ public class EditController {
             return "redirect:/editView/{interventionId}";
         }
 
-        if (delete == 1) {
+        if (delete == 1 && commentRepository.existsById(interventionId)) {
+            commentRepository.deleteAllById(Collections.singleton(interventionId));
             interventionRepository.deleteById(interventionId);
             interventionRepository.delete(intervention);
-            commentRepository.delete(userId);
 
+        } else if (delete == 1) {
+            interventionRepository.deleteById(interventionId);
+            interventionRepository.delete(intervention);
         }
 
         return "redirect:/profile";

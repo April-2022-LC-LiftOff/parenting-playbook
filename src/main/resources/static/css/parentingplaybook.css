@@ -185,14 +185,14 @@ a:active {
 .navbar {
    background: rgb(2,0,36);
       background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,72,90,1) 35%, rgba(0,212,255,1) 100%);
-   font-size: 12px;
+   font-size: 15px;
    color: white;
 }
 
 nav navbar-nav{
     color: white;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 table.parenting-playbook {

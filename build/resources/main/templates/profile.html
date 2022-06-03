@@ -26,7 +26,7 @@
                             <th data-tab="myContributions" id="contributions" scope="col">My Contributions</th>
                         </tr>
                         <tr>
-                            <th data-tab="mySavedInterventions" id="interventions" scope="col">My Saved Interventions</th>
+                            <th data-tab="mySavedInterventions" id="interventions" scope="col">My Interventions</th>
                         </tr>
                     </div>
                 </table>
@@ -40,24 +40,30 @@
                         <h4 style="padding-top: 10px" th:text="${comment.intervention}"></h4>
                         <h4 th:text="${comment.postedDate}"></h4>
                         <h4 style="text-align:justify; padding: 0 100px 15px 100px" th:text="${comment}"></h4>
-                        <a class="btn btn-info" th:href="@{'/editComment/' + ${comment.id}}" style="margin-bottom:15px">Edit</a>
-                        <a onclick="deleteComment()" type="button" class="btn btn-danger" th:href="@{'/delete/' + ${comment.id}}" style="margin-bottom:15px">Delete</a>
+                        <a class="btn btn-info btn-sm" style="margin-bottom:15px;color:white;" th:href="@{'/editComment/' + ${comment.id}}">Edit</a>
+                        <a onclick="deleteComment()" type="button" class="btn btn-danger btn-sm"  style="margin-bottom:15px;color:white;" th:href="@{'/delete/' + ${comment.id}}">Delete</a>
                     </div>
                 </div>
             </div>
 
             <div data-src="content" class="hide" id="mySavedInterventions">
-                <h3>Added Intervention(s): </h3><br>
-                <div th:each="intervention : ${user.interventions}">
-                    <h4 th:text="${intervention.name}"></h4>
-                    <h4 th:text="${intervention.tags}"></h4>
-                    <h4 th:text="${intervention}"></h4>
-                    <a class="btn btn-info" th:href="@{'/editView/' + ${intervention.id}}">Edit</a>
-                    <a type="button" id="delete" class="btn btn-danger" th:href="@{'/edit/delete/' + ${intervention.id}}">Delete</a><br><br>
-=
+                <h3 style="text-align:center;">Intervention(s): </h3><br>
+                <div style="margin-bottom:20px;">
+                    <a class="btn btn-info btn-dark" style="font-size:20px;color:white;" th:href="@{/add}" >Add New Intervention</a>
+                </div>
+                <div>
+                    <div th:each="intervention : ${user.interventions}" style="color: white; background-color: rgba(255,255,255,0.1);text-align:center;font-size:16px;padding:10px;">
+                            <h4>Intervention: </h4><br>
+                           <a th:text="${intervention.name}" th:href="@{'/view/' + ${intervention.id}}" ></a><br>
+
+
+                    <a class="btn btn-info btn-sm" style="color:white;" th:href="@{'/editView/' + ${intervention.id}}">Edit</a>
+                    <a type="button" id="delete" class="btn btn-danger btn-sm" style="color:white;" th:href="@{'/edit/delete/' + ${intervention.id}}">Delete</a><br><br>
+
             </div>
+                    </div>
 <!--            <div data-src="content" class="hide" id="myNotes">-->
-<!--                <h3>My Notes: </h3>-->
+<!--                 <h3>My Notes:  </h3>-->
 <!--            </div>-->
 <!--            <div data-src="content" class="hide" id="sharedLinks">-->
 <!--                <h3>Shared Links: </h3>-->
