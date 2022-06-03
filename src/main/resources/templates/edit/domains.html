@@ -12,18 +12,13 @@
             <label id="checkBoxLabel" th:for="domains" class="editing-labels">Domains:</label>
             <br>
             <th:block th:each="domain : ${domains}">
-                <th:block th:each="dom : ${intervention.domains}" >
-                    <th:block th:if="${domain.id != dom.id}">
-                        <input type="checkbox" name="domains" th:value="${domain.id}">
+
+                    <th:block>
+                        <input type="checkbox" name="domains" th:value="${domain.id}" th:checked="${domain.checked}">
                         <label th:text="${domain.domain}" th:title="${domain.description}"></label>
                         <br>
                     </th:block>
-                    <th:block th:if="${domain.id == dom.id}">
-                        <input type="checkbox" name="domains" checked="checked" th:value="${domain.id}">
-                        <label th:text="${domain.domain}" th:title="${domain.description}"></label>
-                        <br>
-                    </th:block>
-                </th:block>
+
             </th:block>
             <br>
             <span>(Hover over Domain names for more info.)</span>

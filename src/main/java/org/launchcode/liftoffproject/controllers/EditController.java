@@ -213,8 +213,16 @@ public class EditController {
                 return "redirect:/view/{interventionId}/";
             }
             else if (intervention.getUser().getUsername().equals(user.getUsername())) {
+                List<Domain> domains = (List<Domain>) domainRepository.findAll();
+                for (int i = 0; i < domains.size(); i++) {
+                    for (int j = 0; j < intervention.getDomains().size(); j++) {
+                        if (domains.get(i).getId() == intervention.getDomains().get(j).getId()) {
+                            domains.get(i).setChecked(true);
+                        }
+                    }
+                }
                 model.addAttribute("intervention", intervention);
-                model.addAttribute("domains", domainRepository.findAll());
+                model.addAttribute("domains", domains);
                 return "edit/domains";
             }
 
@@ -253,8 +261,16 @@ public class EditController {
                 return "redirect:/view/{interventionId}/";
             }
             else if (intervention.getUser().getUsername().equals(user.getUsername())) {
+                List<Tag> tags = (List<Tag>) tagRepository.findAll();
+                for (int i = 0; i < tags.size(); i++) {
+                    for (int j = 0; j < intervention.getTags().size(); j++) {
+                        if (tags.get(i).getId() == intervention.getTags().get(j).getId()) {
+                            tags.get(i).setChecked(true);
+                        }
+                    }
+                }
                 model.addAttribute("intervention", intervention);
-                model.addAttribute("tags", tagRepository.findAll());
+                model.addAttribute("tags", tags);
                 return "edit/tags";
             }
 

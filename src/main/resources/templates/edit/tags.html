@@ -12,18 +12,13 @@
             <label th:for="tags" class="editing-labels">Tags:</label>
             <br>
             <th:block th:each="tag : ${tags}">
-                <th:block th:each="ta : ${intervention.tags}">
-                    <th:block th:if="${tag.id != ta.id}">
-                        <input type="checkbox" name="tag" th:value="${tag.id}">
+
+                    <th:block>
+                        <input type="checkbox" name="tag" th:value="${tag.id}" th:checked="${tag.checked}">
                         <label th:text="${tag.tagName}"></label>
                         <br>
                     </th:block>
-                    <th:block th:if="${tag.id == ta.id}">
-                        <input type="checkbox" name="tag" checked="checked" th:value="${tag.id}">
-                        <label th:text="${tag.tagName}"></label>
-                        <br>
-                    </th:block>
-                </th:block>
+
             </th:block>
             <br>
             <span th:text="${checkBoxErrorTag}" class="error" style="color:red;background-color:black;"></span>
