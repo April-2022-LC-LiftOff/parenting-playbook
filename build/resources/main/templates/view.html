@@ -8,7 +8,6 @@
 
 <nav th:replace="fragments :: page-header"></nav>
 
-<!--<div class="job-listing"></div>-->
 <div class="edit-class">
     <p class="standout">Domain(s):</p>
         <ul>
@@ -16,7 +15,7 @@
                 <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
             </li>
         </ul>
-    <a th:href="@{'/edit/domains/' + ${intervention.id}}" class="small-links">Edit Domains</a>
+    <a th:if="${user}" th:href="@{'/edit/domains/' + ${intervention.id}}" class="small-links">Edit Domains</a>
 
     <p class="standout" style="margin-top:20px;">Tag(s):</p>
         <ul>
