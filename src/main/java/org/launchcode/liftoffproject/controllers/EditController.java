@@ -1,12 +1,10 @@
 package org.launchcode.liftoffproject.controllers;
 
+import org.launchcode.liftoffproject.data.CommentRepository;
 import org.launchcode.liftoffproject.data.DomainRepository;
 import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.data.TagRepository;
-import org.launchcode.liftoffproject.models.Domain;
-import org.launchcode.liftoffproject.models.Intervention;
-import org.launchcode.liftoffproject.models.Tag;
-import org.launchcode.liftoffproject.models.User;
+import org.launchcode.liftoffproject.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +30,10 @@ public class EditController {
     @Autowired
     private AuthenticationController authenticationController;
 
+    @Autowired
+    private CommentRepository commentRepository;
+
+
     @GetMapping("/name/{interventionId}")
     public String displayNameEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
@@ -47,7 +49,9 @@ public class EditController {
             }
         }
 
-        return "redirect:../";
+
+
+        return "redirect:/editView/{interventionId}";
 
     }
 
@@ -65,7 +69,7 @@ public class EditController {
         intervention.setName(name);
         interventionRepository.save(intervention);
 
-        return "redirect:/view/{interventionId}";
+        return "redirect:/editView/{interventionId}";
     }
 
     @GetMapping("/action/{interventionId}")
@@ -84,7 +88,7 @@ public class EditController {
 
         }
 
-        return "redirect:../";
+        return "redirect:/editView/{interventionId}";
 
     }
 
@@ -102,7 +106,7 @@ public class EditController {
         intervention.setAction(action);
         interventionRepository.save(intervention);
 
-        return "redirect:/view/{interventionId}";
+        return "redirect:/editView/{interventionId}";
     }
 
     @GetMapping("/expectedResponse/{interventionId}")
@@ -121,7 +125,7 @@ public class EditController {
 
         }
 
-        return "redirect:../";
+        return "redirect:/editView/{interventionId}";
 
     }
 
@@ -139,7 +143,7 @@ public class EditController {
         intervention.setExpectedResponse(expectedResponse);
         interventionRepository.save(intervention);
 
-        return "redirect:/view/{interventionId}";
+        return "redirect:/editView/{interventionId}";
     }
 
     @GetMapping("/reference/{interventionId}")
@@ -157,7 +161,7 @@ public class EditController {
             }
         }
 
-        return "redirect:../";
+        return "redirect:/editView/{interventionId}";
 
     }
 
@@ -169,7 +173,7 @@ public class EditController {
         intervention.setReference(reference);
         interventionRepository.save(intervention);
 
-        return "redirect:/view/{interventionId}";
+        return "redirect:/editView/{interventionId}";
     }
 
     @GetMapping("/ifItFails/{interventionId}")
@@ -188,7 +192,7 @@ public class EditController {
 
         }
 
-        return "redirect:../";
+        return "redirect:/editView/{interventionId}";
 
     }
 
@@ -200,7 +204,7 @@ public class EditController {
         intervention.setIfItFails(ifItFails);
         interventionRepository.save(intervention);
 
-        return "redirect:/view/{interventionId}";
+        return "redirect:/editView/{interventionId}";
     }
 
     @GetMapping("/domains/{interventionId}")
@@ -228,7 +232,7 @@ public class EditController {
 
         }
 
-        return "redirect:../";
+        return "redirect:/editView/{interventionId}";
 
     }
 
@@ -248,7 +252,7 @@ public class EditController {
         intervention.setDomains(domainObjs);
         interventionRepository.save(intervention);
 
-        return "redirect:/view/{interventionId}";
+        return "redirect:/editView/{interventionId}";
     }
 
     @GetMapping("/tags/{interventionId}")
@@ -276,7 +280,7 @@ public class EditController {
 
         }
 
-        return "redirect:../";
+        return "redirect:/editView/{interventionId}";
 
     }
 
@@ -296,7 +300,7 @@ public class EditController {
         intervention.setTags(tagObjs);
         interventionRepository.save(intervention);
 
-        return "redirect:/view/{interventionId}";
+        return "redirect:/editView/{interventionId}";
     }
 
     @GetMapping("delete/{interventionId}")
@@ -314,23 +318,26 @@ public class EditController {
             }
         }
 
-        return "redirect:../";
+        return "redirect:/profile";
 
     }
 
     @PostMapping("/delete/{interventionId}")
-    public String processDeleteEdit(Model model, @PathVariable int interventionId, @RequestParam int delete) {
+    public String processDeleteEdit(Model model, @PathVariable int interventionId, @PathVariable Comment userId, @RequestParam int delete) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
         if (delete == 0) {
             model.addAttribute("intervention", intervention);
-            return "redirect:/view/{interventionId}";
+            return "redirect:/editView/{interventionId}";
         }
 
         if (delete == 1) {
             interventionRepository.deleteById(interventionId);
+            interventionRepository.delete(intervention);
+            commentRepository.delete(userId);
+
         }
 
-        return "redirect:/view/{interventionId}";
+        return "redirect:/profile";
     }
 }

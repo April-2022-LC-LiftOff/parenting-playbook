@@ -218,6 +218,22 @@ public class HomeController {
         return "redirect:{interventionId}";
     }
 
+    @GetMapping("editView/{interventionId}")
+    public String displayEditIntervention(Model model, @PathVariable int interventionId, HttpServletRequest request) {
+        Optional optIntervention = interventionRepository.findById(interventionId);
+        if (optIntervention.isPresent()) {
+            Intervention intervention = (Intervention) optIntervention.get();
+            model.addAttribute("intervention", intervention);
+
+            User user = authenticationController.getUserFromSession(request.getSession());
+
+            return "editView";
+        } else {
+            return "redirect:../";
+        }
+    }
+
+
     @GetMapping("about")
     public String displayAbout() {
         return "about";

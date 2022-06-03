@@ -1,6 +1,7 @@
 package org.launchcode.liftoffproject.data;
 
 import org.launchcode.liftoffproject.models.Comment;
+import org.launchcode.liftoffproject.models.Intervention;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -11,5 +12,6 @@ import java.util.List;
 @Repository
 public interface CommentRepository extends CrudRepository<Comment, Integer> {
     List<Comment> findCommentByInterventionIdAndUserId(@Param("interventionId") Integer interventionId, @Param("userId") Integer userId);
+
 }
 

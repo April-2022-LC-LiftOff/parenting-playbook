@@ -52,7 +52,7 @@
                     <h4 th:text="${intervention.name}"></h4>
                     <h4 th:text="${intervention.tags}"></h4>
                     <h4 th:text="${intervention}"></h4>
-                    <a class="btn btn-info" th:href="@{'/editIntervention/' + ${intervention.id}}">Edit</a>
+                    <a class="btn btn-info" th:href="@{'/editView/' + ${intervention.id}}">Edit</a>
                     <a type="button" id="delete" class="btn btn-danger" th:href="@{'/edit/delete/' + ${intervention.id}}">Delete</a><br><br>
 =
             </div>
