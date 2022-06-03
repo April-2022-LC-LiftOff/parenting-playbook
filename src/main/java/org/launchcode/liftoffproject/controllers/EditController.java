@@ -3,15 +3,16 @@ package org.launchcode.liftoffproject.controllers;
 import org.launchcode.liftoffproject.data.DomainRepository;
 import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.data.TagRepository;
-import org.launchcode.liftoffproject.data.UserRepository;
 import org.launchcode.liftoffproject.models.Domain;
 import org.launchcode.liftoffproject.models.Intervention;
 import org.launchcode.liftoffproject.models.Tag;
+import org.launchcode.liftoffproject.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,16 +29,26 @@ public class EditController {
     @Autowired
     private TagRepository tagRepository;
 
+    @Autowired
+    private AuthenticationController authenticationController;
+
     @GetMapping("/name/{interventionId}")
-    public String displayNameEdit(Model model, @PathVariable int interventionId) {
+    public String displayNameEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
+        User user = authenticationController.getUserFromSession(request.getSession());
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
-            model.addAttribute("intervention", intervention);
-            return "edit/name";
-        } else {
-            return "redirect:../";
+            if (intervention.getUser() == null || !intervention.getUser().getUsername().equals(user.getUsername())) {
+                return "redirect:/view/{interventionId}/";
+            }
+            else if (intervention.getUser().getUsername().equals(user.getUsername())) {
+                model.addAttribute("intervention", intervention);
+                return "edit/name";
+            }
         }
+
+        return "redirect:../";
+
     }
 
     @PostMapping("/name/{interventionId}")
@@ -58,15 +69,23 @@ public class EditController {
     }
 
     @GetMapping("/action/{interventionId}")
-    public String displayActionEdit(Model model, @PathVariable int interventionId) {
+    public String displayActionEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
+        User user = authenticationController.getUserFromSession(request.getSession());
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
-            model.addAttribute("intervention", intervention);
-            return "edit/action";
-        } else {
-            return "redirect:../";
+            if (intervention.getUser() == null || !intervention.getUser().getUsername().equals(user.getUsername())) {
+                return "redirect:/view/{interventionId}/";
+            }
+            else if (intervention.getUser().getUsername().equals(user.getUsername())) {
+                model.addAttribute("intervention", intervention);
+                return "edit/action";
+            }
+
         }
+
+        return "redirect:../";
+
     }
 
     @PostMapping("/action/{interventionId}")
@@ -87,15 +106,23 @@ public class EditController {
     }
 
     @GetMapping("/expectedResponse/{interventionId}")
-    public String displayExpectedResponseEdit(Model model, @PathVariable int interventionId) {
+    public String displayExpectedResponseEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
+        User user = authenticationController.getUserFromSession(request.getSession());
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
-            model.addAttribute("intervention", intervention);
-            return "edit/expectedResponse";
-        } else {
-            return "redirect:../";
+            if (intervention.getUser() == null || !intervention.getUser().getUsername().equals(user.getUsername())) {
+                return "redirect:/view/{interventionId}/";
+            }
+            else if (intervention.getUser().getUsername().equals(user.getUsername())) {
+                model.addAttribute("intervention", intervention);
+                return "edit/expectedResponse";
+            }
+
         }
+
+        return "redirect:../";
+
     }
 
     @PostMapping("/expectedResponse/{interventionId}")
@@ -116,25 +143,28 @@ public class EditController {
     }
 
     @GetMapping("/reference/{interventionId}")
-    public String displayReferenceEdit(Model model, @PathVariable int interventionId) {
+    public String displayReferenceEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
+        User user = authenticationController.getUserFromSession(request.getSession());
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
-            model.addAttribute("intervention", intervention);
-            return "edit/reference";
-        } else {
-            return "redirect:../";
+            if (intervention.getUser() == null || !intervention.getUser().getUsername().equals(user.getUsername())) {
+                return "redirect:/view/{interventionId}/";
+            }
+            else if (intervention.getUser().getUsername().equals(user.getUsername())) {
+                model.addAttribute("intervention", intervention);
+                return "edit/reference";
+            }
         }
+
+        return "redirect:../";
+
     }
 
     @PostMapping("/reference/{interventionId}")
     public String processReferenceEdit(Model model, @PathVariable int interventionId, @RequestParam String reference) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
-//        if (reference == "") {
-//            model.addAttribute("intervention", intervention);
-//            return "edit/reference";
-//        }
 
         intervention.setReference(reference);
         interventionRepository.save(intervention);
@@ -143,25 +173,29 @@ public class EditController {
     }
 
     @GetMapping("/ifItFails/{interventionId}")
-    public String displayIfItFailsEdit(Model model, @PathVariable int interventionId) {
+    public String displayIfItFailsEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
+        User user = authenticationController.getUserFromSession(request.getSession());
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
-            model.addAttribute("intervention", intervention);
-            return "edit/ifItFails";
-        } else {
-            return "redirect:../";
+            if (intervention.getUser() == null || !intervention.getUser().getUsername().equals(user.getUsername())) {
+                return "redirect:/view/{interventionId}/";
+            }
+            else if (intervention.getUser().getUsername().equals(user.getUsername())) {
+                model.addAttribute("intervention", intervention);
+                return "edit/ifItFails";
+            }
+
         }
+
+        return "redirect:../";
+
     }
 
     @PostMapping("/ifItFails/{interventionId}")
     public String processIfItFailsEdit(Model model, @PathVariable int interventionId, @RequestParam String ifItFails) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
-//        if (ifItFails == "") {
-//            model.addAttribute("intervention", intervention);
-//            return "edit/ifItFails";
-//        }
 
         intervention.setIfItFails(ifItFails);
         interventionRepository.save(intervention);
@@ -170,16 +204,24 @@ public class EditController {
     }
 
     @GetMapping("/domains/{interventionId}")
-    public String displayDomainsEdit(Model model, @PathVariable int interventionId) {
+    public String displayDomainsEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
+        User user = authenticationController.getUserFromSession(request.getSession());
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
-            model.addAttribute("intervention", intervention);
-            model.addAttribute("domains", domainRepository.findAll());
-            return "edit/domains";
-        } else {
-            return "redirect:../";
+            if (intervention.getUser() == null || !intervention.getUser().getUsername().equals(user.getUsername())) {
+                return "redirect:/view/{interventionId}/";
+            }
+            else if (intervention.getUser().getUsername().equals(user.getUsername())) {
+                model.addAttribute("intervention", intervention);
+                model.addAttribute("domains", domainRepository.findAll());
+                return "edit/domains";
+            }
+
         }
+
+        return "redirect:../";
+
     }
 
     @PostMapping("/domains/{interventionId}")
@@ -202,16 +244,24 @@ public class EditController {
     }
 
     @GetMapping("/tags/{interventionId}")
-    public String displayTagsEdit(Model model, @PathVariable int interventionId) {
+    public String displayTagsEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
+        User user = authenticationController.getUserFromSession(request.getSession());
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
-            model.addAttribute("intervention", intervention);
-            model.addAttribute("tags", tagRepository.findAll());
-            return "edit/tags";
-        } else {
-            return "redirect:../";
+            if (intervention.getUser() == null || !intervention.getUser().getUsername().equals(user.getUsername())) {
+                return "redirect:/view/{interventionId}/";
+            }
+            else if (intervention.getUser().getUsername().equals(user.getUsername())) {
+                model.addAttribute("intervention", intervention);
+                model.addAttribute("tags", tagRepository.findAll());
+                return "edit/tags";
+            }
+
         }
+
+        return "redirect:../";
+
     }
 
     @PostMapping("/tags/{interventionId}")
@@ -234,15 +284,22 @@ public class EditController {
     }
 
     @GetMapping("delete/{interventionId}")
-    public String displayDeleteEdit(Model model, @PathVariable int interventionId) {
+    public String displayDeleteEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
+        User user = authenticationController.getUserFromSession(request.getSession());
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
-            model.addAttribute("intervention", intervention);
-            return "edit/delete";
-        } else {
-            return "redirect:../";
+            if (intervention.getUser() == null || !intervention.getUser().getUsername().equals(user.getUsername())) {
+                return "redirect:/view/{interventionId}/";
+            }
+            else if (intervention.getUser().getUsername().equals(user.getUsername())) {
+                model.addAttribute("intervention", intervention);
+                return "edit/delete";
+            }
         }
+
+        return "redirect:../";
+
     }
 
     @PostMapping("/delete/{interventionId}")

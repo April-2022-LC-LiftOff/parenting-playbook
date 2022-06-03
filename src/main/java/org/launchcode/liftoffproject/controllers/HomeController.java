@@ -5,7 +5,6 @@ import org.launchcode.liftoffproject.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
@@ -161,6 +160,11 @@ public class HomeController {
         }
 
         User user = authenticationController.getUserFromSession(request.getSession());
+
+        if (user == null) {
+            return "redirect:login";
+        }
+
         List<Domain> domainObjs = (List<Domain>) domainRepository.findAllById(domains);
         List<Tag> tagObjs = (List<Tag>) tagRepository.findAllById(tag);
 
