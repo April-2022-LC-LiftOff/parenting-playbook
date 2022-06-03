@@ -177,23 +177,22 @@ public class HomeController {
         return "redirect:";
     }
 
-    // HttpServletRequest request
     @GetMapping("view/{interventionId}")
-    public String displayViewIntervention(Model model, @PathVariable int interventionId) {
+    public String displayViewIntervention(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             model.addAttribute("intervention", intervention);
 
-            User user = new User();
-//            User user = authenticationController.getUserFromSession(request.getSession());
+            User user = authenticationController.getUserFromSession(request.getSession());
+            Comment comment = new Comment();
 
-            model.addAttribute("comment", new Comment());
+            if (user != null) {
+                model.addAttribute("comments", commentRepository.findCommentByInterventionIdAndUserId(interventionId, user.getId()));
+            }
 
-            model.addAttribute("username", user.getUsername());
-            model.addAttribute(user);
-
-            model.addAttribute("comments", commentRepository.findCommentByInterventionId(interventionId));
+           model.addAttribute("comment", comment);
+           model.addAttribute("user",user);
 
             return "view";
         } else {
