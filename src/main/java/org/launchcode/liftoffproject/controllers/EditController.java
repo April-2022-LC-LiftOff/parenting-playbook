@@ -332,13 +332,9 @@ public class EditController {
             return "redirect:/editView/{interventionId}";
         }
 
-        if (delete == 1 && commentRepository.existsById(interventionId)) {
-            commentRepository.deleteById(interventionId);
+        if (delete == 1) {
             interventionRepository.deleteById(interventionId);
 
-
-        } else if (delete == 1) {
-            interventionRepository.deleteById(interventionId);
         }
 
         return "redirect:/profile";

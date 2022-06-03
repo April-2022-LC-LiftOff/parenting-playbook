@@ -34,7 +34,7 @@ public class User extends AbstractEntity{
     private final List<Comment> comments = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
-    private List<Intervention> intervention = new ArrayList<>();
+    private List<Intervention> interventions = new ArrayList<>();
 
     public User(){}
 
@@ -86,12 +86,12 @@ public class User extends AbstractEntity{
     }
 
 
-    public List<Intervention> getIntervention() {
-        return intervention;
+    public List<Intervention> getInterventions() {
+        return interventions;
     }
 
-    public void setInterventions(List<Intervention> intervention) {
-        this.intervention = intervention;
+    public void setInterventions(List<Intervention> interventions) {
+        this.interventions = interventions;
     }
 
 }
