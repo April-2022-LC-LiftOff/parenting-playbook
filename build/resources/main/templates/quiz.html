@@ -9,7 +9,7 @@
 <div>
     <h1> Domains Questionnaire </h1>
     <h4>Select each statement that describes your child. </h4>
-    </div>
+</div>
 <div>
     <h4 class="urgent">This is not a diagnostic tool and
         is not intended to be used
@@ -19,165 +19,170 @@
 <div class="quiz">
     <form method="post" action="/results" th:object="${quiz}">
         <label id="impulseControl" th:for="impulseControl">
-        <div class="quiz-spacing">
-            <input type="checkbox" name="impulseControl"> My child shouts out without thinking.
-        </div>
-        <div class="quiz-spacing">
-            <input type="checkbox" name="impulseControl"> When my child sees something they want, they immediately grab
-            for it.
-        </div>
-        <div class="quiz-spacing">
-            <input type="checkbox" name="impulseControl"> My child can't wait patiently.
-        </div>
-        <div class="quiz-spacing">
-            <input type="checkbox" name="impulseControl"> My child is verbally aggressive toward others and immediately
-            expresses remorse.
-        </div>
-        <div class="quiz-spacing">
-            <input type="checkbox" name="impulseControl"> My child is physically aggressive toward others and
-            immediately expresses remorse.
-        </div>
+            <div class="quiz-spacing">
+                <input type="checkbox" name="impulseControl"> My child shouts out and/or says things without thinking.
+            </div>
+            <div class="quiz-spacing">
+                <input type="checkbox" name="impulseControl"> When my child sees something they want, they immediately
+                grab for it.
+            </div>
+            <div class="quiz-spacing">
+                <input type="checkbox" name="impulseControl"> My child can't wait patiently and/or struggles with turn-taking.
+            </div>
+            <div class="quiz-spacing">
+                <input type="checkbox" name="impulseControl"> My child is verbally and/or physically aggressive toward others and
+                immediately expresses remorse.
+            </div>
+            <div class="quiz-spacing">
+                <input type="checkbox" name="impulseControl"> My child is reckless.
+            </div>
         </label>
         <label id="emotionalControl" th:for="emotionalControl">
             <div class="quiz-spacing">
-            <input type="checkbox" name="emotionalControl"> My child seems to cry at things that aren't a big deal.
-        </div>
+                <input type="checkbox" name="emotionalControl"> My child seems to cry at things that aren't a big deal
+                to others.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="emotionalControl"> My child has tantrums multiple times a week.
-        </div>
+                <input type="checkbox" name="emotionalControl"> My child has tantrums and/or meltdowns frequently.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="emotionalControl"> My child's teacher says that they have outbursts in class.
-        </div>
+                <input type="checkbox" name="emotionalControl"> My child's teacher says that they have outbursts in
+                class and/or that they struggle to control their emotions.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="emotionalControl"> My child engages in unsafe behaviors when triggered by a big
-            emotion.
-        </div>
+                <input type="checkbox" name="emotionalControl"> My child sometimes engages in unsafe behaviors when triggered by a
+                big emotion.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="emotionalControl"> My child seems to go from '0-100' in an instant.
-        </div>
+                <input type="checkbox" name="emotionalControl"> My child seems to go from '0-100' in an instant.
+            </div>
         </label>
         <label id="flexibleThinking" th:for="flexibleThinking">
             <div class="quiz-spacing">
-            <input type="checkbox" name="flexibleThinking"> My child doesn't like to deviate from their normal routine.
-        </div>
+                <input type="checkbox" name="flexibleThinking"> My child doesn't like to deviate from their normal
+                routine.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="flexibleThinking"> My child struggles with unexpected changes.
-        </div>
+                <input type="checkbox" name="flexibleThinking"> My child struggles with unexpected changes.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="flexibleThinking"> When my child's mind is made up, it's hard to get them to
-            change it.
-        </div>
+                <input type="checkbox" name="flexibleThinking"> When my child's mind is made up, it's hard to get them
+                to change it.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="flexibleThinking"> My child struggles to compromise.
-        </div>
+                <input type="checkbox" name="flexibleThinking"> My child struggles to compromise.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="flexibleThinking"> My child always believes they are right even when presented
-            with evidence to the contrary.
-        </div>
+                <input type="checkbox" name="flexibleThinking"> My child always believes they are right even when
+                presented with evidence to the contrary.
+            </div>
         </label>
         <label id="workingMemory" th:for="workingMemory">
             <div class="quiz-spacing">
-            <input type="checkbox" name="workingMemory"> My child can't follow multiple step directions.
-        </div>
+                <input type="checkbox" name="workingMemory"> My child can't follow multiple step directions.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="workingMemory"> My child forgets things they were told recently.
-        </div>
+                <input type="checkbox" name="workingMemory"> My child forgets things they were told recently.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="workingMemory"> My child struggles with learning new concepts.
-        </div>
+                <input type="checkbox" name="workingMemory"> My child struggles with learning new concepts.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="workingMemory"> My child is always misplacing things and forgetting where they
-            left them.
-        </div>
+                <input type="checkbox" name="workingMemory"> My child is always misplacing things and forgetting where
+                they left them.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="workingMemory"> My child needs things repeated multiple times for
-            understanding.
-        </div>
+                <input type="checkbox" name="workingMemory"> My child needs things repeated multiple times for
+                understanding and/or takes longer to process information than others.
+            </div>
         </label>
         <label id="selfMonitoring" th:for="selfMonitoring">
             <div class="quiz-spacing">
-            <input type="checkbox" name="selfMonitoring"> My child easily gets off task.
-        </div>
+                <input type="checkbox" name="selfMonitoring"> My child easily gets off task and distracted.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="selfMonitoring"> My child doesn't seem to realize that they are off task.
-        </div>
+                <input type="checkbox" name="selfMonitoring"> My child doesn't seem to realize that they are off task.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="selfMonitoring"> My child's teacher says they struggle with appropriate behavior
-            when overwhelmed or excited.
-        </div>
+                <input type="checkbox" name="selfMonitoring"> My child's teacher says they struggle with appropriate
+                behavior when overwhelmed or excited.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="selfMonitoring"> My child doesn't seem to pay attention to how their body feels
-            to let them know they are getting upset.
-        </div>
+                <input type="checkbox" name="selfMonitoring"> My child doesn't seem to pay attention to how their body
+                feels to let them know they are getting upset.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="selfMonitoring"> My child needs someone to keep them on task and prompt
-            frequently to get things done.
-        </div>
+                <input type="checkbox" name="selfMonitoring"> My child needs someone to keep them on task and prompt
+                frequently to get things done.
+            </div>
         </label>
         <label id="planningAndPrioritizing" th:for="planningAndPrioritizing">
             <div class="quiz-spacing">
-            <input type="checkbox" name="planningAndPrioritizing"> My child seems to complete tasks in a random order
-            that is illogical.
-        </div>
+                <input type="checkbox" name="planningAndPrioritizing"> My child seems to complete tasks or plan for long-term
+                goals in a random and/or illogical order.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="planningAndPrioritizing"> My child is either almost always late or almost always
-            early.
-        </div>
+                <input type="checkbox" name="planningAndPrioritizing"> My child is either almost always late or almost
+                always early.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="planningAndPrioritizing"> My child doesn't seem to understand how to organize
-            their time to complete tasks.
-        </div>
+                <input type="checkbox" name="planningAndPrioritizing"> My child doesn't seem to understand how to
+                organize their time to complete tasks.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="planningAndPrioritizing"> My child doesn't understand how to break a task into
-            sequential steps for completion.
-        </div>
+                <input type="checkbox" name="planningAndPrioritizing"> My child doesn't understand how to break a task
+                into sequential steps for completion.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="planningAndPrioritizing"> My child struggles greatly with time management in
-            various aspects of their life.
-        </div>
+                <input type="checkbox" name="planningAndPrioritizing"> My child struggles greatly with time management
+                in various aspects of their life. They appear to be "time blind."
+            </div>
         </label>
         <label id="taskInitiation" th:for="taskInitiation">
             <div class="quiz-spacing">
-            <input type="checkbox" name="taskInitiation"> I don't understand why my child can't just start something when
-            I ask.
-        </div>
+                <input type="checkbox" name="taskInitiation"> I don't understand why my child can't just start something
+                when I ask.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="taskInitiation"> It takes forever for my child to get down to work when given a
-            direction.
-        </div>
+                <input type="checkbox" name="taskInitiation"> It takes forever for my child to get down to work when
+                given a direction.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="taskInitiation"> My child is a major procrastinator.
-        </div>
+                <input type="checkbox" name="taskInitiation"> My child is a major procrastinator.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="taskInitiation"> My child will say things like, "I don't know what to do/how to
-            start."
-        </div>
+                <input type="checkbox" name="taskInitiation"> My child will say things like, "I don't know what to
+                do/how to start."
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="taskInitiation"> My child gets sidetracked so easily that it takes a long time
-            to follow directions.
-        </div>
+                <input type="checkbox" name="taskInitiation"> My child gets sidetracked so easily that it takes a long
+                time to follow directions.
+            </div>
         </label>
         <label id="organization" th:for="organization">
             <div class="quiz-spacing">
-            <input type="checkbox" name="organization"> My child's room/desk is almost always a mess.
-        </div>
+                <input type="checkbox" name="organization"> My child's room/desk is almost always a mess.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="organization"> My child keeps everything in cluttered piles instead of putting
-            things away where they belong.
-        </div>
+                <input type="checkbox" name="organization"> My child keeps everything in cluttered piles instead of
+                putting things away where they belong.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="organization"> My child's folders are overflowing and their papers are crumpled.
-        </div>
+                <input type="checkbox" name="organization"> My child's folders are overflowing and their papers are
+                crumpled.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="organization"> My child can't seem to organize their thoughts/ideas.
-        </div>
+                <input type="checkbox" name="organization"> My child can't seem to organize their thoughts/ideas.
+            </div>
             <div class="quiz-spacing">
-            <input type="checkbox" name="organization"> My child doesn't seem to understand how to clean their space.
-        </div>
+                <input type="checkbox" name="organization"> My child doesn't seem to understand how to clean their
+                space.
+            </div>
 
             <div class="quiz-spacing">
-            <input type="submit" class="btn btn-info" style="margin-bottom:15px;color:black;font-weight:bold;" value="Enter"/>
-        </div>
+                <input type="submit" class="btn btn-info" style="margin-bottom:15px;color:black;font-weight:bold;"
+                       value="Enter"/>
+            </div>
         </label>
 
     </form>

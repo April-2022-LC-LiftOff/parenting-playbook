@@ -73,7 +73,7 @@ public class HomeController {
     }
 
     public void saveInterventions() throws FileNotFoundException {
-        String delimiter = ",";
+        String delimiter = ";";
         List repo = (List) interventionRepository.findAll();
 
         if (repo.isEmpty()) {

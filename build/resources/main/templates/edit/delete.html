@@ -12,7 +12,8 @@
         <div class="form-group">
             <label th:for="delete" class="editing-labels">Confirm Delete:</label>
             <br>
-            <a href=@{'/view/' + ${intervention.id}} th:text="${intervention.name}" style="font-weight:bold;font-size:30px;" ></a> <br>
+            <a href=@{'/view/' + ${intervention.id}} th:text="${intervention.name}"
+               style="font-weight:bold;font-size:30px;"></a> <br>
             <th:block>
                 <h2>Are you sure you want to delete the intervention?</h2>
                 <input type="radio" name="delete" th:value="${0}">
@@ -22,8 +23,11 @@
             </th:block>
         </div>
 
-        <input type="submit" class="btn btn-danger" style="margin-bottom:15px;color:black;font-weight:bold;" value="Confirm Delete"/>
-        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info" style="margin-bottom:15px;color:black;font-weight:bold;" value="Cancel Delete"/></a>
+        <input type="submit" class="btn btn-danger" style="margin-bottom:15px;color:black;font-weight:bold;"
+               value="Confirm Delete"/>
+        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info"
+                                                             style="margin-bottom:15px;color:black;font-weight:bold;"
+                                                             value="Cancel Delete"/></a>
     </form>
 </div>
 <div class="footer">
