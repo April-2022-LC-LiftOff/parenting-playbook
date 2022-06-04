@@ -8,13 +8,16 @@
 <p th:unless="${tags} and ${tags.size()}">No Tags!</p>
 
 <div class="container body-content">
+
     <h2>Tags</h2>
-    <ul>
+    <table class="parenting-playbook" style="padding-left:350px;margin-left:auto;margin-right:auto;">
+        <tr><td>
         <li th:each="tag : ${tags}" style="list-style-type: none;">
             <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
         </li>
-    </ul>
-    <a th:if="${loggedIn}" th:href="@{'/tags/add'}">Add Tags</a>
+        </td></tr>
+    </table>
+    <a th:if="${loggedIn}" th:href="@{'/tags/add'}" style="margin-top:20px;font-size:25px;">Add Tags</a>
 
 </div>
 <div class="footer">
