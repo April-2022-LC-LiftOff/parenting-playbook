@@ -178,7 +178,7 @@ public class HomeController {
 
         interventionRepository.save(newIntervention);
 
-        return "redirect:{interventionId}";
+        return "redirect:@{'/view/' + ${intervention.id}}\"";
     }
 
     @GetMapping("view/{interventionId}")

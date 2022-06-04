@@ -19,8 +19,8 @@
             <span th:text="${actionError}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
-        <input type="submit" class="btn-primary" value="Update Action"/>
-        <a th:href="@{'/editView/' + ${intervention.id}}"><input type="button" class="btn btn-info" style="margin-bottom:15px;color:black;font-weight:bold;" value="Cancel Update"/></a>
+        <input type="submit" class="btn btn-info" style="margin-bottom:15px;color:black;font-weight:bold;" value="Update Action"/>
+        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info" style="margin-bottom:15px;color:black;font-weight:bold;" value="Cancel Update"/></a>
     </form>
 </div>
 <div class="footer">
