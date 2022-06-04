@@ -11,13 +11,13 @@
         <label th:for="firstName">First Name
             <input class="form-control" th:field="${registerFormDTO.firstName}">
         </label>
-        <p class="error" th:errors="${registerFormDTO.firstName}" ></p>
+        <p class="error" th:errors="${registerFormDTO.firstName}"></p>
     </div>
     <div class="form-group">
         <label>Last Name
             <input class="form-control" th:field="${registerFormDTO.lastName}">
         </label>
-        <p class="error" th:errors="${registerFormDTO.lastName}" ></p>
+        <p class="error" th:errors="${registerFormDTO.lastName}"></p>
     </div>
     <div class="form-group">
         <label th:for="username">Email
@@ -39,11 +39,12 @@
     </div>
     <div class="form-group">
         <label>Verify Password
-            <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password" />
+            <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password"/>
         </label>
         <p class="error" th:errors="${registerFormDTO.verifyPassword}"></p>
     </div>
-<input type="submit" class="btn registerbtn" style="margin-bottom:15px;color:black;font-weight:bold;" value="Register"/>
+    <input type="submit" class="btn registerbtn" style="margin-bottom:15px;color:black;font-weight:bold;"
+           value="Register"/>
 </form>
 <div class="footer">
 </div>
