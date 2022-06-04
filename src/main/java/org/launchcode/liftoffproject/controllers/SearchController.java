@@ -3,7 +3,6 @@ package org.launchcode.liftoffproject.controllers;
 import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.models.Intervention;
 import org.launchcode.liftoffproject.models.InterventionData;
-import org.launchcode.liftoffproject.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,27 +27,14 @@ public class SearchController {
 
     @RequestMapping("")
     public String search(Model model, HttpServletRequest request) {
-        User user = authenticationController.getUserFromSession(request.getSession());
-
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
-
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         model.addAttribute("columns", columnChoices);
         return "search";
     }
 
     @PostMapping("results")
     public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm, HttpServletRequest request) {
-        User user = authenticationController.getUserFromSession(request.getSession());
-
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         Iterable<Intervention> interventions;
         if (searchTerm.toLowerCase(Locale.ROOT).equals("all") || searchTerm.equals("")) {
             interventions = interventionRepository.findAll();

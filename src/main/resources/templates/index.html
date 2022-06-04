@@ -19,6 +19,12 @@
     <button class="button-80" role="button"  th:each="domain : ${domains}">
         <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}" style="color:black;"></a>
     </button>
+
+    <h3 style="padding:20px 20px;">Select a tag to find strategies to help your child succeed.</h3>
+
+    <button class="button-80" role="button"  th:each="tag : ${tags}">
+        <a th:href="@{'tags/view/' + ${tag.id}}" th:text="${tag.tagName}" style="color:black;"></a>
+    </button>
 </div>
 
 <div>

@@ -3,7 +3,6 @@ package org.launchcode.liftoffproject.controllers;
 import org.launchcode.liftoffproject.data.DomainRepository;
 import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.models.Domain;
-import org.launchcode.liftoffproject.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,13 +28,7 @@ public class DomainsController {
 
     @GetMapping
     public String displayAllDomains(Model model, HttpServletRequest request) {
-        User user = authenticationController.getUserFromSession(request.getSession());
-
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
         model.addAttribute("title", "All Domains");
         model.addAttribute("domains", domainRepository.findAll());
@@ -45,13 +38,7 @@ public class DomainsController {
 
     @GetMapping("view/{domainId}")
     public String displayViewDomain(Model model, @PathVariable int domainId, HttpServletRequest request) {
-        User user = authenticationController.getUserFromSession(request.getSession());
-
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
         Optional optDomain = domainRepository.findById(domainId);
         if (optDomain.isPresent()) {

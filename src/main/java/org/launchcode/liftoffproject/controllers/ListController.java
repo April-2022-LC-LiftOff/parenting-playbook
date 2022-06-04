@@ -5,7 +5,6 @@ import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.data.TagRepository;
 import org.launchcode.liftoffproject.models.Intervention;
 import org.launchcode.liftoffproject.models.InterventionData;
-import org.launchcode.liftoffproject.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,13 +41,7 @@ public class ListController {
 
     @RequestMapping("")
     public String list(Model model, HttpServletRequest request) {
-        User user = authenticationController.getUserFromSession(request.getSession());
-
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         model.addAttribute("domains", domainRepository.findAll());
         model.addAttribute("tags", tagRepository.findAll());
         return "list";
@@ -56,13 +49,7 @@ public class ListController {
 
     @RequestMapping(value = "interventions")
     public String listInterventionsByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value, HttpServletRequest request) {
-        User user = authenticationController.getUserFromSession(request.getSession());
-
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         Iterable<Intervention> interventions;
         if (column.toLowerCase(Locale.ROOT).equals("all")) {
             interventions = interventionRepository.findAll();
