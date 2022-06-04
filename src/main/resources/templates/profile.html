@@ -60,7 +60,7 @@
                            <a th:text="${intervention.name}" th:href="@{'/view/' + ${intervention.id}}" class="big-links-profile"></a><br>
                     <div style="margin-top:10px;margin-bottom:10px;">
 
-                    <a class="btn btn-info btn-sm" style="margin-bottom:15px;color:black;font-weight:bold;" th:href="@{'/editView/' + ${intervention.id}}">Edit</a>
+                    <a class="btn btn-info btn-sm" style="margin-bottom:15px;color:black;font-weight:bold;" th:href="@{'/view/' + ${intervention.id}}">Edit</a>
                     <a type="button" id="delete" class="btn btn-danger btn-sm" style="margin-bottom:15px;color:black;font-weight:bold;" th:href="@{'/edit/delete/' + ${intervention.id}}">Delete</a></div>
 
             </div>
