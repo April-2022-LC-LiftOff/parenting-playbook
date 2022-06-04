@@ -46,7 +46,14 @@ public class AuthenticationController {
     }
 
     @GetMapping("/register")
-    public String displayRegistrationForm(Model model) {
+    public String displayRegistrationForm(Model model, HttpServletRequest request) {
+        User user = getUserFromSession(request.getSession());
+
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
         model.addAttribute(new RegisterFormDTO());
         model.addAttribute("title", "Register");
         return "register";
@@ -56,8 +63,14 @@ public class AuthenticationController {
     public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
                                           Errors errors, HttpServletRequest request,
                                           Model model) {
+        User user = getUserFromSession(request.getSession());
 
         if (errors.hasErrors()) {
+            if (user == null) {
+                model.addAttribute("loggedIn", false);
+            } else if (user != null) {
+                model.addAttribute("loggedIn", true);
+            }
             model.addAttribute("title", "Register");
             return "register";
         }
@@ -65,6 +78,11 @@ public class AuthenticationController {
         User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
 
         if (existingUser != null) {
+            if (user == null) {
+                model.addAttribute("loggedIn", false);
+            } else if (user != null) {
+                model.addAttribute("loggedIn", true);
+            }
             errors.rejectValue("username", "username.already exists", "A user with that username already exists");
             model.addAttribute("title", "Register");
             return "register";
@@ -73,6 +91,11 @@ public class AuthenticationController {
         String password = registerFormDTO.getPassword();
         String verifyPassword = registerFormDTO.getVerifyPassword();
         if (!password.equals(verifyPassword)) {
+            if (user == null) {
+                model.addAttribute("loggedIn", false);
+            } else if (user != null) {
+                model.addAttribute("loggedIn", true);
+            }
             errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
             model.addAttribute("title", "Register");
             return "register";
@@ -86,7 +109,15 @@ public class AuthenticationController {
         return "redirect:";
     }
     @GetMapping("/login")
-    public String displayLoginForm(Model model) {
+    public String displayLoginForm(Model model, HttpServletRequest request) {
+        User user = getUserFromSession(request.getSession());
+
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
+
         model.addAttribute(new LoginFormDTO());
         model.addAttribute("title", "Log In");
         return "login";
@@ -99,12 +130,26 @@ public class AuthenticationController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Log In");
+            User user = getUserFromSession(request.getSession());
+
+            if (user == null) {
+                model.addAttribute("loggedIn", false);
+            } else if (user != null) {
+                model.addAttribute("loggedIn", true);
+            }
             return "login";
         }
 
         User theUser = userRepository.findByUsername(loginFormDTO.getUsername());
 
         if (theUser == null) {
+            User user = getUserFromSession(request.getSession());
+
+            if (user == null) {
+                model.addAttribute("loggedIn", false);
+            } else if (user != null) {
+                model.addAttribute("loggedIn", true);
+            }
             errors.rejectValue("username", "user.invalid", "The given username does not exist");
             model.addAttribute("title", "Log In");
             return "login";
@@ -113,6 +158,13 @@ public class AuthenticationController {
         String password = loginFormDTO.getPassword();
 
         if (!theUser.isMatchingPassword(password)) {
+            User user = getUserFromSession(request.getSession());
+
+            if (user == null) {
+                model.addAttribute("loggedIn", false);
+            } else if (user != null) {
+                model.addAttribute("loggedIn", true);
+            }
             errors.rejectValue("password", "password.invalid", "Invalid password");
             model.addAttribute("title", "Log In");
             return "login";
@@ -125,7 +177,14 @@ public class AuthenticationController {
         return "redirect:";
     }
     @GetMapping("/logout")
-    public String logout(HttpServletRequest request,RedirectAttributes redirAttrs){
+    public String logout(Model model, HttpServletRequest request,RedirectAttributes redirAttrs){
+        User user = getUserFromSession(request.getSession());
+
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
         redirAttrs.addFlashAttribute("logout", "You have logged out.");
         request.getSession().invalidate();
         return "redirect:/login";

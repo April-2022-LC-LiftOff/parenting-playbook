@@ -3,6 +3,7 @@ package org.launchcode.liftoffproject.controllers;
 import org.launchcode.liftoffproject.data.DomainRepository;
 import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.models.Domain;
+import org.launchcode.liftoffproject.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 @Controller
@@ -22,8 +24,19 @@ public class DomainsController {
     @Autowired
     private InterventionRepository interventionRepository;
 
+    @Autowired
+    private AuthenticationController authenticationController;
+
     @GetMapping
-    public String displayAllDomains(Model model) {
+    public String displayAllDomains(Model model, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
+
         model.addAttribute("title", "All Domains");
         model.addAttribute("domains", domainRepository.findAll());
 
@@ -31,7 +44,15 @@ public class DomainsController {
     }
 
     @GetMapping("view/{domainId}")
-    public String displayViewDomain(Model model, @PathVariable int domainId) {
+    public String displayViewDomain(Model model, @PathVariable int domainId, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
+
         Optional optDomain = domainRepository.findById(domainId);
         if (optDomain.isPresent()) {
             Domain domain = (Domain) optDomain.get();
