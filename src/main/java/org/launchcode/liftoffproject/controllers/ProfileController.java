@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
@@ -34,6 +35,12 @@ public class ProfileController {
     public String profile(Model model, HttpSession session, RedirectAttributes redirAttrs) {
         User user = authenticationController.getUserFromSession(session);
         if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
+
+        if (user == null) {
             redirAttrs.addFlashAttribute("mustlogin", "Please log into access this feature.");
 
             return "redirect:login";
@@ -50,7 +57,14 @@ public class ProfileController {
     }
 
     @GetMapping("/editComment/{commentId}")
-    public String editCommentForm(Model model, @PathVariable int commentId) {
+    public String editCommentForm(Model model, @PathVariable int commentId, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
         Optional optComment = commentRepository.findById(commentId);
         if (optComment.isPresent()) {
             Comment comment = (Comment) optComment.get();
@@ -62,7 +76,14 @@ public class ProfileController {
     }
 
     @PostMapping("/editComment/{commentId}")
-    public String saveComment(Model model, @PathVariable int commentId, @RequestParam String userInput) {
+    public String saveComment(Model model, @PathVariable int commentId, @RequestParam String userInput, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
         Optional optComment = commentRepository.findById(commentId);
         Comment comment = (Comment) optComment.get();
 
@@ -72,7 +93,14 @@ public class ProfileController {
     }
 
     @RequestMapping("/delete/{id}")
-    public String deleteComment(@PathVariable(name = "id") int id) {
+    public String deleteComment(Model model, @PathVariable(name = "id") int id, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
         commentRepository.deleteById(id);
         return "redirect:/profile";
     }

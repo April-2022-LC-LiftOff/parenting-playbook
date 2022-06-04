@@ -107,10 +107,18 @@ public class HomeController {
     }
 
     @RequestMapping("")
-    public String index(Model model) throws FileNotFoundException {
+    public String index(Model model, HttpServletRequest request) throws FileNotFoundException {
         createDomains();
         createTags();
         saveInterventions();
+
+        User user = authenticationController.getUserFromSession(request.getSession());
+
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
 
         model.addAttribute("title", "All Domains");
         model.addAttribute("domains", domainRepository.findAll());
@@ -119,7 +127,14 @@ public class HomeController {
     }
 
     @GetMapping("add")
-    public String displayAddInterventionForm(Model model) {
+    public String displayAddInterventionForm(Model model, HttpServletRequest request) {
+        User currentUser = authenticationController.getUserFromSession(request.getSession());
+        if (currentUser == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (currentUser != null) {
+            model.addAttribute("loggedIn", true);
+        }
+
         model.addAttribute("title", "Add Intervention");
         model.addAttribute(new Intervention());
         model.addAttribute("domains", domainRepository.findAll());
@@ -133,6 +148,14 @@ public class HomeController {
 
     @PostMapping("add")
     public String processAddInterventionForm(@ModelAttribute @Valid Intervention newIntervention, Errors errors, Model model, @RequestParam(required = false) List<Integer> domains, @RequestParam(required = false) List<Integer> tag, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+            return "redirect:login";
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
+
         if (domains == null || domains.size() == 0 || domains.isEmpty()) {
             model.addAttribute("title", "Add Intervention");
             model.addAttribute("domains", domainRepository.findAll());
@@ -157,12 +180,6 @@ public class HomeController {
             model.addAttribute("tags", tagRepository.findAll());
             model.addAttribute("user", userRepository.findAll());
             return "add";
-        }
-
-        User user = authenticationController.getUserFromSession(request.getSession());
-
-        if (user == null) {
-            return "redirect:login";
         }
 
         List<Domain> domainObjs = (List<Domain>) domainRepository.findAllById(domains);
@@ -191,6 +208,15 @@ public class HomeController {
                 model.addAttribute("comments", commentRepository.findCommentByInterventionIdAndUserId(interventionId, user.getId()));
             }
 
+            if (user == null) {
+                model.addAttribute("loggedIn", false);
+            } else if (user != null) {
+                model.addAttribute("loggedIn", true);
+                if (user == intervention.getUser()) {
+                    model.addAttribute("initialUser", true);
+                }
+            }
+
            model.addAttribute("comment", comment);
            model.addAttribute("user",user);
 
@@ -203,14 +229,19 @@ public class HomeController {
     @PostMapping("view/{interventionId}")
     public String processAddComment(@ModelAttribute @Valid Comment newComment, Errors errors, Model model,
                                     @PathVariable int interventionId, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
+
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
         if (errors.hasErrors()) {
             model.addAttribute("intervention", intervention);
             return "view";
         }
-
-        User user = authenticationController.getUserFromSession(request.getSession());
 
         newComment.setUser(user);
         newComment.setIntervention(intervention);
@@ -228,6 +259,12 @@ public class HomeController {
             User user = authenticationController.getUserFromSession(request.getSession());
             model.addAttribute("user",user);
 
+            if (user == null) {
+                model.addAttribute("loggedIn", false);
+            } else if (user != null) {
+                model.addAttribute("loggedIn", true);
+            }
+
             return "editView";
         } else {
             return "redirect:../";
@@ -236,26 +273,52 @@ public class HomeController {
 
 
     @GetMapping("about")
-    public String displayAbout() {
+    public String displayAbout(Model model, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
+
         return "about";
     }
 
     @GetMapping("faq")
-    public String displayFaq() {
+    public String displayFaq(Model model, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
+
         return "faq";
     }
 
     List<String> quizResults = new ArrayList<>();
 
     @GetMapping("quiz")
-    public String displayAllQuestions(Model model) {
+    public String displayAllQuestions(Model model, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
         List<String> questionnaire = new ArrayList<>();
         model.addAttribute("questionnaire", questionnaire);
         return "quiz";
     }
 
     @GetMapping("results")
-    public String getResults(Model model, Quiz quiz) {
+    public String getResults(Model model, Quiz quiz, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
         model.addAttribute("Quiz", quiz);
         return "results";
     }
@@ -268,8 +331,14 @@ public class HomeController {
                                                 List<String> selfMonitoring, @RequestParam(required = false)
                                                 List<String> planningAndPrioritizing, @RequestParam(required = false)
                                                 List<String> taskInitiation, @RequestParam(required = false)
-                                                List<String> organization, @RequestParam(required = false) List<String> none) {
+                                                List<String> organization, @RequestParam(required = false) List<String> none, HttpServletRequest request) {
 
+        User user = authenticationController.getUserFromSession(request.getSession());
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
 
         if (impulseControl == null) {
             model.addAttribute("title", quiz);

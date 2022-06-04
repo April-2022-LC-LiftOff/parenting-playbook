@@ -5,12 +5,14 @@ import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.data.TagRepository;
 import org.launchcode.liftoffproject.models.Intervention;
 import org.launchcode.liftoffproject.models.InterventionData;
+import org.launchcode.liftoffproject.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -27,6 +29,9 @@ public class ListController {
     @Autowired
     private TagRepository tagRepository;
 
+    @Autowired
+    private AuthenticationController authenticationController;
+
     static HashMap<String, String> columnChoices = new HashMap<>();
 
     public ListController() {
@@ -36,14 +41,28 @@ public class ListController {
     }
 
     @RequestMapping("")
-    public String list(Model model) {
+    public String list(Model model, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
         model.addAttribute("domains", domainRepository.findAll());
         model.addAttribute("tags", tagRepository.findAll());
         return "list";
     }
 
     @RequestMapping(value = "interventions")
-    public String listInterventionsByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value) {
+    public String listInterventionsByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+
+        if (user == null) {
+            model.addAttribute("loggedIn", false);
+        } else if (user != null) {
+            model.addAttribute("loggedIn", true);
+        }
         Iterable<Intervention> interventions;
         if (column.toLowerCase(Locale.ROOT).equals("all")) {
             interventions = interventionRepository.findAll();
