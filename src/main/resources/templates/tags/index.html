@@ -7,13 +7,25 @@
 
 <p th:unless="${tags} and ${tags.size()}">No Tags!</p>
 
+<table class="domainList">
+    <tr>
+        <th style="padding-left:40px;margin-bottom:10px;" class="trClass">Tags</th>
+        <th th:if="${loggedIn}" style="padding-left:40px;margin-bottom:10px;" class="trClass">Delete</th>
+    </tr>
+    <tr th:each="tag : ${tags}" class="trClass">
+        <td class="trClass">
+            <ul > <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
+            </ul>
+        </td>
+        <td th:if="${loggedIn}" class="trClass">
+            <ul> <a th:href="@{'/tags/delete/' + ${tag.id}}" th:text="'Delete ' + ${tag.tagName}"></a>
+            </ul>
+        </td>
+    </tr>
+</table>
+
 <div class="container body-content">
-    <h2>Tags</h2>
-    <ul>
-        <li th:each="tag : ${tags}" style="list-style-type: none;">
-            <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
-        </li>
-    </ul>
+
     <a th:if="${loggedIn}" th:href="@{'/tags/add'}">Add Tags</a>
 
 </div>

@@ -3,6 +3,7 @@ package org.launchcode.liftoffproject.controllers;
 import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.data.TagRepository;
 import org.launchcode.liftoffproject.models.Tag;
+import org.launchcode.liftoffproject.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,12 +52,14 @@ public class TagController {
     @PostMapping("add")
     public String processAddTagForm(@ModelAttribute @Valid Tag newTag, Errors errors, Model model, HttpServletRequest request) {
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+        User user = authenticationController.getUserFromSession(request.getSession());
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Tag");
             return "tags/add";
         }
 
+        newTag.setUser(user);
         tagRepository.save(newTag);
 
         return "redirect:";
@@ -74,5 +77,42 @@ public class TagController {
         }
 
         return "redirect:../";
+    }
+
+    @GetMapping("delete/{tagId}")
+    public String displayDeleteTag(Model model, @PathVariable int tagId, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+        User user = authenticationController.getUserFromSession(request.getSession());
+        if (authenticationController.isUserLoggedIn(request)) {
+            Optional optTag = tagRepository.findById(tagId);
+            if(optTag.isPresent()) {
+                Tag tag = (Tag) optTag.get();
+                if (user == tag.getUser()) {
+                    model.addAttribute("tag", tag);
+                    return "tags/delete";
+                }
+            }
+        }
+        return "redirect:/tags/";
+    }
+
+    @PostMapping("delete/{tagId}")
+    public String processDeleteTag(Model model, @PathVariable int tagId, HttpServletRequest request, @RequestParam int delete) {
+        Optional optTag = tagRepository.findById(tagId);
+        Tag tag = (Tag) optTag.get();
+
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
+        if (delete == 0) {
+            model.addAttribute("tag", tag);
+            return "redirect:/tags/";
+        }
+
+        if (delete == 1) {
+            tagRepository.deleteById(tagId);
+
+        }
+
+        return "redirect:/tags/";
     }
 }

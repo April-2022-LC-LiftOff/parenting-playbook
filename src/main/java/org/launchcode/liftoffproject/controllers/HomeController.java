@@ -66,7 +66,7 @@ public class HomeController {
 
         if (repo.isEmpty()) {
             for (int i = 0; i < tags.length; i++) {
-                Tag tag = new Tag(tags[i]);
+                Tag tag = new Tag(tags[i], null);
                 tagRepository.save(tag);
             }
         }
