@@ -15,7 +15,7 @@
             <a href=@{'/view/' + ${intervention.id}} th:text="${intervention.name}"
                style="font-weight:bold;font-size:30px;"></a> <br>
             <th:block>
-                <h2>Are you sure you want to delete the intervention?</h2>
+                <h3>Are you sure you want to delete the intervention?</h3><br>
                 <input type="radio" name="delete" th:value="${0}">
                 <label>No!</label>
                 <input type="radio" name="delete" th:value="${1}">

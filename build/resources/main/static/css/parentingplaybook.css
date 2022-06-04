@@ -517,10 +517,11 @@ div.results {
 div.edit-class {
     margin-left: auto;
     margin-right: auto;
-    padding: 15px 15px;
+    padding: 10px;
     border: 1px solid #FFFFFF;
     width: 60%;
     text-align:left;
+    margin-top: auto;
     margin-bottom: 30px;
     font-size: 16px;
 }
