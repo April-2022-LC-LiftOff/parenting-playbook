@@ -45,6 +45,9 @@
     <p th:text="${intervention.ifItFails}"></p>
     <a th:if="${initialUser}" th:href="@{'/edit/ifItFails/' + ${intervention.id}}" class="small-links">Edit If It Fails</a>
 </div>
+<div>
+    <a th:if="${initialUser}" th:href="@{'/edit/delete/' + ${intervention.id}}" class="small-links">Delete Intervention</a>
+</div>
 
 <br><br>
 <div>
