@@ -356,7 +356,7 @@ public class EditController {
     }
 
     @PostMapping("/delete/{interventionId}")
-    public String processDeleteEdit(Model model, @PathVariable int interventionId, @PathVariable int userId, @RequestParam int delete, HttpServletRequest request) {
+    public String processDeleteEdit(Model model, @PathVariable int interventionId, @RequestParam int delete, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
 
@@ -368,7 +368,6 @@ public class EditController {
         }
 
         if (delete == 1) {
-            commentRepository.deleteById(interventionId);
             interventionRepository.deleteById(interventionId);
 
         }
