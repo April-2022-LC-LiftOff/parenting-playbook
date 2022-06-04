@@ -3,7 +3,6 @@ package org.launchcode.liftoffproject.controllers;
 import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.data.TagRepository;
 import org.launchcode.liftoffproject.models.Tag;
-import org.launchcode.liftoffproject.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,13 +28,7 @@ public class TagController {
 
     @GetMapping
     public String displayAllTags(Model model, HttpServletRequest request) {
-        User user = authenticationController.getUserFromSession(request.getSession());
-
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
         model.addAttribute("title", "All Tags");
         model.addAttribute("tags", tagRepository.findAll());
@@ -45,28 +38,19 @@ public class TagController {
 
     @GetMapping("add")
     public String displayAddTagForm(Model model, HttpServletRequest request) {
-        User user = authenticationController.getUserFromSession(request.getSession());
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
+        if (authenticationController.isUserLoggedIn(request)) {
+            model.addAttribute(new Tag());
+
+            return "tags/add";
         }
-
-        model.addAttribute(new Tag());
-
-        return "tags/add";
+        return "redirect:";
     }
 
     @PostMapping("add")
     public String processAddTagForm(@ModelAttribute @Valid Tag newTag, Errors errors, Model model, HttpServletRequest request) {
-        User user = authenticationController.getUserFromSession(request.getSession());
-
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Tag");
@@ -80,13 +64,7 @@ public class TagController {
 
     @GetMapping("view/{tagId}")
     public String displayViewTag(Model model, @PathVariable int tagId, HttpServletRequest request) {
-        User user = authenticationController.getUserFromSession(request.getSession());
-
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         Optional optTag = tagRepository.findById(tagId);
         if(optTag.isPresent()) {
             Tag tag = (Tag) optTag.get();

@@ -112,49 +112,36 @@ public class HomeController {
         createTags();
         saveInterventions();
 
-        User user = authenticationController.getUserFromSession(request.getSession());
-
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
-
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         model.addAttribute("title", "All Domains");
         model.addAttribute("domains", domainRepository.findAll());
+        model.addAttribute("tags", tagRepository.findAll());
 
         return "index";
     }
 
     @GetMapping("add")
     public String displayAddInterventionForm(Model model, HttpServletRequest request) {
-        User currentUser = authenticationController.getUserFromSession(request.getSession());
-        if (currentUser == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (currentUser != null) {
-            model.addAttribute("loggedIn", true);
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
+        if (authenticationController.isUserLoggedIn(request)) {
+            model.addAttribute("title", "Add Intervention");
+            model.addAttribute(new Intervention());
+            model.addAttribute("domains", domainRepository.findAll());
+            model.addAttribute("tags", tagRepository.findAll());
+            User user = new User();
+            model.addAttribute("username", user.getUsername());
+            model.addAttribute(user);
+
+            return "add";
         }
-
-        model.addAttribute("title", "Add Intervention");
-        model.addAttribute(new Intervention());
-        model.addAttribute("domains", domainRepository.findAll());
-        model.addAttribute("tags", tagRepository.findAll());
-        User user = new User();
-        model.addAttribute("username",user.getUsername());
-        model.addAttribute(user);
-
-        return "add";
+        return "redirect:";
     }
 
     @PostMapping("add")
     public String processAddInterventionForm(@ModelAttribute @Valid Intervention newIntervention, Errors errors, Model model, @RequestParam(required = false) List<Integer> domains, @RequestParam(required = false) List<Integer> tag, HttpServletRequest request) {
         User user = authenticationController.getUserFromSession(request.getSession());
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-            return "redirect:login";
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
         if (domains == null || domains.size() == 0 || domains.isEmpty()) {
             model.addAttribute("title", "Add Intervention");
@@ -202,16 +189,11 @@ public class HomeController {
             model.addAttribute("intervention", intervention);
 
             User user = authenticationController.getUserFromSession(request.getSession());
+            model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
             Comment comment = new Comment();
 
             if (user != null) {
                 model.addAttribute("comments", commentRepository.findCommentByInterventionIdAndUserId(interventionId, user.getId()));
-            }
-
-            if (user == null) {
-                model.addAttribute("loggedIn", false);
-            } else if (user != null) {
-                model.addAttribute("loggedIn", true);
                 if (user == intervention.getUser()) {
                     model.addAttribute("initialUser", true);
                 }
@@ -230,11 +212,7 @@ public class HomeController {
     public String processAddComment(@ModelAttribute @Valid Comment newComment, Errors errors, Model model,
                                     @PathVariable int interventionId, HttpServletRequest request) {
         User user = authenticationController.getUserFromSession(request.getSession());
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
@@ -251,6 +229,7 @@ public class HomeController {
 
     @GetMapping("editView/{interventionId}")
     public String displayEditIntervention(Model model, @PathVariable int interventionId, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         Optional optIntervention = interventionRepository.findById(interventionId);
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
@@ -258,12 +237,6 @@ public class HomeController {
 
             User user = authenticationController.getUserFromSession(request.getSession());
             model.addAttribute("user",user);
-
-            if (user == null) {
-                model.addAttribute("loggedIn", false);
-            } else if (user != null) {
-                model.addAttribute("loggedIn", true);
-            }
 
             return "editView";
         } else {
@@ -274,25 +247,13 @@ public class HomeController {
 
     @GetMapping("about")
     public String displayAbout(Model model, HttpServletRequest request) {
-        User user = authenticationController.getUserFromSession(request.getSession());
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
-
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         return "about";
     }
 
     @GetMapping("faq")
     public String displayFaq(Model model, HttpServletRequest request) {
-        User user = authenticationController.getUserFromSession(request.getSession());
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
-
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         return "faq";
     }
 
@@ -300,12 +261,7 @@ public class HomeController {
 
     @GetMapping("quiz")
     public String displayAllQuestions(Model model, HttpServletRequest request) {
-        User user = authenticationController.getUserFromSession(request.getSession());
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         List<String> questionnaire = new ArrayList<>();
         model.addAttribute("questionnaire", questionnaire);
         return "quiz";
@@ -313,12 +269,7 @@ public class HomeController {
 
     @GetMapping("results")
     public String getResults(Model model, Quiz quiz, HttpServletRequest request) {
-        User user = authenticationController.getUserFromSession(request.getSession());
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         model.addAttribute("Quiz", quiz);
         return "results";
     }
@@ -333,12 +284,7 @@ public class HomeController {
                                                 List<String> taskInitiation, @RequestParam(required = false)
                                                 List<String> organization, @RequestParam(required = false) List<String> none, HttpServletRequest request) {
 
-        User user = authenticationController.getUserFromSession(request.getSession());
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
         if (impulseControl == null) {
             model.addAttribute("title", quiz);

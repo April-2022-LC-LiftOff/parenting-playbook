@@ -41,19 +41,23 @@ public class AuthenticationController {
         return user.get();
     }
 
+    public Boolean isUserLoggedIn(HttpServletRequest request) {
+        User user = getUserFromSession(request.getSession());
+        Boolean output = false;
+        if (user != null) {
+            output = true;
+        }
+
+        return output;
+    }
+
     private static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
     }
 
     @GetMapping("/register")
     public String displayRegistrationForm(Model model, HttpServletRequest request) {
-        User user = getUserFromSession(request.getSession());
-
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
+        model.addAttribute("loggedIn", isUserLoggedIn(request));
         model.addAttribute(new RegisterFormDTO());
         model.addAttribute("title", "Register");
         return "register";
@@ -63,14 +67,9 @@ public class AuthenticationController {
     public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
                                           Errors errors, HttpServletRequest request,
                                           Model model) {
-        User user = getUserFromSession(request.getSession());
+        model.addAttribute("loggedIn", isUserLoggedIn(request));
 
         if (errors.hasErrors()) {
-            if (user == null) {
-                model.addAttribute("loggedIn", false);
-            } else if (user != null) {
-                model.addAttribute("loggedIn", true);
-            }
             model.addAttribute("title", "Register");
             return "register";
         }
@@ -78,11 +77,6 @@ public class AuthenticationController {
         User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
 
         if (existingUser != null) {
-            if (user == null) {
-                model.addAttribute("loggedIn", false);
-            } else if (user != null) {
-                model.addAttribute("loggedIn", true);
-            }
             errors.rejectValue("username", "username.already exists", "A user with that username already exists");
             model.addAttribute("title", "Register");
             return "register";
@@ -91,11 +85,6 @@ public class AuthenticationController {
         String password = registerFormDTO.getPassword();
         String verifyPassword = registerFormDTO.getVerifyPassword();
         if (!password.equals(verifyPassword)) {
-            if (user == null) {
-                model.addAttribute("loggedIn", false);
-            } else if (user != null) {
-                model.addAttribute("loggedIn", true);
-            }
             errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
             model.addAttribute("title", "Register");
             return "register";
@@ -110,14 +99,7 @@ public class AuthenticationController {
     }
     @GetMapping("/login")
     public String displayLoginForm(Model model, HttpServletRequest request) {
-        User user = getUserFromSession(request.getSession());
-
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
-
+        model.addAttribute("loggedIn", isUserLoggedIn(request));
         model.addAttribute(new LoginFormDTO());
         model.addAttribute("title", "Log In");
         return "login";
@@ -128,28 +110,16 @@ public class AuthenticationController {
                                    Errors errors, HttpServletRequest request, RedirectAttributes redirAttrs,
                                    Model model) {
 
+        model.addAttribute("loggedIn", isUserLoggedIn(request));
+
         if (errors.hasErrors()) {
             model.addAttribute("title", "Log In");
-            User user = getUserFromSession(request.getSession());
-
-            if (user == null) {
-                model.addAttribute("loggedIn", false);
-            } else if (user != null) {
-                model.addAttribute("loggedIn", true);
-            }
             return "login";
         }
 
         User theUser = userRepository.findByUsername(loginFormDTO.getUsername());
 
         if (theUser == null) {
-            User user = getUserFromSession(request.getSession());
-
-            if (user == null) {
-                model.addAttribute("loggedIn", false);
-            } else if (user != null) {
-                model.addAttribute("loggedIn", true);
-            }
             errors.rejectValue("username", "user.invalid", "The given username does not exist");
             model.addAttribute("title", "Log In");
             return "login";
@@ -158,13 +128,6 @@ public class AuthenticationController {
         String password = loginFormDTO.getPassword();
 
         if (!theUser.isMatchingPassword(password)) {
-            User user = getUserFromSession(request.getSession());
-
-            if (user == null) {
-                model.addAttribute("loggedIn", false);
-            } else if (user != null) {
-                model.addAttribute("loggedIn", true);
-            }
             errors.rejectValue("password", "password.invalid", "Invalid password");
             model.addAttribute("title", "Log In");
             return "login";
@@ -178,13 +141,7 @@ public class AuthenticationController {
     }
     @GetMapping("/logout")
     public String logout(Model model, HttpServletRequest request,RedirectAttributes redirAttrs){
-        User user = getUserFromSession(request.getSession());
-
-        if (user == null) {
-            model.addAttribute("loggedIn", false);
-        } else if (user != null) {
-            model.addAttribute("loggedIn", true);
-        }
+        model.addAttribute("loggedIn", isUserLoggedIn(request));
         redirAttrs.addFlashAttribute("logout", "You have logged out.");
         request.getSession().invalidate();
         return "redirect:/login";

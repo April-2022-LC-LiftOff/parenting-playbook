@@ -10,11 +10,11 @@
 <div class="container body-content">
     <h2>Tags</h2>
     <ul>
-        <li th:each="tag : ${tags}">
+        <li th:each="tag : ${tags}" style="list-style-type: none;">
             <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
         </li>
     </ul>
-    <a th:href="@{'/tags/add'}">Add Tags</a>
+    <a th:if="${loggedIn}" th:href="@{'/tags/add'}">Add Tags</a>
 
 </div>
 <div class="footer">
