@@ -57,7 +57,7 @@ public class EditController {
 
 
 
-        return "redirect:/editView/{interventionId}";
+        return "redirect:/view/{interventionId}";
 
     }
 
@@ -77,7 +77,7 @@ public class EditController {
         intervention.setName(name);
         interventionRepository.save(intervention);
 
-        return "redirect:/editView/{interventionId}";
+        return "redirect:/view/{interventionId}";
     }
 
     @GetMapping("/action/{interventionId}")
@@ -98,7 +98,7 @@ public class EditController {
 
         }
 
-        return "redirect:/editView/{interventionId}";
+        return "redirect:/view/{interventionId}";
 
     }
 
@@ -118,7 +118,7 @@ public class EditController {
         intervention.setAction(action);
         interventionRepository.save(intervention);
 
-        return "redirect:/editView/{interventionId}";
+        return "redirect:/view/{interventionId}";
     }
 
     @GetMapping("/expectedResponse/{interventionId}")
@@ -139,7 +139,7 @@ public class EditController {
 
         }
 
-        return "redirect:/editView/{interventionId}";
+        return "redirect:/view/{interventionId}";
 
     }
 
@@ -158,7 +158,7 @@ public class EditController {
         intervention.setExpectedResponse(expectedResponse);
         interventionRepository.save(intervention);
 
-        return "redirect:/editView/{interventionId}";
+        return "redirect:/view/{interventionId}";
     }
 
     @GetMapping("/reference/{interventionId}")
@@ -178,7 +178,7 @@ public class EditController {
             }
         }
 
-        return "redirect:/editView/{interventionId}";
+        return "redirect:/view/{interventionId}";
 
     }
 
@@ -191,7 +191,7 @@ public class EditController {
         intervention.setReference(reference);
         interventionRepository.save(intervention);
 
-        return "redirect:/editView/{interventionId}";
+        return "redirect:/view/{interventionId}";
     }
 
     @GetMapping("/ifItFails/{interventionId}")
@@ -212,7 +212,7 @@ public class EditController {
 
         }
 
-        return "redirect:/editView/{interventionId}";
+        return "redirect:/view/{interventionId}";
 
     }
 
@@ -226,7 +226,7 @@ public class EditController {
         intervention.setIfItFails(ifItFails);
         interventionRepository.save(intervention);
 
-        return "redirect:/editView/{interventionId}";
+        return "redirect:/view/{interventionId}";
     }
 
     @GetMapping("/domains/{interventionId}")
@@ -256,7 +256,7 @@ public class EditController {
 
         }
 
-        return "redirect:/editView/{interventionId}";
+        return "redirect:/view/{interventionId}";
 
     }
 
@@ -278,7 +278,7 @@ public class EditController {
         intervention.setDomains(domainObjs);
         interventionRepository.save(intervention);
 
-        return "redirect:/editView/{interventionId}";
+        return "redirect:/view/{interventionId}";
     }
 
     @GetMapping("/tags/{interventionId}")
@@ -308,7 +308,7 @@ public class EditController {
 
         }
 
-        return "redirect:/editView/{interventionId}";
+        return "redirect:/view/{interventionId}";
 
     }
 
@@ -330,7 +330,7 @@ public class EditController {
         intervention.setTags(tagObjs);
         interventionRepository.save(intervention);
 
-        return "redirect:/editView/{interventionId}";
+        return "redirect:/view/{interventionId}";
     }
 
     @GetMapping("delete/{interventionId}")
@@ -356,7 +356,7 @@ public class EditController {
     }
 
     @PostMapping("/delete/{interventionId}")
-    public String processDeleteEdit(Model model, @PathVariable int interventionId, @PathVariable int userId, @RequestParam int delete, HttpServletRequest request) {
+    public String processDeleteEdit(Model model, @PathVariable int interventionId, @RequestParam int delete, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
 
@@ -364,11 +364,10 @@ public class EditController {
 
         if (delete == 0) {
             model.addAttribute("intervention", intervention);
-            return "redirect:/editView/{interventionId}";
+            return "redirect:/view/{interventionId}";
         }
 
         if (delete == 1) {
-            commentRepository.deleteById(interventionId);
             interventionRepository.deleteById(interventionId);
 
         }

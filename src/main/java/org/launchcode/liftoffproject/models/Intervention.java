@@ -33,10 +33,10 @@ public class Intervention extends AbstractEntity{
     @ManyToMany
     private List<Tag> tags = new ArrayList<>();
 
-    @OneToMany(mappedBy = "intervention")
+    @OneToMany(mappedBy = "intervention", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
