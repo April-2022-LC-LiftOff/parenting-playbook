@@ -5,16 +5,18 @@
 <body class="container  body-content">
 
 <nav th:replace="fragments :: page-header"></nav>
+<script type="text/javascript" th:src="@{/js/comment.js}"></script>
 
 <div align="center">
     <h2 th:text="${comment.intervention}"></h2>
 
     <form method="post">
-        <label for="editComment" style="color:white; font-size:25px">Edit Comment: </label><br>
+        <label for="userInput" style="color:white; font-size:25px">Edit Comment: </label><br>
 
         <div class="form-group">
-            <textarea rows="7" class="form-control" th:field="${comment.userInput}" id="editComment"
-                      required="required"></textarea>
+            <textarea rows="7" class="form-control" th:for="userInput" id="userInput" th:field="${comment.userInput}"
+                      required="required" maxLength="1000"/>
+            <div id="userInputCounter" style="margin-top: 0.25rem; text-align: right;color:white;">0</div>
             <span th:errors="${comment.userInput}" class="error"></span>
             <br>
             <button onclick="saveComment()" class="btn btn-info btn-md"

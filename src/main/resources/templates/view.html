@@ -7,6 +7,8 @@
 <h1 th:text="${'Intervention: ' + intervention.name}">Parenting Playbook</h1>
 
 <nav th:replace="fragments :: page-header"></nav>
+<script type="text/javascript" th:src="@{/js/addInterventionInputs.js}"></script>
+<script type="text/javascript" th:src="@{/js/comment.js}"></script>
 
 <div class="edit-class">
     <p class="standout">Domain(s):</p>
@@ -95,8 +97,9 @@
         <div class="form-group">
             <input type="hidden" th:field="*{user}" class="form-control">
             <input type="hidden" th:field="*{intervention}" class="form-control">
-            <textarea rows="5" class="form-control" th:field="${comment.userInput}" placeholder="Have any thoughts?"
-                      required="required"></textarea>
+            <textarea rows="5" class="form-control" th:for="userInput" id="userInput" th:field="${comment.userInput}" placeholder="Have any thoughts?"
+                      required="required" maxlength="1000"/>
+            <div id="userInputCounter" style="margin-top: 0.25rem; text-align: right;color:white;">0</div>
             <span th:errors="${comment.userInput}" class="error"></span>
             <br>
             <button class="btn btn-success btn-md" type="submit">Add Comment</button>
