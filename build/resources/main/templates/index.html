@@ -8,25 +8,34 @@
 
 <div class="alert alert-success alert-dismissible text-center" role="alert" th:text="${hello}" th:if="${hello}"></div>
 <div style="text-align:center; padding: 10px 10px; ">
-    <a data-flickr-embed="true"><img src="https://live.staticflickr.com/65535/52092707954_3d6536dc5f_o.png" width="700" height="150" alt="700x200parenting"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
-
+    <!--    <a data-flickr-embed="true"><img src="https://live.staticflickr.com/65535/52092707954_3d6536dc5f_o.png" width="700" height="150" alt="700x200parenting"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>-->
+    <div class="col">
+        <img class="banner" th:src="@{images/banner.png}"/>
     </div>
+</div>
 <div>
 
     <h1>Welcome to the Parenting Playbook!</h1>
-    <h3 style="padding:20px 20px;">Select an executive functioning domain to find strategies to help your child succeed.</h3>
+    <h3 style="padding:15px;">Select an executive functioning domain to find strategies to help your child succeed.</h3>
 
-    <button class="button-80" role="button"  th:each="domain : ${domains}">
+    <button class="button-80" role="button" th:each="domain : ${domains}">
         <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}" style="color:black;"></a>
     </button>
-</div>
+    <div>
+        <h3>Not sure where to start? Take our questionnaire!</h3>
+        <button class="button-80" role="button">
+            <a th:href="@{'quiz'}" style="color:black;">Domains Questionnaire</a>
+        </button>
+    </div>
 
-<div>
-    <h3>Not sure where to start? Take our questionnaire!</h3>
-    <button class="button-80" role="button">
-        <a th:href="@{'quiz'}" style="color:black;">Domains Questionnaire</a>
+    <h3 style="padding:15px;">Select a tag to find strategies to help your child succeed.</h3>
+
+    <button class="button-tags" role="button" th:each="tag : ${tags}">
+        <a th:href="@{'tags/view/' + ${tag.id}}" th:text="${tag.tagName}" style="color:black;"></a>
     </button>
 </div>
+
+
 
 <div class="footer">
     <p></p>

@@ -41,12 +41,23 @@ public class AuthenticationController {
         return user.get();
     }
 
+    public Boolean isUserLoggedIn(HttpServletRequest request) {
+        User user = getUserFromSession(request.getSession());
+        Boolean output = false;
+        if (user != null) {
+            output = true;
+        }
+
+        return output;
+    }
+
     private static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
     }
 
     @GetMapping("/register")
-    public String displayRegistrationForm(Model model) {
+    public String displayRegistrationForm(Model model, HttpServletRequest request) {
+        model.addAttribute("loggedIn", isUserLoggedIn(request));
         model.addAttribute(new RegisterFormDTO());
         model.addAttribute("title", "Register");
         return "register";
@@ -56,6 +67,7 @@ public class AuthenticationController {
     public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
                                           Errors errors, HttpServletRequest request,
                                           Model model) {
+        model.addAttribute("loggedIn", isUserLoggedIn(request));
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Register");
@@ -86,7 +98,8 @@ public class AuthenticationController {
         return "redirect:";
     }
     @GetMapping("/login")
-    public String displayLoginForm(Model model) {
+    public String displayLoginForm(Model model, HttpServletRequest request) {
+        model.addAttribute("loggedIn", isUserLoggedIn(request));
         model.addAttribute(new LoginFormDTO());
         model.addAttribute("title", "Log In");
         return "login";
@@ -96,6 +109,8 @@ public class AuthenticationController {
     public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO,
                                    Errors errors, HttpServletRequest request, RedirectAttributes redirAttrs,
                                    Model model) {
+
+        model.addAttribute("loggedIn", isUserLoggedIn(request));
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Log In");
@@ -125,7 +140,8 @@ public class AuthenticationController {
         return "redirect:";
     }
     @GetMapping("/logout")
-    public String logout(HttpServletRequest request,RedirectAttributes redirAttrs){
+    public String logout(Model model, HttpServletRequest request,RedirectAttributes redirAttrs){
+        model.addAttribute("loggedIn", isUserLoggedIn(request));
         redirAttrs.addFlashAttribute("logout", "You have logged out.");
         request.getSession().invalidate();
         return "redirect:/login";
