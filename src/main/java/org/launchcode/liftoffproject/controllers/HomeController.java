@@ -37,7 +37,6 @@ public class HomeController {
     private UserRepository userRepository;
 
 
-
     public void createDomains() throws FileNotFoundException {
         String delimiter = ",";
         List repo = (List) domainRepository.findAll();
@@ -66,14 +65,14 @@ public class HomeController {
 
         if (repo.isEmpty()) {
             for (int i = 0; i < tags.length; i++) {
-                Tag tag = new Tag(tags[i]);
+                Tag tag = new Tag(tags[i], null);
                 tagRepository.save(tag);
             }
         }
     }
 
     public void saveInterventions() throws FileNotFoundException {
-        String delimiter = ",";
+        String delimiter = ";";
         List repo = (List) interventionRepository.findAll();
 
         if (repo.isEmpty()) {
@@ -107,32 +106,42 @@ public class HomeController {
     }
 
     @RequestMapping("")
-    public String index(Model model) throws FileNotFoundException {
+    public String index(Model model, HttpServletRequest request) throws FileNotFoundException {
         createDomains();
         createTags();
         saveInterventions();
 
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         model.addAttribute("title", "All Domains");
         model.addAttribute("domains", domainRepository.findAll());
+        model.addAttribute("tags", tagRepository.findAll());
 
         return "index";
     }
 
     @GetMapping("add")
-    public String displayAddInterventionForm(Model model) {
-        model.addAttribute("title", "Add Intervention");
-        model.addAttribute(new Intervention());
-        model.addAttribute("domains", domainRepository.findAll());
-        model.addAttribute("tags", tagRepository.findAll());
-        User user = new User();
-        model.addAttribute("username",user.getUsername());
-        model.addAttribute(user);
+    public String displayAddInterventionForm(Model model, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
-        return "add";
+        if (authenticationController.isUserLoggedIn(request)) {
+            model.addAttribute("title", "Add Intervention");
+            model.addAttribute(new Intervention());
+            model.addAttribute("domains", domainRepository.findAll());
+            model.addAttribute("tags", tagRepository.findAll());
+            User user = new User();
+            model.addAttribute("username", user.getUsername());
+            model.addAttribute(user);
+
+            return "add";
+        }
+        return "redirect:";
     }
 
     @PostMapping("add")
     public String processAddInterventionForm(@ModelAttribute @Valid Intervention newIntervention, Errors errors, Model model, @RequestParam(required = false) List<Integer> domains, @RequestParam(required = false) List<Integer> tag, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
         if (domains == null || domains.size() == 0 || domains.isEmpty()) {
             model.addAttribute("title", "Add Intervention");
             model.addAttribute("domains", domainRepository.findAll());
@@ -159,12 +168,6 @@ public class HomeController {
             return "add";
         }
 
-        User user = authenticationController.getUserFromSession(request.getSession());
-
-        if (user == null) {
-            return "redirect:login";
-        }
-
         List<Domain> domainObjs = (List<Domain>) domainRepository.findAllById(domains);
         List<Tag> tagObjs = (List<Tag>) tagRepository.findAllById(tag);
 
@@ -174,7 +177,7 @@ public class HomeController {
 
         interventionRepository.save(newIntervention);
 
-        return "redirect:";
+        return "redirect:/profile";
     }
 
     @GetMapping("view/{interventionId}")
@@ -185,14 +188,18 @@ public class HomeController {
             model.addAttribute("intervention", intervention);
 
             User user = authenticationController.getUserFromSession(request.getSession());
+            model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
             Comment comment = new Comment();
 
             if (user != null) {
                 model.addAttribute("comments", commentRepository.findCommentByInterventionIdAndUserId(interventionId, user.getId()));
+                if (user == intervention.getUser()) {
+                    model.addAttribute("initialUser", true);
+                }
             }
 
-           model.addAttribute("comment", comment);
-           model.addAttribute("user",user);
+            model.addAttribute("comment", comment);
+            model.addAttribute("user", user);
 
             return "view";
         } else {
@@ -203,6 +210,9 @@ public class HomeController {
     @PostMapping("view/{interventionId}")
     public String processAddComment(@ModelAttribute @Valid Comment newComment, Errors errors, Model model,
                                     @PathVariable int interventionId, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
         if (errors.hasErrors()) {
@@ -210,35 +220,38 @@ public class HomeController {
             return "view";
         }
 
-        User user = authenticationController.getUserFromSession(request.getSession());
-
         newComment.setUser(user);
         newComment.setIntervention(intervention);
         commentRepository.save(newComment);
         return "redirect:{interventionId}";
     }
 
+
     @GetMapping("about")
-    public String displayAbout() {
+    public String displayAbout(Model model, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         return "about";
     }
 
     @GetMapping("faq")
-    public String displayFaq() {
+    public String displayFaq(Model model, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         return "faq";
     }
 
     List<String> quizResults = new ArrayList<>();
 
     @GetMapping("quiz")
-    public String displayAllQuestions(Model model) {
+    public String displayAllQuestions(Model model, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         List<String> questionnaire = new ArrayList<>();
         model.addAttribute("questionnaire", questionnaire);
         return "quiz";
     }
 
     @GetMapping("results")
-    public String getResults(Model model, Quiz quiz) {
+    public String getResults(Model model, Quiz quiz, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         model.addAttribute("Quiz", quiz);
         return "results";
     }
@@ -251,65 +264,68 @@ public class HomeController {
                                                 List<String> selfMonitoring, @RequestParam(required = false)
                                                 List<String> planningAndPrioritizing, @RequestParam(required = false)
                                                 List<String> taskInitiation, @RequestParam(required = false)
-                                                List<String> organization, @RequestParam(required = false) List<String> none) {
+                                                List<String> organization, @RequestParam(required = false) List<String> none, HttpServletRequest request) {
 
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
-        if (impulseControl == null) {
+        if (impulseControl == null || impulseControl.size() < 2) {
             model.addAttribute("title", quiz);
         } else if (impulseControl.size() >= 2) {
             model.addAttribute("impulseControl", domainRepository.findById(1));
         }
 
-        if (emotionalControl == null) {
+        if (emotionalControl == null || emotionalControl.size() < 2) {
             model.addAttribute("title", quiz);
         } else if (emotionalControl.size() >= 2) {
             model.addAttribute("emotionalControl", domainRepository.findById(2));
         }
 
-        if (flexibleThinking == null) {
+        if (flexibleThinking == null || flexibleThinking.size() < 2) {
             model.addAttribute("title", quiz);
         } else if (flexibleThinking.size() >= 2) {
             model.addAttribute("flexibleThinking", domainRepository.findById(3));
         }
 
-        if (workingMemory == null) {
+        if (workingMemory == null || workingMemory.size() < 2) {
             model.addAttribute("title", quiz);
         } else if (workingMemory.size() >= 2) {
             model.addAttribute("workingMemory", domainRepository.findById(4));
         }
 
-        if (selfMonitoring == null) {
+        if (selfMonitoring == null || selfMonitoring.size() < 2) {
             model.addAttribute("title", quiz);
         } else if (selfMonitoring.size() >= 2) {
             model.addAttribute("selfMonitoring", domainRepository.findById(5));
         }
 
-        if (planningAndPrioritizing == null) {
+        if (planningAndPrioritizing == null || planningAndPrioritizing.size() < 2) {
             model.addAttribute("title", quiz);
         } else if (planningAndPrioritizing.size() >= 2) {
             model.addAttribute("planningAndPrioritizing", domainRepository.findById(6));
         }
 
-        if (taskInitiation == null) {
+        if (taskInitiation == null || taskInitiation.size() < 2) {
             model.addAttribute("title", quiz);
         } else if (taskInitiation.size() >= 2) {
             model.addAttribute("taskInitiation", domainRepository.findById(7));
         }
 
-        if (organization == null) {
+        if (organization == null || organization.size() < 2) {
             model.addAttribute("title", quiz);
         } else if (organization.size() >= 2) {
             model.addAttribute("organization", domainRepository.findById(8));
         }
 
-        if (impulseControl == null && emotionalControl == null && flexibleThinking == null && workingMemory == null &&
-        selfMonitoring == null && planningAndPrioritizing == null && taskInitiation == null && organization == null) {
+        if ((impulseControl == null || impulseControl.size() < 2) && (emotionalControl == null || emotionalControl.size() < 2)
+                && (flexibleThinking == null || flexibleThinking.size() < 2) && (workingMemory == null || workingMemory.size() < 2)
+                && (selfMonitoring == null || selfMonitoring.size() < 2) && (planningAndPrioritizing == null || planningAndPrioritizing.size() < 2)
+                && (taskInitiation == null || taskInitiation.size() < 2) && (organization == null || organization.size() < 2)) {
+            model.addAttribute("title", quiz);
+            model.addAttribute("none", domainRepository.findAll());
 
-            model.addAttribute("none", none);
         }
         return "results";
-
     }
 
-}
 
+}

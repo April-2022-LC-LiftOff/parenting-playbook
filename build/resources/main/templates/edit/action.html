@@ -10,17 +10,17 @@
     <form method="post" class="editing">
         <div class="form-group">
             <label th:for="action" class="editing-labels">Action:</label>
-            <textarea rows="4" cols="50" name="action" class="form-control" th:text="${intervention.action}" maxlength="2000" required></textarea>
-<!--=======-->
-<!--            <label th:for="action">Action:</label>-->
-<!--            <textarea rows="4" cols="50" name="action" class="form-control" th:text="${intervention.action}" maxlength="2000" required></textarea>-->
-<!--&gt;>>>>>> b3459436ec1086a31466507374127a0250d21d77-->
+            <textarea rows="4" cols="50" name="action" class="form-control" th:text="${intervention.action}"
+                      maxlength="2000" required></textarea>
             <br>
             <span th:text="${actionError}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
-        <input type="submit" class="btn-primary" value="Update Action"/>
-        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn-info" value="Cancel Update"/></a>
+        <input type="submit" class="btn btn-info" style="margin-bottom:15px;color:black;font-weight:bold;"
+               value="Update Action"/>
+        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info"
+                                                             style="margin-bottom:15px;color:black;font-weight:bold;"
+                                                             value="Cancel Update"/></a>
     </form>
 </div>
 <div class="footer">

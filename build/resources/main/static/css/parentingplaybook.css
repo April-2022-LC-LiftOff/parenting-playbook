@@ -88,15 +88,15 @@ margin-bottom: 20px;
   cursor: pointer;
   display: inline-block;
  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 250;
   letter-spacing: -.01em;
   line-height: 1.3;
   margin-left: 10px;
   margin-right: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 15px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 10px;
   position: relative;
   text-align: left;
   text-decoration: none;
@@ -185,14 +185,14 @@ a:active {
 .navbar {
    background: rgb(2,0,36);
       background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,72,90,1) 35%, rgba(0,212,255,1) 100%);
-   font-size: 12px;
+   font-size: 15px;
    color: white;
 }
 
 nav navbar-nav{
     color: white;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 table.parenting-playbook {
@@ -437,6 +437,13 @@ background-color:black;
     padding-bottom:5px;
 }
 
+.faqLiStyle {
+    text-align:left;
+    padding-bottom:5px;
+    padding-left:50px;
+}
+
+
 .faqH3style {
     text-align:center;
     padding-bottom:10px;
@@ -463,13 +470,16 @@ table.faq {
     margin-left:auto;
     margin-right:auto;
     font-size:16px;
-    padding-left:400px;
+    padding-left:300px;
+    padding-right:50px;
 }
 
 .quiz-spacing {
     margin-top:25px;
     margin-bottom:25px;
 }
+
+
 
 table.results {
       border: 1px solid #ffffff;
@@ -517,10 +527,11 @@ div.results {
 div.edit-class {
     margin-left: auto;
     margin-right: auto;
-    padding: 15px 15px;
+    padding: 10px;
     border: 1px solid #FFFFFF;
     width: 60%;
     text-align:left;
+    margin-top: auto;
     margin-bottom: 30px;
     font-size: 16px;
 }
@@ -549,8 +560,9 @@ div.tags {
 table.domainList {
       border: 1px solid #ffffff;
       border-collapse:separate;
-      border-spacing:0 15px;
+
       border-top:auto;
+      border-bottom:auto;
       margin-left: auto;
       margin-right: auto;
       color: #FFFFFF;
@@ -559,9 +571,89 @@ table.domainList {
       font-size: 15px;
       table-layout: fixed;
       width: 800px;
+
 }
 
 .trClass {
   text-align: left;
   border-bottom: 1px solid white;
+       padding-top:10px;
 }
+
+.standout-center {
+    font-weight:bold;
+    text-decoration:underline;
+    text-align:center;
+}
+
+ a.big-links-profile {
+    font-size: 20px;
+    text-align:center;
+ }
+
+ .button-tags {
+   background: #ffffff;
+   backface-visibility: hidden;
+   opacity: 1;
+   border-color: #000000;
+   border-radius: 8px;
+   border-style: solid;
+   border-width: 2px;
+   box-sizing: border-box;
+   color: #000000;
+   cursor: pointer;
+   display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+   font-size: 12px;
+   font-weight: 250;
+   letter-spacing: -.01em;
+   line-height: 1.3;
+   margin-left: 10px;
+   margin-right: 10px;
+   margin-top: 8px;
+   margin-bottom: 8px;
+   padding: 5px;
+   position: relative;
+   text-align: left;
+   text-decoration: none;
+   transform: translateZ(0) scale(1);
+   transition: transform .2s;
+   user-select: none;
+   -webkit-user-select: none;
+   touch-action: manipulation;
+ }
+
+ .button-tags:not(:disabled):hover {
+   transform: scale(1.05);
+ }
+
+ .button-tags:not(:disabled):hover:active {
+   transform: scale(1.05) translateY(.125rem);
+ }
+
+ .button-tags:focus {
+   outline: 0 solid transparent;
+ }
+
+ .button-tags:focus:before {
+   content: "";
+   left: calc(-1*.375rem);
+   pointer-events: none;
+   position: absolute;
+   top: calc(-1*.375rem);
+   transition: border-radius;
+   user-select: none;
+ }
+
+ .button-tags:focus:not(:focus-visible) {
+   outline: 0 solid transparent;
+ }
+
+ .button-tags:focus:not(:focus-visible):before {
+   border-width: 0;
+ }
+
+ .button-tags:not(:disabled):active {
+   transform: translateY(.125rem);
+ }
+

@@ -1,6 +1,7 @@
 package org.launchcode.liftoffproject.controllers;
 
 import org.launchcode.liftoffproject.data.CommentRepository;
+import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.data.UserRepository;
 import org.launchcode.liftoffproject.models.Comment;
 import org.launchcode.liftoffproject.models.User;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
@@ -25,10 +27,15 @@ public class ProfileController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    InterventionRepository interventionRepository;
+
     @GetMapping
     @RequestMapping("profile")
-    public String profile(Model model, HttpSession session, RedirectAttributes redirAttrs) {
+    public String profile(Model model, HttpSession session, RedirectAttributes redirAttrs, HttpServletRequest request) {
         User user = authenticationController.getUserFromSession(session);
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
         if (user == null) {
             redirAttrs.addFlashAttribute("mustlogin", "Please log into access this feature.");
 
@@ -46,7 +53,8 @@ public class ProfileController {
     }
 
     @GetMapping("/editComment/{commentId}")
-    public String editCommentForm(Model model, @PathVariable int commentId) {
+    public String editCommentForm(Model model, @PathVariable int commentId, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         Optional optComment = commentRepository.findById(commentId);
         if (optComment.isPresent()) {
             Comment comment = (Comment) optComment.get();
@@ -58,7 +66,8 @@ public class ProfileController {
     }
 
     @PostMapping("/editComment/{commentId}")
-    public String saveComment(Model model, @PathVariable int commentId, @RequestParam String userInput) {
+    public String saveComment(Model model, @PathVariable int commentId, @RequestParam String userInput, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         Optional optComment = commentRepository.findById(commentId);
         Comment comment = (Comment) optComment.get();
 
@@ -68,7 +77,8 @@ public class ProfileController {
     }
 
     @RequestMapping("/delete/{id}")
-    public String deleteComment(@PathVariable(name = "id") int id) {
+    public String deleteComment(Model model, @PathVariable(name = "id") int id, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         commentRepository.deleteById(id);
         return "redirect:/profile";
     }

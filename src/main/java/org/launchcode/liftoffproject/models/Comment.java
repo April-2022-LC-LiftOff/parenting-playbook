@@ -22,10 +22,10 @@ public class Comment extends AbstractEntity {
     @Column(name="posted_date")
     private Date postedDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Intervention intervention;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
