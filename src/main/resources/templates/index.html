@@ -21,6 +21,12 @@
     <button class="button-80" role="button" th:each="domain : ${domains}">
         <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}" style="color:black;"></a>
     </button>
+    <div>
+        <h3>Not sure where to start? Take our questionnaire!</h3>
+        <button class="button-80" role="button">
+            <a th:href="@{'quiz'}" style="color:black;">Domains Questionnaire</a>
+        </button>
+    </div>
 
     <h3 style="padding:15px;">Select a tag to find strategies to help your child succeed.</h3>
 
@@ -29,12 +35,7 @@
     </button>
 </div>
 
-<div>
-    <h3>Not sure where to start? Take our questionnaire!</h3>
-    <button class="button-80" role="button">
-        <a th:href="@{'quiz'}" style="color:black;">Domains Questionnaire</a>
-    </button>
-</div>
+
 
 <div class="footer">
     <p></p>
