@@ -196,13 +196,13 @@
         </tr>
     </table>
 </div>
-<div th:if="none" class="results">
+<div th:if="${none} != null" class="results">
     <table class="results" style="text-align:center;">
 
-        <th>
+        <th style="text-align:center;">
 
-            <h4>Check out all of our interventions
-                using the search feature!</h4></th>
+            <h4>There is not one specific domain that populated based on your questionnaire results. Check out all of
+                our interventions using the search feature!</h4></th>
 
     </table>
 </div>

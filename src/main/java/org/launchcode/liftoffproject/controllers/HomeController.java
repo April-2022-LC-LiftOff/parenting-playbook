@@ -37,7 +37,6 @@ public class HomeController {
     private UserRepository userRepository;
 
 
-
     public void createDomains() throws FileNotFoundException {
         String delimiter = ",";
         List repo = (List) domainRepository.findAll();
@@ -199,8 +198,8 @@ public class HomeController {
                 }
             }
 
-           model.addAttribute("comment", comment);
-           model.addAttribute("user",user);
+            model.addAttribute("comment", comment);
+            model.addAttribute("user", user);
 
             return "view";
         } else {
@@ -226,7 +225,6 @@ public class HomeController {
         commentRepository.save(newComment);
         return "redirect:{interventionId}";
     }
-
 
 
     @GetMapping("about")
@@ -270,62 +268,64 @@ public class HomeController {
 
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
-        if (impulseControl == null) {
+        if (impulseControl == null || impulseControl.size() < 2) {
             model.addAttribute("title", quiz);
         } else if (impulseControl.size() >= 2) {
             model.addAttribute("impulseControl", domainRepository.findById(1));
         }
 
-        if (emotionalControl == null) {
+        if (emotionalControl == null || emotionalControl.size() < 2) {
             model.addAttribute("title", quiz);
         } else if (emotionalControl.size() >= 2) {
             model.addAttribute("emotionalControl", domainRepository.findById(2));
         }
 
-        if (flexibleThinking == null) {
+        if (flexibleThinking == null || flexibleThinking.size() < 2) {
             model.addAttribute("title", quiz);
         } else if (flexibleThinking.size() >= 2) {
             model.addAttribute("flexibleThinking", domainRepository.findById(3));
         }
 
-        if (workingMemory == null) {
+        if (workingMemory == null || workingMemory.size() < 2) {
             model.addAttribute("title", quiz);
         } else if (workingMemory.size() >= 2) {
             model.addAttribute("workingMemory", domainRepository.findById(4));
         }
 
-        if (selfMonitoring == null) {
+        if (selfMonitoring == null || selfMonitoring.size() < 2) {
             model.addAttribute("title", quiz);
         } else if (selfMonitoring.size() >= 2) {
             model.addAttribute("selfMonitoring", domainRepository.findById(5));
         }
 
-        if (planningAndPrioritizing == null) {
+        if (planningAndPrioritizing == null || planningAndPrioritizing.size() < 2) {
             model.addAttribute("title", quiz);
         } else if (planningAndPrioritizing.size() >= 2) {
             model.addAttribute("planningAndPrioritizing", domainRepository.findById(6));
         }
 
-        if (taskInitiation == null) {
+        if (taskInitiation == null || taskInitiation.size() < 2) {
             model.addAttribute("title", quiz);
         } else if (taskInitiation.size() >= 2) {
             model.addAttribute("taskInitiation", domainRepository.findById(7));
         }
 
-        if (organization == null) {
+        if (organization == null || organization.size() < 2) {
             model.addAttribute("title", quiz);
         } else if (organization.size() >= 2) {
             model.addAttribute("organization", domainRepository.findById(8));
         }
 
-        if (impulseControl == null && emotionalControl == null && flexibleThinking == null && workingMemory == null &&
-        selfMonitoring == null && planningAndPrioritizing == null && taskInitiation == null && organization == null) {
+        if ((impulseControl == null || impulseControl.size() < 2) && (emotionalControl == null || emotionalControl.size() < 2)
+                && (flexibleThinking == null || flexibleThinking.size() < 2) && (workingMemory == null || workingMemory.size() < 2)
+                && (selfMonitoring == null || selfMonitoring.size() < 2) && (planningAndPrioritizing == null || planningAndPrioritizing.size() < 2)
+                && (taskInitiation == null || taskInitiation.size() < 2) && (organization == null || organization.size() < 2)) {
+            model.addAttribute("title", quiz);
+            model.addAttribute("none", domainRepository.findAll());
 
-            model.addAttribute("none", none);
         }
         return "results";
-
     }
 
-}
 
+}
