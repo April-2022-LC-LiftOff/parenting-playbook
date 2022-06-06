@@ -10,11 +10,17 @@
     <form method="post" class="editing">
         <div class="form-group">
             <label th:for="ifItFails" class="editing-labels">If It Fails:</label>
-            <textarea rows="4" cols="50" name="ifItFails" class="form-control" th:text="${intervention.ifItFails}" ></textarea>
+            <textarea rows="4" cols="50" name="ifItFails" class="form-control"
+                      th:text="${intervention.ifItFails}"></textarea>
+            <br>
+            <span th:text="${ifItFailsError}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
-        <input type="submit" class="btn-primary" value="Update If It Fails"/>
-        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn-info" value="Cancel Update"/></a>
+        <input type="submit" class="btn btn-info" style="margin-bottom:15px;color:black;font-weight:bold;"
+               value="Update If It Fails"/>
+        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info"
+                                                             style="margin-bottom:15px;color:black;font-weight:bold;"
+                                                             value="Cancel Update"/></a>
     </form>
 </div>
 <div class="footer">

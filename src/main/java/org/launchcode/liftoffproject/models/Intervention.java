@@ -21,10 +21,10 @@ public class Intervention extends AbstractEntity{
     @Size(min = 20, max = 2000, message = "Expected Response must be longer than 20 characters and not exceed 2000 characters.")
     private String expectedResponse;
 
-    @Size(max = 2000, message = "Reference must be longer than 20 characters and not exceed 2000 characters.")
+    @Size(max = 2000, message = "Reference must not exceed 2000 characters.")
     private String reference;
 
-    @Size(max = 2000, message = "If It Fails must be longer than 20 characters and not exceed 2000 characters.")
+    @Size(max = 2000, message = "If It Fails must not exceed 2000 characters.")
     private String ifItFails;
 
     @ManyToMany
@@ -33,10 +33,10 @@ public class Intervention extends AbstractEntity{
     @ManyToMany
     private List<Tag> tags = new ArrayList<>();
 
-    @OneToMany(mappedBy = "intervention")
+    @OneToMany(mappedBy = "intervention", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div class="container body-content">
+    <form method="post" class="editing">
+        <div class="form-group">
+            <label th:for="expectedResponse" class="editing-labels">Expected Response:</label>
+            <textarea rows="4" cols="50" name="expectedResponse" class="form-control" th:text="${intervention.expectedResponse}" required></textarea>
+            <br>
+            <span th:text="${expectedResponseError}" class="error" style="color:red;background-color:black;"></span>
+        </div>
+
+        <input type="submit" class="btn-primary" value="Update Expected Response"/>
+        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn-info" value="Cancel Update"/></a>
+    </form>
+</div>
+<div class="footer">
+    <p></p>
+</div>
+</body>
+</html>

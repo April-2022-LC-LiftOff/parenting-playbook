@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <link th:href="@{/css/parentingplaybook.css}" rel="stylesheet" />
+    <link th:href="@{/css/domains-interventions.css}" rel="stylesheet" />
+</head>
+<body class="container body-content">
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="container body-content">
+
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+
+    <table class="parenting-playbook" th:each="intervention : ${interventions}">
+        <tr>
+            <td>
+                <p class="standout">Name: </p>
+                <p>
+                    <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a></p>
+                <p class="standout" style="padding-top:10px;"> Action: </p>
+                <p th:text="${intervention.action}"></p>
+                <p class="standout"style="padding-top:10px;">Expected Response:</p>
+                <p th:text="${intervention.expectedResponse}"></p>
+
+                <p class="standout" style="padding-top:10px;">
+                    Domains:</p>
+                    <ul th:each="domain : ${intervention.domains}">
+                        <li style="list-style-type: none;">
+                            <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
+                        </li>
+                    </ul>
+                </p>
+                <p class="standout"style="padding-top:10px;">
+                    Tags:</p>
+                <ul th:each="tag : ${intervention.tags}">
+                    <li style="list-style-type: none;">
+                        <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
+                    </li>
+                </ul>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+</div>
+<div class="footer">
+</div>
+</body>
+</html>
