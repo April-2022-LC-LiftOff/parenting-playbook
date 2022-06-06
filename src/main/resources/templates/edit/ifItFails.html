@@ -12,6 +12,8 @@
             <label th:for="ifItFails" class="editing-labels">If It Fails:</label>
             <textarea rows="4" cols="50" name="ifItFails" class="form-control"
                       th:text="${intervention.ifItFails}"></textarea>
+            <br>
+            <span th:text="${ifItFailsError}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
         <input type="submit" class="btn btn-info" style="margin-bottom:15px;color:black;font-weight:bold;"

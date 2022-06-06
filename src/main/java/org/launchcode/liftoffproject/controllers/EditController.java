@@ -187,6 +187,12 @@ public class EditController {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+        if (reference.length() > 2000) {
+            model.addAttribute("intervention", intervention);
+            String str = "Reference must not exceed 2000 characters.";
+            model.addAttribute("referenceError", str);
+            return "edit/reference";
+        }
 
         intervention.setReference(reference);
         interventionRepository.save(intervention);
@@ -220,6 +226,13 @@ public class EditController {
     public String processIfItFailsEdit(Model model, @PathVariable int interventionId, @RequestParam String ifItFails, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+        if (ifItFails.length() > 2000) {
+            model.addAttribute("intervention", intervention);
+            String str = "If It Fails must not exceed 2000 characters.";
+            model.addAttribute("ifItFailsError", str);
+            return "edit/ifItFails";
+        }
 
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
