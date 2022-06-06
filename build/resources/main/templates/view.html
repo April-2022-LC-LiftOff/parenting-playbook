@@ -53,16 +53,14 @@
         Intervention</a>
 </div>
 
+<br><br>
 <div>
-    <h3 style="mergin-top: 30px">Latest Comment(s): </h3>
-    <div class="container" style="background-color: rgba(255,255,255,0.1); padding: 10px 35px 0 35px">
+    <h3>Latest Comment(s): </h3>
+    <div class="container" style="background-color: rgba(255,255,255,0.1);">
         <table class="table" style="color:white;">
             <thead>
             <tr style="color: white">
-<<<<<<< HEAD
-=======
                 <!--                <th>Intervention ID</th>-->
->>>>>>> main
                 <th>Intervention Name</th>
                 <th>User</th>
                 <th>Comment</th>
@@ -71,10 +69,7 @@
             </thead>
             <tbody th:if="${intervention.comments} !=null" align="left">
             <tr th:each="comment : ${intervention.comments}">
-<<<<<<< HEAD
-=======
                 <!--                <td th:text="${intervention.id}"></td>-->
->>>>>>> main
                 <td th:text="${intervention.name}"></td>
                 <td th:text="${comment.user.username}"></td>
                 <td th:text="${comment.userInput}"></td>
@@ -89,15 +84,9 @@
 <span th:if="${intervention.comments.size} == 0" style="color: white">
         Be the first one to leave a comment!
     </span>
-<<<<<<< HEAD
-    <br>
-<div class="container" th:unless="${user}" style="color: white">
-    <h3>Login or join us for leave your comment!</h3>
-=======
 <br>
 <div class="container" th:unless="${user}" style="color: white">
     <h3>Login or join us to leave a comment!</h3>
->>>>>>> main
 </div>
 <div class="container" th:if="${user} != null">
     <h3 style="color: white">Leave a Comment: </h3>
@@ -106,25 +95,40 @@
         <div class="form-group">
             <input type="hidden" th:field="*{user}" class="form-control">
             <input type="hidden" th:field="*{intervention}" class="form-control">
-<<<<<<< HEAD
-            <textarea  rows="5" class="form-control" th:field="${comment.userInput}" placeholder="Have any thoughts?" required="required"></textarea>
-=======
             <textarea rows="5" class="form-control" th:field="${comment.userInput}" placeholder="Have any thoughts?"
                       required="required"></textarea>
->>>>>>> main
             <span th:errors="${comment.userInput}" class="error"></span>
             <br>
             <button class="btn btn-success btn-md" type="submit">Add Comment</button>
         </div>
     </form>
-<<<<<<< HEAD
-</div>
-
-=======
 
 </div>
->>>>>>> main
 <div class="footer">
 </div>
+<script>
+    let navSlide = () => {
+    let burger = document.querySelector('.burger');
+    let nav = document.querySelector('.navbar-nav');
+    let navLinks = document.querySelectorAll('.navbar-nav li');
+
+
+    burger?.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+
+        navLinks.forEach((link, index) => {
+            if(link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.1}s`;
+            }
+        });
+
+            burger.classList.toggle('toggle');
+        });
+    }
+
+    navSlide();
+</script>
 </body>
 </html>
