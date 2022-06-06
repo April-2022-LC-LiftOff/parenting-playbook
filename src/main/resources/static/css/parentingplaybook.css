@@ -437,6 +437,13 @@ background-color:black;
     padding-bottom:5px;
 }
 
+.faqLiStyle {
+    text-align:left;
+    padding-bottom:5px;
+    padding-left:50px;
+}
+
+
 .faqH3style {
     text-align:center;
     padding-bottom:10px;
