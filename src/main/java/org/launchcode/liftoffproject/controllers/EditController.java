@@ -1,5 +1,6 @@
 package org.launchcode.liftoffproject.controllers;
 
+import org.launchcode.liftoffproject.data.CommentRepository;
 import org.launchcode.liftoffproject.data.DomainRepository;
 import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.data.TagRepository;
@@ -32,10 +33,17 @@ public class EditController {
     @Autowired
     private AuthenticationController authenticationController;
 
+    @Autowired
+    private CommentRepository commentRepository;
+
+
     @GetMapping("/name/{interventionId}")
     public String displayNameEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         User user = authenticationController.getUserFromSession(request.getSession());
+
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             if (intervention.getUser() == null || !intervention.getUser().getUsername().equals(user.getUsername())) {
@@ -47,12 +55,16 @@ public class EditController {
             }
         }
 
-        return "redirect:../";
+
+
+        return "redirect:/view/{interventionId}";
 
     }
 
     @PostMapping("/name/{interventionId}")
-    public String processNameEdit(Model model, @PathVariable int interventionId, @RequestParam String name) {
+    public String processNameEdit(Model model, @PathVariable int interventionId, @RequestParam String name, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
         if (name.length() < 5 || name.length() > 255) {
@@ -72,6 +84,8 @@ public class EditController {
     public String displayActionEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         User user = authenticationController.getUserFromSession(request.getSession());
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             if (intervention.getUser() == null || !intervention.getUser().getUsername().equals(user.getUsername())) {
@@ -84,12 +98,14 @@ public class EditController {
 
         }
 
-        return "redirect:../";
+        return "redirect:/view/{interventionId}";
 
     }
 
     @PostMapping("/action/{interventionId}")
-    public String processActionEdit(Model model, @PathVariable int interventionId, @RequestParam String action) {
+    public String processActionEdit(Model model, @PathVariable int interventionId, @RequestParam String action, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
         if (action.length() < 20 || action.length() > 2000) {
@@ -109,6 +125,8 @@ public class EditController {
     public String displayExpectedResponseEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         User user = authenticationController.getUserFromSession(request.getSession());
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             if (intervention.getUser() == null || !intervention.getUser().getUsername().equals(user.getUsername())) {
@@ -121,12 +139,13 @@ public class EditController {
 
         }
 
-        return "redirect:../";
+        return "redirect:/view/{interventionId}";
 
     }
 
     @PostMapping("/expectedResponse/{interventionId}")
-    public String processExpectedResponseEdit(Model model, @PathVariable int interventionId, @RequestParam(required = false) String expectedResponse) {
+    public String processExpectedResponseEdit(Model model, @PathVariable int interventionId, @RequestParam(required = false) String expectedResponse, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
         if (expectedResponse.length() < 20 || expectedResponse.length() > 2000) {
@@ -146,6 +165,8 @@ public class EditController {
     public String displayReferenceEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         User user = authenticationController.getUserFromSession(request.getSession());
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             if (intervention.getUser() == null || !intervention.getUser().getUsername().equals(user.getUsername())) {
@@ -157,14 +178,21 @@ public class EditController {
             }
         }
 
-        return "redirect:../";
+        return "redirect:/view/{interventionId}";
 
     }
 
     @PostMapping("/reference/{interventionId}")
-    public String processReferenceEdit(Model model, @PathVariable int interventionId, @RequestParam String reference) {
+    public String processReferenceEdit(Model model, @PathVariable int interventionId, @RequestParam String reference, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+        if (reference.length() > 2000) {
+            model.addAttribute("intervention", intervention);
+            String str = "Reference must not exceed 2000 characters.";
+            model.addAttribute("referenceError", str);
+            return "edit/reference";
+        }
 
         intervention.setReference(reference);
         interventionRepository.save(intervention);
@@ -176,6 +204,8 @@ public class EditController {
     public String displayIfItFailsEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         User user = authenticationController.getUserFromSession(request.getSession());
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             if (intervention.getUser() == null || !intervention.getUser().getUsername().equals(user.getUsername())) {
@@ -188,14 +218,23 @@ public class EditController {
 
         }
 
-        return "redirect:../";
+        return "redirect:/view/{interventionId}";
 
     }
 
     @PostMapping("/ifItFails/{interventionId}")
-    public String processIfItFailsEdit(Model model, @PathVariable int interventionId, @RequestParam String ifItFails) {
+    public String processIfItFailsEdit(Model model, @PathVariable int interventionId, @RequestParam String ifItFails, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+        if (ifItFails.length() > 2000) {
+            model.addAttribute("intervention", intervention);
+            String str = "If It Fails must not exceed 2000 characters.";
+            model.addAttribute("ifItFailsError", str);
+            return "edit/ifItFails";
+        }
+
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
         intervention.setIfItFails(ifItFails);
         interventionRepository.save(intervention);
@@ -207,6 +246,8 @@ public class EditController {
     public String displayDomainsEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         User user = authenticationController.getUserFromSession(request.getSession());
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             if (intervention.getUser() == null || !intervention.getUser().getUsername().equals(user.getUsername())) {
@@ -228,12 +269,14 @@ public class EditController {
 
         }
 
-        return "redirect:../";
+        return "redirect:/view/{interventionId}";
 
     }
 
     @PostMapping("/domains/{interventionId}")
-    public String processDomainsEdit(Model model, @PathVariable int interventionId, @RequestParam(required = false) List<Integer> domains) {
+    public String processDomainsEdit(Model model, @PathVariable int interventionId, @RequestParam(required = false) List<Integer> domains, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
         if (domains == null) {
@@ -255,6 +298,8 @@ public class EditController {
     public String displayTagsEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         User user = authenticationController.getUserFromSession(request.getSession());
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             if (intervention.getUser() == null || !intervention.getUser().getUsername().equals(user.getUsername())) {
@@ -276,12 +321,14 @@ public class EditController {
 
         }
 
-        return "redirect:../";
+        return "redirect:/view/{interventionId}";
 
     }
 
     @PostMapping("/tags/{interventionId}")
-    public String processTagsEdit(Model model, @PathVariable int interventionId, @RequestParam(required = false) List<Integer> tag) {
+    public String processTagsEdit(Model model, @PathVariable int interventionId, @RequestParam(required = false) List<Integer> tag, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
         if (tag == null) {
@@ -303,6 +350,9 @@ public class EditController {
     public String displayDeleteEdit(Model model, @PathVariable int interventionId, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         User user = authenticationController.getUserFromSession(request.getSession());
+
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             if (intervention.getUser() == null || !intervention.getUser().getUsername().equals(user.getUsername())) {
@@ -314,14 +364,17 @@ public class EditController {
             }
         }
 
-        return "redirect:../";
+        return "redirect:/profile";
 
     }
 
     @PostMapping("/delete/{interventionId}")
-    public String processDeleteEdit(Model model, @PathVariable int interventionId, @RequestParam int delete) {
+    public String processDeleteEdit(Model model, @PathVariable int interventionId, @RequestParam int delete, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
+
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
         if (delete == 0) {
             model.addAttribute("intervention", intervention);
             return "redirect:/view/{interventionId}";
@@ -329,8 +382,9 @@ public class EditController {
 
         if (delete == 1) {
             interventionRepository.deleteById(interventionId);
+
         }
 
-        return "redirect:/view/{interventionId}";
+        return "redirect:/profile";
     }
 }

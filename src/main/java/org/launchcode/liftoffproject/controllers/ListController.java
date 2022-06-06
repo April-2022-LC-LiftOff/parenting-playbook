@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -27,6 +28,9 @@ public class ListController {
     @Autowired
     private TagRepository tagRepository;
 
+    @Autowired
+    private AuthenticationController authenticationController;
+
     static HashMap<String, String> columnChoices = new HashMap<>();
 
     public ListController() {
@@ -36,14 +40,16 @@ public class ListController {
     }
 
     @RequestMapping("")
-    public String list(Model model) {
+    public String list(Model model, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         model.addAttribute("domains", domainRepository.findAll());
         model.addAttribute("tags", tagRepository.findAll());
         return "list";
     }
 
     @RequestMapping(value = "interventions")
-    public String listInterventionsByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value) {
+    public String listInterventionsByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value, HttpServletRequest request) {
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         Iterable<Intervention> interventions;
         if (column.toLowerCase(Locale.ROOT).equals("all")) {
             interventions = interventionRepository.findAll();
