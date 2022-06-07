@@ -739,3 +739,15 @@ table.domainList {
     transform: rotate(45deg) translate(-5px,-6px);
   }
 
+
+.count-container form{
+  max-width: 650px;
+  margin: auto;
+}
+
+.remainingCharsMsg {
+  color: white;
+  font-weight: bold;
+  margin-top: 5px;
+  text-align: right;
+}
