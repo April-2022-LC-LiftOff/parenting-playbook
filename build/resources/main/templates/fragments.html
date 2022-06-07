@@ -2,13 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 
 <head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
 
     <!-- Bootstrap stylesheets and script -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet"/>
     <link th:href="@{/css/parentingplaybook.css}" rel="stylesheet"/>
     <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
-
     </style>
 
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
@@ -19,12 +20,12 @@
 
 <body>
 
-<div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
+<div class="container body-content">
+    <nav th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-header">
             <a th:href="@{/}" class="navbar-brand" style="color:white;">Parenting Playbook</a>
         </div>
-        <div class="navbar-collapse collapse">
+<!--        <div class="navbar-collapse collapse">-->
             <ul class="nav navbar-nav">
                 <li><a th:href="@{/}" style="color:white;">Home</a></li>
                 <li><a th:href="@{/domains}" style="color:white;">Domains</a></li>
@@ -39,9 +40,14 @@
                 <li th:if="${loggedIn}"><a th:href="@{/logout}" style="color:white;">Logout</a></li>
                 <li th:if="${loggedIn}"><a th:href="@{/profile}" style="color:white;">Profile</a></li>
             </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
         </div>
-    </div>
-</div>
 
+        <script src="js/navbar.js"></script>
+    </nav>
+</div>
 </body>
 </html>
