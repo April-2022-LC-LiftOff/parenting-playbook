@@ -1,12 +1,8 @@
 let contributions = document.getElementById("contributions");
 let interventions = document.getElementById("interventions");
-let notes = document.getElementById("notes");
-let sharedLink = document.getElementById("sharedLink");
 
 contributions.addEventListener("click", tabLink);
 interventions.addEventListener("click", tabLink);
-notes.addEventListener("click", tabLink);
-sharedLink.addEventListener("click", tabLink);
 
 function tabLink() {
     let allTabs = document.querySelectorAll("div[data-src]");
