@@ -141,14 +141,13 @@
       let remainingChars = maxChars - valueLength;
 
       if(valueLength > maxChars) {
-
-      event.target.value = value.substr(0, maxChars);
-      return;
+          event.target.value = value.substring(0, maxChars);
+          return;
       }
       event.target.previousElementSibling.innerHTML = remainingChars + " characters remaining";
       }
-    })
-  })();
+   })
+ })();
 
 </script>
 </body>
