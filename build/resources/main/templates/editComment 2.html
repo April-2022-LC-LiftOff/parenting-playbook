@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body class="container  body-content">
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div align="center">
+    <h2 th:text="${comment.intervention}"></h2>
+
+    <form method="post">
+        <label for="editComment" style="color:white; font-size:25px">Edit Comment: </label><br>
+
+        <div class="form-group">
+            <textarea rows="7" class="form-control" th:field="${comment.userInput}" id="editComment"
+                      required="required"></textarea>
+            <span th:errors="${comment.userInput}" class="error"></span>
+            <br>
+            <button onclick="saveComment()" class="btn btn-info btn-md"
+                    style="margin-bottom:15px;color:black;font-weight:bold;" type="submit" value="Save">Save
+            </button>
+        </div>
+    </form>
+</div>
+<div class="footer">
+</div>
+
+<script>
+    function saveComment() {
+       var result = confirm('Are you sure you're ready to save your comment?');
+       if (result == false) {
+         event.preventDefault();
+       }
+     }
+
+</script>
+</body>
+</html>
