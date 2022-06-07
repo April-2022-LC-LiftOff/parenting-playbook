@@ -39,7 +39,8 @@
         Expected Response</a>
 
     <p class="standout" style="margin-top:20px;">Reference: </p>
-    <p th:text="${intervention.reference}"></p>
+    <p th:if="${!detectURL}" th:text="${intervention.reference}"></p>
+    <p th:remove="tag" th:utext="${clickableURL}"></p>
     <a th:if="${initialUser}" th:href="@{'/edit/reference/' + ${intervention.id}}" class="small-links">Edit
         Reference</a>
 

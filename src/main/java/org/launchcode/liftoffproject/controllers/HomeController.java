@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -105,6 +107,46 @@ public class HomeController {
         }
     }
 
+    public String clickableURL(String reference) {
+        String[] parts = reference.split("\\s+");
+        String start = "<p>";
+        String end = "</p>";
+
+        for (int i = 0; i < parts.length; i++) try {
+            URL url = new URL(parts[i]);
+            parts[i] = "<a target=\"_blank\" href=\"" + url + "\">"+ url + "</a>";
+        } catch (MalformedURLException e) {
+            System.out.print( parts[i] + " " );
+        }
+
+        String joined = "";
+
+        for (String part : parts) {
+            joined += part + " ";
+        }
+
+        String output = start + joined + end;
+
+        return output;
+    }
+
+    public Boolean detectURL(String reference) {
+        String[] parts = reference.split("\\s+");
+        Boolean output = false;
+
+        for (String part : parts) try {
+            URL url = new URL(part);
+            if (url != null) {
+                output = true;
+                break;
+            }
+        } catch (MalformedURLException e) {
+            System.out.print( part + " " );
+        }
+
+        return output;
+    }
+
     @RequestMapping("")
     public String index(Model model, HttpServletRequest request) throws FileNotFoundException {
         createDomains();
@@ -186,6 +228,11 @@ public class HomeController {
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             model.addAttribute("intervention", intervention);
+            model.addAttribute("detectURL", detectURL(intervention.getReference()));
+            if (detectURL(intervention.getReference())) {
+                String clickableURL = clickableURL(intervention.getReference());
+                model.addAttribute("clickableURL", clickableURL);
+            }
 
             User user = authenticationController.getUserFromSession(request.getSession());
             model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
