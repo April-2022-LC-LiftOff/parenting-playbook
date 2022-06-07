@@ -60,7 +60,6 @@
         <table class="table" style="color:white;">
             <thead>
             <tr style="color: white">
-                <!--                <th>Intervention ID</th>-->
                 <th>Intervention Name</th>
                 <th>User</th>
                 <th>Comment</th>
@@ -69,7 +68,6 @@
             </thead>
             <tbody th:if="${intervention.comments} !=null" align="left">
             <tr th:each="comment : ${intervention.comments}">
-                <!--                <td th:text="${intervention.id}"></td>-->
                 <td th:text="${intervention.name}"></td>
                 <td th:text="${comment.user.username}"></td>
                 <td th:text="${comment.userInput}"></td>
@@ -98,10 +96,10 @@
 
              <div class="remainingCharsMsg"></div>
             <textarea class="form-control count-chars" rows="8" th:field="${comment.userInput}"
-                      placeholder="Have any thoughts?" maxlength="2000" data-max-chars="2000"
+                      placeholder="Have any thoughts?" maxlength="1000" data-max-chars="1000"
                       required="required"></textarea>
             <span th:errors="${comment.userInput}" class="error"></span>
-            <h5 style="color: orange">Please limit your comment to less than 2000 characters.</h5>
+            <h5 style="color: orange">Please limit your comment to less than 1000 characters.</h5>
             <br>
             <button class="btn btn-success btn-md" type="submit">Add Comment</button>
     </form>

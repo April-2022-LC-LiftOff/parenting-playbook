@@ -13,7 +13,7 @@ import java.util.Date;
 public class Comment extends AbstractEntity {
 
     @NotBlank(message = "Comment cannot be blank.")
-    @Size(max = 2000, message = "Comment cannot exceed 2000 characters.")
+    @Size(max = 1000, message = "Comment cannot exceed 1000 characters.")
     @Column(name="user_input")
     private String userInput;
 

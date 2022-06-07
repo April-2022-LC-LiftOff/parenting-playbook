@@ -6,23 +6,24 @@
 
 <nav th:replace="fragments :: page-header"></nav>
 
-<div align="center">
+<div class="count-container" align="center">
     <h2 th:text="${comment.intervention}"></h2>
 
-    <form method="post">
+    <form method="post" class="form-group">
         <label for="editComment" style="color:white; font-size:25px">Edit Comment: </label><br>
 
-        <div class="form-group">
-            <textarea rows="7" class="form-control" th:field="${comment.userInput}" id="editComment"
-                      required="required"></textarea>
-            <span th:errors="${comment.userInput}" class="error"></span>
-            <br>
-            <button onclick="saveComment()" class="btn btn-info btn-md"
-                    style="margin-bottom:15px;color:black;font-weight:bold;" type="submit" value="Save">Save
-            </button>
-        </div>
+        <div class="remainingCharsMsg"></div>
+        <textarea rows="8" class="form-control count-chars" th:field="${comment.userInput}" id="editComment"
+                  maxlength="1000" data-max-chars="1000" required="required"></textarea>
+        <span th:errors="${comment.userInput}" class="error"></span>
+        <h5 style="color: orange">Please limit your comment to less than 1000 characters.</h5>
+        <br>
+        <button onclick="saveComment()" class="btn btn-info btn-md"
+                style="margin-bottom:15px;color:black;font-weight:bold;" type="submit" value="Save">Save
+        </button>
     </form>
 </div>
+
 <div class="footer">
 </div>
 
@@ -56,7 +57,24 @@
   }
 
   navSlide();
-</script>
 
+  (function() {
+    document.addEventListener("keyup", function(event) {
+      if (event.target.matches(".count-chars")) {
+
+          let value = event.target.value;
+          let valueLength = event.target.value.length;
+          let maxChars = parseInt(event.target.getAttribute("data-max-chars"));
+          let remainingChars = maxChars - valueLength;
+
+          if(valueLength > maxChars) {
+              event.target.value = value.substr(0, maxChars);
+              return;
+          }
+          event.target.previousElementSibling.innerHTML = remainingChars + " characters remaining";
+      }
+    })
+  })();
+</script>
 </body>
 </html>
