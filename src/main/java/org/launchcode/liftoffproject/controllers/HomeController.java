@@ -117,6 +117,9 @@ public class HomeController {
             parts[i] = "<a target=\"_blank\" href=\"" + url + "\">"+ url + "</a>";
         } catch (MalformedURLException e) {
             System.out.print( parts[i] + " " );
+            if (parts[i].contains(".com")) {
+                parts[i] = "<a target=\"_blank\" href=\"https://" + parts[i] + "\">"+ parts[i] + "</a>";
+            }
         }
 
         String joined = "";
@@ -142,6 +145,10 @@ public class HomeController {
             }
         } catch (MalformedURLException e) {
             System.out.print( part + " " );
+            if (part.contains(".com")) {
+                output = true;
+                break;
+            }
         }
 
         return output;
