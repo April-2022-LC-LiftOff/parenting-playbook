@@ -42,7 +42,7 @@
                 <h4 class="standout-center">Posted Date :</h4>
                 <h4 th:text="${comment.postedDate}"></h4><br>
                 <h4 class="standout-center">Comment:</h4>
-                <h4 style="padding: 0 140px 10px 140px; text-align: left" th:text="${comment}"></h4><br>
+                <h4 th:text="${comment}"></h4><br>
                 <a class="btn btn-info btn-sm" style="margin-bottom:15px;color:black;font-weight:bold;"
                    th:href="@{'/editComment/' + ${comment.id}}">Edit</a>
                 <a onclick="deleteComment()" type="button" class="btn btn-danger btn-sm"

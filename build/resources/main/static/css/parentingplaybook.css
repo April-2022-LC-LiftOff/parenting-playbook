@@ -6,9 +6,8 @@ body {
    text-align: center;
    font-color: white;
    padding: 50 px;
-   background: rgb(2,0,36);
-   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,72,90,1) 35%, rgba(0,212,255,1) 100%);
-   opacity: 0.9;
+background: rgb(2,0,36);
+   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,72,90,1) 60%, rgba(0,212,255,1) 100%);
    height: 100%;
 
 }
@@ -186,9 +185,9 @@ a:active {
    display: flex;
    justify-content: space-around;
    align-items: center;
-   background: rgb(2,0,36);
-      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,72,90,1) 35%, rgba(0,212,255,1) 100%);
-   font-size: 15px;
+background: rgb(2,0,36);
+         background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,72,90,1) 60%, rgba(0,212,255,1) 100%);
+   font-size: 12px;
    color: white;
 }
 
@@ -198,7 +197,7 @@ a:active {
 
     color: white;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 12px;
 }
 
 table.parenting-playbook {
@@ -470,23 +469,6 @@ table.faq {
 
 }
 
-.quiz {
-    color:white;
-    text-align:left;
-    margin-left:auto;
-    margin-right:auto;
-    font-size:16px;
-    padding-left:300px;
-    padding-right:50px;
-}
-
-.quiz-spacing {
-    margin-top:25px;
-    margin-bottom:25px;
-}
-
-
-
 table.results {
       border: 1px solid #ffffff;
       border-collapse:separate;
@@ -498,9 +480,11 @@ table.results {
       font-family: 'Montserrat', sans-serif;
       font-size: 15px;
       table-layout: fixed;
-      width: 800px;
+      width: 575px;
       padding-top:10px;
       padding-bottom:10px;
+      padding-left: 40px;
+      padding-right:40px
 }
 
 .li-padding {
@@ -663,7 +647,7 @@ table.domainList {
    transform: translateY(.125rem);
  }
 
-* {
+*navbar {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
@@ -696,8 +680,8 @@ table.domainList {
     right: 0px;
     height: 94vh;
     top: 6vh;
-    background: rgb(2,0,36);
-      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,72,90,1) 35%, rgba(0,212,255,1) 100%);
+      background: rgb(2,0,36);
+         background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,72,90,1) 60%, rgba(0,212,255,1) 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -750,4 +734,106 @@ table.domainList {
   font-weight: bold;
   margin-top: 5px;
   text-align: right;
+}
+
+div.leftFront {
+      border: 1px solid #ffffff;
+      border-collapse:separate;
+      border-top:auto;
+      border-bottom:auto;
+      margin: 20px;
+      padding: 10px;
+      color: #FFFFFF;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      width: 500px;
+      float:left;
+}
+
+div.rightFront {
+      border: 1px solid #ffffff;
+      border-collapse:separate;
+      border-top:auto;
+      border-bottom:auto;
+      margin: 20px;
+      padding: 10px;
+      color: #FFFFFF;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      width: 500px;
+      float:right;
+}
+
+div.topFront {
+      border: 1px solid #ffffff;
+      border-collapse:separate;
+      border-top:auto;
+      border-bottom:auto;
+      margin: auto;
+      padding-left: 45px;
+      padding-right: 45px;
+      padding-top:10px;
+      padding-bottom:10px;
+      color: #FFFFFF;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      width: 575px;
+
+}
+
+div.topQuiz {
+      margin-left:auto;
+      margin-right:auto;
+      color: #FFFFFF;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      width: 575px;
+      float:top;
+}
+
+table.front {
+
+      margin-left: auto;
+      margin-right: auto;
+      color: #FFFFFF;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+}
+
+tr.spaceUnder>td {
+  padding-bottom: 1em;
+
+}
+
+hr.dotted {
+  border-top: 2px dotted #FFFFFF;
+  color: white;
+}
+
+.btn-outline {
+  color: #4bb0fe;
+  background-color: #e5dfed;
+  border-color: #4bb0fe;
+  font-weight: bold;
+  border-radius: 3;
+    letter-spacing: 0.05em;
+}
+
+.quiz {
+    color:white;
+    text-align:left;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:16px;
+    width: 550px;
+}
+
+.quiz-spacing {
+    margin-top:25px;
+    margin-bottom:25px;
 }
