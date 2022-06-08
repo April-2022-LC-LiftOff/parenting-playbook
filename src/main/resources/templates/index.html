@@ -12,7 +12,7 @@
     <table class="front">
         <tr class="spaceUnder">
             <br>
-            <h2 style="font-size:48px;">Welcome to the Parenting Playbook!</h2></tr><br>
+            <h2>Welcome to the Parenting Playbook!</h2></tr><br>
 
         <tr class="spaceUnder">
             <p>We are a community of parents dedicated to sharing strategies to improve the executive
@@ -85,7 +85,7 @@
         </tr>
         <tr>
             <p style="text-align:center;">
-                <button class="btn btn-outline btn-sm" role="button" th:each="tag : ${tags}" style="margin:10px;">
+                <button class="btn btn-outline-btn-sm" role="button" th:each="tag : ${tags}" style="margin:10px;">
                     <a th:href="@{'tags/view/' + ${tag.id}}" th:text="${tag.tagName}" style="color:black;"></a>
                 </button>
             </p></tr>

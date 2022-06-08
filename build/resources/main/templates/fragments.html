@@ -8,9 +8,12 @@
     <!-- Bootstrap stylesheets and script -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet"/>
     <link th:href="@{/css/parentingplaybook.css}" rel="stylesheet"/>
+<!--    <style>-->
+<!--@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');-->
+<!--    </style>-->
     <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
-    </style>
+@import url('https://fonts.googleapis.com/css2?family=Pompiere&display=swap');
+</style>
 
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 
@@ -23,7 +26,7 @@
 <div class="container body-content">
     <nav th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-header">
-            <a th:href="@{/}" class="navbar-brand" style="color:white;">Parenting Playbook</a>
+            <a th:href="@{/}" class="navbar-brand" style="color:white;font-size:20px;">Parenting Playbook</a>
         </div>
 <!--        <div class="navbar-collapse collapse">-->
             <ul class="nav navbar-nav">
@@ -37,7 +40,7 @@
                 <li><a th:href="@{/search}" style="color:white;">Search</a></li>
                 <li th:if="${!loggedIn}"><a th:href="@{/login}" style="color:white;">Login</a></li>
                 <li th:if="${loggedIn}"><a th:href="@{/logout}" style="color:white;">Logout</a></li>
-                <li th:if="${loggedIn}"><a th:href="@{/profile}" style="color:white;">Profile</a></li>
+                <li th:if="${loggedIn}"><a th:href="@{/profile}" style="color:white;">My Profile</a></li>
             </ul>
         <div class="burger">
             <div class="line1"></div>

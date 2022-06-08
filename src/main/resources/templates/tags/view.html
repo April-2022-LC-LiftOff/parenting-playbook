@@ -9,7 +9,7 @@
 
 <div class="tags">
 <!--    <p th:text="${'Name: ' + tag.tagName}"></p>-->
-    <p> Strategies to try:
+    <p> Strategies to try
     <ul>
         <li style="list-style-type: none;" th:each="intervention : ${tag.interventions}">
             <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a>

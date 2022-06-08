@@ -20,17 +20,30 @@
         </div>
     </div>
 
-    <table class="table" style="color:white;">
-        <div class="p-3 mb-2 bg-secondary text-white">
-            <tr>
-                <th data-tab="myContributions" id="contributions" scope="col">My Contributions</th>
-            </tr>
-            <tr>
-                <th data-tab="mySavedInterventions" id="interventions" scope="col">My Strategies</th>
-            </tr>
-        </div>
-    </table>
+<!--    <table class="table" style="color:white;">-->
+<!--        <div class="p-3 mb-2 bg-secondary text-white">-->
+<!--            <tr>-->
+<!--                <th data-tab="myContributions" id="contributions" scope="col">My Contributions</th>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <th data-tab="mySavedInterventions" id="interventions" scope="col">My Strategies</th>-->
+<!--            </tr>-->
+<!--        </div>-->
+<!--    </table>-->
+
+
+    <div>
+        <br>
+        <br>
+        <button type="button" id="contributions" class="btn btn-info btn-lg" style="margin-bottom:15px;margin-right:15px;color:black;font-weight:bold;"
+               data-tab="myContributions">My Contributions</button>
+        <button type="button" id="interventions" class="btn btn-info btn-lg" style="margin-bottom:15px;color:black;font-weight:bold;"
+                data-tab="mySavedInterventions">My Strategies</button>
+    </div>
+
 </div>
+
+
 
 <div class="container">
     <div data-src="content" class="hide" id="myContributions">
@@ -38,14 +51,14 @@
         <div th:each="comment : ${user.comments}" style="color: white; background-color: rgba(255,255,255,0.1);">
             <div>
                 <h4 style="padding-top: 10px;" class="standout-center">Strategy Name:</h4>
-                <h4 th:text="${comment.intervention}"></h4><br>
+                <p th:text="${comment.intervention}" style="text-align:center;"></p><br>
                 <h4 class="standout-center">Posted Date :</h4>
-                <h4 th:text="${comment.postedDate}"></h4><br>
+                <p th:text="${comment.postedDate}" style="text-align:center;"></p><br>
                 <h4 class="standout-center">Comment:</h4>
-                <h4 th:text="${comment}"></h4><br>
-                <a class="btn btn-info btn-sm" style="margin-bottom:15px;color:black;font-weight:bold;"
+                <p th:text="${comment}" style="text-align:center;"></p><br>
+                <a class="btn btn-info btn-lg" style="margin-bottom:15px;color:black;font-weight:bold;"
                    th:href="@{'/editComment/' + ${comment.id}}">Edit</a>
-                <a onclick="deleteComment()" type="button" class="btn btn-danger btn-sm"
+                <a onclick="deleteComment()" type="button" class="btn btn-danger btn-lg"
                    style="margin-bottom:15px;color:black;font-weight:bold;" th:href="@{'/delete/' + ${comment.id}}">Delete</a>
             </div>
         </div>
@@ -65,9 +78,9 @@
                    class="big-links-profile"></a><br>
                 <div style="margin-top:10px;margin-bottom:10px;">
 
-                    <a class="btn btn-info btn-sm" style="margin-bottom:15px;color:black;font-weight:bold;"
+                    <a class="btn btn-info btn-lg" style="margin-bottom:15px;color:black;font-weight:bold;"
                        th:href="@{'/view/' + ${intervention.id}}">Edit</a>
-                    <a type="button" id="delete" class="btn btn-danger btn-sm"
+                    <a type="button" id="delete" class="btn btn-danger btn-lg"
                        style="margin-bottom:15px;color:black;font-weight:bold;"
                        th:href="@{'/edit/delete/' + ${intervention.id}}">Delete</a></div>
 
@@ -96,5 +109,6 @@
 
     </script>
 </div>
+
 </body>
 </html>

@@ -10,19 +10,39 @@
     <form method="post" class="editing">
         <div class="form-group">
             <label th:for="reference" class="editing-labels">Reference:</label>
-            <input type="text" name="reference" class="form-control" th:value="${intervention.reference}"/>
+            <div class="remainingCharsMsg"></div>
+            <input type="text" name="reference" class="form-control count-chars" th:value="${intervention.reference}"
+                   style="font-size:24px;" maxlength="2000" data-max-chars="2000"/>
             <br>
             <span th:text="${referenceError}" class="error" style="color:red;background-color:black;"></span>
         </div>
-        <input type="submit" class="btn btn-info" style="margin-bottom:15px;color:black;font-weight:bold;"
+        <input type="submit" class="btn btn-info btn-lg" style="margin-bottom:15px;color:black;font-weight:bold;"
                value="Update Reference"/>
-        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info"
+        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info btn-lg"
                                                              style="margin-bottom:15px;color:black;font-weight:bold;"
                                                              value="Cancel Update"/></a>
     </form>
 </div>
 <div class="footer">
-    <p></p>
 </div>
+<script>
+(function() {
+document.addEventListener("keyup", function(event) {
+if (event.target.matches(".count-chars")) {
+
+let value = event.target.value;
+let valueLength = event.target.value.length;
+let maxChars = parseInt(event.target.getAttribute("data-max-chars"));
+let remainingChars = maxChars - valueLength;
+
+if(valueLength > maxChars) {
+event.target.value = value.substr(0, maxChars);
+return;
+}
+event.target.previousElementSibling.innerHTML = remainingChars + " characters remaining";
+}
+})
+})();
+</script>
 </body>
 </html>
