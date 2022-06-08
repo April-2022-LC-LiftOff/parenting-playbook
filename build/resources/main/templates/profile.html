@@ -26,7 +26,7 @@
                 <th data-tab="myContributions" id="contributions" scope="col">My Contributions</th>
             </tr>
             <tr>
-                <th data-tab="mySavedInterventions" id="interventions" scope="col">My Interventions</th>
+                <th data-tab="mySavedInterventions" id="interventions" scope="col">My Strategies</th>
             </tr>
         </div>
     </table>
@@ -37,7 +37,7 @@
         <h3 style="margin-bottom: 15px">Posted comment(s): </h3>
         <div th:each="comment : ${user.comments}" style="color: white; background-color: rgba(255,255,255,0.1);">
             <div>
-                <h4 style="padding-top: 10px;" class="standout-center">Intervention Name:</h4>
+                <h4 style="padding-top: 10px;" class="standout-center">Strategy Name:</h4>
                 <h4 th:text="${comment.intervention}"></h4><br>
                 <h4 class="standout-center">Posted Date :</h4>
                 <h4 th:text="${comment.postedDate}"></h4><br>
@@ -52,15 +52,15 @@
     </div>
 
     <div data-src="content" class="hide" id="mySavedInterventions">
-        <h3 class="standout-center">Intervention(s): </h3><br>
+        <h3 class="standout-center">Strategies: </h3><br>
         <div style="margin-bottom:20px;">
             <a class="btn btn-info btn-dark" style="font-size:20px;color:black;" th:href="@{/add}">Add New
-                Intervention</a>
+                Strategy</a>
         </div>
         <div>
             <div th:each="intervention : ${user.interventions}"
                  style="color: white; background-color: rgba(255,255,255,0.1);padding:10px;">
-                <h4 class="standout-center">Intervention: </h4><br>
+                <h4 class="standout-center">Strategy: </h4><br>
                 <a th:text="${intervention.name}" th:href="@{'/view/' + ${intervention.id}}"
                    class="big-links-profile"></a><br>
                 <div style="margin-top:10px;margin-bottom:10px;">

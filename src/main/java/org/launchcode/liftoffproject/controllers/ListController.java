@@ -56,7 +56,7 @@ public class ListController {
             model.addAttribute("title", "All Interventions");
         } else {
             interventions = InterventionData.findByColumnAndValue(column, value, interventionRepository.findAll());
-            model.addAttribute("title", "Interventions in " + columnChoices.get(column) + ": " + value);
+            model.addAttribute("title", "Strategies in " + columnChoices.get(column) + ": " + value);
         }
         model.addAttribute("interventions", interventions);
 

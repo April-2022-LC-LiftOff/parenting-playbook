@@ -18,7 +18,7 @@
             </ul>
         </td>
         <td th:if="${loggedIn}" class="trClass">
-            <ul><a th:href="@{'/tags/delete/' + ${tag.id}}" th:text="'Delete ' + ${tag.tagName}"></a>
+            <ul><a th:href="@{'/tags/delete/' + ${tag.id}}" th:text="'Delete ' + ${tag.tagName}" class="small-links"></a>
             </ul>
         </td>
     </tr>

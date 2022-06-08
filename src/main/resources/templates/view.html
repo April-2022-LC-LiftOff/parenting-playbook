@@ -4,7 +4,7 @@
 </head>
 <body class="container  body-content">
 
-<h1 th:text="${'Intervention: ' + intervention.name}">Parenting Playbook</h1>
+<h1 th:text="${'Strategy: ' + intervention.name}">Parenting Playbook</h1>
 
 <nav th:replace="fragments :: page-header"></nav>
 
@@ -50,7 +50,7 @@
 </div>
 <div>
     <a th:if="${initialUser}" th:href="@{'/edit/delete/' + ${intervention.id}}" class="small-links">Delete
-        Intervention</a>
+        Strategy</a>
 </div>
 
 <br><br>
@@ -60,7 +60,7 @@
         <table class="table" style="color:white;">
             <thead>
             <tr style="color: white">
-                <th>Intervention Name</th>
+                <th>Strategy Name</th>
                 <th>User</th>
                 <th>Comment</th>
                 <th>Posted Date</th>

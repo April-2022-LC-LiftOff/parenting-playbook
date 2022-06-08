@@ -204,14 +204,14 @@ table.parenting-playbook {
       border: 1px solid #ffffff;
       border-collapse:separate;
       border-spacing:0 15px;
-      margin-left: auto;
-      margin-right: auto;
+      margin:auto;
+      padding-left:30px;
       color: #FFFFFF;
       text-align: left;
       font-family: 'Montserrat', sans-serif;
       font-size: 15px;
       table-layout: fixed;
-      width: 800px;
+      width: 550px;
 
 }
 
@@ -290,9 +290,12 @@ sidenav.parenting-playbook {
 table.parenting-playbook {
     margin: 30px auto;
     border: 1px solid FFFFFF;
-    width: 80%;
+    width: 550px;
     font-family: 'Montserrat', sans-serif;
      border-bottom: solid 1px white;
+     margin:auto;
+     padding:20px;
+     text-align:left;
 }
 
 table.parenting-playbook.li {
@@ -310,7 +313,7 @@ table.parenting-playbook td:first-child {
 }
 
 table.parenting-playbook td:last-child {
-    width: 80%;
+    width: 550px;
     font-family: 'Montserrat', sans-serif;
     border-bottom: solid 1px white;
 }
@@ -376,7 +379,7 @@ p {
 
 div.parenting-playbook {
     border: 1px solid #FFFFFF
-    width: 80%;
+    width: 550;
     font-family: 'Montserrat', sans-serif;
      border-bottom: solid 1px white;
 }
@@ -414,9 +417,9 @@ input.checkbox {
 .addIntervention {
  color:white;
  text-align:left;
- margin-left:auto;
- margin-right:auto;
- padding:20px 400px;
+    margin:auto;
+    width:550px;
+    padding:15px;
  font-size:16px;
 
 }
@@ -465,7 +468,7 @@ table.faq {
       font-family: 'Montserrat', sans-serif;
       font-size: 16px;
       table-layout: fixed;
-      width: 600px;
+      width: 550px;
 
 }
 
@@ -542,15 +545,14 @@ div.job-listing {
 div.tags {
     margin-left: auto;
     margin-right: auto;
-    padding: 20px 20px;
+    padding: 10px;
     border: 1px solid #FFFFFF;
-    width: 80%;
+    width: 550px;
 }
 
 table.domainList {
       border: 1px solid #ffffff;
       border-collapse:separate;
-
       border-top:auto;
       border-bottom:auto;
       margin-left: auto;
@@ -560,7 +562,7 @@ table.domainList {
       font-family: 'Montserrat', sans-serif;
       font-size: 15px;
       table-layout: fixed;
-      width: 800px;
+      width: 580px;
 
 }
 
@@ -789,7 +791,7 @@ div.topQuiz {
       font-family: 'Montserrat', sans-serif;
       font-size: 16px;
       width: 575px;
-      float:top;
+
 }
 
 table.front {
