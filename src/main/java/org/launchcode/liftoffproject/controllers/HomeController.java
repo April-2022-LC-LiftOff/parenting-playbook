@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -39,126 +37,13 @@ public class HomeController {
     private UserRepository userRepository;
 
 
-    public void createDomains() throws FileNotFoundException {
-        String delimiter = ",";
-        List repo = (List) domainRepository.findAll();
 
-        if (repo.isEmpty()) {
-            try {
-                File file = new File("src/main/resources/assets/domains.csv");
-                FileReader fr = new FileReader(file);
-                BufferedReader br = new BufferedReader(fr);
-                String line = " ";
-                String[] tempArr;
-                while ((line = br.readLine()) != null) {
-                    tempArr = line.split(delimiter, 19);
-                    Domain domain = new Domain(tempArr[0], tempArr[1]);
-                    domainRepository.save(domain);
-                }
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        }
-    }
-
-    public void createTags() {
-        String[] tags = {"Aggression", "Anger", "Mindfulness", "Resentment", "Kids", "Adults", "Openness", "Working"};
-        List repo = (List) tagRepository.findAll();
-
-        if (repo.isEmpty()) {
-            for (int i = 0; i < tags.length; i++) {
-                Tag tag = new Tag(tags[i], null);
-                tagRepository.save(tag);
-            }
-        }
-    }
-
-    public void saveInterventions() throws FileNotFoundException {
-        String delimiter = ";";
-        List repo = (List) interventionRepository.findAll();
-
-        if (repo.isEmpty()) {
-            try {
-                File file = new File("src/main/resources/assets/ParentingPlaybookData - Book4.csv");
-                FileReader fr = new FileReader(file);
-                BufferedReader br = new BufferedReader(fr);
-                String line = " ";
-                String[] tempArr;
-                User user = null;
-                while ((line = br.readLine()) != null) {
-                    tempArr = line.split(delimiter);
-                    Intervention newIntervention = new Intervention(tempArr[0], tempArr[1], tempArr[2], tempArr[3], tempArr[4], user);
-                    List<Integer> domains = new ArrayList<Integer>();
-                    List<Integer> tags = new ArrayList<Integer>();
-                    for (int i = 0; i < tempArr[5].length(); i++) {
-                        domains.add(Integer.parseInt(String.valueOf(tempArr[5].charAt(i))));
-                        tags.add(Integer.parseInt(String.valueOf(tempArr[5].charAt(i))) + 8);
-                    }
-                    List<Domain> domainObjs = (List<Domain>) domainRepository.findAllById(domains);
-                    List<Tag> tagObjs = (List<Tag>) tagRepository.findAllById(tags);
-                    newIntervention.setDomains(domainObjs);
-                    newIntervention.setTags(tagObjs);
-                    interventionRepository.save(newIntervention);
-                }
-                br.close();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        }
-    }
-
-    public String clickableURL(String reference) {
-        String[] parts = reference.split("\\s+");
-        String start = "<p>";
-        String end = "</p>";
-
-        for (int i = 0; i < parts.length; i++) try {
-            URL url = new URL(parts[i]);
-            parts[i] = "<a target=\"_blank\" href=\"" + url + "\">"+ url + "</a>";
-        } catch (MalformedURLException e) {
-            System.out.print( parts[i] + " " );
-            if (parts[i].contains(".com")) {
-                parts[i] = "<a target=\"_blank\" href=\"https://" + parts[i] + "\">"+ parts[i] + "</a>";
-            }
-        }
-
-        String joined = "";
-
-        for (String part : parts) {
-            joined += part + " ";
-        }
-
-        String output = start + joined + end;
-
-        return output;
-    }
-
-    public Boolean detectURL(String reference) {
-        String[] parts = reference.split("\\s+");
-        Boolean output = false;
-
-        for (String part : parts) try {
-            URL url = new URL(part);
-            if (url != null) {
-                output = true;
-                break;
-            }
-        } catch (MalformedURLException e) {
-            System.out.print( part + " " );
-            if (part.contains(".com")) {
-                output = true;
-                break;
-            }
-        }
-
-        return output;
-    }
 
     @RequestMapping("")
     public String index(Model model, HttpServletRequest request) throws FileNotFoundException {
-        createDomains();
-        createTags();
-        saveInterventions();
+        HelperMethods.createDomains(domainRepository);
+        HelperMethods.createTags(tagRepository);
+        HelperMethods.saveInterventions(interventionRepository, domainRepository, tagRepository);
 
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         model.addAttribute("title", "All Domains");
@@ -235,9 +120,9 @@ public class HomeController {
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
             model.addAttribute("intervention", intervention);
-            model.addAttribute("detectURL", detectURL(intervention.getReference()));
-            if (detectURL(intervention.getReference())) {
-                String clickableURL = clickableURL(intervention.getReference());
+            model.addAttribute("detectURL", HelperMethods.detectURL(intervention.getReference()));
+            if (HelperMethods.detectURL(intervention.getReference())) {
+                String clickableURL = HelperMethods.clickableURL(intervention.getReference());
                 model.addAttribute("clickableURL", clickableURL);
             }
 
