@@ -767,20 +767,17 @@ div.rightFront {
 }
 
 div.topFront {
-      border: 1px solid #ffffff;
-      border-collapse:separate;
-      border-top:auto;
-      border-bottom:auto;
+
       margin: auto;
-      padding-left: 45px;
-      padding-right: 45px;
+      padding-left: 50px;
+      padding-right: 50px;
       padding-top:10px;
       padding-bottom:10px;
       color: #FFFFFF;
       text-align: left;
       font-family: 'Montserrat', sans-serif;
       font-size: 14px;
-      width: 575px;
+      width: 600px;
 
 }
 
