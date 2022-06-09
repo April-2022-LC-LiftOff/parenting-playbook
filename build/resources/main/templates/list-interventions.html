@@ -10,23 +10,28 @@
 <div class="container body-content">
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Go to the top</button>
 
     <table class="parenting-playbook" th:each="intervention : ${interventions}">
         <tr>
             <td>
-                <p class="standout">Name: </p>
-                <p>
-                    <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a></p>
-                <p class="standout" style="padding-top:10px;"> Action: </p>
-                <p th:text="${intervention.action}"></p>
-                <p class="standout" style="padding-top:10px;">Expected Response:</p>
-                <p th:text="${intervention.expectedResponse}"></p>
+                <h4 class="standout">Strategy Name: </h4>
+                <p style="text-align:left;">
+                    <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a></p><br>
+<!--                <h4 class="standout" style="padding-top:10px;"> Action: </h4>-->
+<!--                <p th:text="${intervention.action}"></p><br>-->
+<!--                <h4 class="standout" style="padding-top:10px;">Expected Response:</h4>-->
+<!--                <p th:text="${intervention.expectedResponse}"></p><br>-->
+<!--                <h4 class="standout" style="padding-top:10px;">Reference:</h4>-->
+<!--                <p th:text="${intervention.reference}"></p><br>-->
+<!--                <h4 class="standout" style="padding-top:10px;">If it fails:</h4>-->
+<!--                <p th:text="${intervention.ifItFails}"></p><br>-->
 
                 <p class="standout" style="padding-top:10px;">
                     Domains:</p>
                 <ul th:each="domain : ${intervention.domains}">
                     <li style="list-style-type: none;">
-                        <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
+                        <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a><br>
                     </li>
                 </ul>
                 </p>
@@ -34,7 +39,7 @@
                     Tags:</p>
                 <ul th:each="tag : ${intervention.tags}">
                     <li style="list-style-type: none;">
-                        <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
+                        <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a><br>
                     </li>
                 </ul>
                 </p>
@@ -69,6 +74,25 @@
     }
 
     navSlide();
+
+    mybutton = document.getElementById("myBtn");
+
+
+window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
 </script>
 </body>
 </html>

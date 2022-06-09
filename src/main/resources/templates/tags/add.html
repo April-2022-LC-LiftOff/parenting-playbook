@@ -10,14 +10,35 @@
 <form method="post" class="editing">
     <div class="form-group">
         <label th:for="name" class="editing-labels">Tag Name</label>
-        <input class="form-control" th:field="${tag.tagName}"/>
+        <div class="remainingCharsMsg"></div>
+        <input class="form-control count-chars" th:field="${tag.tagName}"
+               maxlength="50" data-max-chars="50"/>
         <span th:errors="${tag.tagName}" class="error" style="color:red;background-color:black;"></span>
     </div>
 
-    <input type="submit" value="Add Tag" class="btn btn-info" style="margin-bottom:15px;color:black;font-weight:bold;"/>
+    <input type="submit" value="Add Tag" class="btn btn-info btn-lg" style="margin-bottom:15px;color:black;font-weight:bold;"/>
 </form>
 <div class="footer">
     <p></p>
 </div>
+<script>
+(function() {
+document.addEventListener("keyup", function(event) {
+if (event.target.matches(".count-chars")) {
+
+let value = event.target.value;
+let valueLength = event.target.value.length;
+let maxChars = parseInt(event.target.getAttribute("data-max-chars"));
+let remainingChars = maxChars - valueLength;
+
+if(valueLength > maxChars) {
+event.target.value = value.substr(0, maxChars);
+return;
+}
+event.target.previousElementSibling.innerHTML = remainingChars + " characters remaining";
+}
+})
+})();
+</script>
 </body>
 </html>
