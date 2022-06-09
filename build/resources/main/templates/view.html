@@ -12,7 +12,7 @@
 
     <h4 class="standout" style="margin-top:20px;">Strategy Name: </h4>
     <p th:text="${intervention.name}"></p>
-    <a th:if="${initialUser}" th:href="@{'/edit/name/' + ${intervention.id}}" class="small-links">Edit Name</a>
+    <a th:if="${initialUser}" th:href="@{'/edit/name/' + ${intervention.id}}" class="small-links">Edit Strategy Name</a>
 
     <br>
     <h4 class="standout" style="margin-top:20px;">Action: </h4>
@@ -87,7 +87,7 @@
 </div>
 <br>
 
-<span th:if="${intervention.comments.size} == 0" style="color: white">
+<span th:if="${intervention.comments.size} == 0" style="color: white;font-size:20px;">
         Be the first one to leave a comment!
     </span>
 <br>
