@@ -36,11 +36,20 @@ public class ViewController {
         Optional optIntervention = interventionRepository.findById(interventionId);
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
+            Boolean detectReferenceURL = HelperMethods.detectURL(intervention.getReference());
+            Boolean detectIfItFailsURL = HelperMethods.detectURL(intervention.getIfItFails());
+
             model.addAttribute("intervention", intervention);
-            model.addAttribute("detectURL", HelperMethods.detectURL(intervention.getReference()));
-            if (HelperMethods.detectURL(intervention.getReference())) {
-                String clickableURL = HelperMethods.clickableURL(intervention.getReference());
-                model.addAttribute("clickableURL", clickableURL);
+            model.addAttribute("detectReferenceURL", detectReferenceURL);
+            if (detectReferenceURL) {
+                String clickableReferenceURL = HelperMethods.clickableURL(intervention.getReference());
+                model.addAttribute("clickableReferenceURL", clickableReferenceURL);
+            }
+
+            model.addAttribute("detectIfItFailsURL", detectIfItFailsURL);
+            if (detectIfItFailsURL) {
+                String clickableIfItFailsURL = HelperMethods.clickableURL(intervention.getIfItFails());
+                model.addAttribute("clickableIfItFailsURL", clickableIfItFailsURL);
             }
 
             User user = authenticationController.getUserFromSession(request.getSession());
