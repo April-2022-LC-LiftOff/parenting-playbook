@@ -2,11 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
-<body class="container  body-content">
 
-<h1 th:text="${'Intervention: ' + intervention.name}">Parenting Playbook</h1>
-
+<body class="container body-content" style="position: relative">
 <nav th:replace="fragments :: page-header"></nav>
+
+<div class="fixedTop">
+    <h1 class="top-title" style="font-size: 4vw" th:text="${'Intervention: ' + intervention.name}">Parenting Playbook</h1>
+</div>
 
 <div class="edit-class">
     <p class="standout">Domain(s):</p>
@@ -54,9 +56,9 @@
 </div>
 
 <br><br>
+<h3>Latest Comment(s): </h3>
 <div>
-    <h3>Latest Comment(s): </h3>
-    <div class="container" style="background-color: rgba(255,255,255,0.1); border-radius: 5px">
+    <div style="background-color: rgba(255,255,255,0.1); border-radius: 5px">
         <table class="table">
             <thead>
             <tr style="color: orange">
