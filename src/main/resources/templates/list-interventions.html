@@ -14,7 +14,7 @@
     <table class="parenting-playbook" th:each="intervention : ${interventions}">
         <tr>
             <td>
-                <h4 class="standout">Name: </h4>
+                <h4 class="standout">Strategy Name: </h4>
                 <p>
                     <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a></p><br>
                 <h4 class="standout" style="padding-top:10px;"> Action: </h4>
