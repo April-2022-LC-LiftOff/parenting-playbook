@@ -382,7 +382,6 @@ public class EditController {
 
         if (delete == 1) {
             interventionRepository.deleteById(interventionId);
-
         }
 
         return "redirect:/profile";
