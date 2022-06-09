@@ -10,15 +10,15 @@
 <table class="faq">
     <tr>
         <th style="padding-left:40px;margin-bottom:10px;" class="trClass">Tags</th>
-        <th th:if="${loggedIn}" style="padding-left:40px;margin-bottom:10px;" class="trClass">Delete</th>
+        <th th:if="${loggedIn && userExists}" style="padding-left:40px;margin-bottom:10px;" class="trClass">Delete</th>
     </tr>
     <tr th:each="tag : ${tags}" class="trClass">
         <td class="trClass">
             <ul><a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
             </ul>
         </td>
-        <td th:if="${loggedIn}" class="trClass">
-            <ul><a th:href="@{'/tags/delete/' + ${tag.id}}" th:text="'Delete ' + ${tag.tagName}"></a>
+        <td th:if="${loggedIn && userExists}" class="trClass">
+            <ul><a th:if="${user == tag.user}" th:href="@{'/tags/delete/' + ${tag.id}}" th:text="'Delete ' + ${tag.tagName}"></a>
             </ul>
         </td>
     </tr>
