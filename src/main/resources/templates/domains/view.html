@@ -7,16 +7,17 @@
 
 <nav th:replace="fragments :: page-header"></nav>
 
-<div class="job-listing">
-    <p class="standout">Domain:</p>
-    <p th:text="${domain.domain}"></p>
-    <p class="standout">Description:</p>
-    <p th:text="${domain.description}"></p>
-    <p class="standout"> Interventions:</p>
+<div class="tags">
+<!--    <p class="standout">Domain:</p>-->
+<!--    <p th:text="${domain.domain}"></p>-->
+    <h4 style="text-align:left;">Description:</h4><br>
+    <p th:text="${domain.description}"></p><br>
+
+    <h4 style="text-align:left;"> Strategies:</h4><br>
     <ul>
         <li style="list-style-type: none;" th:each="intervention : ${domain.interventions}">
             <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a>
-        </li>
+        </li><br>
     </ul>
     </p>
 </div>
@@ -24,5 +25,29 @@
 <div class="footer">
 </div>
 
+<script>
+    let navSlide = () => {
+    let burger = document.querySelector('.burger');
+    let nav = document.querySelector('.navbar-nav');
+    let navLinks = document.querySelectorAll('.navbar-nav li');
+
+
+    burger?.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+
+        navLinks.forEach((link, index) => {
+            if(link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.1}s`;
+            }
+        });
+
+            burger.classList.toggle('toggle');
+        });
+    }
+
+    navSlide();
+</script>
 </body>
 </html>

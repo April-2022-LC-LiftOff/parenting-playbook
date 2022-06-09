@@ -4,53 +4,61 @@
 </head>
 <body class="container  body-content">
 
-<h1 th:text="${'Intervention: ' + intervention.name}">Parenting Playbook</h1>
+<h1 th:text="${'Strategy: ' + intervention.name}">Parenting Playbook</h1>
 
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="edit-class">
-    <p class="standout">Domain(s):</p>
-    <ul>
-        <li th:each="domain : ${intervention.domains}" style="list-style-type: none;font-size:18px;">
-            <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
-        </li>
-    </ul>
-    <a th:if="${initialUser}" th:href="@{'/edit/domains/' + ${intervention.id}}" class="small-links">Edit Domains</a>
-    <p class="standout" style="margin-top:20px;">Tag(s):</p>
-    <ul>
-        <li th:each="tag : ${intervention.tags}" style="list-style-type: none;font-size:18px;">
-            <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
-        </li>
-    </ul>
-    <a th:if="${initialUser}" th:href="@{'/edit/tags/' + ${intervention.id}}" class="small-links">Edit Tags</a>
 
-    <p class="standout" style="margin-top:20px;">Name: </p>
+    <h4 class="standout" style="margin-top:20px;">Strategy Name: </h4>
     <p th:text="${intervention.name}"></p>
-    <a th:if="${initialUser}" th:href="@{'/edit/name/' + ${intervention.id}}" class="small-links">Edit Name</a>
+    <a th:if="${initialUser}" th:href="@{'/edit/name/' + ${intervention.id}}" class="small-links">Edit Strategy Name</a>
 
-
-    <p class="standout" style="margin-top:20px;">Action: </p>
+    <br>
+    <h4 class="standout" style="margin-top:20px;">Action: </h4>
     <p th:text="${intervention.action}"></p>
     <a th:if="${initialUser}" th:href="@{'/edit/action/' + ${intervention.id}}" class="small-links">Edit Action</a>
 
-    <p class="standout" style="margin-top:20px;">Expected Response: </p>
+    <br>
+    <h4 class="standout" style="margin-top:20px;">Expected Response: </h4>
     <p th:text="${intervention.expectedResponse}"></p>
     <a th:if="${initialUser}" th:href="@{'/edit/expectedResponse/' + ${intervention.id}}" class="small-links">Edit
         Expected Response</a>
 
-    <p class="standout" style="margin-top:20px;">Reference: </p>
+    <br>
+    <h4 class="standout" style="margin-top:20px;">Reference: </h4>
     <p th:text="${intervention.reference}"></p>
     <a th:if="${initialUser}" th:href="@{'/edit/reference/' + ${intervention.id}}" class="small-links">Edit
         Reference</a>
 
-    <p class="standout" style="margin-top:20px;">If it fails, try: </p>
+    <br>
+    <h4 class="standout" style="margin-top:20px;">If it fails, try: </h4>
     <p th:text="${intervention.ifItFails}"></p>
     <a th:if="${initialUser}" th:href="@{'/edit/ifItFails/' + ${intervention.id}}" class="small-links">Edit If It
         Fails</a>
+
+    <br>
+    <h4 class="standout">Domain(s):</h4>
+    <ul>
+        <li th:each="domain : ${intervention.domains}" style="list-style-type: none;">
+            <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
+        </li>
+    </ul>
+    <a th:if="${initialUser}" th:href="@{'/edit/domains/' + ${intervention.id}}" class="small-links">Edit Domains</a>
+
+    <br>
+    <h4 class="standout" style="margin-top:20px;">Tag(s):</h4>
+    <ul>
+        <li th:each="tag : ${intervention.tags}" style="list-style-type: none;">
+            <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
+        </li>
+    </ul>
+    <a th:if="${initialUser}" th:href="@{'/edit/tags/' + ${intervention.id}}" class="small-links">Edit Tags</a>
+    <br>
 </div>
 <div>
     <a th:if="${initialUser}" th:href="@{'/edit/delete/' + ${intervention.id}}" class="small-links">Delete
-        Intervention</a>
+        Strategy</a>
 </div>
 
 <br><br>
@@ -59,9 +67,8 @@
     <div class="container" style="background-color: rgba(255,255,255,0.1);">
         <table class="table" style="color:white;">
             <thead>
-            <tr style="color: white">
-                <!--                <th>Intervention ID</th>-->
-                <th>Intervention Name</th>
+            <tr style="color: white;">
+                <th>Strategy Name</th>
                 <th>User</th>
                 <th>Comment</th>
                 <th>Posted Date</th>
@@ -69,7 +76,6 @@
             </thead>
             <tbody th:if="${intervention.comments} !=null" align="left">
             <tr th:each="comment : ${intervention.comments}">
-                <!--                <td th:text="${intervention.id}"></td>-->
                 <td th:text="${intervention.name}"></td>
                 <td th:text="${comment.user.username}"></td>
                 <td th:text="${comment.userInput}"></td>
@@ -81,7 +87,7 @@
 </div>
 <br>
 
-<span th:if="${intervention.comments.size} == 0" style="color: white">
+<span th:if="${intervention.comments.size} == 0" style="color: white;">
         Be the first one to leave a comment!
     </span>
 <br>
@@ -91,20 +97,66 @@
 <div class="container" th:if="${user} != null">
     <h3 style="color: white">Leave a Comment: </h3>
 
-    <form method="post">
-        <div class="form-group">
+    <div class="count-container">
+    <form method="post" class="form-group">
             <input type="hidden" th:field="*{user}" class="form-control">
             <input type="hidden" th:field="*{intervention}" class="form-control">
-            <textarea rows="5" class="form-control" th:field="${comment.userInput}" placeholder="Have any thoughts?"
+
+             <div class="remainingCharsMsg"></div>
+            <textarea class="form-control count-chars" rows="8" th:field="${comment.userInput}"
+                      placeholder="Have any thoughts?" maxlength="1000" data-max-chars="1000"
                       required="required"></textarea>
             <span th:errors="${comment.userInput}" class="error"></span>
+            <p style="color: orange">Please limit your comment to less than 1000 characters.</p>
             <br>
-            <button class="btn btn-success btn-md" type="submit">Add Comment</button>
-        </div>
+            <button class="btn btn-success btn-lg" type="submit">Add Comment</button>
     </form>
-
+    </div>
 </div>
 <div class="footer">
 </div>
+<script>
+    let navSlide = () => {
+    let burger = document.querySelector('.burger');
+    let nav = document.querySelector('.navbar-nav');
+    let navLinks = document.querySelectorAll('.navbar-nav li');
+
+
+    burger?.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+
+        navLinks.forEach((link, index) => {
+            if(link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.1}s`;
+            }
+        });
+
+            burger.classList.toggle('toggle');
+        });
+    }
+
+    navSlide();
+
+(function() {
+  document.addEventListener("keyup", function(event) {
+    if (event.target.matches(".count-chars")) {
+
+      let value = event.target.value;
+      let valueLength = event.target.value.length;
+      let maxChars = parseInt(event.target.getAttribute("data-max-chars"));
+      let remainingChars = maxChars - valueLength;
+
+      if(valueLength > maxChars) {
+          event.target.value = value.substring(0, maxChars);
+          return;
+      }
+      event.target.previousElementSibling.innerHTML = remainingChars + " characters remaining";
+      }
+   })
+ })();
+
+</script>
 </body>
 </html>

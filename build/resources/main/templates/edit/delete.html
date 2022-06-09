@@ -6,26 +6,25 @@
 
 <div th:replace="fragments :: page-header"></div>
 
-<div class="tags">
+<div class="delete">
 
-    <form method="post" class="editing">
+    <form method="post" class="tags">
         <div class="form-group">
-            <label th:for="delete" class="editing-labels">Confirm Delete:</label>
-            <br>
-            <a href=@{'/view/' + ${intervention.id}} th:text="${intervention.name}"
-               style="font-weight:bold;font-size:30px;"></a> <br>
+            <label th:for="delete" class="editing-labels" style="text-decoration:underline;">Confirm Delete</label><br>
+            <a href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"
+               class="big-links-profile"></a> <br>
             <th:block>
-                <h3>Are you sure you want to delete the intervention?</h3><br>
+                <h4>Are you sure you want to delete the strategy?</h4><br>
                 <input type="radio" name="delete" th:value="${0}">
                 <label>No!</label>
-                <input type="radio" name="delete" th:value="${1}">
+                <input type="radio" name="delete" th:value="${1}" >
                 <label>Yes</label>
             </th:block>
         </div>
 
-        <input type="submit" class="btn btn-danger" style="margin-bottom:15px;color:black;font-weight:bold;"
+        <input type="submit" class="btn btn-danger btn-lg" style="margin-bottom:15px;color:black;font-weight:bold;"
                value="Confirm Delete"/>
-        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info"
+        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info btn-lg"
                                                              style="margin-bottom:15px;color:black;font-weight:bold;"
                                                              value="Cancel Delete"/></a>
     </form>
