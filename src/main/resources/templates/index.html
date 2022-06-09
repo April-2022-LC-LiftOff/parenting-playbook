@@ -17,6 +17,7 @@
         <tr class="spaceUnder">
             <p>We are a community of parents dedicated to sharing strategies to improve the executive
                 functioning skills of our neurodivergent children!</p></tr>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Go to the top</button>
         <tr>
             <hr class="dotted">
             <h3>Parenting Playbook Information</h3><br>
@@ -95,6 +96,28 @@
 <div class="footer">
     <p></p>
 </div>
+
+<script>
+
+mybutton = document.getElementById("myBtn");
+
+
+window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
 </body>
 </html>
 
