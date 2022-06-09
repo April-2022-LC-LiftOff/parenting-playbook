@@ -74,7 +74,7 @@
                 <th>Posted Date</th>
             </tr>
             </thead>
-            <tbody th:if="${intervention.comments} !=null" align="left" style="font-size:24px;">
+            <tbody th:if="${intervention.comments} !=null" align="left">
             <tr th:each="comment : ${intervention.comments}">
                 <td th:text="${intervention.name}"></td>
                 <td th:text="${comment.user.username}"></td>
@@ -104,7 +104,6 @@
 
              <div class="remainingCharsMsg"></div>
             <textarea class="form-control count-chars" rows="8" th:field="${comment.userInput}"
-                      style="font-size:24px;"
                       placeholder="Have any thoughts?" maxlength="1000" data-max-chars="1000"
                       required="required"></textarea>
             <span th:errors="${comment.userInput}" class="error"></span>

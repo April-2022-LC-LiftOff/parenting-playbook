@@ -12,7 +12,7 @@
             <label th:for="reference" class="editing-labels">Reference:</label>
             <div class="remainingCharsMsg"></div>
             <input type="text" name="reference" class="form-control count-chars" th:value="${intervention.reference}"
-                   style="font-size:24px;" maxlength="2000" data-max-chars="2000"/>
+                   maxlength="2000" data-max-chars="2000"/>
             <br>
             <span th:text="${referenceError}" class="error" style="color:red;background-color:black;"></span>
         </div>

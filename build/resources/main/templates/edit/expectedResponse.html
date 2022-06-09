@@ -12,7 +12,7 @@
             <label th:for="expectedResponse" class="editing-labels">Expected Response:</label>
             <div class="remainingCharsMsg"></div>
             <textarea rows="4" cols="50" name="expectedResponse" class="form-control count-chars"
-                      style="font-size:24px;" th:text="${intervention.expectedResponse}" minlength="20" data-min-chars="20"
+                      th:text="${intervention.expectedResponse}" minlength="20" data-min-chars="20"
                       maxlength="2000" data-max-chars="2000" required></textarea>
             <br>
             <span th:text="${expectedResponseError}" class="error" style="color:red;background-color:black;"></span>

@@ -12,7 +12,7 @@
             <label th:for="ifItFails" class="editing-labels">If It Fails:</label>
             <div class="remainingCharsMsg"></div>
             <textarea rows="4" cols="50" name="ifItFails" class="form-control count-chars"
-                      th:text="${intervention.ifItFails}" style="font-size:24px;" maxlength="2000" data-max-chars="2000"></textarea>
+                      th:text="${intervention.ifItFails}" maxlength="2000" data-max-chars="2000"></textarea>
             <br>
             <span th:text="${ifItFailsError}" class="error" style="color:red;background-color:black;"></span>
         </div>

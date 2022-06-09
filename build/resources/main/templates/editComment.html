@@ -13,7 +13,7 @@
         <label for="editComment" style="color:white;font-size:36px;">Edit Comment </label><br>
 
         <div class="remainingCharsMsg"></div>
-        <textarea rows="8" class="form-control count-chars" th:field="${comment.userInput}" style="font-size:24px;"
+        <textarea rows="8" class="form-control count-chars" th:field="${comment.userInput}"
                   id="editComment" maxlength="1000" data-max-chars="1000" required="required"></textarea>
         <span th:errors="${comment.userInput}" class="error"></span>
         <p style="color: orange;text-align:center;">Please limit your comment to less than 1000 characters.</p>
