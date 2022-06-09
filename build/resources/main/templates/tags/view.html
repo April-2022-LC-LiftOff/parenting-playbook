@@ -9,13 +9,13 @@
 
 <div class="tags">
 <!--    <p th:text="${'Name: ' + tag.tagName}"></p>-->
-    <p> Strategies to try
+    <h3 class="standout" style="text-align:center;"> Strategies to try</h3><br>
     <ul>
         <li style="list-style-type: none;" th:each="intervention : ${tag.interventions}">
-            <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a>
+            <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a><br>
         </li>
     </ul>
-    </p>
+
 </div>
 <div class="footer">
     <p></p>

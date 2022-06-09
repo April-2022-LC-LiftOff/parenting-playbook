@@ -14,31 +14,31 @@
     <table class="parenting-playbook" th:each="intervention : ${interventions}">
         <tr>
             <td>
-                <p class="standout">Name: </p>
+                <h4 class="standout">Name: </h4>
                 <p>
-                    <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a></p>
-                <p class="standout" style="padding-top:10px;"> Action: </p>
-                <p th:text="${intervention.action}"></p>
-                <p class="standout" style="padding-top:10px;">Expected Response:</p>
-                <p th:text="${intervention.expectedResponse}"></p>
-                <p class="standout" style="padding-top:10px;">Reference:</p>
-                <p th:text="${intervention.reference}"></p>
-                <p class="standout" style="padding-top:10px;">If it fails:</p>
-                <p th:text="${intervention.ifItFails}"></p>
+                    <a th:href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"></a></p><br>
+                <h4 class="standout" style="padding-top:10px;"> Action: </h4>
+                <p th:text="${intervention.action}"></p><br>
+                <h4 class="standout" style="padding-top:10px;">Expected Response:</h4>
+                <p th:text="${intervention.expectedResponse}"></p><br>
+                <h4 class="standout" style="padding-top:10px;">Reference:</h4>
+                <p th:text="${intervention.reference}"></p><br>
+                <h4 class="standout" style="padding-top:10px;">If it fails:</h4>
+                <p th:text="${intervention.ifItFails}"></p><br>
 
-                <p class="standout" style="padding-top:10px;">
-                    Domains:</p>
+                <h4 class="standout" style="padding-top:10px;">
+                    Domains:</h4>
                 <ul th:each="domain : ${intervention.domains}">
                     <li style="list-style-type: none;">
-                        <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
+                        <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a><br>
                     </li>
                 </ul>
                 </p>
-                <p class="standout" style="padding-top:10px;">
-                    Tags:</p>
+                <h4 class="standout" style="padding-top:10px;">
+                    Tags:</h4>
                 <ul th:each="tag : ${intervention.tags}">
                     <li style="list-style-type: none;">
-                        <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
+                        <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a><br>
                     </li>
                 </ul>
                 </p>

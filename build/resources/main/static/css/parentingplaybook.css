@@ -94,6 +94,7 @@ span {
 
 label {
     font-family: 'Pompiere', cursive;
+    font-size:34px;
     margin-right: 28px;
 }
 
@@ -198,22 +199,15 @@ div.results {
 }
 
 div.edit-class {
+    background-color: rgba(255,255,255,0.1);
     font-size: 28px;
     margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
     margin-top: auto;
-    padding: 10px;
+    padding: 30px;
     text-align: left;
-    width: 60%;
-}
-
-div.job-listing {
-    border: 1px solid #FFFFFF;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px 20px;
-    width: 80%;
+    width: 575px;
 }
 
 div.tags {
@@ -224,8 +218,8 @@ div.tags {
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
-    padding: 10px;
-    width: 550px;
+    padding: 50px;
+    width: 575px;
 }
 
 div.delete {
@@ -350,20 +344,6 @@ div.topQuiz {
     width: 100%;
 }
 
-table.parenting-playbook {
-      border: 1px solid #ffffff;
-      border-collapse: separate;
-      border-spacing: 0 15px;
-      color: #FFFFFF;
-      font-family: 'Pompiere', cursive;
-      font-size: 28px;
-      margin: auto;
-      padding-left: 30px;
-      text-align: left;
-      table-layout: fixed;
-      width: 550px;
-}
-
 table.domains-table  {
     background-color: #ffffff
     border: 2px solid white;
@@ -372,18 +352,25 @@ table.domains-table  {
     font-size: 28px;
     margin-left: auto;
     margin-right: auto;
-    opacity: 1;
+    padding:20px;
     text-align: left;
 }
 
 table.parenting-playbook {
-    border: 1px solid FFFFFF;
-    border-bottom: solid 1px white;
-    font-family: 'Pompiere', cursive;
-    margin: auto;
-    padding: 20px;
-    text-align: left;
-    width: 550px;
+      border: 1px solid #ffffff;
+      border-collapse: separate;
+      border-spacing: 0 15px;
+      color: #FFFFFF;
+      font-family: 'Pompiere', cursive;
+      font-size: 26px;
+      margin: auto;
+      padding-bottom: 20px;
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-top: 20px;
+      text-align: left;
+      table-layout: fixed;
+      width: 575px;
 }
 
 table.parenting-playbook.li {
@@ -406,11 +393,10 @@ table.results {
     color: #FFFFFF;
     font-family: 'Pompiere', cursive;
     font-size: 28px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     padding-bottom: 10px;
-    padding-left: 40px;
-    padding-right:40px
+    padding-left: 50px;
+    padding-right: 50px;
     padding-top: 10px;
     table-layout: fixed;
     text-align: left;
