@@ -56,19 +56,19 @@
 <br><br>
 <div>
     <h3>Latest Comment(s): </h3>
-    <div class="container" style="background-color: rgba(255,255,255,0.1);">
-        <table class="table" style="color:white;">
+    <div class="container" style="background-color: rgba(255,255,255,0.1); border-radius: 5px">
+        <table class="table">
             <thead>
-            <tr style="color: white">
-                <th>Intervention Name</th>
-                <th>User</th>
+            <tr style="color: orange">
+<!--                <th>Intervention Name</th>-->
+                <th style="marge: 30px">User</th>
                 <th>Comment</th>
                 <th>Posted Date</th>
             </tr>
             </thead>
-            <tbody th:if="${intervention.comments} !=null" align="left">
+            <tbody th:if="${intervention.comments} !=null" align="left"  style="color:white;">
             <tr th:each="comment : ${intervention.comments}">
-                <td th:text="${intervention.name}"></td>
+<!--                <td th:text="${intervention.name}"></td>-->
                 <td th:text="${comment.user.username}"></td>
                 <td th:text="${comment.userInput}"></td>
                 <td th:text="${comment.postedDate}"></td>

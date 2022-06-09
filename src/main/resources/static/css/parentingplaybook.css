@@ -834,3 +834,61 @@ hr.dotted {
     margin-top:25px;
     margin-bottom:25px;
 }
+
+@media screen and (max-width: 950px) {
+
+.myComment thead.commentTab {
+  display: none;
+}
+.myComment tbody td {
+  display: block;
+  text-align: right;
+}
+
+.myComment tbody td::before {
+  float: left;
+  margin-right: 3rem;
+  color: orange;
+}
+
+.myComment tbody td:first-child::before {
+  content: "Intervention:  ";
+}
+
+.myComment tbody td:nth-child(2)::before {
+  content: "Posted Date:  ";
+}
+
+.myComment tbody td:nth-child(3)::before {
+  content: "My Comment:  ";
+}
+}
+
+@media screen and (max-width: 950px) {
+
+.commentList thead.commentListTab {
+  display: none;
+}
+.commentList tbody td {
+  display: block;
+  text-align: right;
+}
+
+.commentList tbody td::before {
+  float: left;
+  margin-right: 3rem;
+  color: orange;
+}
+
+.commentList tbody td:first-child::before {
+  content: "User:  ";
+}
+
+.commentList tbody td:nth-child(2)::before {
+  content: "Comment :  ";
+}
+
+.commentList tbody td:nth-child(3)::before {
+  content: "Posted Date:  ";
+}
+}
