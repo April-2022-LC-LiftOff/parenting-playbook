@@ -7,35 +7,90 @@
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="alert alert-success alert-dismissible text-center" role="alert" th:text="${hello}" th:if="${hello}"></div>
-<div style="text-align:center; padding: 10px 10px; ">
-    <!--    <a data-flickr-embed="true"><img src="https://live.staticflickr.com/65535/52092707954_3d6536dc5f_o.png" width="700" height="150" alt="700x200parenting"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>-->
-    <div class="col">
-        <img class="banner" th:src="@{images/banner.png}"/>
-    </div>
+
+<div class="topFront" style="color: white; background-color: rgba(255,255,255,0.1);">
+    <table class="front">
+        <tr class="spaceUnder">
+            <br>
+            <h2 style="font-size:48px;">Welcome to the Parenting Playbook!</h2></tr><br>
+
+        <tr class="spaceUnder">
+            <p>We are a community of parents dedicated to sharing strategies to improve the executive
+                functioning skills of our neurodivergent children!</p></tr>
+        <tr>
+            <hr class="dotted">
+            <h3>Parenting Playbook Information</h3><br>
+        </tr>
+
+        <tr>
+            <p>
+                <b><u>Executive functioning</u></b> refers to the cognitive skills that people use to
+                complete tasks.</p></tr><br>
+        <tr class="spaceUnder">
+            <p>
+                <a th:href="@{'/domains'}">Domains</a> refer to the eight different components of executive functioning.
+                Click the orange link to learn more!
+            </p>
+        </tr><br>
+        <tr class="spaceUnder">
+            <p>
+                <a th:href="@{'/tags'}">Tags</a> are used in the Parenting Playbook to group similar strategies together.
+            </p>
+        </tr><br>
+        <tr class="spaceUnder">
+            <p>
+                <b><u>Neurodiversity</u></b> refers to people who have cognitive processes
+                that differ from the norm. This includes people with:</p>
+            <li class="faqLiStyle">ADHD </li>
+            <li class="faqLiStyle">Autism</li>
+            <li class="faqLiStyle">Mood disorders or other psychological disorders</li>
+            <li class="faqLiStyle">Dyslexia, Dyscalcula, and Dysgraphia</li>
+            <li class="faqLiStyle">Intellectual disabilities</li>
+        </tr>
+        <hr class="dotted">
+        <tr class="spaceUnder">
+            <h3>Make an account with us! Account members can...</h3><br>
+            <li class="faqLiStyle">"Like" strategies to reference them again later</li>
+            <li class="faqLiStyle">Leave comments on strategies that worked (or didn't work!)
+            </li>
+            <li class="faqLiStyle"> Add strategies to the database to help other parents</li>
+
+            <br>
+        <tr class="spaceUnder">
+            <p style="text-align:center;"><a th:href="@{'/register'}" class="btn btn-outline" style="color:black;">
+                Join the Parenting Playbook Community</a></p>
+        </tr><br>
+        <hr class="dotted">
+        <tr class="spaceUnder">
+            <h3><b>Not sure where to start and have 5-10 minutes to spare?</b></h3><br>
+            <p>Take our questionnaire to determine in which domains your child may benefit from additional supports.</p></tr>
+        <br>
+        <tr class="spaceUnder">
+            <p style="text-align:center;"><a th:href="@{'/quiz'}" class="btn btn-outline" style="color:black;">
+                Questionnaire</a></p>
+        </tr><br>
+        <hr class="dotted">
+        <tr class="spaceUnder">
+            <h3>Ready to get started? Check out our strategies grouped by executive functioning domain!</h3><br>
+        </tr>
+        <tr>
+            <p style="text-align:center;">
+                <button class="btn btn-outline" role="button" th:each="domain : ${domains}" style="margin:10px;">
+                    <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}" style="color:black;"></a><br>
+                </button>
+            </p></tr>
+        <hr class="dotted">
+        <tr class="spaceUnder">
+            <h3>View our tags to find strategies to help your child succeed!</h3><br>
+        </tr>
+        <tr>
+            <p style="text-align:center;">
+                <button class="btn btn-outline btn-sm" role="button" th:each="tag : ${tags}" style="margin:10px;">
+                    <a th:href="@{'tags/view/' + ${tag.id}}" th:text="${tag.tagName}" style="color:black;"></a>
+                </button>
+            </p></tr>
+    </table>
 </div>
-<div>
-
-    <h1>Welcome to the Parenting Playbook!</h1>
-    <h3 style="padding:15px;">Select an executive functioning domain to find strategies to help your child succeed.</h3>
-
-    <button class="button-80" role="button" th:each="domain : ${domains}">
-        <a th:href="@{'domains/view/' + ${domain.id}}" th:text="${domain.domain}" style="color:black;"></a>
-    </button>
-    <div>
-        <h3>Not sure where to start? Take our questionnaire!</h3>
-        <button class="button-80" role="button">
-            <a th:href="@{'quiz'}" style="color:black;">Domains Questionnaire</a>
-        </button>
-    </div>
-
-    <h3 style="padding:15px;">Select a tag to find strategies to help your child succeed.</h3>
-
-    <button class="button-tags" role="button" th:each="tag : ${tags}">
-        <a th:href="@{'tags/view/' + ${tag.id}}" th:text="${tag.tagName}" style="color:black;"></a>
-    </button>
-</div>
-
-
 
 <div class="footer">
     <p></p>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div class="container body-content">
+    <form method="post" class="editing">
+        <div class="form-group">
+            <label th:for="name" class="editing-labels">Name:</label>
+            <input type="text" name="name" class="form-control" th:value="${intervention.name}" required/>
+            <br>
+            <span th:text="${nameError}" class="error" style="color:red;background-color:black;"></span>
+        </div>
+
+        <input type="submit" class="btn btn-info" style="margin-bottom:15px;color:black;font-weight:bold;"
+               value="Update Name"/>
+        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info"
+                                                             style="margin-bottom:15px;color:black;font-weight:bold;"
+                                                             value="Cancel Update"/></a>
+    </form>
+</div>
+<div class="footer">
+    <p></p>
+</div>
+</body>
+</html>
