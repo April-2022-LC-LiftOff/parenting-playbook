@@ -13,7 +13,7 @@
             <div class="remainingCharsMsg"></div>
             <textarea rows="4" cols="50" name="expectedResponse" class="form-control count-chars"
                       th:text="${intervention.expectedResponse}" minlength="20" data-min-chars="20"
-                      maxlength="2000" data-max-chars="2000" required></textarea>
+                      style="font-size:18px;" maxlength="2000" data-max-chars="2000" required></textarea>
             <br>
             <span th:text="${expectedResponseError}" class="error" style="color:red;background-color:black;"></span>
         </div>

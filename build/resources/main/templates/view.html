@@ -30,13 +30,13 @@
         Expected Response</a>
 
     <br>
-    <p class="standout" style="margin-top:20px;">Reference: </p>
+    <h4 class="standout" style="margin-top:20px;">Reference: </h4>
     <p th:if="${!detectReferenceURL}" th:text="${intervention.reference}"></p>
     <p th:remove="tag" th:utext="${clickableReferenceURL}"></p>
     <a th:if="${initialUser}" th:href="@{'/edit/reference/' + ${intervention.id}}" class="small-links">Edit
         Reference</a>
-
-    <p class="standout" style="margin-top:20px;">If it fails, try: </p>
+    <br>
+    <h4 class="standout" style="margin-top:20px;">If it fails, try: </h4>
     <p th:if="${!detectIfItFailsURL}" th:text="${intervention.ifItFails}"></p>
     <p th:remove="tag" th:utext="${clickableIfItFailsURL}"></p>
     <a th:if="${initialUser}" th:href="@{'/edit/ifItFails/' + ${intervention.id}}" class="small-links">Edit If It
@@ -69,11 +69,11 @@
 <br><br>
 <h3>Latest Comment(s): </h3>
 <div>
-    <div style="background-color: rgba(255,255,255,0.1); border-radius: 5px">
-        <table class="table">
+    <div style="background-color: rgba(255,255,255,0.1); border-radius: 5px;">
+        <table class="table" style="font-size:20px;">
             <thead>
             <tr style="color: orange">
-                <th >User</th>
+                <th>User</th>
                 <th>Comment</th>
                 <th>Posted Date</th>
             </tr>
@@ -107,7 +107,7 @@
 
              <div class="remainingCharsMsg"></div>
             <textarea class="form-control count-chars" rows="8" th:field="${comment.userInput}"
-                      placeholder="Have any thoughts?" maxlength="1000" data-max-chars="1000"
+                      placeholder="Have any thoughts?" style="font-size:20px;" maxlength="1000" data-max-chars="1000"
                       required="required"></textarea>
             <span th:errors="${comment.userInput}" class="error"></span>
             <p style="color: orange">Please limit your comment to less than 1000 characters.</p>
