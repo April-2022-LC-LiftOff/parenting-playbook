@@ -53,10 +53,10 @@ public class ListController {
         Iterable<Intervention> interventions;
         if (column.toLowerCase(Locale.ROOT).equals("all")) {
             interventions = interventionRepository.findAll();
-            model.addAttribute("title", "All Interventions");
+            model.addAttribute("title", "All Strategies");
         } else {
             interventions = InterventionData.findByColumnAndValue(column, value, interventionRepository.findAll());
-            model.addAttribute("title", "Interventions in " + columnChoices.get(column) + ": " + value);
+            model.addAttribute("title", "Strategies in " + columnChoices.get(column) + ": " + value);
         }
         model.addAttribute("interventions", interventions);
 

@@ -4,40 +4,28 @@
 </head>
 <body class="container  body-content">
 
-<h1 th:text="${'Intervention: ' + intervention.name}">Parenting Playbook</h1>
+<h1 th:text="${'Strategy: ' + intervention.name}">Parenting Playbook</h1>
 
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="edit-class">
-    <p class="standout">Domain(s):</p>
-    <ul>
-        <li th:each="domain : ${intervention.domains}" style="list-style-type: none;font-size:18px;">
-            <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
-        </li>
-    </ul>
-    <a th:if="${initialUser}" th:href="@{'/edit/domains/' + ${intervention.id}}" class="small-links">Edit Domains</a>
-    <p class="standout" style="margin-top:20px;">Tag(s):</p>
-    <ul>
-        <li th:each="tag : ${intervention.tags}" style="list-style-type: none;font-size:18px;">
-            <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
-        </li>
-    </ul>
-    <a th:if="${initialUser}" th:href="@{'/edit/tags/' + ${intervention.id}}" class="small-links">Edit Tags</a>
 
-    <p class="standout" style="margin-top:20px;">Name: </p>
+    <h4 class="standout" style="margin-top:20px;">Strategy Name: </h4>
     <p th:text="${intervention.name}"></p>
-    <a th:if="${initialUser}" th:href="@{'/edit/name/' + ${intervention.id}}" class="small-links">Edit Name</a>
+    <a th:if="${initialUser}" th:href="@{'/edit/name/' + ${intervention.id}}" class="small-links">Edit Strategy Name</a>
 
-
-    <p class="standout" style="margin-top:20px;">Action: </p>
+    <br>
+    <h4 class="standout" style="margin-top:20px;">Action: </h4>
     <p th:text="${intervention.action}"></p>
     <a th:if="${initialUser}" th:href="@{'/edit/action/' + ${intervention.id}}" class="small-links">Edit Action</a>
 
-    <p class="standout" style="margin-top:20px;">Expected Response: </p>
+    <br>
+    <h4 class="standout" style="margin-top:20px;">Expected Response: </h4>
     <p th:text="${intervention.expectedResponse}"></p>
     <a th:if="${initialUser}" th:href="@{'/edit/expectedResponse/' + ${intervention.id}}" class="small-links">Edit
         Expected Response</a>
 
+    <br>
     <p class="standout" style="margin-top:20px;">Reference: </p>
     <p th:if="${!detectReferenceURL}" th:text="${intervention.reference}"></p>
     <p th:remove="tag" th:utext="${clickableReferenceURL}"></p>
@@ -49,10 +37,29 @@
     <p th:remove="tag" th:utext="${clickableIfItFailsURL}"></p>
     <a th:if="${initialUser}" th:href="@{'/edit/ifItFails/' + ${intervention.id}}" class="small-links">Edit If It
         Fails</a>
+
+    <br>
+    <h4 class="standout">Domain(s):</h4>
+    <ul>
+        <li th:each="domain : ${intervention.domains}" style="list-style-type: none;">
+            <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>
+        </li>
+    </ul>
+    <a th:if="${initialUser}" th:href="@{'/edit/domains/' + ${intervention.id}}" class="small-links">Edit Domains</a>
+
+    <br>
+    <h4 class="standout" style="margin-top:20px;">Tag(s):</h4>
+    <ul>
+        <li th:each="tag : ${intervention.tags}" style="list-style-type: none;">
+            <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
+        </li>
+    </ul>
+    <a th:if="${initialUser}" th:href="@{'/edit/tags/' + ${intervention.id}}" class="small-links">Edit Tags</a>
+    <br>
 </div>
 <div>
     <a th:if="${initialUser}" th:href="@{'/edit/delete/' + ${intervention.id}}" class="small-links">Delete
-        Intervention</a>
+        Strategy</a>
 </div>
 
 <br><br>
@@ -61,8 +68,8 @@
     <div class="container" style="background-color: rgba(255,255,255,0.1);">
         <table class="table" style="color:white;">
             <thead>
-            <tr style="color: white">
-                <th>Intervention Name</th>
+            <tr style="color: white;">
+                <th>Strategy Name</th>
                 <th>User</th>
                 <th>Comment</th>
                 <th>Posted Date</th>
@@ -81,7 +88,7 @@
 </div>
 <br>
 
-<span th:if="${intervention.comments.size} == 0" style="color: white">
+<span th:if="${intervention.comments.size} == 0" style="color: white;">
         Be the first one to leave a comment!
     </span>
 <br>
@@ -101,9 +108,9 @@
                       placeholder="Have any thoughts?" maxlength="1000" data-max-chars="1000"
                       required="required"></textarea>
             <span th:errors="${comment.userInput}" class="error"></span>
-            <h5 style="color: orange">Please limit your comment to less than 1000 characters.</h5>
+            <p style="color: orange">Please limit your comment to less than 1000 characters.</p>
             <br>
-            <button class="btn btn-success btn-md" type="submit">Add Comment</button>
+            <button class="btn btn-success btn-lg" type="submit">Add Comment</button>
     </form>
     </div>
 </div>
