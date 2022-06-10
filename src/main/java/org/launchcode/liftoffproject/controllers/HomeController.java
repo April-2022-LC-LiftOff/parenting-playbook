@@ -42,7 +42,6 @@ public class HomeController {
         return "index";
     }
 
-
     @GetMapping("about")
     public String displayAbout(Model model, HttpServletRequest request) {
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
