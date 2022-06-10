@@ -12,7 +12,7 @@
         <label th:for="name" class="editing-labels">Tag Name</label>
         <div class="remainingCharsMsg"></div>
         <input class="form-control count-chars" th:field="${tag.tagName}"
-               maxlength="50" data-max-chars="50"/>
+               style="font-size:18px;" maxlength="50" data-max-chars="50"/>
         <span th:errors="${tag.tagName}" class="error" style="color:red;background-color:black;"></span>
     </div>
 

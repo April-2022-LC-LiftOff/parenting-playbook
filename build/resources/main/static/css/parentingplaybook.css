@@ -15,7 +15,7 @@ body {
 h1 {
     color: #FFFFFF;
     font-family: 'Mulish', sans-serif;
-    font-size: 60px;
+    font-size: 70px;
     font-weight: lighter;
     padding-bottom: 15px;
     padding-top: 15px;
@@ -102,14 +102,14 @@ span {
 
 label {
     font-family: 'Mulish', sans-serif;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: lighter;
     margin-right: 28px;
 }
 
 .editing-labels {
     font-family: 'Mulish', sans-serif;
-    font-size: 24px;
+    font-size: 36px;
     font-weight: lighter;
     margin-bottom: 20px;
 }
