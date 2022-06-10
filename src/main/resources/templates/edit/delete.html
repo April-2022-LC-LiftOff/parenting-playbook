@@ -14,8 +14,8 @@
             <a href="@{'/view/' + ${intervention.id}}" th:text="${intervention.name}"
                class="big-links-profile"></a> <br>
             <th:block>
-                <h4>Are you sure you want to delete the strategy?</h4><br>
-                <input type="radio" name="delete" th:value="${0}">
+                <h3>Are you sure you want to delete the intervention?</h3><br>
+                <input type="radio" name="delete" th:value="${0}" checked>
                 <label>No!</label>
                 <input type="radio" name="delete" th:value="${1}" >
                 <label>Yes</label>

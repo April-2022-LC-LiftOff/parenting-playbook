@@ -7,7 +7,6 @@ import org.springframework.web.servlet.FlashMap;
 import org.springframework.web.servlet.FlashMapManager;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,6 +39,7 @@ public class AuthenticationFilter implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response,
                              Object handler) throws IOException {
+
 
         // Don't require sign-in for whitelisted pages
         if (isNotBlacklisted(request.getRequestURI())) {

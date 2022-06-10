@@ -25,6 +25,17 @@
     <a th:if="${initialUser}" th:href="@{'/edit/expectedResponse/' + ${intervention.id}}" class="small-links">Edit
         Expected Response</a>
 
+<<<<<<< HEAD
+    <p class="standout" style="margin-top:20px;">Reference: </p>
+    <p th:if="${!detectReferenceURL}" th:text="${intervention.reference}"></p>
+    <p th:remove="tag" th:utext="${clickableReferenceURL}"></p>
+    <a th:if="${initialUser}" th:href="@{'/edit/reference/' + ${intervention.id}}" class="small-links">Edit
+        Reference</a>
+
+    <p class="standout" style="margin-top:20px;">If it fails, try: </p>
+    <p th:if="${!detectIfItFailsURL}" th:text="${intervention.ifItFails}"></p>
+    <p th:remove="tag" th:utext="${clickableIfItFailsURL}"></p>
+=======
     <br>
     <h4 class="standout" style="margin-top:20px;">Reference: </h4>
     <p th:text="${intervention.reference}"></p>
@@ -34,6 +45,7 @@
     <br>
     <h4 class="standout" style="margin-top:20px;">If it fails, try: </h4>
     <p th:text="${intervention.ifItFails}"></p>
+>>>>>>> bf8a766c517836f1b7daa369aa83f1c054070a2a
     <a th:if="${initialUser}" th:href="@{'/edit/ifItFails/' + ${intervention.id}}" class="small-links">Edit If It
         Fails</a>
 
