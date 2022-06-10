@@ -12,20 +12,25 @@
 
     <form method="post" class="editing">
         <div class="form-group">
-            <label th:for="delete" class="editing-labels">Confirm Delete:</label>
+            <label th:for="delete" class="editing-labels" style="text-decoration:underline;">Confirm Delete</label>
 
             <th:block>
+<<<<<<< HEAD
                 <h2>Are you sure you want to delete the tag?</h2>
+                <input type="radio" name="delete" th:value="${0}" checked>
+=======
+                <h4>Are you sure you want to delete the tag?</h4>
                 <input type="radio" name="delete" th:value="${0}">
+>>>>>>> bf8a766c517836f1b7daa369aa83f1c054070a2a
                 <label>No!</label>
                 <input type="radio" name="delete" th:value="${1}">
                 <label>Yes</label>
             </th:block>
         </div>
 
-        <input type="submit" class="btn btn-danger" style="margin-bottom:15px;color:black;font-weight:bold;"
+        <input type="submit" class="btn btn-danger btn-lg" style="margin-bottom:15px;color:black;font-weight:bold;"
                value="Confirm Delete"/>
-        <a th:href="@{/tags}"><input type="button" class="btn btn-info"
+        <a th:href="@{/tags}"><input type="button" class="btn btn-info btn-lg"
                                      style="margin-bottom:15px;color:black;font-weight:bold;"
                                      value="Cancel Delete"/></a>
     </form>

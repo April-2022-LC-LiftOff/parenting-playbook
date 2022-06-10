@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -29,6 +30,20 @@ public class TagController {
 
     @GetMapping
     public String displayAllTags(Model model, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+        List<Tag> tags = (List<Tag>) tagRepository.findAll();
+        Boolean userExists = false;
+
+        for (Tag tag : tags) {
+            if (user == tag.getUser()) {
+                userExists = true;
+                break;
+            }
+        }
+
+        model.addAttribute("userExists", userExists);
+
+        model.addAttribute("user", user);
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
         model.addAttribute("title", "All Tags");
@@ -104,7 +119,6 @@ public class TagController {
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
         if (delete == 0) {
-            model.addAttribute("tag", tag);
             return "redirect:/tags/";
         }
 

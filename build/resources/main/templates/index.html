@@ -6,17 +6,18 @@
 <body class="container body-content">
 <nav th:replace="fragments :: page-header"></nav>
 
-<div class="alert alert-success alert-dismissible text-center" role="alert" th:text="${hello}" th:if="${hello}"></div>
+<div style="font-size:36px;" class="alert alert-success alert-dismissible text-center" role="alert" th:text="${hello}" th:if="${hello}"></div>
 
 <div class="topFront" style="color: white; background-color: rgba(255,255,255,0.1);">
     <table class="front">
         <tr class="spaceUnder">
             <br>
-            <h2 style="font-size:48px;">Welcome to the Parenting Playbook!</h2></tr><br>
+            <h2>Welcome to the Parenting Playbook!</h2></tr><br>
 
         <tr class="spaceUnder">
             <p>We are a community of parents dedicated to sharing strategies to improve the executive
                 functioning skills of our neurodivergent children!</p></tr>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Go to the top</button>
         <tr>
             <hr class="dotted">
             <h3>Parenting Playbook Information</h3><br>
@@ -57,12 +58,12 @@
 
             <br>
         <tr class="spaceUnder">
-            <p style="text-align:center;"><a th:href="@{'/register'}" class="btn btn-outline" style="color:black;">
+            <p style="text-align:center;"><a th:href="@{'/register'}" class="btn btn-outline" style="color:black;font-size:17px;">
                 Join the Parenting Playbook Community</a></p>
         </tr><br>
         <hr class="dotted">
         <tr class="spaceUnder">
-            <h3><b>Not sure where to start and have 5-10 minutes to spare?</b></h3><br>
+            <h3>Not sure where to start and have 5-10 minutes to spare?</h3><br>
             <p>Take our questionnaire to determine in which domains your child may benefit from additional supports.</p></tr>
         <br>
         <tr class="spaceUnder">
@@ -85,7 +86,7 @@
         </tr>
         <tr>
             <p style="text-align:center;">
-                <button class="btn btn-outline btn-sm" role="button" th:each="tag : ${tags}" style="margin:10px;">
+                <button class="btn btn-outline-btn-sm" role="button" th:each="tag : ${tags}" style="margin:10px;">
                     <a th:href="@{'tags/view/' + ${tag.id}}" th:text="${tag.tagName}" style="color:black;"></a>
                 </button>
             </p></tr>
@@ -95,6 +96,28 @@
 <div class="footer">
     <p></p>
 </div>
+
+<script>
+
+mybutton = document.getElementById("myBtn");
+
+
+window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
 </body>
 </html>
 
