@@ -2,11 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
+<<<<<<< HEAD
+=======
 <body class="container  body-content">
 
 <h1 th:text="${'Strategy: ' + intervention.name}">Parenting Playbook</h1>
+>>>>>>> ced158d2151c7f2b07d8dfee2375ee4fd3858f62
 
+<body class="container body-content" style="position: relative">
 <nav th:replace="fragments :: page-header"></nav>
+
+<div class="fixedTop">
+    <h1 class="top-title" style="font-size: 4vw" th:text="${'Intervention: ' + intervention.name}">Parenting Playbook</h1>
+</div>
 
 <div class="edit-class">
 
@@ -74,21 +82,27 @@
 </div>
 
 <br><br>
+<h3>Latest Comment(s): </h3>
 <div>
-    <h3>Latest Comment(s): </h3>
-    <div class="container" style="background-color: rgba(255,255,255,0.1);">
-        <table class="table" style="color:white;">
+    <div style="background-color: rgba(255,255,255,0.1); border-radius: 5px">
+        <table class="table">
             <thead>
+<<<<<<< HEAD
+            <tr style="color: orange">
+<!--                <th>Intervention Name</th>-->
+                <th >User</th>
+=======
             <tr style="color: white;">
                 <th>Strategy Name</th>
                 <th>User</th>
+>>>>>>> ced158d2151c7f2b07d8dfee2375ee4fd3858f62
                 <th>Comment</th>
                 <th>Posted Date</th>
             </tr>
             </thead>
-            <tbody th:if="${intervention.comments} !=null" align="left">
+            <tbody th:if="${intervention.comments} !=null" align="left"  style="color:white;">
             <tr th:each="comment : ${intervention.comments}">
-                <td th:text="${intervention.name}"></td>
+<!--                <td th:text="${intervention.name}"></td>-->
                 <td th:text="${comment.user.username}"></td>
                 <td th:text="${comment.userInput}"></td>
                 <td th:text="${comment.postedDate}"></td>

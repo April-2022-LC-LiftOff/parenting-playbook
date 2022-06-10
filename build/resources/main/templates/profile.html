@@ -48,6 +48,41 @@
 <div class="container">
     <div data-src="content" class="hide" id="myContributions">
         <h3 style="margin-bottom: 15px">Posted comment(s): </h3>
+<<<<<<< HEAD
+        <div style="color: white; background-color: rgba(255,255,255,0.1); border-radius: 5px; padding: 0 25px 0 25px">
+            <table class="table myComment">
+                <thead class="commentTab" style="color: orange">
+                <tr>
+                    <th>Intervention Name</th>
+                    <th>Posted Date</th>
+                    <th>My comment</th>
+                    <th>Edit / Delete</th>
+                </tr>
+                </thead>
+                <tbody th:if="${user.comments} !=null" align="left">
+                <tr th:each="comment : ${user.comments}">
+                    <td th:text="${comment.intervention}"></td>
+                    <td th:text="${comment.postedDate}"></td>
+                    <td style="text-align:left" th:text="${comment}"></td>
+                    <td><a class="btn btn-info btn-sm" style="margin-bottom:15px;color:black;font-weight:bold;"
+                           th:href="@{'/editComment/' + ${comment.id}}">Edit</a>
+                        <a onclick="deleteComment()" type="button" class="btn btn-danger btn-sm"
+                           style="margin-bottom:15px;color:black;font-weight:bold;" th:href="@{'/delete/' + ${comment.id}}">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--                <h4 style="padding-top: 10px;" class="standout-center">Intervention Name:</h4>-->
+<!--                <h4 th:text="${comment.intervention}"></h4><br>-->
+<!--                <h4 class="standout-center">Posted Date :</h4>-->
+<!--                <h4 th:text="${comment.postedDate}"></h4><br>-->
+<!--                <h4 class="standout-center">Comment:</h4>-->
+<!--                <h4 style="text-align:justify; padding: 0 140px 15px 140px" th:text="${comment}"></h4><br>-->
+<!--                <a class="btn btn-info btn-sm" style="margin-bottom:15px;color:black;font-weight:bold;"-->
+<!--                   th:href="@{'/editComment/' + ${comment.id}}">Edit</a>-->
+<!--                <a onclick="deleteComment()" type="button" class="btn btn-danger btn-sm"-->
+<!--                   style="margin-bottom:15px;color:black;font-weight:bold;" th:href="@{'/delete/' + ${comment.id}}">Delete</a>-->
+=======
         <div th:each="comment : ${user.comments}" style="color: white; background-color: rgba(255,255,255,0.1);">
             <div>
                 <h4 style="padding-top: 10px;" class="standout-center">Strategy Name:</h4>
@@ -61,6 +96,7 @@
                 <a onclick="deleteComment()" type="button" class="btn btn-danger btn-lg"
                    style="margin-bottom:15px;color:black;font-weight:bold;" th:href="@{'/delete/' + ${comment.id}}">Delete</a>
             </div>
+>>>>>>> ced158d2151c7f2b07d8dfee2375ee4fd3858f62
         </div>
     </div>
 

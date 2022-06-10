@@ -672,4 +672,71 @@ table.faq {
   height: 120px;
   object-fit: contain;
 }
-/***************/
+
+
+@media screen and (max-width: 950px) {
+
+.myComment thead.commentTab {
+  display: none;
+}
+.myComment tbody td {
+  display: block;
+  text-align: right;
+}
+
+.myComment tbody td::before {
+  float: left;
+  margin-right: 3rem;
+  color: orange;
+}
+
+.myComment tbody td:first-child::before {
+  content: "Intervention:  ";
+}
+
+.myComment tbody td:nth-child(2)::before {
+  content: "Posted Date:  ";
+}
+
+.myComment tbody td:nth-child(3)::before {
+  content: "My Comment:  ";
+}
+}
+
+@media screen and (max-width: 950px) {
+
+.commentList thead.commentListTab {
+  display: none;
+}
+.commentList tbody td {
+  display: block;
+  text-align: right;
+}
+
+.commentList tbody td::before {
+  float: left;
+  margin-right: 3rem;
+  color: orange;
+}
+
+.commentList tbody td:first-child::before {
+  content: "User:  ";
+}
+
+.commentList tbody td:nth-child(2)::before {
+  content: "Comment :  ";
+}
+
+.commentList tbody td:nth-child(3)::before {
+  content: "Posted Date:  ";
+}
+}
+
+.fixedTop {
+ width: 100%;
+ position: sticky;
+ top: 50px;
+ background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,72,90,1) 60%, rgba(0,212,255,1) 100%);
+}
+
