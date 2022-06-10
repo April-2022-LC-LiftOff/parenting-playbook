@@ -10,7 +10,7 @@ import java.util.List;
 public class Intervention extends AbstractEntity{
 
     @NotBlank(message = "Name cannot be blank.")
-    @Size(min = 5, max = 255, message = "Name must be longer than 5 characters and not exceed 255 characters.")
+    @Size(min = 5, max = 50, message = "Name must be longer than 5 characters and not exceed 50 characters.")
     private String name;
 
     @NotBlank(message = "Action cannot be blank.")
