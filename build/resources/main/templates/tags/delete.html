@@ -15,8 +15,8 @@
             <label th:for="delete" class="editing-labels" style="text-decoration:underline;">Confirm Delete</label>
 
             <th:block>
-                <h4>Are you sure you want to delete the tag?</h4>
-                <input type="radio" name="delete" th:value="${0}">
+                <h2>Are you sure you want to delete the tag?</h2>
+                <input type="radio" name="delete" th:value="${0}" checked>
                 <label>No!</label>
                 <input type="radio" name="delete" th:value="${1}">
                 <label>Yes</label>
