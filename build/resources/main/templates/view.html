@@ -2,18 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
-<<<<<<< HEAD
-=======
+
 <body class="container  body-content">
 
-<h1 th:text="${'Strategy: ' + intervention.name}">Parenting Playbook</h1>
->>>>>>> ced158d2151c7f2b07d8dfee2375ee4fd3858f62
-
-<body class="container body-content" style="position: relative">
+<div class="container body-content" style="position: relative">
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="fixedTop">
-    <h1 class="top-title" style="font-size: 4vw" th:text="${'Intervention: ' + intervention.name}">Parenting Playbook</h1>
+    <h1 class="top-title" style="font-size: 4vw" th:text="${intervention.name}">Parenting Playbook</h1>
 </div>
 
 <div class="edit-class">
@@ -33,7 +29,7 @@
     <a th:if="${initialUser}" th:href="@{'/edit/expectedResponse/' + ${intervention.id}}" class="small-links">Edit
         Expected Response</a>
 
-<<<<<<< HEAD
+    <br>
     <p class="standout" style="margin-top:20px;">Reference: </p>
     <p th:if="${!detectReferenceURL}" th:text="${intervention.reference}"></p>
     <p th:remove="tag" th:utext="${clickableReferenceURL}"></p>
@@ -43,17 +39,6 @@
     <p class="standout" style="margin-top:20px;">If it fails, try: </p>
     <p th:if="${!detectIfItFailsURL}" th:text="${intervention.ifItFails}"></p>
     <p th:remove="tag" th:utext="${clickableIfItFailsURL}"></p>
-=======
-    <br>
-    <h4 class="standout" style="margin-top:20px;">Reference: </h4>
-    <p th:text="${intervention.reference}"></p>
-    <a th:if="${initialUser}" th:href="@{'/edit/reference/' + ${intervention.id}}" class="small-links">Edit
-        Reference</a>
-
-    <br>
-    <h4 class="standout" style="margin-top:20px;">If it fails, try: </h4>
-    <p th:text="${intervention.ifItFails}"></p>
->>>>>>> bf8a766c517836f1b7daa369aa83f1c054070a2a
     <a th:if="${initialUser}" th:href="@{'/edit/ifItFails/' + ${intervention.id}}" class="small-links">Edit If It
         Fails</a>
 
@@ -87,22 +72,14 @@
     <div style="background-color: rgba(255,255,255,0.1); border-radius: 5px">
         <table class="table">
             <thead>
-<<<<<<< HEAD
             <tr style="color: orange">
-<!--                <th>Intervention Name</th>-->
                 <th >User</th>
-=======
-            <tr style="color: white;">
-                <th>Strategy Name</th>
-                <th>User</th>
->>>>>>> ced158d2151c7f2b07d8dfee2375ee4fd3858f62
                 <th>Comment</th>
                 <th>Posted Date</th>
             </tr>
             </thead>
             <tbody th:if="${intervention.comments} !=null" align="left"  style="color:white;">
             <tr th:each="comment : ${intervention.comments}">
-<!--                <td th:text="${intervention.name}"></td>-->
                 <td th:text="${comment.user.username}"></td>
                 <td th:text="${comment.userInput}"></td>
                 <td th:text="${comment.postedDate}"></td>
@@ -184,5 +161,6 @@
  })();
 
 </script>
+</div>
 </body>
 </html>

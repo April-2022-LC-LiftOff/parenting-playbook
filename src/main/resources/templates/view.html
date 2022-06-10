@@ -5,14 +5,11 @@
 
 <body class="container  body-content">
 
-<h1 th:text="${'Strategy: ' + intervention.name}">Parenting Playbook</h1>
-
-
 <div class="container body-content" style="position: relative">
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="fixedTop">
-    <h1 class="top-title" style="font-size: 4vw" th:text="${'Intervention: ' + intervention.name}">Parenting Playbook</h1>
+    <h1 class="top-title" style="font-size: 4vw" th:text="${intervention.name}">Parenting Playbook</h1>
 </div>
 
 <div class="edit-class">
