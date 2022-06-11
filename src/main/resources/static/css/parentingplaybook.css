@@ -673,11 +673,19 @@ table.faq {
   object-fit: contain;
 }
 
+.myComment thead.commentTab {
+  font-family: 'Mulish', sans-serif;
+  font-weight: lighter;
+  color: darkorange;
+}
 
 @media screen and (max-width: 950px) {
 
 .myComment thead.commentTab {
   display: none;
+  font-family: 'Mulish', sans-serif;
+  font-weight: lighter;
+  color: darkorange;
 }
 .myComment tbody td {
   display: block;
@@ -687,11 +695,11 @@ table.faq {
 .myComment tbody td::before {
   float: left;
   margin-right: 3rem;
-  color: orange;
+  color: darkorange;
 }
 
 .myComment tbody td:first-child::before {
-  content: "Intervention:  ";
+  content: "Stragegies:  ";
 }
 
 .myComment tbody td:nth-child(2)::before {
@@ -703,11 +711,21 @@ table.faq {
 }
 }
 
+.commentList thead.commentListTab {
+  font-family: 'Mulish', sans-serif;
+  font-weight: lighter;
+  color: darkorange;
+}
+
 @media screen and (max-width: 950px) {
 
 .commentList thead.commentListTab {
   display: none;
+  font-family: 'Mulish', sans-serif;
+  font-weight: lighter;
+  color: darkorange;
 }
+
 .commentList tbody td {
   display: block;
   text-align: right;
@@ -729,6 +747,7 @@ table.faq {
 
 .commentList tbody td:nth-child(3)::before {
   content: "Posted Date:  ";
+  padding: 0 0 55px 0;
 }
 }
 

@@ -16,7 +16,7 @@
         <textarea rows="8" class="form-control count-chars" th:field="${comment.userInput}"
                   id="editComment" maxlength="1000" data-max-chars="1000" required="required"></textarea>
         <span th:errors="${comment.userInput}" class="error"></span>
-        <p style="color: orange;text-align:center;">Please limit your comment to less than 1000 characters.</p>
+        <p style="color: darkorange; text-align:center">Please limit your comment to less than 1000 characters.</p>
         <br>
         <button onclick="saveComment()" class="btn btn-info btn-lg"
                 style="margin-bottom:15px;color:black;font-weight:bold;" type="submit" value="Save">Save

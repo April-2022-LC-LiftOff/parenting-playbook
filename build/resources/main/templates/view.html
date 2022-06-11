@@ -69,20 +69,20 @@
 <br><br>
 <h3>Latest Comment(s): </h3>
 <div>
-    <div style="background-color: rgba(255,255,255,0.1); border-radius: 5px;">
-        <table class="table" style="font-size:20px;">
-            <thead>
-            <tr style="color: orange">
-                <th>User</th>
+    <div style="background-color: rgba(255,255,255,0.1); border-radius: 5px; padding: 10px 25px">
+        <table class="table commentList" style="font-size:20px;">
+            <thead class="commentListTab">
+            <tr>
+                <th style="padding: 0 10px 0 10px">User</th>
                 <th>Comment</th>
-                <th>Posted Date</th>
+                <th style="padding: 0 0 0 10px">Posted Date</th>
             </tr>
             </thead>
             <tbody th:if="${intervention.comments} !=null" align="left"  style="color:white;">
             <tr th:each="comment : ${intervention.comments}">
-                <td th:text="${comment.user.username}"></td>
-                <td th:text="${comment.userInput}"></td>
-                <td th:text="${comment.postedDate}"></td>
+                <td th:text="${comment.user.username}" style="padding: 0 10px 0 10px"></td>
+                <td th:text="${comment.userInput}" style="text-align:left"></td>
+                <td th:text="${comment.postedDate}" style="padding: 0 0 0 10px"></td>
             </tr>
             </tbody>
         </table>
@@ -110,7 +110,7 @@
                       placeholder="Have any thoughts?" style="font-size:20px;" maxlength="1000" data-max-chars="1000"
                       required="required"></textarea>
             <span th:errors="${comment.userInput}" class="error"></span>
-            <p style="color: orange">Please limit your comment to less than 1000 characters.</p>
+            <p style="color: darkorange; text-align: center">Please limit your comment to less than 1000 characters.</p>
             <br>
             <button class="btn btn-success btn-lg" type="submit">Add Comment</button>
     </form>

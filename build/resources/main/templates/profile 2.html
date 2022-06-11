@@ -49,9 +49,9 @@
     <div data-src="content" class="hide" id="myContributions">
         <h3 style="margin-bottom: 15px">Posted comment(s): </h3>
 
-        <div style="color: white; background-color: rgba(255,255,255,0.1); border-radius: 5px; padding: 0 25px">
+        <div style="color: white; background-color: rgba(255,255,255,0.1); border-radius: 5px; padding: 0 25px 0 25px">
             <table class="table myComment" style="font-size:18px;">
-                <thead class="commentTab">
+                <thead class="commentTab" style="color: orange">
                 <tr>
                     <th>Strategy Name</th>
                     <th>Posted Date</th>
@@ -59,18 +59,34 @@
                     <th>Edit / Delete</th>
                 </tr>
                 </thead>
-                <tbody th:if="${user.comments} !=null" align="left" style="color: white">
+                <tbody th:if="${user.comments} !=null" align="left">
                 <tr th:each="comment : ${user.comments}">
                     <td th:text="${comment.intervention}"></td>
                     <td th:text="${comment.postedDate}"></td>
                     <td style="text-align:left" th:text="${comment}"></td>
-                    <td style="padding: 5px 20px 20px 15px"><a class="btn btn-info btn-sm" style="margin-bottom:25px;color:black;font-weight:bold;"
+                    <td><a class="btn btn-info btn-sm" style="margin-bottom:15px;color:black;font-weight:bold;"
                            th:href="@{'/editComment/' + ${comment.id}}">Edit</a>
                         <a onclick="deleteComment()" type="button" class="btn btn-danger btn-sm"
-                           style="margin-bottom:25px;color:black;font-weight:bold;" th:href="@{'/delete/' + ${comment.id}}">Delete</a></td>
+                           style="margin-bottom:15px;color:black;font-weight:bold;" th:href="@{'/delete/' + ${comment.id}}">Delete</a></td>
                 </tr>
                 </tbody>
             </table>
+
+
+<!--        <div th:each="comment : ${user.comments}" style="color: white; background-color: rgba(255,255,255,0.1);">-->
+<!--            <div>-->
+<!--                <h4 style="padding-top: 10px;" class="standout-center">Strategy Name:</h4>-->
+<!--                <p th:text="${comment.intervention}" style="text-align:center;"></p><br>-->
+<!--                <h4 class="standout-center">Posted Date :</h4>-->
+<!--                <p th:text="${comment.postedDate}" style="text-align:center;"></p><br>-->
+<!--                <h4 class="standout-center">Comment:</h4>-->
+<!--                <p th:text="${comment}" style="text-align:center;"></p><br>-->
+<!--                <a class="btn btn-info btn-lg" style="margin-bottom:15px;color:black;font-weight:bold;"-->
+<!--                   th:href="@{'/editComment/' + ${comment.id}}">Edit</a>-->
+<!--                <a onclick="deleteComment()" type="button" class="btn btn-danger btn-lg"-->
+<!--                   style="margin-bottom:15px;color:black;font-weight:bold;" th:href="@{'/delete/' + ${comment.id}}">Delete</a>-->
+<!--            </div>-->
+
         </div>
     </div>
 
