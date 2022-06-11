@@ -64,10 +64,10 @@
                     <td th:text="${comment.intervention}"></td>
                     <td th:text="${comment.postedDate}"></td>
                     <td style="text-align:left" th:text="${comment}"></td>
-                    <td style="padding: 5px 20px 20px 15px"><a class="btn btn-info btn-sm" style="margin-bottom:25px;color:black;font-weight:bold;"
+                    <td><a class="btn btn-info btn-sm" style="margin: 4px 0 13px 0;color:black;font-weight:bold;"
                            th:href="@{'/editComment/' + ${comment.id}}">Edit</a>
                         <a onclick="deleteComment()" type="button" class="btn btn-danger btn-sm"
-                           style="margin-bottom:25px;color:black;font-weight:bold;" th:href="@{'/delete/' + ${comment.id}}">Delete</a></td>
+                           style="margin-bottom:10px;color:black;font-weight:bold;" th:href="@{'/delete/' + ${comment.id}}">Delete</a></td>
                 </tr>
                 </tbody>
             </table>

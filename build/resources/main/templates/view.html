@@ -69,20 +69,20 @@
 <br><br>
 <h3>Latest Comment(s): </h3>
 <div>
-    <div style="background-color: rgba(255,255,255,0.1); border-radius: 5px; padding: 15px 25px">
+    <div style="background-color: rgba(255,255,255,0.1); border-radius: 5px; padding: 20px 25px">
         <table class="table commentList" style="font-size:20px;">
             <thead class="commentListTab">
             <tr>
-                <th style="padding: 0 10px 0 10px">User</th>
+                <th style="padding: 0 50px 7px 7px">User</th>
                 <th>Comment</th>
-                <th style="padding: 0 0 0 10px">Posted Date</th>
+                <th style="padding: 0 50px 7px 7px">Posted Date</th>
             </tr>
             </thead>
             <tbody th:if="${intervention.comments} !=null" align="left"  style="color:white;">
             <tr th:each="comment : ${intervention.comments}">
-                <td th:text="${comment.user.username}" style="padding: 0 10px 0 10px"></td>
+                <td th:text="${comment.user.username}" style="padding: 7 20px 0 20px"></td>
                 <td th:text="${comment.userInput}" style="text-align:left"></td>
-                <td th:text="${comment.postedDate}" style="padding: 0 0 0 10px"></td>
+                <td th:text="${comment.postedDate}" style="padding: 7 20px 0 20px"></td>
             </tr>
             </tbody>
         </table>
