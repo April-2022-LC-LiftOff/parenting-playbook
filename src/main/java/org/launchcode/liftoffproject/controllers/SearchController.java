@@ -42,7 +42,7 @@ public class SearchController {
             interventions = InterventionData.findByColumnAndValue(searchType, searchTerm, interventionRepository.findAll());
         }
         model.addAttribute("columns", columnChoices);
-        model.addAttribute("title", "Interventions with " + columnChoices.get(searchType) + ": " + searchTerm);
+        model.addAttribute("title", "Strategies with " + columnChoices.get(searchType) + ": " + searchTerm);
         model.addAttribute("interventions", interventions);
 
         return "search";

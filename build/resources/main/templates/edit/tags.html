@@ -24,9 +24,9 @@
             <span th:text="${checkBoxErrorTag}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
-        <input type="submit" class="btn btn-info" style="margin-bottom:15px;color:black;font-weight:bold;"
+        <input type="submit" class="btn btn-info btn-lg" style="margin-bottom:15px;color:black;font-weight:bold;"
                value="Update Tags"/>
-        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info"
+        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info btn-lg"
                                                              style="margin-bottom:15px;color:black;font-weight:bold;"
                                                              value="Cancel Update"/></a>
     </form>

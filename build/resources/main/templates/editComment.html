@@ -7,18 +7,18 @@
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="count-container" align="center">
-    <h2 th:text="${comment.intervention}"></h2>
+    <h2 th:text="${comment.intervention}"></h2><br><br>
 
     <form method="post" class="form-group">
-        <label for="editComment" style="color:white; font-size:25px">Edit Comment: </label><br>
+        <label for="editComment" style="color:white;font-size:36px;">Edit Comment </label><br>
 
         <div class="remainingCharsMsg"></div>
-        <textarea rows="8" class="form-control count-chars" th:field="${comment.userInput}" id="editComment"
-                  maxlength="1000" data-max-chars="1000" required="required"></textarea>
+        <textarea rows="8" class="form-control count-chars" th:field="${comment.userInput}"
+                  id="editComment" maxlength="1000" data-max-chars="1000" required="required"></textarea>
         <span th:errors="${comment.userInput}" class="error"></span>
-        <h5 style="color: orange">Please limit your comment to less than 1000 characters.</h5>
+        <p style="color: orange;text-align:center;">Please limit your comment to less than 1000 characters.</p>
         <br>
-        <button onclick="saveComment()" class="btn btn-info btn-md"
+        <button onclick="saveComment()" class="btn btn-info btn-lg"
                 style="margin-bottom:15px;color:black;font-weight:bold;" type="submit" value="Save">Save
         </button>
     </form>
@@ -68,7 +68,7 @@
           let remainingChars = maxChars - valueLength;
 
           if(valueLength > maxChars) {
-              event.target.value = value.substr(0, maxChars);
+              event.target.value = value.substring(0, maxChars);
               return;
           }
           event.target.previousElementSibling.innerHTML = remainingChars + " characters remaining";

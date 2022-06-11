@@ -7,30 +7,30 @@
 
 <div class="container body-content">
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
-    <h2 class="centered" style="padding-bottom:20px;">View Interventions By Category</h2>
+    <h2 class="centered" style="padding-bottom:20px;">View Strategies By Category</h2>
 </div>
 
-<table class="parenting-playbook" style="padding-left:50px;margin-left:auto;margin-right:auto;">
+<table class="parenting-playbook">
     <tr>
-        <th>All</th>
-        <th>Domains</th>
-        <th>Tags</th>
+        <th style="padding-left:30px;">All</th>
+        <th style="padding-left:30px;">Domains</th>
+        <th style="padding-left:30px;">Tags</th>
     </tr>
 
     <tr>
         <td>
-            <li style="list-style-type: none;">
+            <li style="list-style-type: none;padding-left:10px;">
                 <a th:href="@{/list/interventions(column='All',value='View All')}">View All</a>
             </li>
         </td>
         <td>
-            <li th:each="domain : ${domains}" style="list-style-type: none;">
+            <li th:each="domain : ${domains}" style="list-style-type: none;padding-left:10px;">
                 <a th:href="@{/list/interventions(column=domain,value=${domain.domain})}"
                    th:text="${domain.domain}"></a>
             </li>
         </td>
         <td>
-            <li th:each="tag : ${tags}" style="list-style-type: none;">
+            <li th:each="tag : ${tags}" style="list-style-type:none; padding-left:10px;">
                 <a th:href="@{/list/interventions(column=tag,value=${tag.tagName})}" th:text="${tag.tagName}"></a>
             </li>
         </td>

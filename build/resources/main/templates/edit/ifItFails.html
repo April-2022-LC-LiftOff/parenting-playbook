@@ -10,21 +10,44 @@
     <form method="post" class="editing">
         <div class="form-group">
             <label th:for="ifItFails" class="editing-labels">If It Fails:</label>
-            <textarea rows="4" cols="50" name="ifItFails" class="form-control"
-                      th:text="${intervention.ifItFails}"></textarea>
+            <div class="remainingCharsMsg"></div>
+            <textarea rows="4" cols="50" name="ifItFails" class="form-control count-chars"
+                      style="font-size:18px;" th:text="${intervention.ifItFails}" maxlength="2000"
+                      data-max-chars="2000"></textarea>
             <br>
             <span th:text="${ifItFailsError}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
-        <input type="submit" class="btn btn-info" style="margin-bottom:15px;color:black;font-weight:bold;"
+        <input type="submit" class="btn btn-info btn-lg" style="margin-bottom:15px;color:black;font-weight:bold;"
                value="Update If It Fails"/>
-        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info"
+        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info btn-lg"
                                                              style="margin-bottom:15px;color:black;font-weight:bold;"
                                                              value="Cancel Update"/></a>
     </form>
 </div>
+
+
 <div class="footer">
     <p></p>
 </div>
+<script>
+(function() {
+document.addEventListener("keyup", function(event) {
+if (event.target.matches(".count-chars")) {
+
+let value = event.target.value;
+let valueLength = event.target.value.length;
+let maxChars = parseInt(event.target.getAttribute("data-max-chars"));
+let remainingChars = maxChars - valueLength;
+
+if(valueLength > maxChars) {
+event.target.value = value.substr(0, maxChars);
+return;
+}
+event.target.previousElementSibling.innerHTML = remainingChars + " characters remaining";
+}
+})
+})();
+</script>
 </body>
 </html>

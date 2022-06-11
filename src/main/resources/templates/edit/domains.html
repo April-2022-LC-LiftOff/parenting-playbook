@@ -14,8 +14,8 @@
             <th:block th:each="domain : ${domains}">
 
                 <th:block>
-                    <input type="checkbox" name="domains" th:value="${domain.id}" th:checked="${domain.checked}">
-                    <label th:text="${domain.domain}" th:title="${domain.description}"></label>
+                    <input type="checkbox" name="domains" th:value="${domain.id}" th:checked="${domain.checked}" style="font-size:24px;">
+                    <label th:text="${domain.domain}" th:title="${domain.description}" ></label>
                     <br>
                 </th:block>
 
@@ -25,13 +25,14 @@
             <br>
             <span th:text="${checkBoxError}" class="error" style="color:red;background-color:black;"></span>
         </div>
-        <input type="submit" class="btn btn-info" style="margin-bottom:15px;color:black;font-weight:bold;"
+        <input type="submit" class="btn btn-info btn-lg" style="margin-bottom:15px;color:black;font-weight:bold;"
                value="Update Domains"/>
-        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info"
+        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info btn-lg"
                                                              style="margin-bottom:15px;color:black;font-weight:bold;"
                                                              value="Cancel Update"/></a>
     </form>
-</div>
+    </div>
+
 <div class="footer">
     <p></p>
 </div>
