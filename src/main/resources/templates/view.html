@@ -73,16 +73,16 @@
         <table class="table commentList" style="font-size:20px;">
             <thead class="commentListTab">
             <tr>
-                <th style="padding: 0 50px 7px 7px">User</th>
+                <th style="padding: 0 10px 7px 10px">User</th>
                 <th>Comment</th>
-                <th style="padding: 0 50px 7px 7px">Posted Date</th>
+                <th style="padding: 0 10px 7px 10px">Posted Date</th>
             </tr>
             </thead>
             <tbody th:if="${intervention.comments} !=null" align="left"  style="color:white;">
             <tr th:each="comment : ${intervention.comments}">
-                <td th:text="${comment.user.username}" style="padding: 7 20px 0 20px"></td>
+                <td th:text="${comment.user.username}" style="padding: 7px 10px"></td>
                 <td th:text="${comment.userInput}" style="text-align:left"></td>
-                <td th:text="${comment.postedDate}" style="padding: 7 20px 0 20px"></td>
+                <td th:text="${comment.postedDate}" style="padding: 7px 10px 0 10px"></td>
             </tr>
             </tbody>
         </table>
@@ -95,7 +95,7 @@
     </span>
 <br>
 <div class="container" th:unless="${user}" style="color: white">
-    <h3>Login or join us to leave a comment!</h3>
+    <h3>Login or join us to leave a comment</h3>
 </div>
 <div class="container" th:if="${user} != null">
     <h3 style="color: white">Leave a Comment: </h3>

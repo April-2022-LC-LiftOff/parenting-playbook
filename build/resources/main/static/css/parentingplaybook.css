@@ -563,8 +563,8 @@ table.faq {
   .navbar-nav {
     position: absolute;
     right: 0px;
-    height: 94vh;
-    top: 6vh;
+    height: 93.7vh;
+    top: 5.3vh;
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(2,60,72,1) 60%, rgba(2,120,135,1) 100%);
     display: flex;
