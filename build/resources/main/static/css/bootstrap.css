@@ -5990,10 +5990,10 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: 'Mulish', sans-serif;
-  font-size: 20px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
   font-style: normal;
-  font-weight: lighter;
+  font-weight: normal;
   line-height: 1.42857143;
   text-align: left;
   text-align: start;

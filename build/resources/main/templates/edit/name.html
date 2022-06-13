@@ -12,11 +12,7 @@
             <label th:for="name" class="editing-labels">Name:</label>
             <div class="remainingCharsMsg"></div>
             <input type="text" name="name" class="form-control count-chars" th:value="${intervention.name}"
-<<<<<<< HEAD
-                   maxlength="50" data-max-chars="50" minLength="5" data-min-chars="5" required/>
-=======
                    style="font-size:18px;" maxlength="50" data-max-chars="50" minLength="5" data-min-chars="5" required/>
->>>>>>> 9b3af75b4f7c60f9f60f27ac445d46c7d9ac2849
             <br>
             <span th:text="${nameError}" class="error" style="color:red;background-color:black;"></span>
         </div>
