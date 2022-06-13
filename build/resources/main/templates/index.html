@@ -12,8 +12,16 @@
     <table class="front">
         <tr class="spaceUnder">
             <br>
-            <h2>Welcome to the Parenting Playbook!</h2></tr><br>
+            <h2>Welcome to the Parenting Playbook!</h2></tr>
+        <div style="text-align:center;">
+        <br>
+        <img th:src="@{images/FrontPageLogo.png}"
+        height="175px"
+        width="175px"/>
 
+        <br>
+            <br>
+        </div>
         <tr class="spaceUnder">
             <p>We are a community of parents dedicated to sharing strategies to improve the executive
                 functioning skills of our neurodivergent children!</p></tr>
@@ -48,6 +56,11 @@
             <li class="faqLiStyle">Dyslexia, Dyscalcula, and Dysgraphia</li>
             <li class="faqLiStyle">Intellectual disabilities</li>
         </tr>
+        <div style="text-align:center;">
+        <img th:src="@{images/Neurodiverse.png}"
+             height="75%"
+             width="75%"/>
+        <br><p style="font-size:12px;">Image Credit: https://www.geniuswithin.org/what-is-neurodiversity/</p></div>
         <hr class="dotted">
         <tr class="spaceUnder">
             <h3>Make an account with us! Account members can...</h3><br>
@@ -57,6 +70,7 @@
             <li class="faqLiStyle"> Add strategies to the database to help other parents</li>
 
             <br>
+
         <tr class="spaceUnder">
             <p style="text-align:center;"><a th:href="@{'/register'}" class="btn btn-outline" style="color:black;font-size:17px;">
                 Join the Parenting Playbook Community</a></p>
