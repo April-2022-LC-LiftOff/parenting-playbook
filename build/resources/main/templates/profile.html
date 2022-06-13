@@ -35,6 +35,8 @@
     <div>
         <br>
         <br>
+        <!--        set span to this position to navigate for comment page changes.-->
+        <span id="commentNav"></span>
         <button type="button" id="contributions" class="btn btn-info btn-lg" style="margin-bottom:15px;margin-right:15px;color:black;font-weight:bold;"
                data-tab="myContributions">My Contributions</button>
         <button type="button" id="interventions" class="btn btn-info btn-lg" style="margin-bottom:15px;color:black;font-weight:bold;"
@@ -70,22 +72,24 @@
                 </tbody>
             </table>
         </div>
-        <p th:text="${totalItems}" ></p>
-        <a th:if="${currentPage > 1}" th:href="@{'/profile/'}">First</a>
+        <h5 style="color: white">( Total comment: <span th:text="${totalItems}"></span> )</h5>
+        <a th:if="${currentPage > 1}" th:href="@{'/profile/' + '#commentNav'}">First</a>
         <span style="color: white" th:unless="${currentPage > 1}">First</span>
         &nbsp;
-        <a th:if="${currentPage > 1}" th:href="@{'/profile/page/' + ${currentPage - 1}}">Previous</a>
+        <a th:if="${currentPage > 1}" th:href="@{'/profile/page/' + ${currentPage - 1} + '#commentNav'}">Previous</a>
         <span style="color: white" th:unless="${currentPage > 1}">Previous</span>
         &nbsp;
+        &nbsp;
         <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-            <a th:if="${currentPage != i}" th:href="@{'/profile/page/' + ${i}}">[[${i}]]</a>
+            <a th:if="${currentPage != i}" th:href="@{'/profile/page/' + ${i} + '#commentNav'}">[[${i}]]</a>
             <span style="color: white" th:unless="${currentPage != i}">[[${i}]]</span>
         </span>
         &nbsp;
-        <a th:if="${currentPage < totalPages}" th:href="@{'/profile/page/' + ${currentPage + 1}}">Next</a>
+        &nbsp;
+        <a th:if="${currentPage < totalPages}" th:href="@{'/profile/page/' + ${currentPage + 1} + '#commentNav'}">Next</a>
         <span style="color: white" th:unless="${currentPage < totalPages}">Next</span>
         &nbsp;
-        <a th:if="${currentPage < totalPages}" th:href="@{'/profile/page/' + ${totalPages}}">Last</a>
+        <a th:if="${currentPage < totalPages}" th:href="@{'/profile/page/' + ${totalPages} + '#commentNav'}">Last</a>
         <span style="color: white" th:unless="${currentPage < totalPages}">Last</span>
     </div>
 

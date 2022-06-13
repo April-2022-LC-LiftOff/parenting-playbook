@@ -57,10 +57,10 @@
         <li th:each="tag : ${intervention.tags}" style="list-style-type: none;">
             <a th:href="@{'/tags/view/' + ${tag.id}}" th:text="${tag.tagName}"></a>
         </li>
-<!--        set span to this position to navigate for comment page changes.-->
-        <span id="comments"></span>
     </ul>
     <a th:if="${initialUser}" th:href="@{'/edit/tags/' + ${intervention.id}}" class="small-links">Edit Tags</a>
+    <!--        set span to this position to navigate for comment page changes.-->
+    <span id="comments"></span>
     <br>
 </div>
 <div>
@@ -70,7 +70,7 @@
 
 <br><br>
 <h3>Latest Comment(s): </h3>
-<div>
+<div th:unless="${comments.size} == 0">
     <div style="background-color: rgba(255,255,255,0.1); border-radius: 5px; padding: 20px 25px">
         <table class="table commentList" style="font-size:20px;">
             <thead class="commentListTab">
@@ -90,12 +90,13 @@
         </table>
     </div>
 
-    <p th:text="${totalItems}" ></p>
-    <a th:if="${currentPage > 1}" th:href="@{'/view/' + ${intervention.id}}">First</a>
+    <h5 style="color: white">( Total comment: <span th:text="${totalItems}"></span> )</h5>
+    <a th:if="${currentPage > 1}" th:href="@{'/view/' + ${intervention.id} + '#comments'}">First</a>
     <span style="color: white" th:unless="${currentPage > 1}">First</span>
     &nbsp;
-    <a th:if="${currentPage > 1}" th:href="@{'/view/' + ${intervention.id} + '/page/' + ${currentPage - 1}}">Previous</a>
+    <a th:if="${currentPage > 1}" th:href="@{'/view/' + ${intervention.id} + '/page/' + ${currentPage - 1} + '#comments'}">Previous</a>
     <span style="color: white" th:unless="${currentPage > 1}">Previous</span>
+    &nbsp;
     &nbsp;
     <span th:each="i: ${#numbers.sequence(1, totalPages)}">
         <a th:if="${currentPage != i}" th:href="@{'/view/' + ${intervention.id} + '/page/' + ${i} + '#comments'}">[[${i}]]</a>
@@ -103,10 +104,11 @@
     &nbsp;
     </span>
     &nbsp;
-    <a th:if="${currentPage < totalPages}" th:href="@{'/view/' + ${intervention.id} + '/page/' + ${currentPage + 1}}">Next</a>
+    &nbsp;
+    <a th:if="${currentPage < totalPages}" th:href="@{'/view/' + ${intervention.id} + '/page/' + ${currentPage + 1} + '#comments'}">Next</a>
     <span style="color: white" th:unless="${currentPage < totalPages}">Next</span>
     &nbsp;
-    <a th:if="${currentPage < totalPages}" th:href="@{'/view/' + ${intervention.id} + '/page/' + ${totalPages}}">Last</a>
+    <a th:if="${currentPage < totalPages}" th:href="@{'/view/' + ${intervention.id} + '/page/' + ${totalPages} + '#comments'}">Last</a>
     <span style="color: white" th:unless="${currentPage < totalPages}">Last</span>
 </div>
 <br>
@@ -133,36 +135,14 @@
             <span th:errors="${comment.userInput}" class="error"></span>
             <p style="color: darkorange; text-align: center">Please limit your comment to less than 1000 characters.</p>
             <br>
-            <button class="btn btn-success btn-lg" type="submit">Add Comment</button>
+        <button class="btn btn-success btn-lg" type="submit">Add Comment</button>
     </form>
     </div>
 </div>
 <div class="footer">
 </div>
+
 <script>
-    let navSlide = () => {
-    let burger = document.querySelector('.burger');
-    let nav = document.querySelector('.navbar-nav');
-    let navLinks = document.querySelectorAll('.navbar-nav li');
-
-
-    burger?.addEventListener('click', () => {
-        nav.classList.toggle('nav-active');
-
-        navLinks.forEach((link, index) => {
-            if(link.style.animation) {
-                link.style.animation = '';
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.1}s`;
-            }
-        });
-
-            burger.classList.toggle('toggle');
-        });
-    }
-
-    navSlide();
-
 (function() {
   document.addEventListener("keyup", function(event) {
     if (event.target.matches(".count-chars")) {
@@ -180,8 +160,8 @@
       }
    })
  })();
-
 </script>
+
 </div>
 </body>
 </html>

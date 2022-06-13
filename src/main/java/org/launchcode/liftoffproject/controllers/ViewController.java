@@ -110,4 +110,23 @@ public class ViewController {
         commentRepository.save(newComment);
         return "redirect:{interventionId}";
     }
+
+    @PostMapping("view/{interventionId}/page/{pageNum}")
+    public String processAddCommentFromPage(@ModelAttribute @Valid Comment newComment, Errors errors, Model model,
+                                    @PathVariable int interventionId, HttpServletRequest request) {
+        User user = authenticationController.getUserFromSession(request.getSession());
+        model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
+        Optional optIntervention = interventionRepository.findById(interventionId);
+        Intervention intervention = (Intervention) optIntervention.get();
+        if (errors.hasErrors()) {
+            model.addAttribute("intervention", intervention);
+            return "view";
+        }
+
+        newComment.setUser(user);
+        newComment.setIntervention(intervention);
+        commentRepository.save(newComment);
+        return displayViewIntervention(model, interventionId, 1, request);
+    }
 }
