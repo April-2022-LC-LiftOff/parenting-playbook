@@ -8,20 +8,10 @@
 
 <h1>Executive Functioning Domains</h1>
 
-<!--<table class="parenting-playbook" th:each="domain : ${domains}">-->
-<!--    <tr>-->
-<!--        <td>-->
-<!--            <p class="standout">Domain: </p>-->
-<!--                <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}" style="padding-left:30px;"></a></p>-->
-<!--            <p class="standout" >Description: </p>-->
-<!--            <p th:text="${domain.description}"></p>-->
-<!--        </td>-->
-<!--        </tr>-->
-<!--    </table>-->
 <table class="domainList">
     <tr>
-        <th style="padding-left:40px;margin-bottom:10px;" class="trClass">Domains</th>
-        <th style="padding-left:40px;margin-bottom:10px;" class="trClass">Descriptions</th>
+        <th class="thClass">Domains</th>
+        <th class="thClass">Descriptions</th>
     </tr>
     <tr th:each="domain : ${domains}" class="trClass">
         <td class="trClass">
@@ -35,20 +25,6 @@
     </tr>
 </table>
 
-<!--<th scope="col" style="padding-left:40px;">Domains</th>-->
-<!--<th scope="col" style="padding-left:40px;">Descriptions</th>-->
-<!--</tr>-->
-<!--<tr th:each="domain : ${domains}">-->
-<!--    <td scope="col">-->
-<!--        <ul > <a th:href="@{'/domains/view/' + ${domain.id}}" th:text="${domain.domain}"></a>-->
-<!--        </ul>-->
-<!--    </td>-->
-<!--    <td scope="col">-->
-<!--        <ul th:text="${domain.description}">-->
-<!--        </ul>-->
-<!--    </td>-->
-<!--</tr>-->
-<!--</table>-->
 
 <div class="footer">
 </div>

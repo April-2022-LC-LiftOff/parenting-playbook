@@ -12,25 +12,23 @@
             <label th:for="tags" class="editing-labels">Tags:</label>
             <br>
             <th:block th:each="tag : ${tags}">
-                <th:block th:each="ta : ${intervention.tags}">
-                    <th:block th:if="${tag.id != ta.id}">
-                        <input type="checkbox" name="tag" th:value="${tag.id}">
-                        <label th:text="${tag.tagName}"></label>
-                        <br>
-                    </th:block>
-                    <th:block th:if="${tag.id == ta.id}">
-                        <input type="checkbox" name="tag" checked="checked" th:value="${tag.id}">
-                        <label th:text="${tag.tagName}"></label>
-                        <br>
-                    </th:block>
+
+                <th:block>
+                    <input type="checkbox" name="tag" th:value="${tag.id}" th:checked="${tag.checked}">
+                    <label th:text="${tag.tagName}"></label>
+                    <br>
                 </th:block>
+
             </th:block>
             <br>
             <span th:text="${checkBoxErrorTag}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
-        <input type="submit" class="btn-primary" value="Update Tags"/>
-        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn-info" value="Cancel Update"/></a>
+        <input type="submit" class="btn btn-info btn-lg" style="margin-bottom:15px;color:black;font-weight:bold;"
+               value="Update Tags"/>
+        <a th:href="@{'/view/' + ${intervention.id}}"><input type="button" class="btn btn-info btn-lg"
+                                                             style="margin-bottom:15px;color:black;font-weight:bold;"
+                                                             value="Cancel Update"/></a>
     </form>
 </div>
 <div class="footer">
