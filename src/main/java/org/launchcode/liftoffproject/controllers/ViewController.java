@@ -6,7 +6,9 @@ import org.launchcode.liftoffproject.models.Comment;
 import org.launchcode.liftoffproject.models.HelperMethods;
 import org.launchcode.liftoffproject.models.Intervention;
 import org.launchcode.liftoffproject.models.User;
+import org.launchcode.liftoffproject.services.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -31,8 +34,12 @@ public class ViewController {
     @Autowired
     private AuthenticationController authenticationController;
 
-    @GetMapping("view/{interventionId}")
-    public String displayViewIntervention(Model model, @PathVariable int interventionId, HttpServletRequest request) {
+    @Autowired
+    private CommentService commentService;
+
+    @GetMapping("view/{interventionId}/page/{pageNum}")
+
+    public String displayViewIntervention(Model model, @PathVariable int interventionId, @PathVariable int pageNum, HttpServletRequest request) {
         Optional optIntervention = interventionRepository.findById(interventionId);
         if (optIntervention.isPresent()) {
             Intervention intervention = (Intervention) optIntervention.get();
@@ -56,8 +63,16 @@ public class ViewController {
             model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
             Comment comment = new Comment();
 
+            Page<Comment> page = commentService.getInterventionComments(interventionId, pageNum, "id", "Desc");
+            List<Comment> listComments = page.getContent();
+            model.addAttribute("comments", listComments);
+            model.addAttribute("currentPage", pageNum);
+            model.addAttribute("totalPages", page.getTotalPages());
+            model.addAttribute("totalItems", page.getTotalElements());
+
             if (user != null) {
-                model.addAttribute("comments", commentRepository.findCommentByInterventionIdAndUserId(interventionId, user.getId()));
+//                model.addAttribute("comments",
+//                        commentRepository.findCommentByInterventionIdAndUserId(interventionId, user.getId()));
                 if (user == intervention.getUser()) {
                     model.addAttribute("initialUser", true);
                 }
@@ -70,6 +85,11 @@ public class ViewController {
         } else {
             return "redirect:../";
         }
+    }
+
+    @GetMapping("view/{interventionId}")
+    public String displayInitialIntervention(Model model, @PathVariable int interventionId, HttpServletRequest request) {
+        return displayViewIntervention(model, interventionId, 1, request);
     }
 
     @PostMapping("view/{interventionId}")

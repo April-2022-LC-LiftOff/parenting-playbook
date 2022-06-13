@@ -12,7 +12,7 @@
     <div class="row align-items-left" style="padding-top:40px;">
         <!--                <div class="text-justify text-left">-->
         <div class="col">
-            <img class="profile-icon" th:src="@{images/parentingplaybook.png}"/>
+            <img class="profile-icon" th:src="@{/images/parentingplaybook.png}"/>
         </div>
         <div class="col">
             <h4 th:text="${user.firstName + ' ' + user.lastName}"></h4>
@@ -43,10 +43,8 @@
 
 </div>
 
-
-
 <div class="container">
-    <div data-src="content" class="hide" id="myContributions">
+    <div data-src="content" id="myContributions">
         <h3 style="margin-bottom: 15px">Posted comment(s): </h3>
 
         <div style="color: white; background-color: rgba(255,255,255,0.1); border-radius: 5px; padding: 15px 25px">
@@ -59,8 +57,8 @@
                     <th>Edit / Delete</th>
                 </tr>
                 </thead>
-                <tbody th:if="${user.comments} !=null" align="left" style="color: white">
-                <tr th:each="comment : ${user.comments}">
+                <tbody th:if="${comments} !=null" align="left" style="color: white">
+                <tr th:each="comment : ${comments}">
                     <td th:text="${comment.intervention}"></td>
                     <td th:text="${comment.postedDate}"></td>
                     <td style="text-align:left" th:text="${comment}"></td>
@@ -72,6 +70,23 @@
                 </tbody>
             </table>
         </div>
+        <p th:text="${totalItems}" ></p>
+        <a th:if="${currentPage > 1}" th:href="@{'/profile/'}">First</a>
+        <span style="color: white" th:unless="${currentPage > 1}">First</span>
+        &nbsp;
+        <a th:if="${currentPage > 1}" th:href="@{'/profile/page/' + ${currentPage - 1}}">Previous</a>
+        <span style="color: white" th:unless="${currentPage > 1}">Previous</span>
+        &nbsp;
+        <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+            <a th:if="${currentPage != i}" th:href="@{'/profile/page/' + ${i}}">[[${i}]]</a>
+            <span style="color: white" th:unless="${currentPage != i}">[[${i}]]</span>
+        </span>
+        &nbsp;
+        <a th:if="${currentPage < totalPages}" th:href="@{'/profile/page/' + ${currentPage + 1}}">Next</a>
+        <span style="color: white" th:unless="${currentPage < totalPages}">Next</span>
+        &nbsp;
+        <a th:if="${currentPage < totalPages}" th:href="@{'/profile/page/' + ${totalPages}}">Last</a>
+        <span style="color: white" th:unless="${currentPage < totalPages}">Last</span>
     </div>
 
     <div data-src="content" class="hide" id="mySavedInterventions">
@@ -104,8 +119,7 @@
         <!--            </div>-->
     </div>
 
-    <script src="js/profile.js"></script>
-
+    <script th:src="@{/js/profile.js}"></script>
     <div class="footer">
     </div>
 
