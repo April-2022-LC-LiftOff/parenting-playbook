@@ -12,7 +12,7 @@
     <div class="row align-items-left" style="padding-top:40px;">
         <!--                <div class="text-justify text-left">-->
         <div class="col">
-            <img class="profile-icon" th:src="@{images/parentingplaybook.png}"/>
+            <img class="profile-icon" th:src="@{/images/parentingplaybook.png}"/>
         </div>
         <div class="col">
             <h4 th:text="${user.firstName + ' ' + user.lastName}"></h4>
@@ -35,6 +35,8 @@
     <div>
         <br>
         <br>
+        <!--        set span to this position to navigate for comment page changes.-->
+        <span id="commentNav"></span>
         <button type="button" id="contributions" class="btn btn-info btn-lg" style="margin-bottom:15px;margin-right:15px;color:black;font-weight:bold;"
                data-tab="myContributions">My Contributions</button>
         <button type="button" id="interventions" class="btn btn-info btn-lg" style="margin-bottom:15px;color:black;font-weight:bold;"
@@ -43,15 +45,13 @@
 
 </div>
 
-
-
 <div class="container">
-    <div data-src="content" class="hide" id="myContributions">
+    <div data-src="content" id="myContributions">
         <h3 style="margin-bottom: 15px">Posted comment(s): </h3>
 
-        <div style="color: white; background-color: rgba(255,255,255,0.1); border-radius: 5px; padding: 0 25px 0 25px">
+        <div style="color: white; background-color: rgba(255,255,255,0.1); border-radius: 5px; padding: 15px 25px">
             <table class="table myComment" style="font-size:18px;">
-                <thead class="commentTab" style="color: orange">
+                <thead class="commentTab">
                 <tr>
                     <th>Strategy Name</th>
                     <th>Posted Date</th>
@@ -59,35 +59,38 @@
                     <th>Edit / Delete</th>
                 </tr>
                 </thead>
-                <tbody th:if="${user.comments} !=null" align="left">
-                <tr th:each="comment : ${user.comments}">
+                <tbody th:if="${comments} !=null" align="left" style="color: white">
+                <tr th:each="comment : ${comments}">
                     <td th:text="${comment.intervention}"></td>
                     <td th:text="${comment.postedDate}"></td>
                     <td style="text-align:left" th:text="${comment}"></td>
-                    <td><a class="btn btn-info btn-sm" style="margin-bottom:15px;color:black;font-weight:bold;"
+                    <td><a class="btn btn-info btn-sm" style="margin: 4px 0 13px 0;color:black;font-weight:bold;"
                            th:href="@{'/editComment/' + ${comment.id}}">Edit</a>
                         <a onclick="deleteComment()" type="button" class="btn btn-danger btn-sm"
-                           style="margin-bottom:15px;color:black;font-weight:bold;" th:href="@{'/delete/' + ${comment.id}}">Delete</a></td>
+                           style="margin-bottom:10px;color:black;font-weight:bold;" th:href="@{'/delete/' + ${comment.id}}">Delete</a></td>
                 </tr>
                 </tbody>
             </table>
-
-
-<!--        <div th:each="comment : ${user.comments}" style="color: white; background-color: rgba(255,255,255,0.1);">-->
-<!--            <div>-->
-<!--                <h4 style="padding-top: 10px;" class="standout-center">Strategy Name:</h4>-->
-<!--                <p th:text="${comment.intervention}" style="text-align:center;"></p><br>-->
-<!--                <h4 class="standout-center">Posted Date :</h4>-->
-<!--                <p th:text="${comment.postedDate}" style="text-align:center;"></p><br>-->
-<!--                <h4 class="standout-center">Comment:</h4>-->
-<!--                <p th:text="${comment}" style="text-align:center;"></p><br>-->
-<!--                <a class="btn btn-info btn-lg" style="margin-bottom:15px;color:black;font-weight:bold;"-->
-<!--                   th:href="@{'/editComment/' + ${comment.id}}">Edit</a>-->
-<!--                <a onclick="deleteComment()" type="button" class="btn btn-danger btn-lg"-->
-<!--                   style="margin-bottom:15px;color:black;font-weight:bold;" th:href="@{'/delete/' + ${comment.id}}">Delete</a>-->
-<!--            </div>-->
-
         </div>
+        <h5 style="color: white">( Total comment: <span th:text="${totalItems}"></span> )</h5>
+        <a th:if="${currentPage > 1}" th:href="@{'/profile/' + '#commentNav'}">First</a>
+        <span style="color: white" th:unless="${currentPage > 1}">First</span>
+        &nbsp;
+        <a th:if="${currentPage > 1}" th:href="@{'/profile/page/' + ${currentPage - 1} + '#commentNav'}">Previous</a>
+        <span style="color: white" th:unless="${currentPage > 1}">Previous</span>
+        &nbsp;
+        &nbsp;
+        <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+            <a th:if="${currentPage != i}" th:href="@{'/profile/page/' + ${i} + '#commentNav'}">[[${i}]]</a>
+            <span style="color: white" th:unless="${currentPage != i}">[[${i}]]</span>
+        </span>
+        &nbsp;
+        &nbsp;
+        <a th:if="${currentPage < totalPages}" th:href="@{'/profile/page/' + ${currentPage + 1} + '#commentNav'}">Next</a>
+        <span style="color: white" th:unless="${currentPage < totalPages}">Next</span>
+        &nbsp;
+        <a th:if="${currentPage < totalPages}" th:href="@{'/profile/page/' + ${totalPages} + '#commentNav'}">Last</a>
+        <span style="color: white" th:unless="${currentPage < totalPages}">Last</span>
     </div>
 
     <div data-src="content" class="hide" id="mySavedInterventions">
@@ -120,8 +123,7 @@
         <!--            </div>-->
     </div>
 
-    <script src="js/profile.js"></script>
-
+    <script th:src="@{/js/profile.js}"></script>
     <div class="footer">
     </div>
 

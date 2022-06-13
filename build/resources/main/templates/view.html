@@ -59,6 +59,8 @@
         </li>
     </ul>
     <a th:if="${initialUser}" th:href="@{'/edit/tags/' + ${intervention.id}}" class="small-links">Edit Tags</a>
+    <!--        set span to this position to navigate for comment page changes.-->
+    <span id="comments"></span>
     <br>
 </div>
 <div>
@@ -68,34 +70,55 @@
 
 <br><br>
 <h3>Latest Comment(s): </h3>
-<div>
-    <div style="background-color: rgba(255,255,255,0.1); border-radius: 5px;">
-        <table class="table" style="font-size:20px;">
-            <thead>
-            <tr style="color: orange">
-                <th>User</th>
+<div th:unless="${comments.size} == 0">
+    <div style="background-color: rgba(255,255,255,0.1); border-radius: 5px; padding: 20px 25px">
+        <table class="table commentList" style="font-size:20px;">
+            <thead class="commentListTab">
+            <tr>
+                <th style="padding: 0 10px 7px 10px">User</th>
                 <th>Comment</th>
-                <th>Posted Date</th>
+                <th style="padding: 0 10px 7px 10px">Posted Date</th>
             </tr>
             </thead>
-            <tbody th:if="${intervention.comments} !=null" align="left"  style="color:white;">
-            <tr th:each="comment : ${intervention.comments}">
-                <td th:text="${comment.user.username}"></td>
-                <td th:text="${comment.userInput}"></td>
-                <td th:text="${comment.postedDate}"></td>
+            <tbody th:if="${comments} !=null" align="left"  style="color:white;">
+            <tr th:each="comment : ${comments}">
+                <td th:text="${comment.user.username}" style="padding: 7px 10px"></td>
+                <td th:text="${comment.userInput}" style="text-align:left"></td>
+                <td th:text="${comment.postedDate}" style="padding: 7px 10px 0 10px"></td>
             </tr>
             </tbody>
         </table>
     </div>
+
+    <h5 style="color: white">( Total comment: <span th:text="${totalItems}"></span> )</h5>
+    <a th:if="${currentPage > 1}" th:href="@{'/view/' + ${intervention.id} + '#comments'}">First</a>
+    <span style="color: white" th:unless="${currentPage > 1}">First</span>
+    &nbsp;
+    <a th:if="${currentPage > 1}" th:href="@{'/view/' + ${intervention.id} + '/page/' + ${currentPage - 1} + '#comments'}">Previous</a>
+    <span style="color: white" th:unless="${currentPage > 1}">Previous</span>
+    &nbsp;
+    &nbsp;
+    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+        <a th:if="${currentPage != i}" th:href="@{'/view/' + ${intervention.id} + '/page/' + ${i} + '#comments'}">[[${i}]]</a>
+        <span style="color: white" th:unless="${currentPage != i}">[[${i}]]</span>
+    &nbsp;
+    </span>
+    &nbsp;
+    &nbsp;
+    <a th:if="${currentPage < totalPages}" th:href="@{'/view/' + ${intervention.id} + '/page/' + ${currentPage + 1} + '#comments'}">Next</a>
+    <span style="color: white" th:unless="${currentPage < totalPages}">Next</span>
+    &nbsp;
+    <a th:if="${currentPage < totalPages}" th:href="@{'/view/' + ${intervention.id} + '/page/' + ${totalPages} + '#comments'}">Last</a>
+    <span style="color: white" th:unless="${currentPage < totalPages}">Last</span>
 </div>
 <br>
 
-<span th:if="${intervention.comments.size} == 0" style="color: white;">
+<span th:if="${comments.size} == 0" style="color: white;">
         Be the first one to leave a comment!
     </span>
 <br>
 <div class="container" th:unless="${user}" style="color: white">
-    <h3>Login or join us to leave a comment!</h3>
+    <h3>Login or join us to leave a comment</h3>
 </div>
 <div class="container" th:if="${user} != null">
     <h3 style="color: white">Leave a Comment: </h3>
@@ -110,38 +133,16 @@
                       placeholder="Have any thoughts?" style="font-size:20px;" maxlength="1000" data-max-chars="1000"
                       required="required"></textarea>
             <span th:errors="${comment.userInput}" class="error"></span>
-            <p style="color: orange">Please limit your comment to less than 1000 characters.</p>
+            <p style="color: darkorange; text-align: center">Please limit your comment to less than 1000 characters.</p>
             <br>
-            <button class="btn btn-success btn-lg" type="submit">Add Comment</button>
+            <div th:action="${#comment}"><button class="btn btn-success btn-lg" type="submit">Add Comment</button></div>
     </form>
     </div>
 </div>
 <div class="footer">
 </div>
+
 <script>
-    let navSlide = () => {
-    let burger = document.querySelector('.burger');
-    let nav = document.querySelector('.navbar-nav');
-    let navLinks = document.querySelectorAll('.navbar-nav li');
-
-
-    burger?.addEventListener('click', () => {
-        nav.classList.toggle('nav-active');
-
-        navLinks.forEach((link, index) => {
-            if(link.style.animation) {
-                link.style.animation = '';
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.1}s`;
-            }
-        });
-
-            burger.classList.toggle('toggle');
-        });
-    }
-
-    navSlide();
-
 (function() {
   document.addEventListener("keyup", function(event) {
     if (event.target.matches(".count-chars")) {
@@ -159,8 +160,8 @@
       }
    })
  })();
-
 </script>
+
 </div>
 </body>
 </html>
