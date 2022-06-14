@@ -7,7 +7,7 @@
 
 <p th:unless="${tags} and ${tags.size()}">No Tags!</p>
 
-<table class="faq">
+<table class="tags">
     <tr>
         <th style="padding-left:40px;margin-bottom:10px;" class="trClass">Tags</th>
         <th th:if="${loggedIn && userExists}" style="padding-left:40px;margin-bottom:10px;" class="trClass">Delete</th>
