@@ -14,6 +14,8 @@
         <input class="form-control count-chars" th:field="${tag.tagName}"
                style="font-size:18px;" maxlength="50" data-max-chars="50"/>
         <span th:errors="${tag.tagName}" class="error" style="color:red;background-color:black;"></span>
+        <br>
+        <span th:text="${badWord}" class="error" style="color:red;background-color:black;"></span>
     </div>
 
     <input type="submit" value="Add Tag" class="btn btn-info btn-lg" style="margin-bottom:15px;color:black;font-weight:bold;"/>
