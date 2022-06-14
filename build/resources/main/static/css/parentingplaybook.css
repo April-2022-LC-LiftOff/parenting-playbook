@@ -1,4 +1,4 @@
-/*Body and font sizes */
+/*Body and font sizes -organized by size and orientation on the page*/
 body {
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(2,60,72,1) 60%, rgba(2,120,135,1) 100%);
@@ -156,16 +156,9 @@ hr.dotted {
 }
 
 
-/*Links*/
+/*Links -sorted by normal links to custom links*/
 
-a:link {
-    color: darkorange;
-    font-family: 'Mulish', sans-serif;
-    font-weight: lighter;
-    overflow-wrap: anywhere;
-}
-
-a:visited {
+a:active {
     color: darkorange;
     font-family: 'Mulish', sans-serif;
     font-weight: lighter;
@@ -179,7 +172,14 @@ a:hover {
     overflow-wrap: anywhere;
 }
 
-a:active {
+a:link {
+    color: darkorange;
+    font-family: 'Mulish', sans-serif;
+    font-weight: lighter;
+    overflow-wrap: anywhere;
+}
+
+a:visited {
     color: darkorange;
     font-family: 'Mulish', sans-serif;
     font-weight: lighter;
@@ -205,22 +205,29 @@ a.small-links {
     overflow-wrap: anywhere;
 }
 
+a.shrink-links {
+    font-family: 'Mulish', sans-serif;
+    font-size: 80%;
+    font-weight: lighter;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
 
-/*divs and classes for divs*/
 
-div.parenting-playbook {
-    border: 1px solid #FFFFFF;
-    border-bottom: solid 1px white;
+/*divs and classes for divs- organized alphabetically by specific div then regular classes*/
+
+div.delete {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
     font-family: 'Mulish', sans-serif;
     font-size: 22px;
     font-weight: lighter;
-    margin: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 120px;
     padding: calc(8px + 1.5625vw);
     width: 60%;
-}
-
-div.results {
-     padding: calc(8px + 1.5625vw);
 }
 
 div.edit-class {
@@ -237,6 +244,21 @@ div.edit-class {
     width: 60%;
 }
 
+div.parenting-playbook {
+    border: 1px solid #FFFFFF;
+    border-bottom: solid 1px white;
+    font-family: 'Mulish', sans-serif;
+    font-size: 22px;
+    font-weight: lighter;
+    margin: auto;
+    padding: calc(8px + 1.5625vw);
+    width: 60%;
+}
+
+div.results {
+     padding: calc(8px + 1.5625vw);
+}
+
 div.tags {
     background-color: rgba(255,255,255,0.1);
     color: white;
@@ -247,20 +269,6 @@ div.tags {
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
-    padding: calc(8px + 1.5625vw);
-    width: 60%;
-}
-
-div.delete {
-    background-color: rgba(255,255,255,0.1);
-    color: white;
-    font-family: 'Mulish', sans-serif;
-    font-size: 22px;
-    font-weight: lighter;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 120px;
     padding: calc(8px + 1.5625vw);
     width: 60%;
 }
@@ -289,17 +297,15 @@ div.topQuiz {
     width: 60%;
 }
 
-.editing {
+.addIntervention {
     color: white;
     font-family: 'Mulish', sans-serif;
     font-size: 22px;
     font-weight: lighter;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    max-width: 60%;
+    margin: auto;
     padding: calc(8px + 1.5625vw);
+    text-align: left;
+    width: 60%;
 }
 
 .delete {
@@ -312,15 +318,17 @@ div.topQuiz {
     padding: calc(8px + 1.5625vw);
 }
 
-.addIntervention {
+.editing {
     color: white;
     font-family: 'Mulish', sans-serif;
     font-size: 22px;
     font-weight: lighter;
-    margin: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    max-width: 60%;
     padding: calc(8px + 1.5625vw);
-    text-align: left;
-    width: 60%;
 }
 
 .quiz {
@@ -350,60 +358,7 @@ font-family: 'Mulish', sans-serif;
     }
 }
 
-/*Tables and classes for tables*/
-
-.mainTable {
-    border: 2px solid #FFFFFF;
-    color: #FFFFFF;
-    font-family: 'Mulish', sans-serif;
-    font-size: 20px;
-    font-weight: lighter;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
-    padding: 20px 20px;
-    text-align: left;
-    width: 50%;
-}
-
-table.domains-table  {
-    background-color: #ffffff
-    border: 2px solid white;
-    color: white;
-    font-family: 'Mulish', sans-serif;
-    font-size: 20px;
-    font-weight: lighter;
-    margin: auto;
-    padding: 20px;
-    text-align: left;
-    width: 50%;
-}
-
-table.parenting-playbook {
-      border: 1px solid #ffffff;
-      border-collapse: separate;
-      border-spacing: 0 15px;
-      color: #FFFFFF;
-      font-family: 'Mulish', sans-serif;
-      font-size: 20px;
-      font-weight: lighter;
-      margin: auto;
-      padding-bottom: 20px;
-      padding-left: 40px;
-      padding-right: 40px;
-      padding-top: 20px;
-      text-align: left;
-      table-layout: fixed;
-      width: 50%;
-}
-
-table.parenting-playbook.li {
-    padding-bottom: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    text-align: left;
-}
+/*Tables and classes for tables- organized alphabetically by table except for child elements*/
 
 .centeredTable {
     font-family: 'Mulish', sans-serif;
@@ -411,24 +366,6 @@ table.parenting-playbook.li {
     font-weight: lighter;
     margin-left: auto;
     margin-right: auto;
-}
-
-table.results {
-    border: 1px solid #ffffff;
-    border-collapse: separate;
-    border-spacing: 0 15px;
-    color: #FFFFFF;
-    font-family: 'Mulish', sans-serif;
-    font-size: 20px;
-    font-weight: lighter;
-    margin: auto;
-    padding-bottom: 10px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 10px;
-    table-layout: fixed;
-    text-align: left;
-    width: 50%;
 }
 
 table.domainList {
@@ -464,6 +401,52 @@ table.domainList {
     text-align: left;
 }
 
+table.domains-table  {
+    background-color: #ffffff
+    border: 2px solid white;
+    color: white;
+    font-family: 'Mulish', sans-serif;
+    font-size: 20px;
+    font-weight: lighter;
+    margin: auto;
+    padding: 20px;
+    text-align: left;
+    width: 50%;
+}
+
+table.faq {
+    border: 1px solid #ffffff;
+    border-collapse: separate;
+    border-spacing:0 15px;
+    color: #FFFFFF;
+    font-family: 'Mulish', sans-serif;
+    font-weight: lighter;
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+    text-align: left;
+    width: 60%;
+}
+
+.faq {
+    padding: auto;
+}
+
+.faqTextStyle {
+    padding-bottom: 5px;
+    text-align: left;
+ }
+
+.faqLiStyle {
+    padding: auto;
+    text-align: left;
+}
+
+.faqH3style {
+    padding-bottom: 10px;
+    text-align: center;
+}
+
 table.front {
     color: #FFFFFF;
     font-family: 'Mulish', sans-serif;
@@ -478,41 +461,60 @@ tr.spaceUnder>td {
     padding-bottom: 1em;
 }
 
-table.faq {
-    border: 1px solid #ffffff;
-    border-collapse: separate;
-    border-spacing:0 15px;
+.mainTable {
+    border: 2px solid #FFFFFF;
     color: #FFFFFF;
     font-family: 'Mulish', sans-serif;
     font-size: 20px;
     font-weight: lighter;
+    margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
+    max-width: 100%;
+    padding: 20px 20px;
+    text-align: left;
+    width: 50%;
+}
+
+table.parenting-playbook {
+      border: 1px solid #ffffff;
+      border-collapse: separate;
+      border-spacing: 0 15px;
+      color: #FFFFFF;
+      font-family: 'Mulish', sans-serif;
+      font-size: 20px;
+      font-weight: lighter;
+      margin: auto;
+      padding: auto;
+      text-align: left;
+      width: 60%;
+}
+
+table.parenting-playbook.li {
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: left;
+}
+
+table.results {
+    border: 1px solid #ffffff;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    color: #FFFFFF;
+    font-family: 'Mulish', sans-serif;
+    font-size: 20px;
+    font-weight: lighter;
+    margin: auto;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
     table-layout: fixed;
     text-align: left;
     width: 50%;
 }
 
-.faq {
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-.faqTextStyle {
-    padding-bottom: 5px;
-    text-align: left;
- }
-
-.faqLiStyle {
-    padding-bottom: 5px;
-    padding-left: 50px;
-    text-align: left;
-}
-
-.faqH3style {
-    padding-bottom: 10px;
-    text-align: center;
-}
 
 /*Nav Bar*/
 
@@ -669,13 +671,13 @@ table.faq {
     z-index: 99;
 }
 
+#myBtn:hover {
+  background-color: #4bb0fe;
+}
+
 #my_centered_buttons {
     display: flex;
     justify-content: center;
-}
-
-#myBtn:hover {
-  background-color: #4bb0fe;
 }
 
 /********** ADDED BY AMANDA*********/
@@ -684,6 +686,8 @@ table.faq {
   height: 120px;
   object-fit: contain;
 }
+
+/*CSS for comment feature*/
 
 .myComment thead.commentTab {
   font-family: 'Mulish', sans-serif;
@@ -762,6 +766,8 @@ table.faq {
   padding: 0 0 55px 0;
 }
 }
+
+/*CSS for fixed top*/
 
 .fixedTop {
  width: 100%;
