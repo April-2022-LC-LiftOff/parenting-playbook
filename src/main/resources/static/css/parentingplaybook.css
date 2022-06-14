@@ -1,4 +1,4 @@
-/*Body and font sizes */
+/*Body and font sizes -organized by size and orientation on the page*/
 body {
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(2,60,72,1) 60%, rgba(2,120,135,1) 100%);
@@ -156,30 +156,34 @@ hr.dotted {
 }
 
 
-/*Links*/
+/*Links -sorted by normal links to custom links*/
 
-a:link {
+a:active {
     color: darkorange;
     font-family: 'Mulish', sans-serif;
     font-weight: lighter;
-}
-
-a:visited {
-    color: darkorange;
-    font-family: 'Mulish', sans-serif;
-    font-weight: lighter;
+    overflow-wrap: anywhere;
 }
 
 a:hover {
     color: limegreen;
     font-family: 'Mulish', sans-serif;
     font-weight: lighter;
+    overflow-wrap: anywhere;
 }
 
-a:active {
+a:link {
     color: darkorange;
     font-family: 'Mulish', sans-serif;
     font-weight: lighter;
+    overflow-wrap: anywhere;
+}
+
+a:visited {
+    color: darkorange;
+    font-family: 'Mulish', sans-serif;
+    font-weight: lighter;
+    overflow-wrap: anywhere;
 }
 
 a.big-links-profile {
@@ -187,6 +191,7 @@ a.big-links-profile {
     font-size: 40px;
     font-weight: lighter;
     text-align: center;
+    overflow-wrap: anywhere;
 }
 
 a.small-links {
@@ -197,24 +202,24 @@ a.small-links {
     margin-left: 30px;
     margin-right: auto;
     text-align: left;
+    overflow-wrap: anywhere;
 }
 
 
-/*divs and classes for divs*/
+/*divs and classes for divs- organized alphabetically by specific div then regular classes*/
 
-div.parenting-playbook {
-    border: 1px solid #FFFFFF;
-    border-bottom: solid 1px white;
+div.delete {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
     font-family: 'Mulish', sans-serif;
     font-size: 22px;
     font-weight: lighter;
-    margin: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 120px;
     padding: calc(8px + 1.5625vw);
     width: 60%;
-}
-
-div.results {
-     padding: calc(8px + 1.5625vw);
 }
 
 div.edit-class {
@@ -231,6 +236,21 @@ div.edit-class {
     width: 60%;
 }
 
+div.parenting-playbook {
+    border: 1px solid #FFFFFF;
+    border-bottom: solid 1px white;
+    font-family: 'Mulish', sans-serif;
+    font-size: 22px;
+    font-weight: lighter;
+    margin: auto;
+    padding: calc(8px + 1.5625vw);
+    width: 60%;
+}
+
+div.results {
+     padding: calc(8px + 1.5625vw);
+}
+
 div.tags {
     background-color: rgba(255,255,255,0.1);
     color: white;
@@ -241,20 +261,6 @@ div.tags {
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
-    padding: calc(8px + 1.5625vw);
-    width: 60%;
-}
-
-div.delete {
-    background-color: rgba(255,255,255,0.1);
-    color: white;
-    font-family: 'Mulish', sans-serif;
-    font-size: 22px;
-    font-weight: lighter;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 120px;
     padding: calc(8px + 1.5625vw);
     width: 60%;
 }
@@ -283,17 +289,15 @@ div.topQuiz {
     width: 60%;
 }
 
-.editing {
+.addIntervention {
     color: white;
     font-family: 'Mulish', sans-serif;
     font-size: 22px;
     font-weight: lighter;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    max-width: 60%;
+    margin: auto;
     padding: calc(8px + 1.5625vw);
+    text-align: left;
+    width: 60%;
 }
 
 .delete {
@@ -306,15 +310,17 @@ div.topQuiz {
     padding: calc(8px + 1.5625vw);
 }
 
-.addIntervention {
+.editing {
     color: white;
     font-family: 'Mulish', sans-serif;
     font-size: 22px;
     font-weight: lighter;
-    margin: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    max-width: 60%;
     padding: calc(8px + 1.5625vw);
-    text-align: left;
-    width: 60%;
 }
 
 .quiz {
@@ -344,60 +350,7 @@ font-family: 'Mulish', sans-serif;
     }
 }
 
-/*Tables and classes for tables*/
-
-.mainTable {
-    border: 2px solid #FFFFFF;
-    color: #FFFFFF;
-    font-family: 'Mulish', sans-serif;
-    font-size: 20px;
-    font-weight: lighter;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
-    padding: 20px 20px;
-    text-align: left;
-    width: 50%;
-}
-
-table.domains-table  {
-    background-color: #ffffff
-    border: 2px solid white;
-    color: white;
-    font-family: 'Mulish', sans-serif;
-    font-size: 20px;
-    font-weight: lighter;
-    margin: auto;
-    padding: 20px;
-    text-align: left;
-    width: 50%;
-}
-
-table.parenting-playbook {
-      border: 1px solid #ffffff;
-      border-collapse: separate;
-      border-spacing: 0 15px;
-      color: #FFFFFF;
-      font-family: 'Mulish', sans-serif;
-      font-size: 20px;
-      font-weight: lighter;
-      margin: auto;
-      padding-bottom: 20px;
-      padding-left: 40px;
-      padding-right: 40px;
-      padding-top: 20px;
-      text-align: left;
-      table-layout: fixed;
-      width: 50%;
-}
-
-table.parenting-playbook.li {
-    padding-bottom: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    text-align: left;
-}
+/*Tables and classes for tables- organized alphabetically by table except for child elements*/
 
 .centeredTable {
     font-family: 'Mulish', sans-serif;
@@ -405,24 +358,6 @@ table.parenting-playbook.li {
     font-weight: lighter;
     margin-left: auto;
     margin-right: auto;
-}
-
-table.results {
-    border: 1px solid #ffffff;
-    border-collapse: separate;
-    border-spacing: 0 15px;
-    color: #FFFFFF;
-    font-family: 'Mulish', sans-serif;
-    font-size: 20px;
-    font-weight: lighter;
-    margin: auto;
-    padding-bottom: 10px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 10px;
-    table-layout: fixed;
-    text-align: left;
-    width: 50%;
 }
 
 table.domainList {
@@ -458,18 +393,17 @@ table.domainList {
     text-align: left;
 }
 
-table.front {
-    color: #FFFFFF;
+table.domains-table  {
+    background-color: #ffffff
+    border: 2px solid white;
+    color: white;
     font-family: 'Mulish', sans-serif;
     font-size: 20px;
     font-weight: lighter;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
+    padding: 20px;
     text-align: left;
-}
-
-tr.spaceUnder>td {
-    padding-bottom: 1em;
+    width: 50%;
 }
 
 table.faq {
@@ -506,6 +440,78 @@ table.faq {
 .faqH3style {
     padding-bottom: 10px;
     text-align: center;
+}
+
+table.front {
+    color: #FFFFFF;
+    font-family: 'Mulish', sans-serif;
+    font-size: 20px;
+    font-weight: lighter;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+tr.spaceUnder>td {
+    padding-bottom: 1em;
+}
+
+.mainTable {
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    font-family: 'Mulish', sans-serif;
+    font-size: 20px;
+    font-weight: lighter;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    padding: 20px 20px;
+    text-align: left;
+    width: 50%;
+}
+
+table.parenting-playbook {
+      border: 1px solid #ffffff;
+      border-collapse: separate;
+      border-spacing: 0 15px;
+      color: #FFFFFF;
+      font-family: 'Mulish', sans-serif;
+      font-size: 20px;
+      font-weight: lighter;
+      margin: auto;
+      padding-bottom: 20px;
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-top: 20px;
+      text-align: left;
+      table-layout: fixed;
+      width: 50%;
+}
+
+table.parenting-playbook.li {
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: left;
+}
+
+table.results {
+    border: 1px solid #ffffff;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    color: #FFFFFF;
+    font-family: 'Mulish', sans-serif;
+    font-size: 20px;
+    font-weight: lighter;
+    margin: auto;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    table-layout: fixed;
+    text-align: left;
+    width: 50%;
 }
 
 /*Nav Bar*/
@@ -667,12 +673,19 @@ table.faq {
   background-color: #4bb0fe;
 }
 
+#my_centered_buttons {
+    display: flex;
+    justify-content: center;
+}
+
 /********** ADDED BY AMANDA*********/
 .profile-icon {
   width: 120px;
   height: 120px;
   object-fit: contain;
 }
+
+/*CSS for comment feature*/
 
 .myComment thead.commentTab {
   font-family: 'Mulish', sans-serif;
@@ -751,6 +764,8 @@ table.faq {
   padding: 0 0 55px 0;
 }
 }
+
+/*CSS for fixed top*/
 
 .fixedTop {
  width: 100%;

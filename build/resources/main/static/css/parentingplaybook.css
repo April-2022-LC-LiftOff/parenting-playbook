@@ -162,24 +162,28 @@ a:link {
     color: darkorange;
     font-family: 'Mulish', sans-serif;
     font-weight: lighter;
+    overflow-wrap: anywhere;
 }
 
 a:visited {
     color: darkorange;
     font-family: 'Mulish', sans-serif;
     font-weight: lighter;
+    overflow-wrap: anywhere;
 }
 
 a:hover {
     color: limegreen;
     font-family: 'Mulish', sans-serif;
     font-weight: lighter;
+    overflow-wrap: anywhere;
 }
 
 a:active {
     color: darkorange;
     font-family: 'Mulish', sans-serif;
     font-weight: lighter;
+    overflow-wrap: anywhere;
 }
 
 a.big-links-profile {
@@ -187,6 +191,7 @@ a.big-links-profile {
     font-size: 40px;
     font-weight: lighter;
     text-align: center;
+    overflow-wrap: anywhere;
 }
 
 a.small-links {
@@ -197,6 +202,7 @@ a.small-links {
     margin-left: 30px;
     margin-right: auto;
     text-align: left;
+    overflow-wrap: anywhere;
 }
 
 
@@ -661,6 +667,11 @@ table.faq {
     position: fixed;
     right: 30px;
     z-index: 99;
+}
+
+#my_centered_buttons {
+    display: flex;
+    justify-content: center;
 }
 
 #myBtn:hover {

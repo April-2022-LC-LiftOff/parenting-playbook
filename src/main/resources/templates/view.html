@@ -63,26 +63,56 @@
     <!--        set span to this position to navigate for comment page changes.-->
     <span id="comments"></span>
     <br>
-
-    <input type="button" class="btn btn-primary btn-lg" value="Print this page" onClick="printDiv('print-content')">
+<!--    <h4 class="standout" style="margin-top:20px;">Share:</h4>-->
+<!--    &lt;!&ndash; AddToAny BEGIN &ndash;&gt;-->
+<!--    <div class="a2a_kit a2a_kit_size_32 a2a_default_style">-->
+<!--        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>-->
+<!--        <a class="a2a_button_facebook"></a>-->
+<!--        <a class="a2a_button_twitter"></a>-->
+<!--        <a class="a2a_button_email"></a>-->
+<!--        <a class="a2a_button_reddit"></a>-->
+<!--        <a class="a2a_button_linkedin"></a>-->
+<!--        <a class="a2a_button_copy_link"></a>-->
+<!--        <a class="a2a_button_sms"></a>-->
+<!--    </div>-->
+<!--    <script async src="https://static.addtoany.com/menu/page.js"></script>-->
+<!--    <br>-->
+<!--    <input type="button" class="btn btn-primary btn-lg" value="Print this page" onClick="printDiv('print-content')">-->
 </div>
+    <div style="float:auto;">
+        <h4 class="standout" style="margin-top:20px;text-align:center;">Share:</h4>-->
+            <div class="a2a_kit a2a_kit_size_32 a2a_default_style" id="my_centered_buttons">
+                <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                <a class="a2a_button_facebook"></a>
+                <a class="a2a_button_twitter"></a>
+                <a class="a2a_button_email"></a>
+                <a class="a2a_button_reddit"></a>
+                <a class="a2a_button_linkedin"></a>
+                <a class="a2a_button_copy_link"></a>
+                <a class="a2a_button_sms"></a>
+            </div>
+            <script async src="https://static.addtoany.com/menu/page.js"></script>
 
-<div class="centered">
-    <h4 class="standout" style="margin-top:20px;">Share:</h4>
-    <!-- AddToAny BEGIN -->
-    <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-        <a class="a2a_button_facebook"></a>
-        <a class="a2a_button_twitter"></a>
-        <a class="a2a_button_email"></a>
-        <a class="a2a_button_reddit"></a>
-        <a class="a2a_button_linkedin"></a>
-        <a class="a2a_button_copy_link"></a>
-        <a class="a2a_button_sms"></a>
+        <br><br>
+        <input type="button" class="btn btn-primary btn-lg" value="Print this page" onClick="printDiv('print-content')">
     </div>
-    <script async src="https://static.addtoany.com/menu/page.js"></script>
-    <!-- AddToAny END -->
-</div>
+
+<!--<div class="centered">-->
+<!--    <h4 class="standout" style="margin-top:20px;">Share:</h4>-->
+<!--    &lt;!&ndash; AddToAny BEGIN &ndash;&gt;-->
+<!--    <div class="a2a_kit a2a_kit_size_32 a2a_default_style">-->
+<!--        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>-->
+<!--        <a class="a2a_button_facebook"></a>-->
+<!--        <a class="a2a_button_twitter"></a>-->
+<!--        <a class="a2a_button_email"></a>-->
+<!--        <a class="a2a_button_reddit"></a>-->
+<!--        <a class="a2a_button_linkedin"></a>-->
+<!--        <a class="a2a_button_copy_link"></a>-->
+<!--        <a class="a2a_button_sms"></a>-->
+<!--    </div>-->
+<!--    <script async src="https://static.addtoany.com/menu/page.js"></script>-->
+<!--    &lt;!&ndash; AddToAny END &ndash;&gt;-->
+<!--</div>-->
 
 <div>
     <a th:if="${initialUser}" th:href="@{'/edit/delete/' + ${intervention.id}}" class="small-links">Delete
