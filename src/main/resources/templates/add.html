@@ -55,7 +55,7 @@
             <br>
             <span th:errors="${intervention.name}" class="error" style="color:red;background-color:black;"></span>
             <br>
-            <span th:text="${badWord}" class="error" style="color:red;background-color:black;"></span>
+            <span th:text="${nameBadWord}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
         <div class="form-group">
@@ -69,7 +69,7 @@
             <br>
             <span th:errors="${intervention.action}" class="error" style="color:red;background-color:black;"></span>
             <br>
-            <span th:text="${badWord}" class="error" style="color:red;background-color:black;"></span>
+            <span th:text="${actionBadWord}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
         <div class="form-group">
@@ -84,7 +84,7 @@
             <span th:errors="${intervention.expectedResponse}" class="error"
                   style="color:red;background-color:black;"></span>
             <br>
-            <span th:text="${badWord}" class="error" style="color:red;background-color:black;"></span>
+            <span th:text="${expectedResponseBadWord}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
         <div class="form-group">
@@ -93,7 +93,7 @@
                       style="font-size:20px;" maxlength="2000"/>
             <div id="referenceCounter" style="margin-top: 0.25rem; text-align: right">0</div>
             <br>
-            <span th:text="${badWord}" class="error" style="color:red;background-color:black;"></span>
+            <span th:text="${referenceBadWord}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
         <div class="form-group">
@@ -102,7 +102,7 @@
                       style="font-size:20px;" maxlength="2000"/>
             <div id="ifItFailsCounter" style="margin-top: 0.25rem; text-align: right">0</div>
             <br>
-            <span th:text="${badWord}" class="error" style="color:red;background-color:black;"></span>
+            <span th:text="${ifItFailsBadWord}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
         <br>

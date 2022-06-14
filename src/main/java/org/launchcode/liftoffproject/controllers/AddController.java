@@ -89,7 +89,7 @@ public class AddController {
             model.addAttribute("domains", domainRepository.findAll());
             model.addAttribute("tags", tagRepository.findAll());
             String str = "That is an inappropriate choice of vocabulary.";
-            model.addAttribute("badWord", str);
+            model.addAttribute("nameBadWord", str);
             return "add";
         }
 
@@ -98,7 +98,7 @@ public class AddController {
             model.addAttribute("domains", domainRepository.findAll());
             model.addAttribute("tags", tagRepository.findAll());
             String str = "That is an inappropriate choice of vocabulary.";
-            model.addAttribute("badWord", str);
+            model.addAttribute("actionBadWord", str);
             return "add";
         }
 
@@ -107,7 +107,7 @@ public class AddController {
             model.addAttribute("domains", domainRepository.findAll());
             model.addAttribute("tags", tagRepository.findAll());
             String str = "That is an inappropriate choice of vocabulary.";
-            model.addAttribute("badWord", str);
+            model.addAttribute("expectedResponseBadWord", str);
             return "add";
         }
 
@@ -116,7 +116,7 @@ public class AddController {
             model.addAttribute("domains", domainRepository.findAll());
             model.addAttribute("tags", tagRepository.findAll());
             String str = "That is an inappropriate choice of vocabulary.";
-            model.addAttribute("badWord", str);
+            model.addAttribute("referenceBadWord", str);
             return "add";
         }
 
@@ -125,7 +125,7 @@ public class AddController {
             model.addAttribute("domains", domainRepository.findAll());
             model.addAttribute("tags", tagRepository.findAll());
             String str = "That is an inappropriate choice of vocabulary.";
-            model.addAttribute("badWord", str);
+            model.addAttribute("ifItFailsBadWord", str);
             return "add";
         }
 

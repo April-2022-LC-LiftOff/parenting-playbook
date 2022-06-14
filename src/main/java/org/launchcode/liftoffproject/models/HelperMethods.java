@@ -133,11 +133,10 @@ public class HelperMethods {
         String[] parts = str.split("\\s+");
         ArrayList<String> badWords = new ArrayList<>();
 
-        File file = new File("src/main/resources/assets/ParentingPlaybookData - Book4.csv");
+        File file = new File("src/main/resources/assets/badWords.csv");
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
         String line = " ";
-        String[] tempArr;
         while ((line = br.readLine()) != null) {
             badWords.add(line);
         }
