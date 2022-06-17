@@ -1,9 +1,5 @@
 # tomh-group-repo
 
-## 🔹 Things to Note for this branch 🔹
-I used Spring Security for the login and registration features. We can revisit the default look at a later date.
-I still need to create the logout feature, which will be a link that takes you back to the homepage after logging you out.
-We also should discuss what a user's account page looks like.
 ## 🔹 Overview 🔹
 
 This project is a resource for parents to identify potential interventions and solutions to executive functioning concerns (e.g. issues with organization, staying on task, self-monitoring, self-management, etc.).
@@ -25,11 +21,10 @@ Users can also search for interventions based on student need without making an 
 ## 🔹 Technologies 🔹
 
 - Java
+- JavaScript
 - Spring Boot
+- Hibernate 
 - MySQL
-- Angular
-- TypeScript
-- JUnit/Jasmine
 - Bootstrap
 - HTML/CSS
 - Thymeleaf (fragments page)
@@ -37,9 +32,7 @@ Users can also search for interventions based on student need without making an 
 ## 🔹 What We'll Have to Learn 🔹
 
 - HTML/CSS for user profiles
-- How to create an API and use it to connect an Angular frontend to Java backend
 - Spring or 3rd party authentication
-- TDD in Spring
 - Using Agile methods to collaborate as a team to complete the project
 
 ## 🔹 Project Tracker 🔹
