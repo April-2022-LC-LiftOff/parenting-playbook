@@ -1,4 +1,4 @@
-# tomh-group-repo
+# Parenting Playbook Repo
 
 ## 🔹 Overview 🔹
 
@@ -25,18 +25,7 @@ Users can also search for interventions based on student need without making an 
 - Spring Boot
 - Hibernate 
 - MySQL
+- Hibernate
 - Bootstrap
 - HTML/CSS
 - Thymeleaf (fragments page)
-
-## 🔹 What We'll Have to Learn 🔹
-
-- HTML/CSS for user profiles
-- Spring or 3rd party authentication
-- Using Agile methods to collaborate as a team to complete the project
-
-## 🔹 Project Tracker 🔹
-
-[Trello](https://trello.com/b/DDDDSDj5/kanban-template)
-
-![Trello](https://user-images.githubusercontent.com/93892096/165012192-31bec16c-2b59-4860-9426-1c4a1ed4e2cf.png)
