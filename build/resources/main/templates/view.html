@@ -153,6 +153,7 @@
                       placeholder="Have any thoughts?" style="font-size:20px;" maxlength="1000" data-max-chars="1000"
                       required="required"></textarea>
             <span th:errors="${comment.userInput}" class="error"></span>
+            <span th:text="${commentBadWord}" class="error" style="color:red;background-color:black;"></span>
             <p style="color: darkorange; text-align: center">Please limit your comment to less than 1000 characters.</p>
             <br>
         <button class="btn btn-success btn-lg" type="submit">Add Comment</button>
