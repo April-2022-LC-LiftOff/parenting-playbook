@@ -4,16 +4,14 @@ import org.launchcode.liftoffproject.data.CommentRepository;
 import org.launchcode.liftoffproject.data.DomainRepository;
 import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.data.TagRepository;
-import org.launchcode.liftoffproject.models.Domain;
-import org.launchcode.liftoffproject.models.Intervention;
-import org.launchcode.liftoffproject.models.Tag;
-import org.launchcode.liftoffproject.models.User;
+import org.launchcode.liftoffproject.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,11 +60,19 @@ public class EditController {
     }
 
     @PostMapping("/name/{interventionId}")
-    public String processNameEdit(Model model, @PathVariable int interventionId, @RequestParam String name, HttpServletRequest request) {
+    public String processNameEdit(Model model, @PathVariable int interventionId, @RequestParam String name, HttpServletRequest request) throws IOException {
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
+
+        if (!HelperMethods.wordFilter(name)) {
+            model.addAttribute("intervention", intervention);
+            String str = "That is an inappropriate choice of vocabulary.";
+            model.addAttribute("badWord", str);
+            return "edit/name";
+        }
+
         if (name.length() < 5 || name.length() > 255) {
             model.addAttribute("intervention", intervention);
             String str = "Name must be longer than 5 characters and not exceed 255 characters.";
@@ -103,11 +109,19 @@ public class EditController {
     }
 
     @PostMapping("/action/{interventionId}")
-    public String processActionEdit(Model model, @PathVariable int interventionId, @RequestParam String action, HttpServletRequest request) {
+    public String processActionEdit(Model model, @PathVariable int interventionId, @RequestParam String action, HttpServletRequest request) throws IOException {
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
+
+        if (!HelperMethods.wordFilter(action)) {
+            model.addAttribute("intervention", intervention);
+            String str = "That is an inappropriate choice of vocabulary.";
+            model.addAttribute("badWord", str);
+            return "edit/action";
+        }
+
         if (action.length() < 20 || action.length() > 2000) {
             model.addAttribute("intervention", intervention);
             String str = "Action must be longer than 20 characters and not exceed 2000 characters.";
@@ -144,10 +158,18 @@ public class EditController {
     }
 
     @PostMapping("/expectedResponse/{interventionId}")
-    public String processExpectedResponseEdit(Model model, @PathVariable int interventionId, @RequestParam(required = false) String expectedResponse, HttpServletRequest request) {
+    public String processExpectedResponseEdit(Model model, @PathVariable int interventionId, @RequestParam(required = false) String expectedResponse, HttpServletRequest request) throws IOException {
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
+
+        if (!HelperMethods.wordFilter(expectedResponse)) {
+            model.addAttribute("intervention", intervention);
+            String str = "That is an inappropriate choice of vocabulary.";
+            model.addAttribute("badWord", str);
+            return "edit/expectedResponse";
+        }
+
         if (expectedResponse.length() < 20 || expectedResponse.length() > 2000) {
             model.addAttribute("intervention", intervention);
             String str = "Expected Response must be longer than 20 characters and not exceed 2000 characters.";
@@ -183,10 +205,18 @@ public class EditController {
     }
 
     @PostMapping("/reference/{interventionId}")
-    public String processReferenceEdit(Model model, @PathVariable int interventionId, @RequestParam String reference, HttpServletRequest request) {
+    public String processReferenceEdit(Model model, @PathVariable int interventionId, @RequestParam String reference, HttpServletRequest request) throws IOException {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
+        if (!HelperMethods.wordFilter(reference)) {
+            model.addAttribute("intervention", intervention);
+            String str = "That is an inappropriate choice of vocabulary.";
+            model.addAttribute("badWord", str);
+            return "edit/reference";
+        }
+
         if (reference.length() > 2000) {
             model.addAttribute("intervention", intervention);
             String str = "Reference must not exceed 2000 characters.";
@@ -223,10 +253,18 @@ public class EditController {
     }
 
     @PostMapping("/ifItFails/{interventionId}")
-    public String processIfItFailsEdit(Model model, @PathVariable int interventionId, @RequestParam String ifItFails, HttpServletRequest request) {
+    public String processIfItFailsEdit(Model model, @PathVariable int interventionId, @RequestParam String ifItFails, HttpServletRequest request) throws IOException {
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
+
+        if (!HelperMethods.wordFilter(ifItFails)) {
+            model.addAttribute("intervention", intervention);
+            String str = "That is an inappropriate choice of vocabulary.";
+            model.addAttribute("badWord", str);
+            return "edit/ifItFails";
+        }
+
         if (ifItFails.length() > 2000) {
             model.addAttribute("intervention", intervention);
             String str = "If It Fails must not exceed 2000 characters.";

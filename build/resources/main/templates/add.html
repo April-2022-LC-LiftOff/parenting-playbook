@@ -54,6 +54,8 @@
             <span id="nameLength" class="urgent"></span>
             <br>
             <span th:errors="${intervention.name}" class="error" style="color:red;background-color:black;"></span>
+            <br>
+            <span th:text="${nameBadWord}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
         <div class="form-group">
@@ -66,6 +68,8 @@
             <span id="actionLength" class="urgent"></span>
             <br>
             <span th:errors="${intervention.action}" class="error" style="color:red;background-color:black;"></span>
+            <br>
+            <span th:text="${actionBadWord}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
         <div class="form-group">
@@ -79,6 +83,8 @@
             <br>
             <span th:errors="${intervention.expectedResponse}" class="error"
                   style="color:red;background-color:black;"></span>
+            <br>
+            <span th:text="${expectedResponseBadWord}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
         <div class="form-group">
@@ -86,6 +92,8 @@
             <textarea rows="4" cols="50" id="reference" class="form-control" th:field="${intervention.reference}"
                       style="font-size:20px;" maxlength="2000"/>
             <div id="referenceCounter" style="margin-top: 0.25rem; text-align: right">0</div>
+            <br>
+            <span th:text="${referenceBadWord}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
         <div class="form-group">
@@ -93,6 +101,8 @@
             <textarea rows="4" cols="50" id="ifItFails" class="form-control" th:field="${intervention.ifItFails}"
                       style="font-size:20px;" maxlength="2000"/>
             <div id="ifItFailsCounter" style="margin-top: 0.25rem; text-align: right">0</div>
+            <br>
+            <span th:text="${ifItFailsBadWord}" class="error" style="color:red;background-color:black;"></span>
         </div>
 
         <br>

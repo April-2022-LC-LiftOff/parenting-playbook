@@ -23,6 +23,7 @@ Users can also search for interventions based on student need without making an 
 - Java
 - JavaScript
 - Spring Boot
+- Hibernate 
 - MySQL
 - Hibernate
 - Bootstrap

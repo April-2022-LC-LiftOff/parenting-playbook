@@ -7,12 +7,13 @@
 
 <div class="container body-content" style="position: relative">
 <nav th:replace="fragments :: page-header"></nav>
+    <script type="text/javascript" th:src="@{/js/printStrategy.js}"></script>
 
 <div class="fixedTop">
     <h1 class="top-title" style="font-size: 4vw" th:text="${intervention.name}">Parenting Playbook</h1>
 </div>
 
-<div class="edit-class">
+<div class="edit-class" id="print-content">
 
     <h4 class="standout" style="margin-top:20px;">Strategy Name: </h4>
     <p th:text="${intervention.name}"></p>
@@ -62,7 +63,26 @@
     <!--        set span to this position to navigate for comment page changes.-->
     <span id="comments"></span>
     <br>
+
 </div>
+    <div style="float:auto;">
+        <h4 class="standout" style="margin-top:20px;text-align:center;">Share:</h4>-->
+            <div class="a2a_kit a2a_kit_size_32 a2a_default_style" id="my_centered_buttons">
+                <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                <a class="a2a_button_facebook"></a>
+                <a class="a2a_button_twitter"></a>
+                <a class="a2a_button_email"></a>
+                <a class="a2a_button_reddit"></a>
+                <a class="a2a_button_linkedin"></a>
+                <a class="a2a_button_copy_link"></a>
+                <a class="a2a_button_sms"></a>
+            </div>
+            <script async src="https://static.addtoany.com/menu/page.js"></script>
+
+        <br><br>
+        <input type="button" class="btn btn-primary btn-lg" value="Print this page" onClick="printDiv('print-content')">
+    </div>
+
 <div>
     <a th:if="${initialUser}" th:href="@{'/edit/delete/' + ${intervention.id}}" class="small-links">Delete
         Strategy</a>
@@ -133,6 +153,7 @@
                       placeholder="Have any thoughts?" style="font-size:20px;" maxlength="1000" data-max-chars="1000"
                       required="required"></textarea>
             <span th:errors="${comment.userInput}" class="error"></span>
+            <span th:text="${commentBadWord}" class="error" style="color:red;background-color:black;"></span>
             <p style="color: darkorange; text-align: center">Please limit your comment to less than 1000 characters.</p>
             <br>
         <button class="btn btn-success btn-lg" type="submit">Add Comment</button>

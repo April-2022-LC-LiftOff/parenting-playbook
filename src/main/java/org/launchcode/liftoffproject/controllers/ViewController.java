@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -94,14 +95,52 @@ public class ViewController {
 
     @PostMapping("view/{interventionId}")
     public String processAddComment(@ModelAttribute @Valid Comment newComment, Errors errors, Model model,
-                                    @PathVariable int interventionId, HttpServletRequest request) {
+                                    @PathVariable int interventionId, HttpServletRequest request, @PathVariable(required = false) Integer pageNum) throws IOException {
         User user = authenticationController.getUserFromSession(request.getSession());
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
+        Boolean detectReferenceURL = HelperMethods.detectURL(intervention.getReference());
+        Boolean detectIfItFailsURL = HelperMethods.detectURL(intervention.getIfItFails());
+
         if (errors.hasErrors()) {
             model.addAttribute("intervention", intervention);
+            return "view";
+        }
+
+        if (!HelperMethods.wordFilter(newComment.getUserInput())) {
+            model.addAttribute("intervention", intervention);
+            model.addAttribute("detectReferenceURL", detectReferenceURL);
+            if (detectReferenceURL) {
+                String clickableReferenceURL = HelperMethods.clickableURL(intervention.getReference());
+                model.addAttribute("clickableReferenceURL", clickableReferenceURL);
+            }
+
+            model.addAttribute("detectIfItFailsURL", detectIfItFailsURL);
+            if (detectIfItFailsURL) {
+                String clickableIfItFailsURL = HelperMethods.clickableURL(intervention.getIfItFails());
+                model.addAttribute("clickableIfItFailsURL", clickableIfItFailsURL);
+            }
+
+            String str = "That is an inappropriate choice of vocabulary.";
+            model.addAttribute("commentBadWord", str);
+            Comment comment = new Comment();
+
+            if (pageNum == null) {
+                pageNum = 1;
+            }
+
+            Page<Comment> page = commentService.getInterventionComments(interventionId, pageNum, "id", "Desc");
+            List<Comment> listComments = page.getContent();
+            model.addAttribute("comments", listComments);
+            model.addAttribute("currentPage", pageNum);
+            model.addAttribute("totalPages", page.getTotalPages());
+            model.addAttribute("totalItems", page.getTotalElements());
+
+            model.addAttribute("comment", comment);
+            model.addAttribute("user", user);
+
             return "view";
         }
 
@@ -113,14 +152,52 @@ public class ViewController {
 
     @PostMapping("view/{interventionId}/page/{pageNum}")
     public String processAddCommentFromPage(@ModelAttribute @Valid Comment newComment, Errors errors, Model model,
-                                    @PathVariable int interventionId, HttpServletRequest request) {
+                                    @PathVariable int interventionId, HttpServletRequest request, @PathVariable(required = false) Integer pageNum) throws IOException {
         User user = authenticationController.getUserFromSession(request.getSession());
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
+        Boolean detectReferenceURL = HelperMethods.detectURL(intervention.getReference());
+        Boolean detectIfItFailsURL = HelperMethods.detectURL(intervention.getIfItFails());
+
         if (errors.hasErrors()) {
             model.addAttribute("intervention", intervention);
+            return "view";
+        }
+
+        if (!HelperMethods.wordFilter(newComment.getUserInput())) {
+            model.addAttribute("intervention", intervention);
+            model.addAttribute("detectReferenceURL", detectReferenceURL);
+            if (detectReferenceURL) {
+                String clickableReferenceURL = HelperMethods.clickableURL(intervention.getReference());
+                model.addAttribute("clickableReferenceURL", clickableReferenceURL);
+            }
+
+            model.addAttribute("detectIfItFailsURL", detectIfItFailsURL);
+            if (detectIfItFailsURL) {
+                String clickableIfItFailsURL = HelperMethods.clickableURL(intervention.getIfItFails());
+                model.addAttribute("clickableIfItFailsURL", clickableIfItFailsURL);
+            }
+
+            String str = "That is an inappropriate choice of vocabulary.";
+            model.addAttribute("commentBadWord", str);
+            Comment comment = new Comment();
+
+            if (pageNum == null) {
+                pageNum = 1;
+            }
+
+            Page<Comment> page = commentService.getInterventionComments(interventionId, pageNum, "id", "Desc");
+            List<Comment> listComments = page.getContent();
+            model.addAttribute("comments", listComments);
+            model.addAttribute("currentPage", pageNum);
+            model.addAttribute("totalPages", page.getTotalPages());
+            model.addAttribute("totalItems", page.getTotalElements());
+
+            model.addAttribute("comment", comment);
+            model.addAttribute("user", user);
+
             return "view";
         }
 

@@ -1,10 +1,7 @@
 package org.launchcode.liftoffproject.controllers;
 
 import org.launchcode.liftoffproject.data.*;
-import org.launchcode.liftoffproject.models.Domain;
-import org.launchcode.liftoffproject.models.Intervention;
-import org.launchcode.liftoffproject.models.Tag;
-import org.launchcode.liftoffproject.models.User;
+import org.launchcode.liftoffproject.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -56,7 +54,7 @@ public class AddController {
     }
 
     @PostMapping("")
-    public String processAddInterventionForm(@ModelAttribute @Valid Intervention newIntervention, Errors errors, Model model, @RequestParam(required = false) List<Integer> domains, @RequestParam(required = false) List<Integer> tag, HttpServletRequest request) {
+    public String processAddInterventionForm(@ModelAttribute @Valid Intervention newIntervention, Errors errors, Model model, @RequestParam(required = false) List<Integer> domains, @RequestParam(required = false) List<Integer> tag, HttpServletRequest request) throws IOException {
         User user = authenticationController.getUserFromSession(request.getSession());
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
 
@@ -83,6 +81,51 @@ public class AddController {
             model.addAttribute("domains", domainRepository.findAll());
             model.addAttribute("tags", tagRepository.findAll());
             model.addAttribute("user", userRepository.findAll());
+            return "add";
+        }
+
+        if (!HelperMethods.wordFilter(newIntervention.getName())) {
+            model.addAttribute("title", "Add Intervention");
+            model.addAttribute("domains", domainRepository.findAll());
+            model.addAttribute("tags", tagRepository.findAll());
+            String str = "That is an inappropriate choice of vocabulary.";
+            model.addAttribute("nameBadWord", str);
+            return "add";
+        }
+
+        if (!HelperMethods.wordFilter(newIntervention.getAction())) {
+            model.addAttribute("title", "Add Intervention");
+            model.addAttribute("domains", domainRepository.findAll());
+            model.addAttribute("tags", tagRepository.findAll());
+            String str = "That is an inappropriate choice of vocabulary.";
+            model.addAttribute("actionBadWord", str);
+            return "add";
+        }
+
+        if (!HelperMethods.wordFilter(newIntervention.getExpectedResponse())) {
+            model.addAttribute("title", "Add Intervention");
+            model.addAttribute("domains", domainRepository.findAll());
+            model.addAttribute("tags", tagRepository.findAll());
+            String str = "That is an inappropriate choice of vocabulary.";
+            model.addAttribute("expectedResponseBadWord", str);
+            return "add";
+        }
+
+        if (!HelperMethods.wordFilter(newIntervention.getReference())) {
+            model.addAttribute("title", "Add Intervention");
+            model.addAttribute("domains", domainRepository.findAll());
+            model.addAttribute("tags", tagRepository.findAll());
+            String str = "That is an inappropriate choice of vocabulary.";
+            model.addAttribute("referenceBadWord", str);
+            return "add";
+        }
+
+        if (!HelperMethods.wordFilter(newIntervention.getIfItFails())) {
+            model.addAttribute("title", "Add Intervention");
+            model.addAttribute("domains", domainRepository.findAll());
+            model.addAttribute("tags", tagRepository.findAll());
+            String str = "That is an inappropriate choice of vocabulary.";
+            model.addAttribute("ifItFailsBadWord", str);
             return "add";
         }
 

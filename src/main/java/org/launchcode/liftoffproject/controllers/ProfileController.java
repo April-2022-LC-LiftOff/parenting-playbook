@@ -4,6 +4,7 @@ import org.launchcode.liftoffproject.data.CommentRepository;
 import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.data.UserRepository;
 import org.launchcode.liftoffproject.models.Comment;
+import org.launchcode.liftoffproject.models.HelperMethods;
 import org.launchcode.liftoffproject.models.User;
 import org.launchcode.liftoffproject.services.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -86,10 +88,17 @@ public class ProfileController {
     }
 
     @PostMapping("/editComment/{commentId}")
-    public String saveComment(Model model, @PathVariable int commentId, @RequestParam String userInput, HttpServletRequest request) {
+    public String saveComment(Model model, @PathVariable int commentId, @RequestParam String userInput, HttpServletRequest request) throws IOException {
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         Optional optComment = commentRepository.findById(commentId);
         Comment comment = (Comment) optComment.get();
+
+        if (!HelperMethods.wordFilter(userInput)) {
+            model.addAttribute("comment", comment);
+            String str = "That is an inappropriate choice of vocabulary.";
+            model.addAttribute("commentBadWord", str);
+            return "editComment";
+        }
 
         comment.setUserInput(userInput);
         commentRepository.save(comment);

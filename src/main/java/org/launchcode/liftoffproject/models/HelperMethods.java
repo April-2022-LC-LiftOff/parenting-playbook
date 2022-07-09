@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class HelperMethods {
 
@@ -121,6 +122,31 @@ public class HelperMethods {
             if (part.contains(".com")) {
                 output = true;
                 break;
+            }
+        }
+
+        return output;
+    }
+
+    public static Boolean wordFilter(String str) throws IOException {
+        Boolean output = true;
+        String[] parts = str.split("\\s+");
+        ArrayList<String> badWords = new ArrayList<>();
+
+        File file = new File("src/main/resources/assets/badWords.csv");
+        FileReader fr = new FileReader(file);
+        BufferedReader br = new BufferedReader(fr);
+        String line = " ";
+        while ((line = br.readLine()) != null) {
+            badWords.add(line);
+        }
+
+        for (String part : parts) {
+            for (String bad : badWords) {
+                if (part.toLowerCase(Locale.ROOT).equals(bad.toLowerCase(Locale.ROOT))) {
+                    output = false;
+                    break;
+                }
             }
         }
 

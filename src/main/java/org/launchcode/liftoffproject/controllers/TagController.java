@@ -2,6 +2,7 @@ package org.launchcode.liftoffproject.controllers;
 
 import org.launchcode.liftoffproject.data.InterventionRepository;
 import org.launchcode.liftoffproject.data.TagRepository;
+import org.launchcode.liftoffproject.models.HelperMethods;
 import org.launchcode.liftoffproject.models.Tag;
 import org.launchcode.liftoffproject.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,9 +67,15 @@ public class TagController {
     }
 
     @PostMapping("add")
-    public String processAddTagForm(@ModelAttribute @Valid Tag newTag, Errors errors, Model model, HttpServletRequest request) {
+    public String processAddTagForm(@ModelAttribute @Valid Tag newTag, Errors errors, Model model, HttpServletRequest request) throws IOException {
         model.addAttribute("loggedIn", authenticationController.isUserLoggedIn(request));
         User user = authenticationController.getUserFromSession(request.getSession());
+
+        if (!HelperMethods.wordFilter(newTag.getTagName())) {
+            String str = "That is an inappropriate choice of vocabulary.";
+            model.addAttribute("badWord", str);
+            return "tags/add";
+        }
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Tag");
