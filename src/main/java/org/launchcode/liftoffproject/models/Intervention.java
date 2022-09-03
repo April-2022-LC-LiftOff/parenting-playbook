@@ -40,6 +40,8 @@ public class Intervention extends AbstractEntity{
     @JoinColumn(name = "user_id")
     private User user;
 
+    private List<Integer> like = new ArrayList<>();
+
 
 
     public Intervention(String name, String action, String expectedResponse, String reference, String ifItFails, User user) {
@@ -115,6 +117,14 @@ public class Intervention extends AbstractEntity{
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public List<Integer> getLike() {
+        return like;
+    }
+
+    public void setLike(List<Integer> like) {
+        this.like = like;
     }
 
     @Override

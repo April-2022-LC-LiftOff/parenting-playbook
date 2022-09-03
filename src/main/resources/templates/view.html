@@ -60,6 +60,7 @@
         </li>
     </ul>
     <a th:if="${initialUser}" th:href="@{'/edit/tags/' + ${intervention.id}}" class="small-links">Edit Tags</a>
+    <button type="button" th:onclick="|window.location.href='view/{interventionId}/page/{pageNum}/like'|" th:text="Like: + {intervention.like.size}"></button>
     <!--        set span to this position to navigate for comment page changes.-->
     <span id="comments"></span>
     <br>
