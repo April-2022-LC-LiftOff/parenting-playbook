@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +29,13 @@ public class LikeController {
         int userId = user.getId();
         Optional optIntervention = interventionRepository.findById(interventionId);
         Intervention intervention = (Intervention) optIntervention.get();
-        List<Integer> likes = intervention.getLike();
+        List<Integer> likes;
+
+        if (intervention.getLike() == null) {
+            likes = new ArrayList<>();
+        } else {
+            likes = intervention.getLike();
+        }
 
         if (likes.contains(userId)) {
             likes.remove(userId);
